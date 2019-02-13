@@ -6,5 +6,8 @@ target 'Chatty Cathy' do
   use_frameworks!
 
   # Pods for Chatty Cathy
+  
+  pod 'SnapKit'
+  
 
 end
