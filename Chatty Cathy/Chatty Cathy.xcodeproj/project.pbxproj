@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036AC4D422152A9D00DD4DF8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036AC4D222152A9D00DD4DF8 /* Future.swift */; };
+		036AC4D522152A9D00DD4DF8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036AC4D322152A9D00DD4DF8 /* Endpoint.swift */; };
 		2B201DA7999CBE264DE81BE2 /* Pods_Chatty_Cathy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C571D1D415D99B3FCE07BF /* Pods_Chatty_Cathy.framework */; };
 		6DAC68202214D2A100B6A6A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC681F2214D2A100B6A6A9 /* AppDelegate.swift */; };
 		6DAC68222214D2A100B6A6A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC68212214D2A100B6A6A9 /* HomeViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		036AC4D222152A9D00DD4DF8 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		036AC4D322152A9D00DD4DF8 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1821EAA06E3B808601D76862 /* Pods-Chatty Cathy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatty Cathy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chatty Cathy/Pods-Chatty Cathy.release.xcconfig"; sourceTree = "<group>"; };
 		6DAC681C2214D2A100B6A6A9 /* Chatty Cathy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chatty Cathy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAC681F2214D2A100B6A6A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 		6DAC681E2214D2A100B6A6A9 /* Chatty Cathy */ = {
 			isa = PBXGroup;
 			children = (
+				036AC4D322152A9D00DD4DF8 /* Endpoint.swift */,
+				036AC4D222152A9D00DD4DF8 /* Future.swift */,
 				6DAC681F2214D2A100B6A6A9 /* AppDelegate.swift */,
 				6DAC68212214D2A100B6A6A9 /* HomeViewController.swift */,
 				6DAC68262214D2A200B6A6A9 /* Assets.xcassets */,
@@ -200,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036AC4D422152A9D00DD4DF8 /* Future.swift in Sources */,
 				6DAC68222214D2A100B6A6A9 /* HomeViewController.swift in Sources */,
+				036AC4D522152A9D00DD4DF8 /* Endpoint.swift in Sources */,
 				6DAC68202214D2A100B6A6A9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
