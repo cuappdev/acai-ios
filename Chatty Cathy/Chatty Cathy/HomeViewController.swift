@@ -12,11 +12,19 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
-        view.backgroundColor = .red
+        view.backgroundColor = .yellow
+        
+        DispatchQueue.main.async {
+            self.showMenuItemDetailViewController()
+        }
+        
     }
 
+    func showMenuItemDetailViewController() {
+        let menuItemDetailViewController = MenuItemDetailViewController()
+        present(menuItemDetailViewController, animated: true, completion: nil)
+    }
 
 }
 
