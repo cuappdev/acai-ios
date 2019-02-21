@@ -1,0 +1,20 @@
+//
+//  keys.stencil.swift
+//  appdev-demo
+//
+//  Created by Drew Dunne on 2/20/19.
+//  Copyright © 2019 Cornell AppDev. All rights reserved.
+//
+
+import Foundation
+
+enum Keys: String {
+    case apiURL = "{{ argument.apiURL }}"
+    case apiDevURL = "{{ argument.apiDevURL }}"
+    case fabricAPIKey = "{{ argument.fabricAPIKey }}"
+    case fabricBuildSecret = "{{ argument.fabricBuildSecret }}"
+
+    var value: String {
+        return self.rawValue
+    }
+}

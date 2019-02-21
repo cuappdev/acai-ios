@@ -1,0 +1,6 @@
+framework module Pods_appdev_demo {
+  umbrella header "Pods-appdev-demo-umbrella.h"
+
+  export *
+  module * { export * }
+}

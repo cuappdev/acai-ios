@@ -1,0 +1,29 @@
+PODS:
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - SnapKit (4.2.0)
+  - Sourcery (0.15.0)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - SnapKit
+  - Sourcery
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+    - SnapKit
+    - Sourcery
+
+SPEC CHECKSUMS:
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
+
+PODFILE CHECKSUM: c01128212a933f1f3c1eca8357bbe1b61e710a14
+
+COCOAPODS: 1.6.0

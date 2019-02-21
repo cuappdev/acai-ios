@@ -1,0 +1,3 @@
+[submodule "ios-networking"]
+	path = ios-networking
+	url = git@github.com:cuappdev/ios-networking.git
