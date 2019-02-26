@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FutureNova
 
 // Example model (preferably written in another location)
 struct User: Codable {

@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import FutureNova
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupEndpointConfig()
         setupWindow()
         setupFabric()
 
         return true
+    }
+
+    func setupEndpointConfig() {
+        Endpoint.config.scheme = "https"
+        #if DEBUG
+        Endpoint.config.host = Keys.apiDevURL.value
+        #else
+        Endpoint.config.host = Keys.apiURL.value
+        #endif
+        Endpoint.config.commonPath = "/api/v1"
     }
 
     func setupWindow() {

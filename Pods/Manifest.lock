@@ -2,12 +2,14 @@ PODS:
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
+  - FutureNova (0.1.1)
   - SnapKit (4.2.0)
   - Sourcery (0.15.0)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - FutureNova (from `https://github.com/cuappdev/ios-networking.git`, branch `drew/pod`)
   - SnapKit
   - Sourcery
 
@@ -18,12 +20,23 @@ SPEC REPOS:
     - SnapKit
     - Sourcery
 
+EXTERNAL SOURCES:
+  FutureNova:
+    :branch: drew/pod
+    :git: https://github.com/cuappdev/ios-networking.git
+
+CHECKOUT OPTIONS:
+  FutureNova:
+    :commit: 39b7fdc125fdee46d7126453441f123b1792a270
+    :git: https://github.com/cuappdev/ios-networking.git
+
 SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FutureNova: 745f45d31124a8f39127fb8f3846a6ee9375f06b
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
 
-PODFILE CHECKSUM: c01128212a933f1f3c1eca8357bbe1b61e710a14
+PODFILE CHECKSUM: 1047a8f39a22e739ec8c59daa5606aac1a116145
 
 COCOAPODS: 1.6.0

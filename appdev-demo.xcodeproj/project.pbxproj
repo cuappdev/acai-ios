@@ -11,8 +11,6 @@
 		6D10DEA0221CAD6800C46F75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DE9F221CAD6800C46F75 /* ViewController.swift */; };
 		6D10DEA5221CAD6C00C46F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */; };
 		6D10DEA8221CAD6C00C46F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */; };
-		6D10DEBC221EDD5400C46F75 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DEBA221EDD5400C46F75 /* Future.swift */; };
-		6D10DEBD221EDD5400C46F75 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DEBB221EDD5400C46F75 /* Endpoint.swift */; };
 		6D10DEBF221EDF0F00C46F75 /* keys.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */; };
 		6D10DEC1221EE81700C46F75 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DEC0221EE81700C46F75 /* Endpoints.swift */; };
 		9D1342AA2E68EB0412DA80F4 /* Pods_appdev_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */; };
@@ -26,8 +24,6 @@
 		6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D10DEA7221CAD6C00C46F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D10DEA9221CAD6C00C46F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D10DEBA221EDD5400C46F75 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Future.swift; path = "ios-networking/Future.swift"; sourceTree = SOURCE_ROOT; };
-		6D10DEBB221EDD5400C46F75 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = "ios-networking/Endpoint.swift"; sourceTree = SOURCE_ROOT; };
 		6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = keys.generated.swift; path = Secrets/keys.generated.swift; sourceTree = SOURCE_ROOT; };
 		6D10DEC0221EE81700C46F75 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appdev_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,8 +74,6 @@
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
 				6D10DE9F221CAD6800C46F75 /* ViewController.swift */,
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
-				6D10DEBB221EDD5400C46F75 /* Endpoint.swift */,
-				6D10DEBA221EDD5400C46F75 /* Future.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
 				6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */,
 				6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */,
@@ -176,12 +170,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appdev-demo/Pods-appdev-demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FutureNova/FutureNova.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FutureNova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,10 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D10DEBC221EDD5400C46F75 /* Future.swift in Sources */,
 				6D10DEA0221CAD6800C46F75 /* ViewController.swift in Sources */,
 				6D10DEBF221EDF0F00C46F75 /* keys.generated.swift in Sources */,
-				6D10DEBD221EDD5400C46F75 /* Endpoint.swift in Sources */,
 				6D10DEC1221EE81700C46F75 /* Endpoints.swift in Sources */,
 				6D10DE9E221CAD6800C46F75 /* AppDelegate.swift in Sources */,
 			);

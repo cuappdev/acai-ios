@@ -6,10 +6,10 @@ target 'appdev-demo' do
   use_frameworks!
 
   # Pods for appdev-demo
-# TODO: uncomment these pods and run `pod install`
   pod 'SnapKit'
   pod 'Sourcery'
   pod 'Crashlytics'
   pod 'Fabric'
+  pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git', :branch => 'drew/pod'
 
 end
