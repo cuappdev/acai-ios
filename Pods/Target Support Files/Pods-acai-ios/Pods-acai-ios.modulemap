@@ -1,0 +1,6 @@
+framework module Pods_acai_ios {
+  umbrella header "Pods-acai-ios-umbrella.h"
+
+  export *
+  module * { export * }
+}

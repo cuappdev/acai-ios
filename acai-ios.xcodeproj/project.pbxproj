@@ -18,9 +18,11 @@
 		6D3673752226F7FB000F9917 /* MenuItemCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */; };
 		6D3673762226F7FB000F9917 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */; };
 		9D1342AA2E68EB0412DA80F4 /* Pods_appdev_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */; };
+		AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		151798FE5404CF9E9CB7B4A7 /* Pods-appdev-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appdev-demo.release.xcconfig"; path = "Target Support Files/Pods-appdev-demo/Pods-appdev-demo.release.xcconfig"; sourceTree = "<group>"; };
 		6D10DE9A221CAD6800C46F75 /* acai-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "acai-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +36,9 @@
 		6D36736F2226F7FB000F9917 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCustomizationViewController.swift; sourceTree = "<group>"; };
 		6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_acai_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appdev_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0446A59003ECDFC3C229A6F /* Pods-acai-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.release.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.release.xcconfig"; sourceTree = "<group>"; };
 		E07E5BB5721B342C1A75715B /* Pods-appdev-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appdev-demo.debug.xcconfig"; path = "Target Support Files/Pods-appdev-demo/Pods-appdev-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D1342AA2E68EB0412DA80F4 /* Pods_appdev_demo.framework in Frameworks */,
+				AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */,
+				7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,6 +105,8 @@
 			children = (
 				E07E5BB5721B342C1A75715B /* Pods-appdev-demo.debug.xcconfig */,
 				151798FE5404CF9E9CB7B4A7 /* Pods-appdev-demo.release.xcconfig */,
+				034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */,
+				E0446A59003ECDFC3C229A6F /* Pods-acai-ios.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -182,20 +190,24 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appdev-demo/Pods-appdev-demo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-acai-ios/Pods-acai-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FutureNova/FutureNova.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_ROOT}/SquareInAppPaymentsSDK/SquareInAppPaymentsSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FutureNova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SquareInAppPaymentsSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appdev-demo/Pods-appdev-demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-acai-ios/Pods-acai-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D10DEAF221DB29600C46F75 /* Swiftlint */ = {
@@ -270,7 +282,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-appdev-demo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-acai-ios-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -427,7 +439,7 @@
 		};
 		6D10DEAD221CAD6C00C46F75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E07E5BB5721B342C1A75715B /* Pods-appdev-demo.debug.xcconfig */;
+			baseConfigurationReference = 034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,7 +459,7 @@
 		};
 		6D10DEAE221CAD6C00C46F75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 151798FE5404CF9E9CB7B4A7 /* Pods-appdev-demo.release.xcconfig */;
+			baseConfigurationReference = E0446A59003ECDFC3C229A6F /* Pods-acai-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

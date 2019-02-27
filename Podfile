@@ -12,4 +12,7 @@ target 'acai-ios' do
   pod 'Fabric'
   pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git'
 
+  pod 'SquareInAppPaymentsSDK'
+  pod 'Kingfisher'
+
 end
