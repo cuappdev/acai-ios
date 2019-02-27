@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		151798FE5404CF9E9CB7B4A7 /* Pods-appdev-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appdev-demo.release.xcconfig"; path = "Target Support Files/Pods-appdev-demo/Pods-appdev-demo.release.xcconfig"; sourceTree = "<group>"; };
-		6D10DE9A221CAD6800C46F75 /* appdev-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "appdev-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D10DE9A221CAD6800C46F75 /* acai-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "acai-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D10DE9F221CAD6800C46F75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		6D10DE91221CAD6800C46F75 = {
 			isa = PBXGroup;
 			children = (
-				6D10DE9C221CAD6800C46F75 /* appdev-demo */,
+				6D10DE9C221CAD6800C46F75 /* acai-ios */,
 				6D10DE9B221CAD6800C46F75 /* Products */,
 				D373E9E75C1FEDD56C03ABA5 /* Pods */,
 				0212C3C9219670DD1562783A /* Frameworks */,
@@ -63,12 +63,12 @@
 		6D10DE9B221CAD6800C46F75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D10DE9A221CAD6800C46F75 /* appdev-demo.app */,
+				6D10DE9A221CAD6800C46F75 /* acai-ios.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6D10DE9C221CAD6800C46F75 /* appdev-demo */ = {
+		6D10DE9C221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXGroup;
 			children = (
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
@@ -79,7 +79,7 @@
 				6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */,
 				6D10DEA9221CAD6C00C46F75 /* Info.plist */,
 			);
-			path = "appdev-demo";
+			path = "acai-ios";
 			sourceTree = "<group>";
 		};
 		D373E9E75C1FEDD56C03ABA5 /* Pods */ = {
@@ -94,25 +94,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D10DE99221CAD6800C46F75 /* appdev-demo */ = {
+		6D10DE99221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D10DEAC221CAD6C00C46F75 /* Build configuration list for PBXNativeTarget "appdev-demo" */;
+			buildConfigurationList = 6D10DEAC221CAD6C00C46F75 /* Build configuration list for PBXNativeTarget "acai-ios" */;
 			buildPhases = (
 				AC3F4ACCDD5D75D3ED90293C /* [CP] Check Pods Manifest.lock */,
-				6D10DEB3221DB6B800C46F75 /* Secrets/Fabric */,
+				6D10DEB3221DB6B800C46F75 /* Secrets */,
 				6D10DE96221CAD6800C46F75 /* Sources */,
 				6D10DE97221CAD6800C46F75 /* Frameworks */,
 				6D10DE98221CAD6800C46F75 /* Resources */,
 				3E202B656BD7EAEEC798292D /* [CP] Embed Pods Frameworks */,
 				6D10DEAF221DB29600C46F75 /* Swiftlint */,
+				6D36736A2226F14A000F9917 /* Fabric */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "appdev-demo";
+			name = "acai-ios";
 			productName = "appdev-demo";
-			productReference = 6D10DE9A221CAD6800C46F75 /* appdev-demo.app */;
+			productReference = 6D10DE9A221CAD6800C46F75 /* acai-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +131,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D10DE95221CAD6800C46F75 /* Build configuration list for PBXProject "appdev-demo" */;
+			buildConfigurationList = 6D10DE95221CAD6800C46F75 /* Build configuration list for PBXProject "acai-ios" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -143,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D10DE99221CAD6800C46F75 /* appdev-demo */,
+				6D10DE99221CAD6800C46F75 /* acai-ios */,
 			);
 		};
 /* End PBXProject section */
@@ -203,7 +204,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		6D10DEB3221DB6B800C46F75 /* Secrets/Fabric */ = {
+		6D10DEB3221DB6B800C46F75 /* Secrets */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,7 +214,7 @@
 			inputPaths = (
 				"$(SRCROOT)/env-vars.sh",
 			);
-			name = Secrets/Fabric;
+			name = Secrets;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -221,7 +222,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#check if env-vars.sh exists, because this file is not used on Bitrise CI\nif [ -f ./env-vars.sh ]\nthen\n    source ./env-vars.sh\nfi\n$PODS_ROOT/Sourcery/bin/sourcery --sources . --templates Sourcery/keys.stencil --output Secrets --args random=\"appdev\",apiURL=$API_URL,apiDevURL=$API_DEV_URL,fabricAPIKey=$FABRIC_API_KEY,fabricBuildSecret=$FABRIC_BUILD_SECRET\n\"${PODS_ROOT}/Fabric/run\" $FABRIC_API_KEY $FABRIC_BUILD_SECRET\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#check if env-vars.sh exists, because this file is not used on Bitrise CI\nif [ -f ./env-vars.sh ]\nthen\n    source ./env-vars.sh\nfi\n$PODS_ROOT/Sourcery/bin/sourcery --sources . --templates Sourcery/keys.stencil --output Secrets --args random=\"appdev\",apiURL=$API_URL,apiDevURL=$API_DEV_URL,fabricAPIKey=$FABRIC_API_KEY,fabricBuildSecret=$FABRIC_BUILD_SECRET\n";
+		};
+		6D36736A2226F14A000F9917 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/env-vars.sh",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#check if env-vars.sh exists, because this file is not used on Bitrise CI\nif [ -f ./env-vars.sh ]\nthen\n    source ./env-vars.sh\nfi\n\"${PODS_ROOT}/Fabric/run\" $FABRIC_API_KEY $FABRIC_BUILD_SECRET\n";
 		};
 		AC3F4ACCDD5D75D3ED90293C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -396,12 +416,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZGMCXU7X3U;
-				INFOPLIST_FILE = "appdev-demo/Info.plist";
+				INFOPLIST_FILE = "acai-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.appdev-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.acai-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -415,12 +436,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZGMCXU7X3U;
-				INFOPLIST_FILE = "appdev-demo/Info.plist";
+				INFOPLIST_FILE = "acai-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.appdev-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.acai-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -430,7 +452,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D10DE95221CAD6800C46F75 /* Build configuration list for PBXProject "appdev-demo" */ = {
+		6D10DE95221CAD6800C46F75 /* Build configuration list for PBXProject "acai-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D10DEAA221CAD6C00C46F75 /* Debug */,
@@ -439,7 +461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D10DEAC221CAD6C00C46F75 /* Build configuration list for PBXNativeTarget "appdev-demo" */ = {
+		6D10DEAC221CAD6C00C46F75 /* Build configuration list for PBXNativeTarget "acai-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D10DEAD221CAD6C00C46F75 /* Debug */,
