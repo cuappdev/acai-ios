@@ -9,15 +9,13 @@
 import Foundation
 import FutureNova
 
-// Example model (preferably written in another location)
-struct User: Codable {
-    let id: Int
-}
-
 // User added file for premade endpoints
 extension Endpoint {
-    static func user(from id: Int) -> Endpoint {
-        let query = [URLQueryItem(name: "id", value: "\(id)")]
-        return Endpoint(path: "/api/v1/user", queryItems: query)
+
+    /// The login endpoint
+    static func login() -> Endpoint {
+        query = [:]
+        return Endpoint(path: "/login", queryItems: query)
     }
+
 }
