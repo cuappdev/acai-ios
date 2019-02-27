@@ -17,7 +17,6 @@
 		6D3673742226F7FB000F9917 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D36736F2226F7FB000F9917 /* HeaderView.swift */; };
 		6D3673752226F7FB000F9917 /* MenuItemCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */; };
 		6D3673762226F7FB000F9917 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */; };
-		9D1342AA2E68EB0412DA80F4 /* Pods_appdev_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */; };
 		AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D1342AA2E68EB0412DA80F4 /* Pods_appdev_demo.framework in Frameworks */,
 				AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

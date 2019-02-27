@@ -14,8 +14,7 @@ extension Endpoint {
 
     /// The login endpoint
     static func login() -> Endpoint {
-        query = [:]
-        return Endpoint(path: "/login", queryItems: query)
+        return Endpoint(path: "/login", queryItems: [])
     }
 
 }
