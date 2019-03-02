@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .yellow
         
         DispatchQueue.main.async {
-            self.showMenuItemDetailViewController()
+            self.showLoginViewController()
         }
         
     }
@@ -24,6 +24,11 @@ class HomeViewController: UIViewController {
     func showMenuItemDetailViewController() {
         let menuItemDetailViewController = MenuItemDetailViewController()
         present(menuItemDetailViewController, animated: true, completion: nil)
+    }
+    
+    func showLoginViewController() {
+        let loginViewController = LoginViewController()
+        present(loginViewController, animated: true, completion: nil)
     }
 
 }
