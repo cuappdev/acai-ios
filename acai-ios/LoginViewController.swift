@@ -71,7 +71,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        print("here")
         if let email = emailTextField.text, let password = passwordTextField.text, email != "", password != "" {
             getUser(email: email, password: password).observe { (result) in
                 switch result {
