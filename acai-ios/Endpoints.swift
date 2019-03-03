@@ -9,12 +9,17 @@
 import Foundation
 import FutureNova
 
-// User added file for premade endpoints
 extension Endpoint {
+    
+    /// The login endpoint to get a User
+    static func login(email: String, password: String) -> Endpoint {
 
-    /// The login endpoint
-    static func login() -> Endpoint {
-        return Endpoint(path: "/login", queryItems: [])
+        let query = [
+            URLQueryItem(name: "email", value: email),
+            URLQueryItem(name: "password", value: password)
+        ]
+        
+        return Endpoint(path: "/login", queryItems: query)
     }
 
 }
