@@ -14,5 +14,6 @@ target 'acai-ios' do
 
   pod 'SquareInAppPaymentsSDK'
   pod 'Kingfisher'
+  pod 'IGListKit'
 
 end
