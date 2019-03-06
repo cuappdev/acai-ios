@@ -43,13 +43,6 @@ class MenuItemCustomizationViewController: UIViewController {
 
     }
     
-    @objc func addItem() {
-        
-    }
-    
-    @objc func resetOptions() {
-        
-    }
 }
 
 extension MenuItemCustomizationViewController: ListAdapterDataSource {

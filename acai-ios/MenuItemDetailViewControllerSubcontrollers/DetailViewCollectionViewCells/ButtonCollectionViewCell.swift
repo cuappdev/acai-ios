@@ -21,7 +21,7 @@ class ButtonCollectionViewCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("", for: .normal)
         button.setTitleColor(Acai.lightGray, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        button.titleLabel?.font = Acai.avenirNextMedium.withSize(20)
         self.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()

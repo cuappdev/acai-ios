@@ -46,6 +46,7 @@ class CustomizationOptionSectionController: ListSectionController {
         if let cell = cell as? CustomizationOptionCollectionViewCell {
             cell.titleLabel.text = customizationOption.title
             
+            cell.optionsLabel.text = ""
             for subOption in customizationOption.options {
                 if (subOption.isSelected) {
                     if let optionsText = cell.optionsLabel.text {

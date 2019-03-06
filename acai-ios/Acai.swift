@@ -17,6 +17,9 @@ class Acai {
     static var lineGray: UIColor = UIColor(red: 228/255, green: 226/255, blue: 226/255, alpha: 1.0)
     static var orange: UIColor = UIColor(red: 247/255, green: 95/255, blue: 35/255, alpha: 1.0)
     
+    static var avenirNextMedium: UIFont = UIFont(name: "AvenirNextCyr-Medium", size: 12)!
+    static var avenirNextDemi: UIFont = UIFont(name: "AvenirNextCyr-Demi", size: 12)!
+    
     //hard code for testing
     //NOTE: UI gets messed up if same named option is put more than once in list
     static var customizationOptions = [

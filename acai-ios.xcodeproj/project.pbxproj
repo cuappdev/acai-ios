@@ -9,11 +9,27 @@
 /* Begin PBXBuildFile section */
 		031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F5222E15CE004FAF9F /* LoginViewController.swift */; };
 		031536F8222EB3BA004FAF9F /* Acai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F7222EB3BA004FAF9F /* Acai.swift */; };
-		031536FA222F8258004FAF9F /* CustomizationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F9222F8258004FAF9F /* CustomizationOption.swift */; };
+		031536FA222F8258004FAF9F /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F9222F8258004FAF9F /* models.swift */; };
 		031536FC222F84D8004FAF9F /* CustomizationOptionSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536FB222F84D8004FAF9F /* CustomizationOptionSectionController.swift */; };
 		031536FE222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */; };
-		03153700222F8A29004FAF9F /* CustomizationOptionSubOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536FF222F8A29004FAF9F /* CustomizationOptionSubOption.swift */; };
 		03153702222F98F9004FAF9F /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */; };
+		0315370422301A43004FAF9F /* DetailTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315370322301A43004FAF9F /* DetailTextCollectionViewCell.swift */; };
+		0315371B22305886004FAF9F /* AvenirNextCyr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */; };
+		0315371C22305890004FAF9F /* AvenirNextCyr-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */; };
+		0315371D22305892004FAF9F /* AvenirNextCyr-Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */; };
+		0315371E22305894004FAF9F /* AvenirNextCyr-DemiItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */; };
+		0315371F22305897004FAF9F /* AvenirNextCyr-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */; };
+		0315372022305899004FAF9F /* AvenirNextCyr-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */; };
+		031537212230589B004FAF9F /* AvenirNextCyr-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */; };
+		031537222230589D004FAF9F /* AvenirNextCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */; };
+		03153723223058A0004FAF9F /* AvenirNextCyr-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */; };
+		03153724223058A2004FAF9F /* AvenirNextCyr-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */; };
+		03153725223058A4004FAF9F /* AvenirNextCyr-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */; };
+		03153726223058A6004FAF9F /* AvenirNextCyr-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */; };
+		03153727223058AA004FAF9F /* AvenirNextCyr-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */; };
+		03153728223058AC004FAF9F /* AvenirNextCyr-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */; };
+		03153729223058AE004FAF9F /* AvenirNextCyr-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */; };
+		0315372A223058B1004FAF9F /* AvenirNextCyr-UltraLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */; };
 		6D10DE9E221CAD6800C46F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */; };
 		6D10DEA5221CAD6C00C46F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */; };
 		6D10DEA8221CAD6C00C46F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */; };
@@ -30,11 +46,27 @@
 /* Begin PBXFileReference section */
 		031536F5222E15CE004FAF9F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		031536F7222EB3BA004FAF9F /* Acai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acai.swift; sourceTree = "<group>"; };
-		031536F9222F8258004FAF9F /* CustomizationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationOption.swift; sourceTree = "<group>"; };
+		031536F9222F8258004FAF9F /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
 		031536FB222F84D8004FAF9F /* CustomizationOptionSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationOptionSectionController.swift; sourceTree = "<group>"; };
 		031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationOptionCollectionViewCell.swift; sourceTree = "<group>"; };
-		031536FF222F8A29004FAF9F /* CustomizationOptionSubOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationOptionSubOption.swift; sourceTree = "<group>"; };
 		03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		0315370322301A43004FAF9F /* DetailTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextCollectionViewCell.swift; sourceTree = "<group>"; };
+		031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-DemiItalic.ttf"; sourceTree = "<group>"; };
+		0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Demi.ttf"; sourceTree = "<group>"; };
+		0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Italic.ttf"; sourceTree = "<group>"; };
+		0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Heavy.ttf"; sourceTree = "<group>"; };
+		0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Thin.ttf"; sourceTree = "<group>"; };
+		0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-MediumItalic.ttf"; sourceTree = "<group>"; };
+		031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-LightItalic.ttf"; sourceTree = "<group>"; };
+		031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Light.ttf"; sourceTree = "<group>"; };
+		031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Medium.ttf"; sourceTree = "<group>"; };
+		031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-ThinItalic.ttf"; sourceTree = "<group>"; };
+		031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-UltraLight.ttf"; sourceTree = "<group>"; };
+		031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Bold.ttf"; sourceTree = "<group>"; };
+		031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-BoldItalic.ttf"; sourceTree = "<group>"; };
+		031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-UltraLightIt.ttf"; sourceTree = "<group>"; };
+		031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Regular.ttf"; sourceTree = "<group>"; };
 		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		151798FE5404CF9E9CB7B4A7 /* Pods-appdev-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appdev-demo.release.xcconfig"; path = "Target Support Files/Pods-appdev-demo/Pods-appdev-demo.release.xcconfig"; sourceTree = "<group>"; };
 		6D10DE9A221CAD6800C46F75 /* acai-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "acai-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +108,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0315370722304F03004FAF9F /* MenuItemDetailViewControllerSubcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				6D36736F2226F7FB000F9917 /* HeaderView.swift */,
+				6D36736E2226F7FA000F9917 /* DetailTextView.swift */,
+				6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */,
+				031536F9222F8258004FAF9F /* models.swift */,
+				031536FB222F84D8004FAF9F /* CustomizationOptionSectionController.swift */,
+				0315370822304F5A004FAF9F /* DetailViewCollectionViewCells */,
+			);
+			path = MenuItemDetailViewControllerSubcontrollers;
+			sourceTree = "<group>";
+		};
+		0315370822304F5A004FAF9F /* DetailViewCollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */,
+				03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */,
+				0315370322301A43004FAF9F /* DetailTextCollectionViewCell.swift */,
+			);
+			path = DetailViewCollectionViewCells;
+			sourceTree = "<group>";
+		};
+		0315371A2230586C004FAF9F /* AvenirNext */ = {
+			isa = PBXGroup;
+			children = (
+				031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */,
+				031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */,
+				0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */,
+				031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */,
+				0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */,
+				0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */,
+				0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */,
+				031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */,
+				031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */,
+				031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */,
+				0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */,
+				031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */,
+				0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */,
+				031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */,
+				031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */,
+				031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */,
+			);
+			path = AvenirNext;
+			sourceTree = "<group>";
+		};
 		6D10DE91221CAD6800C46F75 = {
 			isa = PBXGroup;
 			children = (
@@ -97,21 +175,15 @@
 		6D10DE9C221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0315371A2230586C004FAF9F /* AvenirNext */,
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
 				031536F7222EB3BA004FAF9F /* Acai.swift */,
-				031536F5222E15CE004FAF9F /* LoginViewController.swift */,
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
+				031536F5222E15CE004FAF9F /* LoginViewController.swift */,
 				6D36736D2226F7FA000F9917 /* HomeViewController.swift */,
 				6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */,
-				6D36736F2226F7FB000F9917 /* HeaderView.swift */,
-				6D36736E2226F7FA000F9917 /* DetailTextView.swift */,
-				6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */,
-				031536FB222F84D8004FAF9F /* CustomizationOptionSectionController.swift */,
-				031536F9222F8258004FAF9F /* CustomizationOption.swift */,
-				031536FF222F8A29004FAF9F /* CustomizationOptionSubOption.swift */,
-				031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */,
-				03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */,
+				0315370722304F03004FAF9F /* MenuItemDetailViewControllerSubcontrollers */,
 				6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */,
 				6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */,
 				6D10DEA9221CAD6C00C46F75 /* Info.plist */,
@@ -193,8 +265,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03153728223058AC004FAF9F /* AvenirNextCyr-ThinItalic.ttf in Resources */,
+				03153724223058A2004FAF9F /* AvenirNextCyr-Medium.ttf in Resources */,
+				031537222230589D004FAF9F /* AvenirNextCyr-Light.ttf in Resources */,
 				6D10DEA8221CAD6C00C46F75 /* LaunchScreen.storyboard in Resources */,
+				0315371B22305886004FAF9F /* AvenirNextCyr-Bold.ttf in Resources */,
+				0315371C22305890004FAF9F /* AvenirNextCyr-BoldItalic.ttf in Resources */,
+				0315372A223058B1004FAF9F /* AvenirNextCyr-UltraLightIt.ttf in Resources */,
+				031537212230589B004FAF9F /* AvenirNextCyr-Italic.ttf in Resources */,
+				03153725223058A4004FAF9F /* AvenirNextCyr-MediumItalic.ttf in Resources */,
+				0315372022305899004FAF9F /* AvenirNextCyr-HeavyItalic.ttf in Resources */,
 				6D10DEA5221CAD6C00C46F75 /* Assets.xcassets in Resources */,
+				0315371F22305897004FAF9F /* AvenirNextCyr-Heavy.ttf in Resources */,
+				03153723223058A0004FAF9F /* AvenirNextCyr-LightItalic.ttf in Resources */,
+				0315371E22305894004FAF9F /* AvenirNextCyr-DemiItalic.ttf in Resources */,
+				03153729223058AE004FAF9F /* AvenirNextCyr-UltraLight.ttf in Resources */,
+				03153726223058A6004FAF9F /* AvenirNextCyr-Regular.ttf in Resources */,
+				0315371D22305892004FAF9F /* AvenirNextCyr-Demi.ttf in Resources */,
+				03153727223058AA004FAF9F /* AvenirNextCyr-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */,
-				031536FA222F8258004FAF9F /* CustomizationOption.swift in Sources */,
-				03153700222F8A29004FAF9F /* CustomizationOptionSubOption.swift in Sources */,
+				031536FA222F8258004FAF9F /* models.swift in Sources */,
 				031536F8222EB3BA004FAF9F /* Acai.swift in Sources */,
 				031536FE222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift in Sources */,
 				6D3673752226F7FB000F9917 /* MenuItemCustomizationViewController.swift in Sources */,
@@ -329,6 +416,7 @@
 				6D10DEC1221EE81700C46F75 /* Endpoints.swift in Sources */,
 				031536FC222F84D8004FAF9F /* CustomizationOptionSectionController.swift in Sources */,
 				6D3673732226F7FB000F9917 /* DetailTextView.swift in Sources */,
+				0315370422301A43004FAF9F /* DetailTextCollectionViewCell.swift in Sources */,
 				6D10DE9E221CAD6800C46F75 /* AppDelegate.swift in Sources */,
 				03153702222F98F9004FAF9F /* ButtonCollectionViewCell.swift in Sources */,
 				6D3673742226F7FB000F9917 /* HeaderView.swift in Sources */,

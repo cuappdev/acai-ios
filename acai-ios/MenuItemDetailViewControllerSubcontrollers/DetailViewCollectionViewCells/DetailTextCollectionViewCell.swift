@@ -1,15 +1,14 @@
 //
-//  TextView.swift
-//  Chatty Cathy
+//  DetailTextCollectionViewCell.swift
+//  acai-ios
 //
-//  Created by Artesia Ko on 2/18/19.
+//  Created by Artesia Ko on 3/6/19.
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 
-class DetailTextView: UIView {
+class DetailTextCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
     var textBox: UITextView!
@@ -18,9 +17,9 @@ class DetailTextView: UIView {
     var line: UIView!
     
     var customizationOptions: [CustomizationOption]!
-
-    // MARK: View initialization
+    
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
         
         titleLabel = UILabel()
