@@ -12,6 +12,7 @@ import SnapKit
 class MenuItemDetailViewController: UIViewController {
     
     // MARK: View vars
+    var dismissButton: UIButton!
     var headerView: HeaderView!
     var detailTextView: DetailTextView!
     var customizationViewController: MenuItemCustomizationViewController!
@@ -36,14 +37,39 @@ class MenuItemDetailViewController: UIViewController {
         detailTextView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(detailTextView)
         detailTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(headerView.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.top.equalTo(headerView.snp.bottom).offset(28)
+            make.leading.equalToSuperview().offset(18)
+            make.trailing.equalToSuperview().offset(-18)
+            make.height.equalTo(122)
         }
         
         customizationViewController = MenuItemCustomizationViewController()
         addChild(customizationViewController)
+        view.addSubview(customizationViewController.view)
+        customizationViewController.didMove(toParent: self)
+        customizationViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        customizationViewController.view.snp.makeConstraints { (make) in
+            make.top.equalTo(detailTextView.snp.bottom).offset(16)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        dismissButton = UIButton(type: .system)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        dismissButton.backgroundColor = Acai.orange
+        //dismissButton.setImage(UIImage(), for: .normal)
+        dismissButton.addTarget(self, action: #selector(dismissMenuItemDetailViewController), for: .touchUpInside)
+        view.addSubview(dismissButton)
+        dismissButton.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(6)
+            make.leading.equalToSuperview().offset(18)
+            make.height.equalTo(23)
+            make.width.equalTo(23)
+        }
     }
-
+    
+    @objc func dismissMenuItemDetailViewController() {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -12,46 +12,23 @@ import SnapKit
 class HeaderView: UIView {
     
     // MARK: View vars
-    var titleLabel: UILabel!
-    var priceLabel: UILabel!
     var imageView: UIImageView!
 
     // MARK: View initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        titleLabel.textColor = .black
-        titleLabel.text = "Header Title Label"
-        self.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        priceLabel = UILabel()
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        priceLabel.textColor = .black
-        priceLabel.text = "Header Price Label"
-        self.addSubview(priceLabel)
-        priceLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(titleLabel.snp.trailing)
-            make.bottom.equalToSuperview()
-        }
 
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .black
+        imageView.image = UIImage()
+        imageView.contentMode = .scaleAspectFill
         self.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalTo(100)
-            make.height.equalTo(100)
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
         }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
