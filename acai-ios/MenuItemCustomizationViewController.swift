@@ -14,8 +14,6 @@ class MenuItemCustomizationViewController: UIViewController {
     // MARK: View vars
     var collectionView: UICollectionView!
     var collectionViewListAdapter: ListAdapter!
-    var addButton: UIButton!
-    var resetButton: UIButton!
     
     var customizationOptions: [CustomizationOption]!
     
@@ -42,27 +40,6 @@ class MenuItemCustomizationViewController: UIViewController {
         collectionViewListAdapter.collectionView = collectionView
         collectionViewListAdapter.dataSource = self as! ListAdapterDataSource
 
-        resetButton = UIButton(type: .system)
-        resetButton.translatesAutoresizingMaskIntoConstraints = false
-        resetButton.setTitle("Reset Options", for: .normal)
-        resetButton.setTitleColor(Acai.lightGray, for: .normal)
-        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        view.addSubview(resetButton)
-        resetButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-        
-        addButton = UIButton(type: .system)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.setTitle("Add Item", for: .normal)
-        addButton.setTitleColor(Acai.orange, for: .normal)
-        addButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        view.addSubview(addButton)
-        addButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(resetButton.snp.top).offset(-26)
-            make.centerX.equalToSuperview()
-        }
     }
     
     @objc func addItem() {
@@ -91,7 +68,10 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
         let o3 = CustomizationOption(title: "Toppings", options: [granola, coconutChips])
         let o4 = CustomizationOption(title: "Allergens", options: [nutFree])
         
-        customizationOptions = [o1, o2, o3, o4]
+        let addItem = CustomizationOption(title: "Add Item", options: [])
+        let resetBowlOptions = CustomizationOption(title: "Reset Bowl Options", options: [])
+        
+        customizationOptions = [o1, o2, o3, o4, addItem, resetBowlOptions]
         return customizationOptions as! [ListDiffable]
     }
     

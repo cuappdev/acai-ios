@@ -15,6 +15,7 @@ class DetailTextView: UIView {
     var textBox: UITextView!
     var titleLabel: UILabel!
     var priceLabel: UILabel!
+    var line: UIView!
 
     // MARK: View initialization
     override init(frame: CGRect) {
@@ -55,6 +56,17 @@ class DetailTextView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = Acai.lineGray
+        self.addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(1)
+            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }

@@ -49,7 +49,7 @@ class MenuItemDetailViewController: UIViewController {
         customizationViewController.didMove(toParent: self)
         customizationViewController.view.translatesAutoresizingMaskIntoConstraints = false
         customizationViewController.view.snp.makeConstraints { (make) in
-            make.top.equalTo(detailTextView.snp.bottom).offset(16)
+            make.top.equalTo(detailTextView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()

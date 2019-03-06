@@ -35,10 +35,12 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
         optionsLabel.text = ""
         optionsLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         optionsLabel.textColor = Acai.medGray
+        optionsLabel.textAlignment = .right
         self.addSubview(optionsLabel)
         optionsLabel.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
+            make.leading.equalTo(titleLabel.snp.trailing).offset(20)
         }
         
         arrow = UIImageView()
@@ -46,6 +48,14 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
         
         line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = Acai.lineGray
+        self.addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(1)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

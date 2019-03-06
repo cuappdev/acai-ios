@@ -23,31 +23,53 @@ class CustomizationOptionSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
+        
         guard let context = collectionContext, let option = customizationOption else {
             return .zero
         }
+        
         let width = context.containerSize.width
+        
+        if (option.title == "Add Item" || option.title == "Reset Bowl Options") {
+            return CGSize(width: width, height: 60)
+        }
+        
         return CGSize(width: width, height: 50)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: CustomizationOptionCollectionViewCell.self, for: self, at: index)
+        guard let option = customizationOption else {
+            return UICollectionViewCell()
+        }
+        let cellClass: AnyClass = (option.title == "Add Item" || option.title == "Reset Bowl Options" ? ButtonCollectionViewCell.self : CustomizationOptionCollectionViewCell.self)
+        let cell = collectionContext!.dequeueReusableCell(of: cellClass, for: self, at: index)
         if let cell = cell as? CustomizationOptionCollectionViewCell {
             cell.titleLabel.text = customizationOption.title
             
-            for option in customizationOption.options {
-                if (option.isSelected) {
+            for subOption in customizationOption.options {
+                if (subOption.isSelected) {
                     if let optionsText = cell.optionsLabel.text {
                         if optionsText == "" {
-                            cell.optionsLabel.text = "\(option.title)"
+                            cell.optionsLabel.text = "\(subOption.title)"
                         }
                         else {
-                            cell.optionsLabel.text = "\(optionsText), \(option.title)"
+                            cell.optionsLabel.text = "\(optionsText), \(subOption.title)"
                         }
                     }
                 }
             }
             
+        }
+        else if let cell = cell as? ButtonCollectionViewCell {
+            cell.button.setTitle(option.title, for: .normal)
+            if option.title == "Add Item" {
+                cell.button.setTitleColor(Acai.orange, for: .normal)
+                cell.button.addTarget(self, action: #selector(addItem), for: .touchUpInside)
+            }
+            else {
+                cell.button.setTitleColor(Acai.lightGray, for: .normal)
+                cell.button.addTarget(self, action: #selector(resetOptions), for: .touchUpInside)
+            }
         }
         
         return cell
@@ -56,5 +78,13 @@ class CustomizationOptionSectionController: ListSectionController {
     override func didUpdate(to object: Any) {
         guard let object = object as? CustomizationOption else { return }
         customizationOption = object
+    }
+    
+    @objc func addItem() {
+        print("Add Item clicked")
+    }
+    
+    @objc func resetOptions() {
+        print("Reset Bowl Options clicked")
     }
 }
