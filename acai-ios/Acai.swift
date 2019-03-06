@@ -17,4 +17,22 @@ class Acai {
     static var lineGray: UIColor = UIColor(red: 228/255, green: 226/255, blue: 226/255, alpha: 1.0)
     static var orange: UIColor = UIColor(red: 247/255, green: 95/255, blue: 35/255, alpha: 1.0)
     
+    //hard code for testing
+    
+    static var customizationOptions = [
+        CustomizationOption(title: "Base Options", options: [
+            CustomizationOptionSubOption(title: "Acai", isSelected: true)]),
+        CustomizationOption(title: "Fruit", options: [
+            CustomizationOptionSubOption(title: "Pineapple", isSelected: true),
+            CustomizationOptionSubOption(title: "Banana", isSelected: true),
+            CustomizationOptionSubOption(title: "Strawberry", isSelected: false)]),
+        CustomizationOption(title: "Toppings", options: [
+            CustomizationOptionSubOption(title: "Granola", isSelected: true),
+            CustomizationOptionSubOption(title: "Coconut Chips", isSelected: true)]),
+        CustomizationOption(title: "Allergens", options: [
+            CustomizationOptionSubOption(title: "Nut Free", isSelected: true)]),
+        CustomizationOption(title: "Add Item", options: []),
+        CustomizationOption(title: "Reset Bowl Options", options: [])
+    ]
+    
 }

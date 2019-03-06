@@ -16,6 +16,8 @@ class DetailTextView: UIView {
     var titleLabel: UILabel!
     var priceLabel: UILabel!
     var line: UIView!
+    
+    var customizationOptions: [CustomizationOption]!
 
     // MARK: View initialization
     override init(frame: CGRect) {
@@ -50,7 +52,7 @@ class DetailTextView: UIView {
         textBox.showsVerticalScrollIndicator = false
         textBox.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textBox.textColor = Acai.medGray
-        textBox.text = "DetailTextView TextBox"
+        textBox.text = ""
         self.addSubview(textBox)
         textBox.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
@@ -68,6 +70,26 @@ class DetailTextView: UIView {
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        
+        customizationOptions = Acai.customizationOptions
+        setDetailText()
+    }
+    
+    func setDetailText() {
+        for option in customizationOptions {
+            for subOption in option.options {
+                if (subOption.isSelected) {
+                    if let text = textBox.text {
+                        if text == "" {
+                            textBox.text = "\(subOption.title)"
+                        }
+                        else {
+                            textBox.text = "\(text), \(subOption.title)"
+                        }
+                    }
+                }
+            }
         }
     }
     

@@ -54,24 +54,7 @@ class MenuItemCustomizationViewController: UIViewController {
 extension MenuItemCustomizationViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         
-        //hard code for testing
-        let acai = CustomizationOptionSubOption(title: "Acai", isSelected: true)
-        let pineapple = CustomizationOptionSubOption(title: "Pineapple", isSelected: true)
-        let banana = CustomizationOptionSubOption(title: "Banana", isSelected: true)
-        let strawberry = CustomizationOptionSubOption(title: "Strawberry", isSelected: true)
-        let granola = CustomizationOptionSubOption(title: "Granola", isSelected: true)
-        let coconutChips = CustomizationOptionSubOption(title: "Coconut Chips", isSelected: true)
-        let nutFree = CustomizationOptionSubOption(title: "Nut Free", isSelected: true)
-        
-        let o1 = CustomizationOption(title: "Base Options", options: [acai])
-        let o2 = CustomizationOption(title: "Fruit", options: [pineapple, banana, strawberry])
-        let o3 = CustomizationOption(title: "Toppings", options: [granola, coconutChips])
-        let o4 = CustomizationOption(title: "Allergens", options: [nutFree])
-        
-        let addItem = CustomizationOption(title: "Add Item", options: [])
-        let resetBowlOptions = CustomizationOption(title: "Reset Bowl Options", options: [])
-        
-        customizationOptions = [o1, o2, o3, o4, addItem, resetBowlOptions]
+        customizationOptions = Acai.customizationOptions
         return customizationOptions as! [ListDiffable]
     }
     
