@@ -40,7 +40,7 @@ class MenuItemDetailViewController: UIViewController {
             make.top.equalTo(headerView.snp.bottom).offset(28)
             make.leading.equalToSuperview().offset(18)
             make.trailing.equalToSuperview().offset(-18)
-            make.height.equalTo(122)
+            //make.height.equalTo(122)
         }
         
         customizationViewController = MenuItemCustomizationViewController()

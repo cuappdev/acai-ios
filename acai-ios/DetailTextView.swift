@@ -53,6 +53,7 @@ class DetailTextView: UIView {
         textBox.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textBox.textColor = Acai.medGray
         textBox.text = ""
+        textBox.isScrollEnabled = false
         self.addSubview(textBox)
         textBox.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)

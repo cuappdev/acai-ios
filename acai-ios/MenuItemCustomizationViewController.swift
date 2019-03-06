@@ -28,6 +28,7 @@ class MenuItemCustomizationViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
