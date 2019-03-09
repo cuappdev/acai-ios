@@ -16,14 +16,19 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         DispatchQueue.main.async {
-            self.showMenuItemDetailViewController()
+            self.showMenuItemCustomizationViewController()
         }
         
     }
 
-    func showMenuItemDetailViewController() {
-        let menuItemDetailViewController = MenuItemDetailViewController()
-        present(menuItemDetailViewController, animated: true, completion: nil)
+//    func showMenuItemDetailViewController() {
+//        let menuItemDetailViewController = MenuItemDetailViewController()
+//        present(menuItemDetailViewController, animated: true, completion: nil)
+//    }
+    
+    func showMenuItemCustomizationViewController() {
+        let menuItemCustomizationViewController = MenuItemCustomizationViewController()
+        present(menuItemCustomizationViewController, animated: true, completion: nil)
     }
     
     func showLoginViewController() {

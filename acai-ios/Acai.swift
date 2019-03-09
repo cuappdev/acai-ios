@@ -13,6 +13,7 @@ class Acai {
     
     static let menuItemHeaderImageIdentifier: String = "menuItemHeaderImageIdentifier"
     static let menuItemButtonCollectionIdentifier: String = "menuItemButtonCollectionIdentifier"
+    static let menuItemCustomizationOptionsIdentifier: String = "menuItemCustomizationOptionsIdentifier"
     
     static let avenirNextMedium: UIFont = UIFont(name: "AvenirNextCyr-Medium", size: 12)!
     static let avenirNextDemi: UIFont = UIFont(name: "AvenirNextCyr-Demi", size: 12)!
@@ -68,7 +69,7 @@ class Acai {
         OrderCustomizationOption(title: "E", options: [
             OrderCustomizationSubOption(title: "e", isSelected: true)])
         
-        ], image: UIImage())
+        ], image: UIImage(named: "acaiBowl")!)
     
     
 }

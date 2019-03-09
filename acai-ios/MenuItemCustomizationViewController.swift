@@ -53,9 +53,7 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
         var list = [] as [Any]
         list.append(Acai.menuItemHeaderImageIdentifier)
         list.append(menuItem)
-        for o in customizationOptions {
-            list.append(o)
-        }
+        list.append(Acai.menuItemCustomizationOptionsIdentifier)
         list.append(Acai.menuItemButtonCollectionIdentifier)
         return list as! [ListDiffable]
     }
@@ -71,13 +69,14 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
             headerTextSectionController.menuItem = menuItem
             return headerTextSectionController
         }
-        else if let object = object as? OrderCustomizationOption {
-            return CustomizationOptionSectionController()
+        else if let object = object as? String, object == Acai.menuItemCustomizationOptionsIdentifier {
+            let customizationOptionSectionController = CustomizationOptionSectionController()
+            customizationOptionSectionController.customizationOptions = menuItem.customizationOptions
+            return customizationOptionSectionController
         }
         else {
             return ButtonSectionController()
         }
-        //return CustomizationOptionSectionController()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

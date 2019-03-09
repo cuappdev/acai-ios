@@ -25,7 +25,7 @@ class HeaderImageSectionController: ListSectionController {
             return .zero
         }
         let width = context.containerSize.width
-        return CGSize(width: width, height: 330)
+        return CGSize(width: width, height: 370)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {

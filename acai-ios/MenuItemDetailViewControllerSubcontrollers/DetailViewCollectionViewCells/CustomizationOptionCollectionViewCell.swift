@@ -31,6 +31,7 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(18)
             make.centerY.equalToSuperview()
+            make.trailing.equalTo(titleLabel.snp.trailing)
         }
         
         path = UIBezierPath()

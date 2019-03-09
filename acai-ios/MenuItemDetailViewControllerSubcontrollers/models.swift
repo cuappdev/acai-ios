@@ -9,10 +9,6 @@
 import Foundation
 import IGListKit
 
-extension Array where Element: ListDiffable {
-    
-}
-
 class MenuItem: ListDiffable {
     
     var title: String = ""

@@ -20,9 +20,11 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
         
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .white
         imageView.image = UIImage()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
         self.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()

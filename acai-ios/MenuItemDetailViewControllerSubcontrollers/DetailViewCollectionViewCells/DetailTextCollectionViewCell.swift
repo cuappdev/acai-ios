@@ -31,6 +31,7 @@ class DetailTextCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(28)
             make.leading.equalToSuperview().offset(18)
+            make.trailing.equalTo(titleLabel.snp.trailing)
         }
         
         priceLabel = UILabel()
@@ -43,6 +44,7 @@ class DetailTextCollectionViewCell: UICollectionViewCell {
         priceLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(28)
             make.trailing.equalToSuperview().offset(-18)
+            make.leading.equalTo(titleLabel.snp.trailing).offset(20)
         }
         
         textBox = UITextView()
@@ -65,7 +67,7 @@ class DetailTextCollectionViewCell: UICollectionViewCell {
         line.backgroundColor = .lineGray
         self.addSubview(line)
         line.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
+            make.width.equalToSuperview().offset(-36)
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()

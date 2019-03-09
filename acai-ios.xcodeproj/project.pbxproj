@@ -123,7 +123,6 @@
 			children = (
 				6D36736F2226F7FB000F9917 /* HeaderView.swift */,
 				6D36736E2226F7FA000F9917 /* DetailTextView.swift */,
-				6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */,
 				031536F9222F8258004FAF9F /* models.swift */,
 				03D2BB5222317A4700AC6F38 /* DetailViewSectionControllers */,
 				0315370822304F5A004FAF9F /* DetailViewCollectionViewCells */,
@@ -206,6 +205,7 @@
 				031536F5222E15CE004FAF9F /* LoginViewController.swift */,
 				6D36736D2226F7FA000F9917 /* HomeViewController.swift */,
 				6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */,
+				6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */,
 				0315370722304F03004FAF9F /* MenuItemDetailViewControllerSubcontrollers */,
 				6D10DEA4221CAD6C00C46F75 /* Assets.xcassets */,
 				6D10DEA6221CAD6C00C46F75 /* LaunchScreen.storyboard */,

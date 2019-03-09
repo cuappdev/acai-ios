@@ -11,19 +11,18 @@ import IGListKit
 
 class CustomizationOptionSectionController: ListSectionController {
 
-    var customizationOption: OrderCustomizationOption!
+    var customizationOptions: [OrderCustomizationOption]!
     
     override init() {
         super.init()
     }
     
     override func numberOfItems() -> Int {
-        //return customizationOptions.count
-        return 1
+        return customizationOptions.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        guard let context = collectionContext, let option = customizationOption else {
+        guard let context = collectionContext, let options = customizationOptions else {
             return .zero
         }
         let width = context.containerSize.width
@@ -33,8 +32,7 @@ class CustomizationOptionSectionController: ListSectionController {
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: CustomizationOptionCollectionViewCell.self, for: self, at: index)
         if let cell = cell as? CustomizationOptionCollectionViewCell {
-            //let customizationOption = customizationOptions[index]
-            cell.customizationOption = customizationOption
+            cell.customizationOption = customizationOptions[index]
             cell.setOrderCustomizationOptionTitleLabelText()
             cell.setSelectedSubOptionsLabelText()
         }
@@ -42,7 +40,7 @@ class CustomizationOptionSectionController: ListSectionController {
     }
     
     override func didUpdate(to object: Any) {
-        guard let object = object as? OrderCustomizationOption else { return }
-        customizationOption = object
+        guard let object = object as? [OrderCustomizationOption] else { return }
+        customizationOptions = object
     }
 }
