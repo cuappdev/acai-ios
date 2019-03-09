@@ -17,6 +17,8 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
     var arrow: CAShapeLayer!
     var line: UIView!
     
+    var customizationOption: OrderCustomizationOption!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,22 +26,22 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = ""
         titleLabel.font = Acai.avenirNextMedium.withSize(20)
-        titleLabel.textColor = Acai.darkGray
+        titleLabel.textColor = .acaiDarkGray
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().offset(18)
             make.centerY.equalToSuperview()
         }
         
         path = UIBezierPath()
-        path.move(to: CGPoint(x: self.frame.width - 1, y: 1/2*self.frame.height))
-        path.addLine(to: CGPoint(x: self.frame.width - 8, y: 1/2*self.frame.height - 7))
-        path.move(to: CGPoint(x: self.frame.width - 1, y: 1/2*self.frame.height))
-        path.addLine(to: CGPoint(x: self.frame.width - 8, y: 1/2*self.frame.height + 7))
+        path.move(to: CGPoint(x: self.frame.width - 1 - 18, y: 1/2*self.frame.height))
+        path.addLine(to: CGPoint(x: self.frame.width - 8 - 18, y: 1/2*self.frame.height - 7))
+        path.move(to: CGPoint(x: self.frame.width - 1 - 18, y: 1/2*self.frame.height))
+        path.addLine(to: CGPoint(x: self.frame.width - 8 - 18, y: 1/2*self.frame.height + 7))
         path.close()
         
         arrow = CAShapeLayer()
-        arrow.strokeColor = Acai.orange.cgColor
+        arrow.strokeColor = UIColor.acaiOrange.cgColor
         arrow.path = path.cgPath
         arrow.lineCap = CAShapeLayerLineCap.round
         arrow.lineWidth = 2
@@ -50,25 +52,45 @@ class CustomizationOptionCollectionViewCell: UICollectionViewCell {
         optionsLabel.translatesAutoresizingMaskIntoConstraints = false
         optionsLabel.text = ""
         optionsLabel.font = Acai.avenirNextMedium.withSize(16)
-        optionsLabel.textColor = Acai.medGray
+        optionsLabel.textColor = .acaiMedGray
         optionsLabel.textAlignment = .right
         self.addSubview(optionsLabel)
         optionsLabel.snp.makeConstraints { (make) in
-            make.trailing.equalToSuperview().offset(-18)
+            make.trailing.equalToSuperview().offset(-18 - 18)
             make.centerY.equalToSuperview()
             make.leading.equalTo(titleLabel.snp.trailing).offset(20)
         }
         
         line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = Acai.lineGray
+        line.backgroundColor = .lineGray
         self.addSubview(line)
         line.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
+            make.width.equalToSuperview().offset(-36)
             make.height.equalTo(1)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    
+    func setSelectedSubOptionsLabelText() {
+        optionsLabel.text = ""
+        for subOption in customizationOption.options {
+            if (subOption.isSelected) {
+                if let optionsText = optionsLabel.text {
+                    if optionsText == "" {
+                        optionsLabel.text = "\(subOption.title)"
+                    }
+                    else {
+                        optionsLabel.text = "\(optionsText), \(subOption.title)"
+                    }
+                }
+            }
+        }
+    }
+    
+    func setOrderCustomizationOptionTitleLabelText() {
+        titleLabel.text = customizationOption.title
     }
     
     required init?(coder aDecoder: NSCoder) {

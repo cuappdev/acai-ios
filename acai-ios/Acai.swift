@@ -11,51 +11,64 @@ import UIKit
 
 class Acai {
     
-    static var lightGray: UIColor = UIColor(red: 199/255, green: 199/255, blue: 199/255, alpha: 1.0)
-    static var medGray: UIColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
-    static var darkGray: UIColor = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1.0)
-    static var lineGray: UIColor = UIColor(red: 228/255, green: 226/255, blue: 226/255, alpha: 1.0)
-    static var orange: UIColor = UIColor(red: 247/255, green: 95/255, blue: 35/255, alpha: 1.0)
+    static let menuItemHeaderImageIdentifier: String = "menuItemHeaderImageIdentifier"
+    static let menuItemButtonCollectionIdentifier: String = "menuItemButtonCollectionIdentifier"
     
-    static var avenirNextMedium: UIFont = UIFont(name: "AvenirNextCyr-Medium", size: 12)!
-    static var avenirNextDemi: UIFont = UIFont(name: "AvenirNextCyr-Demi", size: 12)!
+    static let avenirNextMedium: UIFont = UIFont(name: "AvenirNextCyr-Medium", size: 12)!
+    static let avenirNextDemi: UIFont = UIFont(name: "AvenirNextCyr-Demi", size: 12)!
     
     //hard code for testing
     //NOTE: UI gets messed up if same named option is put more than once in list
-    static var customizationOptions = [
-        CustomizationOption(title: "Base Options", options: [
-            CustomizationOptionSubOption(title: "Acai", isSelected: true)]),
-        CustomizationOption(title: "Fruit", options: [
-            CustomizationOptionSubOption(title: "Pineapple", isSelected: true),
-            CustomizationOptionSubOption(title: "Banana", isSelected: true),
-            CustomizationOptionSubOption(title: "Strawberry", isSelected: false)]),
-        CustomizationOption(title: "A", options: [
-            CustomizationOptionSubOption(title: "aaaaaaaaaaaaaa", isSelected: true),
-            CustomizationOptionSubOption(title: "bbbbbbbbbbbbbb", isSelected: true),
-            CustomizationOptionSubOption(title: "cccccccccccccc", isSelected: false)]),
-        CustomizationOption(title: "B", options: [
-            CustomizationOptionSubOption(title: "dddddddddddddd", isSelected: true),
-            CustomizationOptionSubOption(title: "eeeeeeeeeeeeee", isSelected: true),
-            CustomizationOptionSubOption(title: "ffffffffffffff", isSelected: false)]),
-        CustomizationOption(title: "C", options: [
-            CustomizationOptionSubOption(title: "gggggggggggggg", isSelected: true),
-            CustomizationOptionSubOption(title: "hhhhhhhhhhhhhh", isSelected: true),
-            CustomizationOptionSubOption(title: "iiiiiiiiiiiiii", isSelected: false)]),
-        CustomizationOption(title: "D", options: [
-            CustomizationOptionSubOption(title: "jjjjjjj", isSelected: true),
-            CustomizationOptionSubOption(title: "kkkkkkk", isSelected: true),
-            CustomizationOptionSubOption(title: "lllllll", isSelected: false)]),
-        CustomizationOption(title: "E", options: [
-            CustomizationOptionSubOption(title: "mmmmmm", isSelected: true),
-            CustomizationOptionSubOption(title: "nnnnnn", isSelected: true),
-            CustomizationOptionSubOption(title: "oooooo", isSelected: false)]),
-        CustomizationOption(title: "Toppings", options: [
-            CustomizationOptionSubOption(title: "Granola", isSelected: true),
-            CustomizationOptionSubOption(title: "Coconut Chips", isSelected: true)]),
-        CustomizationOption(title: "Allergens", options: [
-            CustomizationOptionSubOption(title: "Nut Free", isSelected: true)]),
-        CustomizationOption(title: "Add Item", options: []),
-        CustomizationOption(title: "Reset Bowl Options", options: [])
-    ]
+    static let miamiBowl = MenuItem(title: "Miami Bowl", basePrice: 9.99, customizationOptions: [
+        OrderCustomizationOption(title: "Base Options", options: [
+            OrderCustomizationSubOption(title: "Acai", isSelected: true)]),
+        OrderCustomizationOption(title: "Fruit", options: [
+            OrderCustomizationSubOption(title: "Pineapple", isSelected: true),
+            OrderCustomizationSubOption(title: "Banana", isSelected: true),
+            OrderCustomizationSubOption(title: "Strawberry", isSelected: false)]),
+        OrderCustomizationOption(title: "Toppings", options: [
+            OrderCustomizationSubOption(title: "Granola", isSelected: true),
+            OrderCustomizationSubOption(title: "Coconut Chips", isSelected: true)]),
+        OrderCustomizationOption(title: "Allergens", options: [
+            OrderCustomizationSubOption(title: "Nut Free", isSelected: true)])
+        ], image: UIImage())
+    
+    static let testBowl = MenuItem(title: "Test Bowl", basePrice: 9.99, customizationOptions: [
+        OrderCustomizationOption(title: "Base Options", options: [
+            OrderCustomizationSubOption(title: "Acai", isSelected: true)]),
+        OrderCustomizationOption(title: "Fruit", options: [
+            OrderCustomizationSubOption(title: "Pineapple", isSelected: true),
+            OrderCustomizationSubOption(title: "Banana", isSelected: true),
+            OrderCustomizationSubOption(title: "Strawberry", isSelected: false)]),
+        OrderCustomizationOption(title: "Toppings", options: [
+            OrderCustomizationSubOption(title: "Granola", isSelected: true),
+            OrderCustomizationSubOption(title: "Coconut Chips", isSelected: true)]),
+        OrderCustomizationOption(title: "Allergens", options: [
+            OrderCustomizationSubOption(title: "Nut Free", isSelected: true)]),
+        OrderCustomizationOption(title: "ABC", options: [
+            OrderCustomizationSubOption(title: "a", isSelected: true),
+            OrderCustomizationSubOption(title: "aa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaaaaaa", isSelected: true),
+            OrderCustomizationSubOption(title: "aaaaaaaaaaaa", isSelected: true)
+            ]),
+        OrderCustomizationOption(title: "B", options: [
+            OrderCustomizationSubOption(title: "b", isSelected: true)]),
+        OrderCustomizationOption(title: "C", options: [
+            OrderCustomizationSubOption(title: "c", isSelected: true)]),
+        OrderCustomizationOption(title: "D", options: [
+            OrderCustomizationSubOption(title: "d", isSelected: true)]),
+        OrderCustomizationOption(title: "E", options: [
+            OrderCustomizationSubOption(title: "e", isSelected: true)])
+        
+        ], image: UIImage())
+    
     
 }

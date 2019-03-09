@@ -24,8 +24,6 @@ class HomeViewController: UIViewController {
     func showMenuItemDetailViewController() {
         let menuItemDetailViewController = MenuItemDetailViewController()
         present(menuItemDetailViewController, animated: true, completion: nil)
-        menuItemDetailViewController.detailTextView.priceLabel.text = "$9.99"
-        menuItemDetailViewController.detailTextView.titleLabel.text = "Miami Bowl"
     }
     
     func showLoginViewController() {

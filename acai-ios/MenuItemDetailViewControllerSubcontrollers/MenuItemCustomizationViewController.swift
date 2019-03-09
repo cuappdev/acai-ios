@@ -15,7 +15,8 @@ class MenuItemCustomizationViewController: UIViewController {
     var collectionView: UICollectionView!
     var collectionViewListAdapter: ListAdapter!
     
-    var customizationOptions: [CustomizationOption]!
+    var menuItem: MenuItem!
+    var customizationOptions: [Any]!
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
@@ -33,32 +34,53 @@ class MenuItemCustomizationViewController: UIViewController {
         collectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(18)
-            make.trailing.equalToSuperview().offset(-18)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
         
         collectionViewListAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         collectionViewListAdapter.collectionView = collectionView
         collectionViewListAdapter.dataSource = self as! ListAdapterDataSource
-
     }
-    
 }
 
 extension MenuItemCustomizationViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         
-        customizationOptions = Acai.customizationOptions
-        return customizationOptions as! [ListDiffable]
+        menuItem = Acai.testBowl
+        
+        customizationOptions = menuItem.customizationOptions
+        var list = [] as [Any]
+        list.append(Acai.menuItemHeaderImageIdentifier)
+        list.append(menuItem)
+        for o in customizationOptions {
+            list.append(o)
+        }
+        list.append(Acai.menuItemButtonCollectionIdentifier)
+        return list as! [ListDiffable]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return CustomizationOptionSectionController()
+        if let object = object as? String, object == Acai.menuItemHeaderImageIdentifier {
+            let headerImageSectionController = HeaderImageSectionController()
+            headerImageSectionController.menuItem = menuItem
+            return headerImageSectionController
+        }
+        else if let object = object as? MenuItem {
+            let headerTextSectionController = HeaderTextSectionController()
+            headerTextSectionController.menuItem = menuItem
+            return headerTextSectionController
+        }
+        else if let object = object as? OrderCustomizationOption {
+            return CustomizationOptionSectionController()
+        }
+        else {
+            return ButtonSectionController()
+        }
+        //return CustomizationOptionSectionController()
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
-    
-    
 }

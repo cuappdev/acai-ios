@@ -20,12 +20,15 @@ class ButtonCollectionViewCell: UICollectionViewCell {
         button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("", for: .normal)
-        button.setTitleColor(Acai.lightGray, for: .normal)
+        button.setTitleColor(.acaiLightGray, for: .normal)
         button.titleLabel?.font = Acai.avenirNextMedium.withSize(20)
+        button.layer.cornerRadius = 5
         self.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-36)
+            make.height.equalTo(self.snp.width).multipliedBy(0.143)
         }
     }
     

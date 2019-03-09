@@ -9,16 +9,51 @@
 import Foundation
 import IGListKit
 
+extension Array where Element: ListDiffable {
+    
+}
+
 class MenuItem: ListDiffable {
     
     var title: String = ""
     var basePrice: Double = 0
-    var customizationOptions: [CustomizationOption] = []
+    var image: UIImage = UIImage()
+    var customizationOptions: [OrderCustomizationOption] = []
     
-    init (title: String, basePrice: Double, customizationOptions: [CustomizationOption]) {
+    init (title: String, basePrice: Double, customizationOptions: [OrderCustomizationOption], image: UIImage) {
         self.title = title
         self.basePrice = basePrice
         self.customizationOptions = customizationOptions
+        self.image = image
+    }
+    
+    func getSelectedSubOptionsText() -> String {
+        var selectedSubOptionsText: String = ""
+        for option in customizationOptions {
+            for subOption in option.options {
+                if (subOption.isSelected) {
+                    if selectedSubOptionsText == "" {
+                            selectedSubOptionsText = "\(subOption.title)"
+                    }
+                    else {
+                        selectedSubOptionsText = "\(selectedSubOptionsText), \(subOption.title)"
+                    }
+                }
+            }
+        }
+        return selectedSubOptionsText
+    }
+    
+    func getSelectedSubOptions() -> [OrderCustomizationSubOption] {
+        var selectedSubOptions: [OrderCustomizationSubOption] = []
+        for option in customizationOptions {
+            for subOption in option.options {
+                if (subOption.isSelected) {
+                    selectedSubOptions.append(subOption)
+                }
+            }
+        }
+        return selectedSubOptions
     }
     
     func diffIdentifier() -> NSObjectProtocol {
@@ -37,12 +72,12 @@ class MenuItem: ListDiffable {
     }
 }
 
-class CustomizationOption: ListDiffable {
+class OrderCustomizationOption: ListDiffable {
     
     var title: String = ""
-    var options: [CustomizationOptionSubOption] = []
+    var options: [OrderCustomizationSubOption] = []
     
-    init (title: String, options: [CustomizationOptionSubOption]) {
+    init (title: String, options: [OrderCustomizationSubOption]) {
         self.title = title
         self.options = options
     }
@@ -57,7 +92,7 @@ class CustomizationOption: ListDiffable {
             return true
         }
         
-        guard let object = object as? CustomizationOption else {
+        guard let object = object as? OrderCustomizationOption else {
             return false
         }
         
@@ -76,7 +111,7 @@ class CustomizationOption: ListDiffable {
     }
 }
 
-class CustomizationOptionSubOption {
+class OrderCustomizationSubOption {
     var title: String = ""
     var isSelected: Bool = false
     
@@ -85,7 +120,7 @@ class CustomizationOptionSubOption {
         self.isSelected = isSelected
     }
     
-    func equalTo(subOption: CustomizationOptionSubOption) -> Bool {
+    func equalTo(subOption: OrderCustomizationSubOption) -> Bool {
         return self.title == subOption.title
     }
     
