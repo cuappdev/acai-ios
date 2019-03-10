@@ -10,6 +10,8 @@ import UIKit
 
 class HeaderImageCollectionViewCell: UICollectionViewCell {
     
+    weak var delegate: dismissMenuItemViewController?
+    
     // MARK: View vars
     var dismissButton: UIButton!
     var imageView: UIImageView!
@@ -49,7 +51,7 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func dismissMenuItemDetailViewController() {
-        //dismiss(animated: true, completion: nil)
+        self.delegate?.dismissMenuItemViewController()
     }
     
     required init?(coder aDecoder: NSCoder) {

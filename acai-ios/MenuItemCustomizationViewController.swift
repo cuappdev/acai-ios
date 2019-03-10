@@ -9,6 +9,10 @@
 import UIKit
 import IGListKit
 
+protocol dismissMenuItemViewController: class {
+    func dismissMenuItemViewController()
+}
+
 class MenuItemCustomizationViewController: UIViewController {
 
     // MARK: View vars
@@ -61,6 +65,7 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? String, object == Acai.menuItemHeaderImageIdentifier {
             let headerImageSectionController = HeaderImageSectionController()
+            headerImageSectionController.delegate = self
             headerImageSectionController.menuItem = menuItem
             return headerImageSectionController
         }
@@ -81,5 +86,11 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+}
+
+extension MenuItemCustomizationViewController: dismissMenuItemViewController {
+    func dismissMenuItemViewController() {
+        dismiss(animated: true, completion: nil)
     }
 }

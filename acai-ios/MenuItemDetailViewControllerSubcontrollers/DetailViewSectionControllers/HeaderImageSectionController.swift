@@ -10,6 +10,8 @@ import UIKit
 import IGListKit
 
 class HeaderImageSectionController: ListSectionController {
+    
+    weak var delegate: dismissMenuItemViewController?
     var menuItem: MenuItem!
     
     override init() {
@@ -32,6 +34,7 @@ class HeaderImageSectionController: ListSectionController {
         let cell = collectionContext!.dequeueReusableCell(of: HeaderImageCollectionViewCell.self, for: self, at: index)
         if let cell = cell as? HeaderImageCollectionViewCell {
             cell.imageView.image = menuItem.image
+            cell.delegate = delegate
         }
         return cell
     }
