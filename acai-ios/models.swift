@@ -23,6 +23,18 @@ class MenuItem: ListDiffable {
         self.image = image
     }
     
+    func getSelectedSubOptionsPrice() -> Double {
+        var selectedSubOptionsPrice: Double = 0
+        for option in customizationOptions {
+            for subOption in option.options {
+                if (subOption.isSelected) {
+                    selectedSubOptionsPrice += subOption.price
+                }
+            }
+        }
+        return selectedSubOptionsPrice
+    } 
+    
     func getSelectedSubOptionsText() -> String {
         var selectedSubOptionsText: String = ""
         for option in customizationOptions {
@@ -110,14 +122,16 @@ class OrderCustomizationOption: ListDiffable {
 class OrderCustomizationSubOption {
     var title: String = ""
     var isSelected: Bool = false
+    var price: Double = 0
     
-    init (title: String, isSelected: Bool) {
+    init (title: String, isSelected: Bool, price: Double) {
         self.title = title
         self.isSelected = isSelected
+        self.price = price
     }
     
     func equalTo(subOption: OrderCustomizationSubOption) -> Bool {
-        return self.title == subOption.title
+        return self.title == subOption.title && self.price == subOption.price
     }
     
 }

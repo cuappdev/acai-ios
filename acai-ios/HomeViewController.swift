@@ -35,5 +35,10 @@ class HomeViewController: UIViewController {
         let loginViewController = LoginViewController()
         present(loginViewController, animated: true, completion: nil)
     }
+    
+    func showCheckoutViewController() {
+        let checkoutViewController = CheckoutViewController()
+        present(checkoutViewController, animated: true, completion: nil)
+    }
 
 }

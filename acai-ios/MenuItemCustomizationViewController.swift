@@ -44,7 +44,7 @@ class MenuItemCustomizationViewController: UIViewController {
         
         collectionViewListAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         collectionViewListAdapter.collectionView = collectionView
-        collectionViewListAdapter.dataSource = self as! ListAdapterDataSource
+        collectionViewListAdapter.dataSource = self
     }
 }
 
@@ -54,12 +54,12 @@ extension MenuItemCustomizationViewController: ListAdapterDataSource {
         menuItem = Acai.testBowl
         
         customizationOptions = menuItem.customizationOptions
-        var list = [] as [Any]
-        list.append(Acai.menuItemHeaderImageIdentifier)
+        var list = [] as [ListDiffable]
+        list.append(Acai.menuItemHeaderImageIdentifier as ListDiffable)
         list.append(menuItem)
-        list.append(Acai.menuItemCustomizationOptionsIdentifier)
-        list.append(Acai.menuItemButtonCollectionIdentifier)
-        return list as! [ListDiffable]
+        list.append(Acai.menuItemCustomizationOptionsIdentifier as ListDiffable)
+        list.append(Acai.menuItemButtonCollectionIdentifier as ListDiffable)
+        return list
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
