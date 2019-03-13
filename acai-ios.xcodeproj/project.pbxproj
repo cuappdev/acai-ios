@@ -17,6 +17,7 @@
 		6D3673742226F7FB000F9917 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D36736F2226F7FB000F9917 /* HeaderView.swift */; };
 		6D3673752226F7FB000F9917 /* MenuItemCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */; };
 		6D3673762226F7FB000F9917 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */; };
+		6D7FBC4022357BA800D9666F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FBC3F22357BA700D9666F /* LoginViewController.swift */; };
 		AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		6D36736F2226F7FB000F9917 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCustomizationViewController.swift; sourceTree = "<group>"; };
 		6D3673712226F7FB000F9917 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		6D7FBC3F22357BA700D9666F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_acai_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appdev_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0446A59003ECDFC3C229A6F /* Pods-acai-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.release.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
 				6D36736D2226F7FA000F9917 /* HomeViewController.swift */,
+				6D7FBC3F22357BA700D9666F /* LoginViewController.swift */,
 				6D36736E2226F7FA000F9917 /* DetailTextView.swift */,
 				6D36736F2226F7FB000F9917 /* HeaderView.swift */,
 				6D3673702226F7FB000F9917 /* MenuItemCustomizationViewController.swift */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7FBC4022357BA800D9666F /* LoginViewController.swift in Sources */,
 				6D3673752226F7FB000F9917 /* MenuItemCustomizationViewController.swift in Sources */,
 				6D3673722226F7FB000F9917 /* HomeViewController.swift in Sources */,
 				6D10DEBF221EDF0F00C46F75 /* keys.generated.swift in Sources */,
