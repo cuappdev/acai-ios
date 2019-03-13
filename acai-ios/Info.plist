@@ -2,25 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AvenirNextCyr-Bold.ttf</string>
-		<string>AvenirNextCyr-BoldItalic.ttf</string>
-		<string>AvenirNextCyr-Demi.ttf</string>
-		<string>AvenirNextCyr-DemiItalic.ttf</string>
-		<string>AvenirNextCyr-Heavy.ttf</string>
-		<string>AvenirNextCyr-HeavyItalic.ttf</string>
-		<string>AvenirNextCyr-Italic.ttf</string>
-		<string>AvenirNextCyr-Light.ttf</string>
-		<string>AvenirNextCyr-LightItalic.ttf</string>
-		<string>AvenirNextCyr-Medium.ttf</string>
-		<string>AvenirNextCyr-MediumItalic.ttf</string>
-		<string>AvenirNextCyr-Regular.ttf</string>
-		<string>AvenirNextCyr-Thin.ttf</string>
-		<string>AvenirNextCyr-ThinItalic.ttf</string>
-		<string>AvenirNextCyr-UltraLight.ttf</string>
-		<string>AvenirNextCyr-UltraLightIt.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

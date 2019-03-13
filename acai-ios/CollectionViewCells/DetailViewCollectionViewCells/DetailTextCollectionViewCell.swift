@@ -51,7 +51,7 @@ class DetailTextCollectionViewCell: UICollectionViewCell {
         textBox.translatesAutoresizingMaskIntoConstraints = false
         textBox.isEditable = false
         textBox.showsVerticalScrollIndicator = false
-        textBox.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        textBox.font = Acai.avenirNextMedium.withSize(16)
         textBox.textColor = .acaiMedGray
         textBox.text = ""
         textBox.isScrollEnabled = false

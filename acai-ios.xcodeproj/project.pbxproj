@@ -14,22 +14,6 @@
 		031536FE222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */; };
 		03153702222F98F9004FAF9F /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */; };
 		0315370422301A43004FAF9F /* DetailTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315370322301A43004FAF9F /* DetailTextCollectionViewCell.swift */; };
-		0315371B22305886004FAF9F /* AvenirNextCyr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */; };
-		0315371C22305890004FAF9F /* AvenirNextCyr-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */; };
-		0315371D22305892004FAF9F /* AvenirNextCyr-Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */; };
-		0315371E22305894004FAF9F /* AvenirNextCyr-DemiItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */; };
-		0315371F22305897004FAF9F /* AvenirNextCyr-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */; };
-		0315372022305899004FAF9F /* AvenirNextCyr-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */; };
-		031537212230589B004FAF9F /* AvenirNextCyr-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */; };
-		031537222230589D004FAF9F /* AvenirNextCyr-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */; };
-		03153723223058A0004FAF9F /* AvenirNextCyr-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */; };
-		03153724223058A2004FAF9F /* AvenirNextCyr-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */; };
-		03153725223058A4004FAF9F /* AvenirNextCyr-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */; };
-		03153726223058A6004FAF9F /* AvenirNextCyr-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */; };
-		03153727223058AA004FAF9F /* AvenirNextCyr-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */; };
-		03153728223058AC004FAF9F /* AvenirNextCyr-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */; };
-		03153729223058AE004FAF9F /* AvenirNextCyr-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */; };
-		0315372A223058B1004FAF9F /* AvenirNextCyr-UltraLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */; };
 		0315372C22316F0D004FAF9F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315372B22316F0D004FAF9F /* UIColor+.swift */; };
 		03D2BB4B2231758100AC6F38 /* HeaderImageSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB4A2231758100AC6F38 /* HeaderImageSectionController.swift */; };
 		03D2BB4D2231759D00AC6F38 /* ButtonSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB4C2231759D00AC6F38 /* ButtonSectionController.swift */; };
@@ -59,22 +43,6 @@
 		031536FD222F868C004FAF9F /* CustomizationOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03153701222F98F9004FAF9F /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		0315370322301A43004FAF9F /* DetailTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextCollectionViewCell.swift; sourceTree = "<group>"; };
-		031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-DemiItalic.ttf"; sourceTree = "<group>"; };
-		0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Demi.ttf"; sourceTree = "<group>"; };
-		0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Italic.ttf"; sourceTree = "<group>"; };
-		0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Heavy.ttf"; sourceTree = "<group>"; };
-		0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-HeavyItalic.ttf"; sourceTree = "<group>"; };
-		0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Thin.ttf"; sourceTree = "<group>"; };
-		0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-MediumItalic.ttf"; sourceTree = "<group>"; };
-		031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-LightItalic.ttf"; sourceTree = "<group>"; };
-		031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Light.ttf"; sourceTree = "<group>"; };
-		031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Medium.ttf"; sourceTree = "<group>"; };
-		031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-ThinItalic.ttf"; sourceTree = "<group>"; };
-		031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-UltraLight.ttf"; sourceTree = "<group>"; };
-		031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Bold.ttf"; sourceTree = "<group>"; };
-		031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-BoldItalic.ttf"; sourceTree = "<group>"; };
-		031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-UltraLightIt.ttf"; sourceTree = "<group>"; };
-		031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCyr-Regular.ttf"; sourceTree = "<group>"; };
 		0315372B22316F0D004FAF9F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		03D2BB4A2231758100AC6F38 /* HeaderImageSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderImageSectionController.swift; sourceTree = "<group>"; };
@@ -144,29 +112,6 @@
 			path = DetailViewCollectionViewCells;
 			sourceTree = "<group>";
 		};
-		0315371A2230586C004FAF9F /* AvenirNext */ = {
-			isa = PBXGroup;
-			children = (
-				031537152230584C004FAF9F /* AvenirNextCyr-Bold.ttf */,
-				031537162230584C004FAF9F /* AvenirNextCyr-BoldItalic.ttf */,
-				0315370A2230584A004FAF9F /* AvenirNextCyr-Demi.ttf */,
-				031537092230584A004FAF9F /* AvenirNextCyr-DemiItalic.ttf */,
-				0315370C2230584A004FAF9F /* AvenirNextCyr-Heavy.ttf */,
-				0315370D2230584A004FAF9F /* AvenirNextCyr-HeavyItalic.ttf */,
-				0315370B2230584A004FAF9F /* AvenirNextCyr-Italic.ttf */,
-				031537112230584B004FAF9F /* AvenirNextCyr-Light.ttf */,
-				031537102230584B004FAF9F /* AvenirNextCyr-LightItalic.ttf */,
-				031537122230584B004FAF9F /* AvenirNextCyr-Medium.ttf */,
-				0315370F2230584B004FAF9F /* AvenirNextCyr-MediumItalic.ttf */,
-				031537182230584C004FAF9F /* AvenirNextCyr-Regular.ttf */,
-				0315370E2230584B004FAF9F /* AvenirNextCyr-Thin.ttf */,
-				031537132230584B004FAF9F /* AvenirNextCyr-ThinItalic.ttf */,
-				031537142230584B004FAF9F /* AvenirNextCyr-UltraLight.ttf */,
-				031537172230584C004FAF9F /* AvenirNextCyr-UltraLightIt.ttf */,
-			);
-			path = AvenirNext;
-			sourceTree = "<group>";
-		};
 		03D2BB5222317A4700AC6F38 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,7 +162,6 @@
 		6D10DE9C221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXGroup;
 			children = (
-				0315371A2230586C004FAF9F /* AvenirNext */,
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
 				031536F7222EB3BA004FAF9F /* Acai.swift */,
 				0315372B22316F0D004FAF9F /* UIColor+.swift */,
@@ -313,24 +257,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03153728223058AC004FAF9F /* AvenirNextCyr-ThinItalic.ttf in Resources */,
-				03153724223058A2004FAF9F /* AvenirNextCyr-Medium.ttf in Resources */,
-				031537222230589D004FAF9F /* AvenirNextCyr-Light.ttf in Resources */,
 				6D10DEA8221CAD6C00C46F75 /* LaunchScreen.storyboard in Resources */,
-				0315371B22305886004FAF9F /* AvenirNextCyr-Bold.ttf in Resources */,
-				0315371C22305890004FAF9F /* AvenirNextCyr-BoldItalic.ttf in Resources */,
-				0315372A223058B1004FAF9F /* AvenirNextCyr-UltraLightIt.ttf in Resources */,
-				031537212230589B004FAF9F /* AvenirNextCyr-Italic.ttf in Resources */,
-				03153725223058A4004FAF9F /* AvenirNextCyr-MediumItalic.ttf in Resources */,
-				0315372022305899004FAF9F /* AvenirNextCyr-HeavyItalic.ttf in Resources */,
 				6D10DEA5221CAD6C00C46F75 /* Assets.xcassets in Resources */,
-				0315371F22305897004FAF9F /* AvenirNextCyr-Heavy.ttf in Resources */,
-				03153723223058A0004FAF9F /* AvenirNextCyr-LightItalic.ttf in Resources */,
-				0315371E22305894004FAF9F /* AvenirNextCyr-DemiItalic.ttf in Resources */,
-				03153729223058AE004FAF9F /* AvenirNextCyr-UltraLight.ttf in Resources */,
-				03153726223058A6004FAF9F /* AvenirNextCyr-Regular.ttf in Resources */,
-				0315371D22305892004FAF9F /* AvenirNextCyr-Demi.ttf in Resources */,
-				03153727223058AA004FAF9F /* AvenirNextCyr-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

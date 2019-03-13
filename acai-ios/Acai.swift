@@ -16,8 +16,9 @@ class Acai {
     static let menuItemCustomizationOptionsIdentifier: String = "menuItemCustomizationOptionsIdentifier"
     static let menuItemCheckoutListIdentifier: String = "menuItemCheckoutListIdentifier"
     
-    static let avenirNextMedium: UIFont = UIFont(name: "AvenirNextCyr-Medium", size: 12)!
-    static let avenirNextDemi: UIFont = UIFont(name: "AvenirNextCyr-Demi", size: 12)!
+    //AvenirNext-MediumItalic, AvenirNext-Bold, AvenirNext-UltraLight, AvenirNext-DemiBold, AvenirNext-HeavyItalic, AvenirNext-Heavy, AvenirNext-Medium, AvenirNext-Italic, AvenirNext-UltraLightItalic, AvenirNext-BoldItalic, AvenirNext-Regular, AvenirNext-DemiBoldItalic
+    static let avenirNextMedium: UIFont = UIFont(name: "AvenirNext-Medium", size: 12)!
+    static let avenirNextDemi: UIFont = UIFont(name: "AvenirNext-DemiBold", size: 12)!
     
     //hard code for testing
     //NOTE: UI gets messed up if same named option is put more than once in list
