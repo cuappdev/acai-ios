@@ -1,8 +1,8 @@
 //
-//  CustomizationOption.swift
+//  BowlItem.swift
 //  acai-ios
 //
-//  Created by Artesia Ko on 3/5/19.
+//  Created by Artesia Ko on 3/15/19.
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
@@ -12,56 +12,35 @@ import IGListKit
 class MenuItem: ListDiffable {
     
     var title: String = ""
-    var basePrice: Double = 0
+    var price: Double = 0
     var image: UIImage = UIImage()
-    var customizationOptions: [OrderCustomizationOption] = []
+    var customizationOptions: [CustomizationOption] = []
     
-    init (title: String, basePrice: Double, customizationOptions: [OrderCustomizationOption], image: UIImage) {
+    init (title: String, price: Double, customizationOptions: [CustomizationOption], image: UIImage) {
         self.title = title
-        self.basePrice = basePrice
+        self.price = price
         self.customizationOptions = customizationOptions
         self.image = image
     }
     
-    func getSelectedSubOptionsPrice() -> Double {
-        var selectedSubOptionsPrice: Double = 0
+    func getSelectedOptionsPrice() -> Double {
+        var selectedOptionsPrice: Double = 0
         for option in customizationOptions {
-            for subOption in option.options {
-                if (subOption.isSelected) {
-                    selectedSubOptionsPrice += subOption.price
-                }
+            if (option.isSelected) {
+                selectedOptionsPrice += option.price
             }
         }
-        return selectedSubOptionsPrice
-    } 
-    
-    func getSelectedSubOptionsText() -> String {
-        var selectedSubOptionsText: String = ""
-        for option in customizationOptions {
-            for subOption in option.options {
-                if (subOption.isSelected) {
-                    if selectedSubOptionsText == "" {
-                            selectedSubOptionsText = "\(subOption.title)"
-                    }
-                    else {
-                        selectedSubOptionsText = "\(selectedSubOptionsText), \(subOption.title)"
-                    }
-                }
-            }
-        }
-        return selectedSubOptionsText
+        return selectedOptionsPrice
     }
     
-    func getSelectedSubOptions() -> [OrderCustomizationSubOption] {
-        var selectedSubOptions: [OrderCustomizationSubOption] = []
+    func getSelectedOptions() -> [CustomizationOption] {
+        var selectedOptions: [CustomizationOption] = []
         for option in customizationOptions {
-            for subOption in option.options {
-                if (subOption.isSelected) {
-                    selectedSubOptions.append(subOption)
-                }
+            if (option.isSelected) {
+                selectedOptions.append(option)
             }
         }
-        return selectedSubOptions
+        return selectedOptions
     }
     
     func diffIdentifier() -> NSObjectProtocol {
@@ -76,18 +55,44 @@ class MenuItem: ListDiffable {
         guard let object = object as? MenuItem else {
             return false
         }
-        return self.title == object.title && self.basePrice == object.basePrice
+        return self.title == object.title
     }
 }
 
-class OrderCustomizationOption: ListDiffable {
+class BowlItem: ListDiffable {
     
     var title: String = ""
-    var options: [OrderCustomizationSubOption] = []
+    var price: Double = 0
+    var image: UIImage = UIImage()
+    var baseOptions: [CustomizationOption] = []
+    var toppingOptions: [CustomizationOption] = []
     
-    init (title: String, options: [OrderCustomizationSubOption]) {
+    init (title: String, price: Double, baseOptions: [CustomizationOption], toppingOptions: [CustomizationOption], image: UIImage) {
         self.title = title
-        self.options = options
+        self.price = price
+        self.baseOptions = baseOptions
+        self.toppingOptions = toppingOptions
+        self.image = image
+    }
+    
+    func getSelectedToppingsPrice() -> Double {
+        var selectedToppingsPrice: Double = 0
+        for topping in toppingOptions {
+            if (topping.isSelected) {
+                selectedToppingsPrice += topping.price
+            }
+        }
+        return selectedToppingsPrice
+    }
+    
+    func getSelectedToppings() -> [CustomizationOption] {
+        var selectedToppings: [CustomizationOption] = []
+        for topping in toppingOptions {
+            if (topping.isSelected) {
+                selectedToppings.append(topping)
+            }
+        }
+        return selectedToppings
     }
     
     func diffIdentifier() -> NSObjectProtocol {
@@ -95,43 +100,46 @@ class OrderCustomizationOption: ListDiffable {
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        
         guard self !== object else {
             return true
         }
-        
-        guard let object = object as? OrderCustomizationOption else {
+        guard let object = object as? BowlItem else {
             return false
         }
-        
-        for option in options {
-            for option2 in object.options {
-                if option.equalTo(subOption: option2) {
-                    break
-                }
-                else if let lastOption = options.last, !option.equalTo(subOption: option2) && option.equalTo(subOption: lastOption){
-                    return false
-                }
-            }
-        }
-        
-        return title == object.title
+        return self.title == object.title
     }
 }
 
-class OrderCustomizationSubOption {
+enum CustomizationOptionType {
+    case topping, base
+}
+
+class CustomizationOption: ListDiffable {
+    
     var title: String = ""
     var isSelected: Bool = false
     var price: Double = 0
+    var type: CustomizationOptionType!
     
-    init (title: String, isSelected: Bool, price: Double) {
+    init (title: String, isSelected: Bool, price: Double, type: CustomizationOptionType) {
         self.title = title
         self.isSelected = isSelected
         self.price = price
+        self.type = type
     }
     
-    func equalTo(subOption: OrderCustomizationSubOption) -> Bool {
-        return self.title == subOption.title && self.price == subOption.price
+    func diffIdentifier() -> NSObjectProtocol {
+        return title as NSObjectProtocol
+    }
+    
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard self !== object else {
+            return true
+        }
+        guard let object = object as? CustomizationOption else {
+            return false
+        }
+        return title == object.title && price == object.price && type == object.type
     }
     
 }

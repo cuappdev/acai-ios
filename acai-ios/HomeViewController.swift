@@ -16,29 +16,29 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         DispatchQueue.main.async {
-            self.showMenuItemCustomizationViewController()
+            self.showCustomizationViewController()
         }
         
     }
-
-//    func showMenuItemDetailViewController() {
-//        let menuItemDetailViewController = MenuItemDetailViewController()
-//        present(menuItemDetailViewController, animated: true, completion: nil)
-//    }
     
-    func showMenuItemCustomizationViewController() {
-        let menuItemCustomizationViewController = MenuItemCustomizationViewController()
-        present(menuItemCustomizationViewController, animated: true, completion: nil)
-    }
+//    func showMenuItemCustomizationViewController() {
+//        let menuItemCustomizationViewController = MenuItemCustomizationViewController()
+//        present(menuItemCustomizationViewController, animated: true, completion: nil)
+//    }
     
     func showLoginViewController() {
         let loginViewController = LoginViewController()
         present(loginViewController, animated: true, completion: nil)
     }
     
-    func showCheckoutViewController() {
-        let checkoutViewController = CheckoutViewController()
-        present(checkoutViewController, animated: true, completion: nil)
+//    func showCheckoutViewController() {
+//        let checkoutViewController = CheckoutViewController()
+//        present(checkoutViewController, animated: true, completion: nil)
+//    }
+    
+    func showCustomizationViewController() {
+        let orderDetailViewController = BowlOrderDetailViewController()
+        present(orderDetailViewController, animated: true, completion: nil)
     }
 
 }
