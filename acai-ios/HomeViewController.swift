@@ -12,23 +12,20 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .yellow
-        
+        view.backgroundColor = .white
         DispatchQueue.main.async {
-            self.showLoginViewController()
+            self.showBowlCustomizationViewController()
         }
-        
-    }
-
-    func showMenuItemDetailViewController() {
-        let menuItemDetailViewController = MenuItemDetailViewController()
-        present(menuItemDetailViewController, animated: true, completion: nil)
     }
     
     func showLoginViewController() {
         let loginViewController = LoginViewController()
         present(loginViewController, animated: true, completion: nil)
+    }
+    
+    func showBowlCustomizationViewController() {
+        let orderDetailViewController = BowlOrderDetailViewController()
+        present(orderDetailViewController, animated: true, completion: nil)
     }
 
 }
