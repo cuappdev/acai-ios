@@ -15,11 +15,12 @@ protocol DidSelectOptionDelegate: class {
     func selectOption(at index: Int, type: OrderCustomizationOptionType)
 }
 
-class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelegate {
+class BowlOrderDetailViewController: UIViewController {
     
     // MARK: View vars
     var addToCartActionTabView: ActionTabView!
     var backButtonImageView: UIImageView!
+    var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
     var collectionBottomFillerRect: UIView!
     var collectionView: UICollectionView!
@@ -47,11 +48,6 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .acaiColdGray
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.barTintColor = .clear
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.avenirNextBold.withSize(24)]
-//        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.isNavigationBarHidden = true
         
         // hard code
@@ -59,7 +55,13 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
         toppingOptions = bowlItem.toppingOptions
         baseOptions = bowlItem.baseOptions
         
-        title = bowlItem.title
+        backgroundGradient = CAGradientLayer()
+        backgroundGradient.colors = [UIColor.gradientYellowOrange.cgColor, UIColor.gradientOrange.cgColor]
+        backgroundGradient.locations = [0, 1]
+        backgroundGradient.startPoint = CGPoint(x: 0, y: 1)
+        backgroundGradient.endPoint = CGPoint(x: 100, y: 1)
+        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        view.layer.addSublayer(backgroundGradient)
         
         titleLabel = UILabel()
         titleLabel.font = UIFont.avenirNextBold.withSize(24)
@@ -135,7 +137,7 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
         collectionBottomFillerRect.snp.makeConstraints { make in
             make.bottom.equalTo(addToCartActionTabView.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(collectionView.snp.bottom).offset(collectionView.contentOffset.y)
+            make.top.equalTo(collectionView.snp.bottom)
         }
     }
     
@@ -148,18 +150,25 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
     }
     
     func updateAddToCartPrice() {
-        addToCartActionTabView.priceLabel.text = "$\(bowlItem.getSelectedToppingsPrice() + baseOptions.reduce(0) { (result, option) -> Double in return result + (option.isSelected ? option.price : 0)})"
+        let totalPrice = toppingOptions.reduce(0) { (result, option) -> Double in
+            return result + (option.isSelected ? option.price : 0)
+            } + baseOptions.reduce(0) { (result, option) -> Double in
+                return result + (option.isSelected ? option.price : 0)
+        }
+        addToCartActionTabView.priceLabel.text = "$\(totalPrice)"
     }
 
 }
 
 extension BowlOrderDetailViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [EmptyItem(height: emptyItemHeight),
-                HeaderItem(title: "Choose your base"),
-                OrderCustomizationOptions(options: baseOptions),
-                HeaderItem(title: "Choose your toppings"),
-                OrderCustomizationOptions(options: toppingOptions)]
+        return [
+            EmptyItem(height: emptyItemHeight),
+            HeaderItem(title: "Choose your base"),
+            OrderCustomizationOptions(options: baseOptions),
+            HeaderItem(title: "Choose your toppings"),
+            OrderCustomizationOptions(options: toppingOptions)
+        ]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -195,10 +204,17 @@ extension BowlOrderDetailViewController: DidSelectOptionDelegate {
         case .base:
             baseOptions[index] = baseOptions[index].copy() as! OrderCustomizationOption
             baseOptions[index].isSelected.toggle()
+            for option in baseOptions {
+                print("\(option.title): \(option.isSelected)")
+            }
         case .topping:
             toppingOptions[index] = toppingOptions[index].copy() as! OrderCustomizationOption
             toppingOptions[index].isSelected.toggle()
+            for option in toppingOptions {
+                print("\(option.title): \(option.isSelected)")
+            }
         }
+        updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
     }
     

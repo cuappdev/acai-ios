@@ -26,7 +26,7 @@ class OrderCustomizationOption: ListDiffable, NSCopying {
         self.price = price
         self.type = type
     }
-    
+
     func diffIdentifier() -> NSObjectProtocol {
         return title as NSObjectProtocol
     }

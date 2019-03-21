@@ -15,6 +15,8 @@ extension UIColor {
     static var acaiColdGray: UIColor = UIColor(red: 180/255, green: 191/255, blue: 201/255, alpha: 1.0)
     static var acaiOrange: UIColor = UIColor(red: 255/255, green: 156/255, blue: 29/255, alpha: 1.0)
     static var acaiSleetGray: UIColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
+    static var gradientOrange: UIColor = UIColor(red: 255/255, green: 175/255, blue: 72/255, alpha: 1.0)
+    static var gradientYellowOrange: UIColor = UIColor(red: 255/255, green: 216/255, blue: 126/255, alpha: 1.0)
     static var lineGray: UIColor = UIColor(red: 213/255, green: 213/255, blue: 213/255, alpha: 1.0)
     
 }
