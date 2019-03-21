@@ -27,6 +27,7 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
     var titleLabel: UILabel!
     
     // MARK: Gesture recognizers
+    var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     var backButtonTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
@@ -97,6 +98,9 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-addToCartActionTabViewHeight)
         }
         
+        addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
+        addToCartActionTabView.addGestureRecognizer(addToCartTapGestureRecognizer)
+        
         bottomFillerRect = UIView()
         bottomFillerRect.backgroundColor = .acaiBlack
         view.addSubview(bottomFillerRect)
@@ -133,6 +137,10 @@ class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelega
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(collectionView.snp.bottom).offset(collectionView.contentOffset.y)
         }
+    }
+    
+    @objc func addToCart() {
+        print("addToCart pushed")
     }
     
     @objc func popBowlOrderDetailViewController() {
