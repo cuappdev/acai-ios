@@ -46,7 +46,7 @@ class BowlOrderDetailViewController: UIViewController {
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .acaiColdGray
+        view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
         
         // hard code
@@ -59,7 +59,7 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.locations = [0, 1]
         backgroundGradient.startPoint = CGPoint(x: 0, y: 1)
         backgroundGradient.endPoint = CGPoint(x: 100, y: 1)
-        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
         view.layer.addSublayer(backgroundGradient)
         
         titleLabel = UILabel()
