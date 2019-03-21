@@ -12,7 +12,7 @@ import UIKit
 class Acai {
     
     // hard code for testing
-    static let testBowl = BowlItem(title: "Test Bowl", price: 9.99, baseOptions: [
+    static let testBowl = BowlItem(title: "Test Bowl", price: 8.99, baseOptions: [
             OrderCustomizationOption(title: "Acai", isSelected: false, price: 9.99, type: .base),
             OrderCustomizationOption(title: "Oatmeal", isSelected: false, price: 6.99, type: .base),
             OrderCustomizationOption(title: "Yogurt", isSelected: true, price: 6.99, type: .base)

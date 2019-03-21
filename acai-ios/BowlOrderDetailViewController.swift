@@ -19,7 +19,7 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: View vars
     var addToCartActionTabView: ActionTabView!
-    var backButtonImageView: UIImageView!
+    var backButton: UIButton!
     var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
     var collectionBottomFillerRect: UIView!
@@ -29,7 +29,6 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: Gesture recognizers
     var addToCartTapGestureRecognizer: UITapGestureRecognizer!
-    var backButtonTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
     var baseOptions: [OrderCustomizationOption]!
@@ -74,22 +73,19 @@ class BowlOrderDetailViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
         }
         
-        backButtonImageView = UIImageView()
-        backButtonImageView.backgroundColor = .white
-        backButtonImageView.image = UIImage()
-        backButtonImageView.contentMode = .scaleAspectFit
-        backButtonImageView.isUserInteractionEnabled = true
-        view.addSubview(backButtonImageView)
+        backButton = UIButton()
+        backButton.backgroundColor = .white
+        backButton.setImage(UIImage(), for: .normal)
+        backButton.contentMode = .scaleAspectFit
+        backButton.addTarget(self, action: #selector(popBowlOrderDetailViewController), for: .touchUpInside)
+        view.addSubview(backButton)
         
-        backButtonImageView.snp.makeConstraints { make in
+        backButton.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel.snp.centerY)
             make.height.equalTo(backButtonHeight)
             make.leading.equalToSuperview().offset(backButtonLeadingOffset)
             make.width.equalTo(backButtonWidth)
         }
-        
-        backButtonTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(popBowlOrderDetailViewController))
-        backButtonImageView.addGestureRecognizer(backButtonTapGestureRecognizer)
         
         addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
         view.addSubview(addToCartActionTabView)
@@ -204,15 +200,9 @@ extension BowlOrderDetailViewController: DidSelectOptionDelegate {
         case .base:
             baseOptions[index] = baseOptions[index].copy() as! OrderCustomizationOption
             baseOptions[index].isSelected.toggle()
-            for option in baseOptions {
-                print("\(option.title): \(option.isSelected)")
-            }
         case .topping:
             toppingOptions[index] = toppingOptions[index].copy() as! OrderCustomizationOption
             toppingOptions[index].isSelected.toggle()
-            for option in toppingOptions {
-                print("\(option.title): \(option.isSelected)")
-            }
         }
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
