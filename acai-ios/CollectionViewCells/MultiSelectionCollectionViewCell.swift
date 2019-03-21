@@ -25,6 +25,7 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
         titleLabel = UILabel()
         titleLabel.font = UIFont.avenirNextMedium.withSize(17)
