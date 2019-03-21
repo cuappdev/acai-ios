@@ -12,9 +12,11 @@ import IGListKit
 class EmptySectionController: ListSectionController {
     
     var height: CGFloat!
+    var bowlItem: BowlItem
     
-    init(height: CGFloat) {
+    init(height: CGFloat, bowlItem: BowlItem) {
         self.height = height
+        self.bowlItem = bowlItem
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -25,7 +27,9 @@ class EmptySectionController: ListSectionController {
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: UICollectionViewCell.self, for: self, at: index)
+        let cell = collectionContext!.dequeueReusableCell(of: BowlHeaderCollectionViewCell.self, for: self, at: index) as! BowlHeaderCollectionViewCell
+        cell.configure(for: bowlItem)
+        cell.clipsToBounds = true
         return cell
     }
     

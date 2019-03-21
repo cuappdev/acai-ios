@@ -8,19 +8,26 @@
 
 import UIKit
 import IGListKit
+import SnapKit
 
 protocol DidSelectOptionDelegate: class {
     func deselectOption(at index: Int)
     func selectOption(at index: Int, type: OrderCustomizationOptionType)
 }
 
-class BowlOrderDetailViewController: UIViewController {
+class BowlOrderDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: View vars
+    var addToCartActionTabView: ActionTabView!
+    var backButtonImageView: UIImageView!
+    var bottomFillerRect: UIView!
+    var collectionBottomFillerRect: UIView!
     var collectionView: UICollectionView!
     var listAdapter: ListAdapter!
-    var addToCartActionTabView: ActionTabView!
-    var fillerRect: UIView!
+    var titleLabel: UILabel!
+    
+    // MARK: Gesture recognizers
+    var backButtonTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
     var baseOptions: [OrderCustomizationOption]!
@@ -29,17 +36,57 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: Constraint Constants
     let addToCartActionTabViewHeight = 55
+    let backButtonLeadingOffset = 18
+    let backButtonHeight = 15
+    let backButtonWidth = 8.7
     let emptyItemHeight: CGFloat = 156
+    let titleLabelTopOffset = 5.5
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .acaiOrange
+        view.backgroundColor = .acaiColdGray
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.barTintColor = .clear
+//        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.avenirNextBold.withSize(24)]
+//        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.isNavigationBarHidden = true
         
         // hard code
         bowlItem = Acai.testBowl
         toppingOptions = bowlItem.toppingOptions
         baseOptions = bowlItem.baseOptions
+        
+        title = bowlItem.title
+        
+        titleLabel = UILabel()
+        titleLabel.font = UIFont.avenirNextBold.withSize(24)
+        titleLabel.textColor = .white
+        titleLabel.text = bowlItem.title
+        view.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
+        }
+        
+        backButtonImageView = UIImageView()
+        backButtonImageView.backgroundColor = .white
+        backButtonImageView.image = UIImage()
+        backButtonImageView.contentMode = .scaleAspectFit
+        backButtonImageView.isUserInteractionEnabled = true
+        view.addSubview(backButtonImageView)
+        
+        backButtonImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.height.equalTo(backButtonHeight)
+            make.leading.equalToSuperview().offset(backButtonLeadingOffset)
+            make.width.equalTo(backButtonWidth)
+        }
+        
+        backButtonTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(popBowlOrderDetailViewController))
+        backButtonImageView.addGestureRecognizer(backButtonTapGestureRecognizer)
         
         addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
         view.addSubview(addToCartActionTabView)
@@ -50,38 +97,52 @@ class BowlOrderDetailViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-addToCartActionTabViewHeight)
         }
         
-        fillerRect = UIView()
-        fillerRect.backgroundColor = .acaiBlack
-        view.addSubview(fillerRect)
+        bottomFillerRect = UIView()
+        bottomFillerRect.backgroundColor = .acaiBlack
+        view.addSubview(bottomFillerRect)
         
-        fillerRect.snp.makeConstraints { make in
+        bottomFillerRect.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
             make.bottom.equalTo(addToCartActionTabView.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(titleLabel.snp.bottom)
         }
         
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
         
+        collectionBottomFillerRect = UIView()
+        collectionBottomFillerRect.backgroundColor = .white
+        view.addSubview(collectionBottomFillerRect)
+        
+        collectionBottomFillerRect.snp.makeConstraints { make in
+            make.bottom.equalTo(addToCartActionTabView.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(collectionView.snp.bottom).offset(collectionView.contentOffset.y)
+        }
+    }
+    
+    @objc func popBowlOrderDetailViewController() {
+        navigationController?.popViewController(animated: true)
     }
     
     func updateAddToCartPrice() {
         addToCartActionTabView.priceLabel.text = "$\(bowlItem.getSelectedToppingsPrice() + baseOptions.reduce(0) { (result, option) -> Double in return result + (option.isSelected ? option.price : 0)})"
     }
-    
+
 }
 
 extension BowlOrderDetailViewController: ListAdapterDataSource {
@@ -95,7 +156,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return EmptySectionController(height: object.height)
+            return EmptySectionController(height: object.height, bowlItem: bowlItem)
         }
         if let object = object as? HeaderItem {
             let headerListSectionController = HeaderListSectionController(title: object.title)
