@@ -12,12 +12,15 @@ import SnapKit
 class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
+    var checkMarkImageView: UIImageView!
     var customizationOption: OrderCustomizationOption!
     var line: UIView!
     var selectionRect: UIView!
     var titleLabel: UILabel!
     
     // MARK: Constraint Constants
+    let checkMarkImageViewHeight = 12
+    let checkMarkImageViewWidth = 16
     let lineHeight = 0.7
     let titleLabelLeadingOffset = 24
     let selectionRectHeightWidth = 25
@@ -25,24 +28,38 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
         titleLabel = UILabel()
         titleLabel.font = UIFont.avenirNextMedium.withSize(17)
         titleLabel.textColor = .acaiBlack
         contentView.addSubview(titleLabel)
         
+        selectionRect = UIView()
+        selectionRect.layer.borderWidth = 2
+        selectionRect.layer.borderColor = UIColor.coldGray.cgColor
+        selectionRect.backgroundColor = .white
+        selectionRect.layer.cornerRadius = 3
+        contentView.addSubview(selectionRect)
+        
+        checkMarkImageView = UIImageView()
+        checkMarkImageView.image = UIImage(named: "multiSelectionCheckmark")
+        checkMarkImageView.contentMode = .scaleAspectFit
+        selectionRect.addSubview(checkMarkImageView)
+        
+        line = UIView()
+        line.backgroundColor = .lineGray
+        contentView.addSubview(line)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(titleLabelLeadingOffset)
             make.centerY.equalToSuperview()
             make.trailing.equalTo(titleLabel.snp.trailing)
         }
-        
-        selectionRect = UIView()
-        selectionRect.layer.borderWidth = 2
-        selectionRect.layer.borderColor = UIColor.acaiColdGray.cgColor
-        selectionRect.backgroundColor = .white
-        selectionRect.layer.cornerRadius = 3
-        contentView.addSubview(selectionRect)
         
         selectionRect.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-selectionRectTrailingOffset)
@@ -50,9 +67,11 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
         }
         
-        line = UIView()
-        line.backgroundColor = .lineGray
-        contentView.addSubview(line)
+        checkMarkImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(checkMarkImageViewHeight)
+            make.width.equalTo(checkMarkImageViewWidth)
+        }
         
         line.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
@@ -66,11 +85,11 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     func updateSelectionRect() {
         if customizationOption.isSelected {
-            selectionRect.backgroundColor = .acaiOrange
-            selectionRect.layer.borderColor = UIColor.acaiOrange.cgColor
-            titleLabel.textColor = .acaiOrange
+            selectionRect.backgroundColor = .mango
+            selectionRect.layer.borderColor = UIColor.mango.cgColor
+            titleLabel.textColor = .mango
         } else {
-            selectionRect.layer.borderColor = UIColor.acaiColdGray.cgColor
+            selectionRect.layer.borderColor = UIColor.coldGray.cgColor
             selectionRect.backgroundColor = .white
             titleLabel.textColor = .acaiBlack
         }

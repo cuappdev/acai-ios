@@ -19,14 +19,24 @@ class OrderCustomizationOption: ListDiffable, NSCopying {
     var isSelected: Bool
     var price: Double
     var type: OrderCustomizationOptionType!
+    var image: UIImage
     
     init(title: String, isSelected: Bool, price: Double, type: OrderCustomizationOptionType) {
         self.title = title
         self.isSelected = isSelected
         self.price = price
         self.type = type
+        self.image = UIImage()
     }
     
+    init(title: String, isSelected: Bool, price: Double, type: OrderCustomizationOptionType, image: UIImage) {
+        self.title = title
+        self.isSelected = isSelected
+        self.price = price
+        self.type = type
+        self.image = image
+    }
+
     func diffIdentifier() -> NSObjectProtocol {
         return title as NSObjectProtocol
     }
@@ -37,7 +47,7 @@ class OrderCustomizationOption: ListDiffable, NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return OrderCustomizationOption(title: title, isSelected: isSelected, price: price, type: type)
+        return OrderCustomizationOption(title: title, isSelected: isSelected, price: price, type: type, image: image)
     }
 }
 

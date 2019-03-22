@@ -19,13 +19,17 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .acaiSleetGray
+        self.backgroundColor = .sleetGray
         
         titleLabel = UILabel()
         titleLabel.textColor = .black
         titleLabel.font = UIFont.avenirNextMedium.withSize(14)
         contentView.addSubview(titleLabel)
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(titleLabelOffset)

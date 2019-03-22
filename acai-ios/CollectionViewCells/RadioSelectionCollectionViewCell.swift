@@ -32,22 +32,48 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
         imageView = UIImageView()
         imageView.image = UIImage()
         imageView.contentMode = .scaleAspectFit
         contentView.addSubview(imageView)
         
+        titleLabel = UILabel()
+        titleLabel.font = UIFont.avenirNextBold.withSize(17)
+        titleLabel.textColor = .acaiBlack
+        contentView.addSubview(titleLabel)
+        
+        priceLabel = UILabel()
+        priceLabel.font = UIFont.avenirNextMedium.withSize(14)
+        priceLabel.textColor = .acaiBlack
+        contentView.addSubview(priceLabel)
+        
+        radioCircle = UIView()
+        radioCircle.backgroundColor = .white
+        radioCircle.layer.borderColor = UIColor.coldGray.cgColor
+        radioCircle.layer.borderWidth = 2
+        radioCircle.layer.cornerRadius = 12
+        contentView.addSubview(radioCircle)
+        
+        radioFill = UIView()
+        radioFill.backgroundColor = .mango
+        radioFill.layer.cornerRadius = 5
+        contentView.addSubview(radioFill)
+        
+        line = UIView()
+        line.backgroundColor = .lineGray
+        contentView.addSubview(line)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         imageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingOffset)
             make.height.width.equalTo(imageViewHeightWidth)
             make.centerY.equalToSuperview()
         }
-        
-        titleLabel = UILabel()
-        titleLabel.font = UIFont.avenirNextBold.withSize(17)
-        titleLabel.textColor = .acaiBlack
-        contentView.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).offset(leadingOffset)
@@ -55,23 +81,11 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(titleLabel.snp.trailing)
         }
         
-        priceLabel = UILabel()
-        priceLabel.font = UIFont.avenirNextMedium.withSize(14)
-        priceLabel.textColor = .acaiBlack
-        contentView.addSubview(priceLabel)
-        
         priceLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
             make.top.equalTo(self.snp.centerY)
             make.trailing.equalTo(priceLabel.snp.trailing)
         }
-        
-        radioCircle = UIView()
-        radioCircle.backgroundColor = .white
-        radioCircle.layer.borderColor = UIColor.acaiColdGray.cgColor
-        radioCircle.layer.borderWidth = 2
-        radioCircle.layer.cornerRadius = 12
-        contentView.addSubview(radioCircle)
         
         radioCircle.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-radioTrailingOffset)
@@ -79,20 +93,11 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
             make.height.width.equalTo(radioHeightWidth)
         }
         
-        radioFill = UIView()
-        radioFill.backgroundColor = .acaiOrange
-        radioFill.layer.cornerRadius = 5
-        contentView.addSubview(radioFill)
-        
         radioFill.snp.makeConstraints { make in
             make.centerX.equalTo(radioCircle.snp.centerX)
             make.centerY.equalToSuperview()
             make.height.width.equalTo(radioFillHeightWidth)
         }
-        
-        line = UIView()
-        line.backgroundColor = .lineGray
-        contentView.addSubview(line)
         
         line.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
@@ -107,11 +112,12 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     
     func updateRadioSelection() {
         radioFill.isHidden = !customizationOption.isSelected
-        radioCircle.layer.borderColor = customizationOption.isSelected ? UIColor.acaiOrange.cgColor : UIColor.acaiColdGray.cgColor
+        radioCircle.layer.borderColor = customizationOption.isSelected ? UIColor.mango.cgColor : UIColor.coldGray.cgColor
     }
     
     func configure(for option: OrderCustomizationOption) {
         customizationOption = option
+        imageView.image = option.image
         updateRadioSelection()
         setCustomizationOptionLabelText()
     }
