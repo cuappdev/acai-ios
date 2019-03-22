@@ -32,6 +32,7 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
         imageView = UIImageView()
         imageView.image = UIImage()
@@ -68,7 +69,7 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         
         radioCircle = UIView()
         radioCircle.backgroundColor = .white
-        radioCircle.layer.borderColor = UIColor.acaiColdGray.cgColor
+        radioCircle.layer.borderColor = UIColor.coldGray.cgColor
         radioCircle.layer.borderWidth = 2
         radioCircle.layer.cornerRadius = 12
         contentView.addSubview(radioCircle)
@@ -80,7 +81,7 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         }
         
         radioFill = UIView()
-        radioFill.backgroundColor = .acaiOrange
+        radioFill.backgroundColor = .mango
         radioFill.layer.cornerRadius = 5
         contentView.addSubview(radioFill)
         
@@ -107,11 +108,12 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     
     func updateRadioSelection() {
         radioFill.isHidden = !customizationOption.isSelected
-        radioCircle.layer.borderColor = customizationOption.isSelected ? UIColor.acaiOrange.cgColor : UIColor.acaiColdGray.cgColor
+        radioCircle.layer.borderColor = customizationOption.isSelected ? UIColor.mango.cgColor : UIColor.coldGray.cgColor
     }
     
     func configure(for option: OrderCustomizationOption) {
         customizationOption = option
+        imageView.image = option.image
         updateRadioSelection()
         setCustomizationOptionLabelText()
     }

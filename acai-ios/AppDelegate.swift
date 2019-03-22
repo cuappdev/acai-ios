@@ -37,15 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupWindow() {
         window = UIWindow()
         // TODO: replace with your root view
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         window?.makeKeyAndVisible()
     }
 
     func setupFabric() {
         #if DEBUG
-        print("[Running Clicker in debug configuration]")
+        print("[Running Acai in debug configuration]")
         #else
-        print("[Running Clicker in release configuration]")
+        print("[Running Acai in release configuration]")
         Crashlytics.start(withAPIKey: Keys.fabricAPIKey.value)
         #endif
     }

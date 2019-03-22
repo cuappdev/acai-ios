@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     func showBowlCustomizationViewController() {
         let orderDetailViewController = BowlOrderDetailViewController()
-        present(orderDetailViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(orderDetailViewController, animated: true)
     }
 
 }

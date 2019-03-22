@@ -19,7 +19,7 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .acaiSleetGray
+        self.backgroundColor = .sleetGray
         
         titleLabel = UILabel()
         titleLabel.textColor = .black
