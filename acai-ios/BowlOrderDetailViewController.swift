@@ -57,8 +57,8 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
         backgroundGradient.locations = [0, 1]
-        backgroundGradient.startPoint = CGPoint(x: 0, y: 1)
-        backgroundGradient.endPoint = CGPoint(x: 100, y: 1)
+        backgroundGradient.startPoint = CGPoint(x: 0, y: 0)
+        backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 3/5 * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
         
