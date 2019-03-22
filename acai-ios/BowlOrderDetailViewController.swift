@@ -39,6 +39,7 @@ class BowlOrderDetailViewController: UIViewController {
     let backButtonLeadingOffset = 18
     let backButtonHeight = 15
     let backButtonWidth = 8.7
+    let backgroundGradientScaleHeight = 3/5
     let collectionViewTopOffset = 5
     let emptyItemHeight: CGFloat = 156
     let titleLabelTopOffset = 5.5
@@ -59,7 +60,7 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.locations = [0, 1]
         backgroundGradient.startPoint = CGPoint(x: 0, y: 0)
         backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 3/5 * view.frame.height)
+        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
         
         titleLabel = UILabel()
