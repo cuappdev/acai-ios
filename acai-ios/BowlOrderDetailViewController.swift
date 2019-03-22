@@ -39,7 +39,7 @@ class BowlOrderDetailViewController: UIViewController {
     let backButtonLeadingOffset = 18
     let backButtonHeight = 15
     let backButtonWidth = 8.7
-    let backgroundGradientScaleHeight = 3/5
+    let backgroundGradientScaleHeight: CGFloat = 3/5
     let collectionViewTopOffset = 5
     let emptyItemHeight: CGFloat = 156
     let titleLabelTopOffset = 5.5
