@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupWindow() {
         window = UIWindow()
         // TODO: replace with your root view
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = MenuViewController()
         window?.makeKeyAndVisible()
     }
 
