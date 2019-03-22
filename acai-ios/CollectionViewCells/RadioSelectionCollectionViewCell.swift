@@ -113,6 +113,7 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     
     func configure(for option: OrderCustomizationOption) {
         customizationOption = option
+        imageView.image = option.image
         updateRadioSelection()
         setCustomizationOptionLabelText()
     }

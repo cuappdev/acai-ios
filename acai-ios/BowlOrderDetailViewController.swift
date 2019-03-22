@@ -22,7 +22,6 @@ class BowlOrderDetailViewController: UIViewController {
     var backButton: UIButton!
     var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
-    var collectionBottomFillerRect: UIView!
     var collectionView: UICollectionView!
     var listAdapter: ListAdapter!
     var titleLabel: UILabel!
@@ -59,7 +58,7 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.locations = [0, 1]
         backgroundGradient.startPoint = CGPoint(x: 0, y: 1)
         backgroundGradient.endPoint = CGPoint(x: 100, y: 1)
-        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2)
+        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 3/5 * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
         
         titleLabel = UILabel()
@@ -73,9 +72,9 @@ class BowlOrderDetailViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
         }
         
-        backButton = UIButton()
-        backButton.backgroundColor = .white
-        backButton.setImage(UIImage(), for: .normal)
+        backButton = UIButton(type: .system)
+        backButton.setImage(UIImage(named: "backArrow")!, for: .normal)
+        backButton.tintColor = .white
         backButton.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(popBowlOrderDetailViewController), for: .touchUpInside)
         view.addSubview(backButton)
@@ -126,15 +125,6 @@ class BowlOrderDetailViewController: UIViewController {
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
         
-        collectionBottomFillerRect = UIView()
-        collectionBottomFillerRect.backgroundColor = .white
-        view.addSubview(collectionBottomFillerRect)
-        
-        collectionBottomFillerRect.snp.makeConstraints { make in
-            make.bottom.equalTo(addToCartActionTabView.snp.top)
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(collectionView.snp.bottom)
-        }
     }
     
     @objc func addToCart() {
