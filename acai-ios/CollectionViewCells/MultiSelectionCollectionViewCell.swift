@@ -43,7 +43,7 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
         
         selectionRect = UIView()
         selectionRect.layer.borderWidth = 2
-        selectionRect.layer.borderColor = UIColor.acaiColdGray.cgColor
+        selectionRect.layer.borderColor = UIColor.coldGray.cgColor
         selectionRect.backgroundColor = .white
         selectionRect.layer.cornerRadius = 3
         contentView.addSubview(selectionRect)
@@ -80,11 +80,11 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     func updateSelectionRect() {
         if customizationOption.isSelected {
-            selectionRect.backgroundColor = .acaiOrange
-            selectionRect.layer.borderColor = UIColor.acaiOrange.cgColor
-            titleLabel.textColor = .acaiOrange
+            selectionRect.backgroundColor = .mango
+            selectionRect.layer.borderColor = UIColor.mango.cgColor
+            titleLabel.textColor = .mango
         } else {
-            selectionRect.layer.borderColor = UIColor.acaiColdGray.cgColor
+            selectionRect.layer.borderColor = UIColor.coldGray.cgColor
             selectionRect.backgroundColor = .white
             titleLabel.textColor = .acaiBlack
         }

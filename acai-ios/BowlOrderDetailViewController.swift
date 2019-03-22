@@ -39,6 +39,7 @@ class BowlOrderDetailViewController: UIViewController {
     let backButtonLeadingOffset = 18
     let backButtonHeight = 15
     let backButtonWidth = 8.7
+    let collectionViewTopOffset = 5
     let emptyItemHeight: CGFloat = 156
     let titleLabelTopOffset = 5.5
     
@@ -54,7 +55,7 @@ class BowlOrderDetailViewController: UIViewController {
         baseOptions = bowlItem.baseOptions
         
         backgroundGradient = CAGradientLayer()
-        backgroundGradient.colors = [UIColor.gradientYellowOrange.cgColor, UIColor.gradientOrange.cgColor]
+        backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
         backgroundGradient.locations = [0, 1]
         backgroundGradient.startPoint = CGPoint(x: 0, y: 1)
         backgroundGradient.endPoint = CGPoint(x: 100, y: 1)
@@ -118,7 +119,7 @@ class BowlOrderDetailViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.bottom.equalTo(addToCartActionTabView.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).offset(collectionViewTopOffset)
         }
         
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -153,13 +154,14 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
             HeaderItem(title: "Choose your base"),
             OrderCustomizationOptions(options: baseOptions),
             HeaderItem(title: "Choose your toppings"),
-            OrderCustomizationOptions(options: toppingOptions)
+            OrderCustomizationOptions(options: toppingOptions),
+            QuantityItem(quantity: 1)
         ]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return EmptySectionController(height: object.height, bowlItem: bowlItem)
+            return BowlHeaderSectionController(height: object.height, bowlItem: bowlItem)
         }
         if let object = object as? HeaderItem {
             let headerListSectionController = HeaderListSectionController(title: object.title)
@@ -169,6 +171,9 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
+        }
+        if let object = object as? QuantityItem {
+            return QuantitySectionController(quantity: object.quantity, object: bowlItem)
         }
         return ListSectionController()
     }

@@ -22,7 +22,7 @@ class BowlHeaderCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         bowlImageView = UIImageView()
-        bowlImageView.backgroundColor = .acaiOrange
+        bowlImageView.backgroundColor = .clear
         bowlImageView.contentMode = .scaleAspectFit
         bowlImageView.layer.cornerRadius = CGFloat(bowlImageViewHeightWidth/2)
         bowlImageView.layer.masksToBounds = true

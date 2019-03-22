@@ -1,5 +1,5 @@
 //
-//  EmptySectionController.swift
+//  BowlHeaderSectionController.swift
 //  acai-ios
 //
 //  Created by Artesia Ko on 3/20/19.
@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class EmptySectionController: ListSectionController {
+class BowlHeaderSectionController: ListSectionController {
     
     var height: CGFloat!
     var bowlItem: BowlItem
