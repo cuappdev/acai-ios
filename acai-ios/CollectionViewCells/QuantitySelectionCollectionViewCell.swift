@@ -13,6 +13,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
     var addButton: UIButton!
+    var border: UIView!
     var quantityLabel: UILabel!
     var subtractButton: UIButton!
     
@@ -21,13 +22,28 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     var quantity: Int = 1
     
     // MARK: Constraint constants
-    let buttonHeightWidth = 28
-    let buttonOffsetFromLabel = 20
+    let borderHeight = 50
+    let borderWidth = 217
+    let buttonHeightWidth = 14
+    let buttonOffsetFromLabel = 17
     let quantityLabelWidth = 121
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        
+        border = UIView()
+        border.backgroundColor = .clear
+        border.layer.borderColor = UIColor.lineGray.cgColor
+        border.layer.borderWidth = 1
+        border.layer.cornerRadius = CGFloat(borderHeight/2)
+        contentView.addSubview(border)
+        
+        border.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(borderHeight)
+            make.width.equalTo(borderWidth)
+        }
         
         quantityLabel = UILabel()
         quantityLabel.textColor = .acaiBlack
@@ -42,7 +58,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         
         addButton = UIButton(type: .system)
         addButton.tintColor = .acaiBlack
-        addButton.setImage(UIImage(), for: .normal)
+        addButton.setImage(UIImage(named: "plusIcon"), for: .normal)
         addButton.contentMode = .scaleAspectFit
         addButton.addTarget(self, action: #selector(incrementQuantity), for: .touchUpInside)
         contentView.addSubview(addButton)
@@ -55,7 +71,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         
         subtractButton = UIButton(type: .system)
         subtractButton.tintColor = .acaiBlack
-        subtractButton.setImage(UIImage(), for: .normal)
+        subtractButton.setImage(UIImage(named: "minusIcon"), for: .normal)
         subtractButton.contentMode = .scaleAspectFit
         subtractButton.addTarget(self, action: #selector(decrementQuantity), for: .touchUpInside)
         contentView.addSubview(subtractButton)
