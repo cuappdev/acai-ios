@@ -11,18 +11,18 @@ import IGListKit
 
 class BowlItem: ListDiffable {
     
-    var title: String
-    var price: Double
-    var image: UIImage
     var baseOptions: [OrderCustomizationOption]
+    var image: UIImage
+    var price: Double
+    var title: String
     var toppingOptions: [OrderCustomizationOption]
     
     init(title: String, price: Double, baseOptions: [OrderCustomizationOption], toppingOptions: [OrderCustomizationOption], image: UIImage) {
-        self.title = title
-        self.price = price
         self.baseOptions = baseOptions
-        self.toppingOptions = toppingOptions
         self.image = image
+        self.price = price
+        self.title = title
+        self.toppingOptions = toppingOptions
     }
     
     func getSelectedToppingsPrice() -> Double {

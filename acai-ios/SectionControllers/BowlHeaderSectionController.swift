@@ -6,13 +6,13 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
+import UIKit
 
 class BowlHeaderSectionController: ListSectionController {
     
-    var height: CGFloat!
     var bowlItem: BowlItem
+    var height: CGFloat!
     
     init(height: CGFloat, bowlItem: BowlItem) {
         self.height = height

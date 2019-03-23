@@ -11,16 +11,16 @@ import IGListKit
 
 class MenuItem: ListDiffable {
     
-    var title: String
-    var price: Double
     var image: UIImage
     var orderCustomizationOptions: [OrderCustomizationOption]
+    var price: Double
+    var title: String
     
     init(title: String, price: Double, orderCustomizationOptions: [OrderCustomizationOption], image: UIImage) {
-        self.title = title
-        self.price = price
-        self.orderCustomizationOptions = orderCustomizationOptions
         self.image = image
+        self.orderCustomizationOptions = orderCustomizationOptions
+        self.price = price
+        self.title = title
     }
     
     func getSelectedOptionsPrice() -> Double {

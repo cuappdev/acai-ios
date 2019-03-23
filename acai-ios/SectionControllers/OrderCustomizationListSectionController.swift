@@ -6,8 +6,8 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
+import UIKit
 
 class OrderCustomizationListSectionController: ListSectionController {
     

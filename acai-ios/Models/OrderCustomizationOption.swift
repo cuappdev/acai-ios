@@ -15,18 +15,18 @@ enum OrderCustomizationOptionType {
 
 class OrderCustomizationOption: ListDiffable, NSCopying {
     
-    var title: String
+    var image: UIImage
     var isSelected: Bool
     var price: Double
+    var title: String
     var type: OrderCustomizationOptionType!
-    var image: UIImage
     
     init(title: String, isSelected: Bool, price: Double, type: OrderCustomizationOptionType) {
-        self.title = title
+        self.image = UIImage()
         self.isSelected = isSelected
         self.price = price
+        self.title = title
         self.type = type
-        self.image = UIImage()
     }
     
     init(title: String, isSelected: Bool, price: Double, type: OrderCustomizationOptionType, image: UIImage) {

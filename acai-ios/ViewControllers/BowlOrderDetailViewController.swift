@@ -6,9 +6,9 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
 import SnapKit
+import UIKit
 
 protocol DidSelectOptionDelegate: class {
     func deselectOption(at index: Int)

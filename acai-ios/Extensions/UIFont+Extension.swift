@@ -11,8 +11,8 @@ import UIKit
 
 extension UIFont {
     
-    static let avenirNextMedium: UIFont = UIFont(name: "AvenirNext-Medium", size: 12)!
-    static let avenirNextDemi: UIFont = UIFont(name: "AvenirNext-DemiBold", size: 12)!
     static let avenirNextBold: UIFont = UIFont(name: "AvenirNext-Bold", size: 12)!
+    static let avenirNextDemi: UIFont = UIFont(name: "AvenirNext-DemiBold", size: 12)!
+    static let avenirNextMedium: UIFont = UIFont(name: "AvenirNext-Medium", size: 12)!
     
 }

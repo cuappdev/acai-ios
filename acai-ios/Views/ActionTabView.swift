@@ -6,18 +6,18 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class ActionTabView: UIView {
 
     // MARK: View vars
-    var titleLabel: UILabel!
     var priceLabel: UILabel!
+    var titleLabel: UILabel!
     
     // MARK: Constraint Constants
-    let titleLabelLeadingOffset = 16
     let priceLabelTrailingOffset = 14
+    let titleLabelLeadingOffset = 16
     
     init(frame: CGRect, title: String, price: Double) {
         super.init(frame: frame)
