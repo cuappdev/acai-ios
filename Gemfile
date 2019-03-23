@@ -6,4 +6,5 @@ gem 'xcpretty'
 gem 'xcpretty-json-formatter'
 gem 'danger-xcode_summary'
 gem 'fastlane'
+gem "rubyzip", ">= 1.2.2"
 
