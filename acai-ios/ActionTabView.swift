@@ -29,16 +29,20 @@ class ActionTabView: UIView {
         titleLabel.text = title
         self.addSubview(titleLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(titleLabelLeadingOffset)
-            make.centerY.equalToSuperview()
-        }
-        
         priceLabel = UILabel()
         priceLabel.textColor = .white
         priceLabel.font = UIFont.avenirNextMedium.withSize(17)
         priceLabel.text = "$\(price)"
         self.addSubview(priceLabel)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(titleLabelLeadingOffset)
+            make.centerY.equalToSuperview()
+        }
         
         priceLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-priceLabelTrailingOffset)

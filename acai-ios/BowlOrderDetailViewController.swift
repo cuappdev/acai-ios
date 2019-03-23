@@ -69,11 +69,6 @@ class BowlOrderDetailViewController: UIViewController {
         titleLabel.text = bowlItem.title
         view.addSubview(titleLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
-        }
-        
         backButton = UIButton(type: .system)
         backButton.setImage(UIImage(named: "backArrow")!, for: .normal)
         backButton.tintColor = .white
@@ -81,21 +76,8 @@ class BowlOrderDetailViewController: UIViewController {
         backButton.addTarget(self, action: #selector(popBowlOrderDetailViewController), for: .touchUpInside)
         view.addSubview(backButton)
         
-        backButton.snp.makeConstraints { make in
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.height.equalTo(backButtonHeight)
-            make.leading.equalToSuperview().offset(backButtonLeadingOffset)
-            make.width.equalTo(backButtonWidth)
-        }
-        
         addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
         view.addSubview(addToCartActionTabView)
-        
-        addToCartActionTabView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-addToCartActionTabViewHeight)
-        }
         
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
         addToCartActionTabView.addGestureRecognizer(addToCartTapGestureRecognizer)
@@ -103,11 +85,6 @@ class BowlOrderDetailViewController: UIViewController {
         bottomFillerRect = UIView()
         bottomFillerRect.backgroundColor = .acaiBlack
         view.addSubview(bottomFillerRect)
-        
-        bottomFillerRect.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -117,16 +94,42 @@ class BowlOrderDetailViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
         
+        listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+        listAdapter.collectionView = collectionView
+        listAdapter.dataSource = self
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.height.equalTo(backButtonHeight)
+            make.leading.equalToSuperview().offset(backButtonLeadingOffset)
+            make.width.equalTo(backButtonWidth)
+        }
+        
+        addToCartActionTabView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-addToCartActionTabViewHeight)
+        }
+        
+        bottomFillerRect.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
         collectionView.snp.makeConstraints { make in
             make.bottom.equalTo(addToCartActionTabView.snp.top)
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(collectionViewTopOffset)
         }
-        
-        listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-        listAdapter.collectionView = collectionView
-        listAdapter.dataSource = self
-        
     }
     
     @objc func addToCart() {

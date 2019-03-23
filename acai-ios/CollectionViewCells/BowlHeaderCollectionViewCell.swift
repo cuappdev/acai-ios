@@ -27,7 +27,11 @@ class BowlHeaderCollectionViewCell: UICollectionViewCell {
         bowlImageView.layer.cornerRadius = CGFloat(bowlImageViewHeightWidth/2)
         bowlImageView.layer.masksToBounds = true
         contentView.addSubview(bowlImageView)
-        
+
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         bowlImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(bowlImageViewTopOffset)

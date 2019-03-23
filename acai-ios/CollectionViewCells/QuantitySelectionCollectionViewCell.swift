@@ -39,22 +39,11 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         border.layer.cornerRadius = CGFloat(borderHeight/2)
         contentView.addSubview(border)
         
-        border.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.equalTo(borderHeight)
-            make.width.equalTo(borderWidth)
-        }
-        
         quantityLabel = UILabel()
         quantityLabel.textColor = .acaiBlack
         quantityLabel.font = UIFont.avenirNextDemi.withSize(20)
         quantityLabel.textAlignment = .center
         contentView.addSubview(quantityLabel)
-        
-        quantityLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalTo(quantityLabelWidth)
-        }
         
         addButton = UIButton(type: .system)
         addButton.tintColor = .acaiBlack
@@ -63,12 +52,6 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         addButton.addTarget(self, action: #selector(incrementQuantity), for: .touchUpInside)
         contentView.addSubview(addButton)
         
-        addButton.snp.makeConstraints { make in
-            make.height.width.equalTo(buttonHeightWidth)
-            make.leading.equalTo(quantityLabel.snp.trailing).offset(buttonOffsetFromLabel)
-            make.centerY.equalToSuperview()
-        }
-        
         subtractButton = UIButton(type: .system)
         subtractButton.tintColor = .acaiBlack
         subtractButton.setImage(UIImage(named: "minusIcon"), for: .normal)
@@ -76,12 +59,32 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         subtractButton.addTarget(self, action: #selector(decrementQuantity), for: .touchUpInside)
         contentView.addSubview(subtractButton)
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        border.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(borderHeight)
+            make.width.equalTo(borderWidth)
+        }
+        
+        quantityLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(quantityLabelWidth)
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.height.width.equalTo(buttonHeightWidth)
+            make.leading.equalTo(quantityLabel.snp.trailing).offset(buttonOffsetFromLabel)
+            make.centerY.equalToSuperview()
+        }
+        
         subtractButton.snp.makeConstraints { make in
             make.height.width.equalTo(buttonHeightWidth)
             make.trailing.equalTo(quantityLabel.snp.leading).offset(-buttonOffsetFromLabel)
             make.centerY.equalToSuperview()
         }
-
     }
     
     @objc func incrementQuantity() {
