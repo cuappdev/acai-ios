@@ -39,33 +39,15 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         contentView.addSubview(imageView)
         
-        imageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(leadingOffset)
-            make.height.width.equalTo(imageViewHeightWidth)
-            make.centerY.equalToSuperview()
-        }
-        
         titleLabel = UILabel()
         titleLabel.font = UIFont.avenirNextBold.withSize(17)
         titleLabel.textColor = .acaiBlack
         contentView.addSubview(titleLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(leadingOffset)
-            make.bottom.equalTo(self.snp.centerY)
-            make.trailing.equalTo(titleLabel.snp.trailing)
-        }
-        
         priceLabel = UILabel()
         priceLabel.font = UIFont.avenirNextMedium.withSize(14)
         priceLabel.textColor = .acaiBlack
         contentView.addSubview(priceLabel)
-        
-        priceLabel.snp.makeConstraints { make in
-            make.leading.equalTo(titleLabel.snp.leading)
-            make.top.equalTo(self.snp.centerY)
-            make.trailing.equalTo(priceLabel.snp.trailing)
-        }
         
         radioCircle = UIView()
         radioCircle.backgroundColor = .white
@@ -74,26 +56,48 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         radioCircle.layer.cornerRadius = 12
         contentView.addSubview(radioCircle)
         
+        radioFill = UIView()
+        radioFill.backgroundColor = .mango
+        radioFill.layer.cornerRadius = 5
+        contentView.addSubview(radioFill)
+        
+        line = UIView()
+        line.backgroundColor = .lineGray
+        contentView.addSubview(line)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        imageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(leadingOffset)
+            make.height.width.equalTo(imageViewHeightWidth)
+            make.centerY.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(imageView.snp.trailing).offset(leadingOffset)
+            make.bottom.equalTo(self.snp.centerY)
+            make.trailing.equalTo(titleLabel.snp.trailing)
+        }
+        
+        priceLabel.snp.makeConstraints { make in
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.top.equalTo(self.snp.centerY)
+            make.trailing.equalTo(priceLabel.snp.trailing)
+        }
+        
         radioCircle.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-radioTrailingOffset)
             make.centerY.equalToSuperview()
             make.height.width.equalTo(radioHeightWidth)
         }
         
-        radioFill = UIView()
-        radioFill.backgroundColor = .mango
-        radioFill.layer.cornerRadius = 5
-        contentView.addSubview(radioFill)
-        
         radioFill.snp.makeConstraints { make in
             make.centerX.equalTo(radioCircle.snp.centerX)
             make.centerY.equalToSuperview()
             make.height.width.equalTo(radioFillHeightWidth)
         }
-        
-        line = UIView()
-        line.backgroundColor = .lineGray
-        contentView.addSubview(line)
         
         line.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()

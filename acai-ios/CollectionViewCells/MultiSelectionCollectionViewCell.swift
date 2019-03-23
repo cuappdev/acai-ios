@@ -35,12 +35,6 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
         titleLabel.textColor = .acaiBlack
         contentView.addSubview(titleLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(titleLabelLeadingOffset)
-            make.centerY.equalToSuperview()
-            make.trailing.equalTo(titleLabel.snp.trailing)
-        }
-        
         selectionRect = UIView()
         selectionRect.layer.borderWidth = 2
         selectionRect.layer.borderColor = UIColor.coldGray.cgColor
@@ -48,25 +42,36 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
         selectionRect.layer.cornerRadius = 3
         contentView.addSubview(selectionRect)
         
+        checkMarkImageView = UIImageView()
+        checkMarkImageView.image = UIImage(named: "multiSelectionCheckmark")
+        checkMarkImageView.contentMode = .scaleAspectFit
+        selectionRect.addSubview(checkMarkImageView)
+        
+        line = UIView()
+        line.backgroundColor = .lineGray
+        contentView.addSubview(line)
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(titleLabelLeadingOffset)
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(titleLabel.snp.trailing)
+        }
+        
         selectionRect.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-selectionRectTrailingOffset)
             make.height.width.equalTo(selectionRectHeightWidth)
             make.centerY.equalToSuperview()
         }
         
-        checkMarkImageView = UIImageView()
-        checkMarkImageView.image = UIImage(named: "multiSelectionCheckmark")
-        checkMarkImageView.contentMode = .scaleAspectFit
-        selectionRect.addSubview(checkMarkImageView)
         checkMarkImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.height.equalTo(checkMarkImageViewHeight)
             make.width.equalTo(checkMarkImageViewWidth)
         }
-        
-        line = UIView()
-        line.backgroundColor = .lineGray
-        contentView.addSubview(line)
         
         line.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()

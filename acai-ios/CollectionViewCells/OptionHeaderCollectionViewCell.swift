@@ -26,6 +26,10 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
         titleLabel.font = UIFont.avenirNextMedium.withSize(14)
         contentView.addSubview(titleLabel)
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(titleLabelOffset)

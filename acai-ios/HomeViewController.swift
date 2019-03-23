@@ -12,7 +12,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
+
+        title = "Good Morning, Drew"
+
         DispatchQueue.main.async {
             self.showBowlCustomizationViewController()
         }
@@ -25,6 +28,7 @@ class HomeViewController: UIViewController {
     
     func showBowlCustomizationViewController() {
         let orderDetailViewController = BowlOrderDetailViewController()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(orderDetailViewController, animated: true)
     }
 
