@@ -19,13 +19,11 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: View vars
     var addToCartActionTabView: ActionTabView!
-    var backButton: UIButton!
     var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
     var collectionView: UICollectionView!
     var listAdapter: ListAdapter!
-    var titleLabel: UILabel!
-    
+
     // MARK: Gesture recognizers
     var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     
@@ -36,22 +34,29 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: Constraint Constants
     let addToCartActionTabViewHeight = 55
-    let backButtonLeadingOffset = 18
-    let backButtonHeight = 15
-    let backButtonWidth = 8.7
     let backgroundGradientScaleHeight: CGFloat = 0.6
-    let collectionViewTopOffset = 5
     let emptyItemHeight: CGFloat = 156
-    let titleLabelTopOffset = 5.5
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .white
-        navigationController?.isNavigationBarHidden = true
-        
-        // hard code
+
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .compact)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.avenirNextBold.withSize(24),
+            .foregroundColor: UIColor.white
+        ]
+
+        // TODO: change to endpoint request data
         bowlItem = Acai.testBowl
+        title = bowlItem.title
         toppingOptions = bowlItem.toppingOptions
         baseOptions = bowlItem.baseOptions
         
@@ -62,20 +67,7 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
-        
-        titleLabel = UILabel()
-        titleLabel.font = UIFont.avenirNextBold.withSize(24)
-        titleLabel.textColor = .white
-        titleLabel.text = bowlItem.title
-        view.addSubview(titleLabel)
-        
-        backButton = UIButton(type: .system)
-        backButton.setImage(UIImage(named: "backArrow")!, for: .normal)
-        backButton.tintColor = .white
-        backButton.contentMode = .scaleAspectFit
-        backButton.addTarget(self, action: #selector(popBowlOrderDetailViewController), for: .touchUpInside)
-        view.addSubview(backButton)
-        
+
         addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
         view.addSubview(addToCartActionTabView)
         
@@ -97,23 +89,11 @@ class BowlOrderDetailViewController: UIViewController {
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
-        
+
         setupConstraints()
     }
     
     private func setupConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(titleLabelTopOffset)
-        }
-        
-        backButton.snp.makeConstraints { make in
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.height.equalTo(backButtonHeight)
-            make.leading.equalToSuperview().offset(backButtonLeadingOffset)
-            make.width.equalTo(backButtonWidth)
-        }
-        
         addToCartActionTabView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -128,18 +108,14 @@ class BowlOrderDetailViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.bottom.equalTo(addToCartActionTabView.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom).offset(collectionViewTopOffset)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
     }
     
     @objc func addToCart() {
         print("addToCart pushed")
     }
-    
-    @objc func popBowlOrderDetailViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     func updateAddToCartPrice() {
         let totalPrice = toppingOptions.reduce(0) { (result, option) -> Double in
             return result + (option.isSelected ? option.price : 0)
