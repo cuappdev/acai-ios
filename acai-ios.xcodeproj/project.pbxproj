@@ -96,6 +96,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		03CE54EE224815B300B57C48 /* DetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03D2BB95223EB42C00AC6F38 /* BowlOrderDetailViewController.swift */,
+				03CE54EC224809EC00B57C48 /* SmoothieOrderViewController.swift */,
+			);
+			path = DetailViewControllers;
+			sourceTree = "<group>";
+		};
 		03D2BB5222317A4700AC6F38 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,9 +169,8 @@
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
 				031536F5222E15CE004FAF9F /* LoginViewController.swift */,
 				6D36736D2226F7FA000F9917 /* HomeViewController.swift */,
-				03D2BB95223EB42C00AC6F38 /* BowlOrderDetailViewController.swift */,
-				03CE54EC224809EC00B57C48 /* SmoothieOrderViewController.swift */,
 				03D2BBA3224305B200AC6F38 /* ActionTabView.swift */,
+				03CE54EE224815B300B57C48 /* DetailViewControllers */,
 				03D2BBA22242B21900AC6F38 /* Models */,
 				03D2BB8722383F3200AC6F38 /* CollectionViewCells */,
 				03D2BB5222317A4700AC6F38 /* SectionControllers */,

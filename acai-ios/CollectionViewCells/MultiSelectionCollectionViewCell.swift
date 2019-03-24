@@ -22,10 +22,10 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     let checkMarkImageViewHeight = 12
     let checkMarkImageViewWidth = 16
     let lineHeight = 0.7
-    let titleLabelLeadingOffset = 24
     let selectionRectHeightWidth = 25
     let selectionRectTrailingOffset = 30
-    
+    let titleLabelLeadingOffset = 24
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white

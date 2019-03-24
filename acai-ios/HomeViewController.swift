@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         title = "Good Morning, Drew"
 
         DispatchQueue.main.async {
-            self.showBowlCustomizationViewController()
+            self.showSmoothieCustomizationViewController()
         }
     }
     
