@@ -132,7 +132,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
         return [
             EmptyItem(height: emptyItemHeight),
             OrderCustomizationOptions(options: baseOptions, type: .base),
-            OrderCustomizationOptions(options: toppingOptions, type: .base),
+            OrderCustomizationOptions(options: toppingOptions, type: .topping),
             QuantityItem(quantity: 1)
         ]
     }
