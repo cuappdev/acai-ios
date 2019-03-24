@@ -30,13 +30,13 @@ class MenuItem: ListDiffable {
     }
     
     func getSelectedToppingsPrice() -> Double {
-        return options.reduce(0) { (result, option) -> Double in
+        return options.filter({$0.type == .topping}).reduce(0) { (result, option) -> Double in
             return result + (option.isSelected && option.type == .topping ? option.price : 0)
         }
     }
     
     func getSelectedToppings() -> [OrderCustomizationOption] {
-        return options.filter({$0.isSelected}).filter({$0.type == .topping})
+        return options.filter({$0.type == .topping}).filter({$0.isSelected})
     }
     
     func diffIdentifier() -> NSObjectProtocol {

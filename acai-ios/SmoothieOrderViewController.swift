@@ -1,36 +1,31 @@
 //
-//  BowlOrderDetailViewController.swift
+//  SmoothieOrderViewController.swift
 //  acai-ios
 //
-//  Created by Artesia Ko on 3/17/19.
+//  Created by Artesia Ko on 3/24/19.
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
 import SnapKit
+import UIKit
 
-protocol DidSelectOptionDelegate: class {
-    func deselectOption(at index: Int)
-    func selectOption(at index: Int, type: OrderCustomizationOptionType)
-}
+class SmoothieOrderViewController: UIViewController {
 
-class BowlOrderDetailViewController: UIViewController {
-    
     // MARK: View vars
     var addToCartActionTabView: ActionTabView!
     var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
     var collectionView: UICollectionView!
     var listAdapter: ListAdapter!
-
+    
     // MARK: Gesture recognizers
     var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
-    var baseOptions: [OrderCustomizationOption]!
-    var bowlItem: MenuItem!
-    var toppingOptions: [OrderCustomizationOption]!
+    var smoothieItem: MenuItem!
+    var ingredientOptions: [OrderCustomizationOption]!
+    var sizeOptions: [OrderCustomizationOption]!
     
     // MARK: Constraint Constants
     let addToCartActionTabViewHeight = 55
@@ -40,25 +35,25 @@ class BowlOrderDetailViewController: UIViewController {
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
-
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .compact)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-
+        
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont.avenirNextBold.withSize(24),
             .foregroundColor: UIColor.white
         ]
-
+        
         // TODO: change to endpoint request data
-        bowlItem = Acai.testBowl
-        title = bowlItem.title
-        toppingOptions = bowlItem.options.filter({$0.type == .topping})
-        baseOptions = bowlItem.options.filter({$0.type == .base})
+        smoothieItem = Acai.testSmoothie
+        title = smoothieItem.title
+        sizeOptions = smoothieItem.options.filter({$0.type == .size})
+        ingredientOptions = smoothieItem.options.filter({$0.type == .topping})
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -67,8 +62,8 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
-
-        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
+        
+        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: smoothieItem.price)
         view.addSubview(addToCartActionTabView)
         
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
@@ -89,7 +84,7 @@ class BowlOrderDetailViewController: UIViewController {
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
-
+        
         setupConstraints()
     }
     
@@ -115,33 +110,33 @@ class BowlOrderDetailViewController: UIViewController {
     @objc func addToCart() {
         print("addToCart pushed")
     }
-
+    
     func updateAddToCartPrice() {
-        let totalPrice = toppingOptions.reduce(0) { (result, option) -> Double in
+        let totalPrice = ingredientOptions.reduce(0) { (result, option) -> Double in
             return result + (option.isSelected ? option.price : 0)
-            } + baseOptions.reduce(0) { (result, option) -> Double in
+            } + sizeOptions.reduce(0) { (result, option) -> Double in
                 return result + (option.isSelected ? option.price : 0)
         }
         addToCartActionTabView.priceLabel.text = "$\(totalPrice)"
     }
-
+    
 }
 
-extension BowlOrderDetailViewController: ListAdapterDataSource {
+extension SmoothieOrderViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return [
             EmptyItem(height: emptyItemHeight),
-            HeaderItem(title: "Choose your base"),
-            OrderCustomizationOptions(options: baseOptions, type: .base),
-            HeaderItem(title: "Choose your toppings"),
-            OrderCustomizationOptions(options: toppingOptions, type: .base),
+            HeaderItem(title: "Choose your size"),
+            OrderCustomizationOptions(options: sizeOptions, type: .size),
+            HeaderItem(title: "Choose your ingredients"),
+            OrderCustomizationOptions(options: ingredientOptions, type: .topping),
             QuantityItem(quantity: 1)
         ]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return BowlHeaderSectionController(height: object.height, bowlItem: bowlItem)
+            return BowlHeaderSectionController(height: object.height, bowlItem: smoothieItem)
         }
         if let object = object as? HeaderItem {
             let headerListSectionController = HeaderListSectionController(title: object.title)
@@ -153,7 +148,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
             return orderCustomizationListSectionController
         }
         if let object = object as? QuantityItem {
-            return QuantitySectionController(quantity: object.quantity, object: bowlItem)
+            return QuantitySectionController(quantity: object.quantity, object: smoothieItem)
         }
         return ListSectionController()
     }
@@ -164,25 +159,25 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     
 }
 
-extension BowlOrderDetailViewController: DidSelectOptionDelegate {
+extension SmoothieOrderViewController: DidSelectOptionDelegate {
     
     func deselectOption(at index: Int) {
-        baseOptions[index].isSelected = false
+        sizeOptions[index].isSelected = false
     }
     
     func selectOption(at index: Int, type: OrderCustomizationOptionType) {
         switch type {
-        case .base:
-            baseOptions[index] = baseOptions[index].copy() as! OrderCustomizationOption
-            baseOptions[index].isSelected.toggle()
         case .size:
-            return
+            sizeOptions[index] = sizeOptions[index].copy() as! OrderCustomizationOption
+            sizeOptions[index].isSelected.toggle()
         case .topping:
-            toppingOptions[index] = toppingOptions[index].copy() as! OrderCustomizationOption
-            toppingOptions[index].isSelected.toggle()
+            ingredientOptions[index] = ingredientOptions[index].copy() as! OrderCustomizationOption
+            ingredientOptions[index].isSelected.toggle()
+        case .base:
+            return
         }
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
     }
-    
+
 }

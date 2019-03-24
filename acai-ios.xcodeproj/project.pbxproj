@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F5222E15CE004FAF9F /* LoginViewController.swift */; };
 		031536F8222EB3BA004FAF9F /* Acai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F7222EB3BA004FAF9F /* Acai.swift */; };
+		03CE54ED224809EC00B57C48 /* SmoothieOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE54EC224809EC00B57C48 /* SmoothieOrderViewController.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -40,6 +41,7 @@
 		031536F5222E15CE004FAF9F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		031536F7222EB3BA004FAF9F /* Acai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acai.swift; sourceTree = "<group>"; };
 		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		03CE54EC224809EC00B57C48 /* SmoothieOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothieOrderViewController.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCustomizationListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				031536F5222E15CE004FAF9F /* LoginViewController.swift */,
 				6D36736D2226F7FA000F9917 /* HomeViewController.swift */,
 				03D2BB95223EB42C00AC6F38 /* BowlOrderDetailViewController.swift */,
+				03CE54EC224809EC00B57C48 /* SmoothieOrderViewController.swift */,
 				03D2BBA3224305B200AC6F38 /* ActionTabView.swift */,
 				03D2BBA22242B21900AC6F38 /* Models */,
 				03D2BB8722383F3200AC6F38 /* CollectionViewCells */,
@@ -380,6 +383,7 @@
 				03D2BBA6224318D500AC6F38 /* BowlHeaderSectionController.swift in Sources */,
 				031536F8222EB3BA004FAF9F /* Acai.swift in Sources */,
 				03D2BBB02244A83800AC6F38 /* QuantityItem.swift in Sources */,
+				03CE54ED224809EC00B57C48 /* SmoothieOrderViewController.swift in Sources */,
 				03D2BBA02242B1F000AC6F38 /* OrderCustomizationOption.swift in Sources */,
 				03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */,
 				03D2BBAA22435D6600AC6F38 /* BowlHeaderCollectionViewCell.swift in Sources */,

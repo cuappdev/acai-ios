@@ -18,7 +18,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     var subtractButton: UIButton!
     
     // MARK: Data
-    var object: Any!
+    var object: MenuItem!
     var quantity: Int = 1
     
     // MARK: Constraint constants
@@ -101,9 +101,14 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateQuantityLabelText(object: Any) {
-        if object is MenuItem {
+    func updateQuantityLabelText(object: MenuItem) {
+        switch object.type {
+        case .bowl:
             quantityLabel.text = "\(quantity) Bowl"
+        case .smoothie:
+            quantityLabel.text = "\(quantity) Cup"
+        case .drink:
+            quantityLabel.text = "\(quantity) Cup"
         }
         if let text = quantityLabel.text, quantity != 1 {
             quantityLabel.text = "\(text)s"
@@ -115,7 +120,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(object: Any) {
+    func configure(object: MenuItem) {
         self.object = object
         updateQuantityLabelText(object: object)
     }

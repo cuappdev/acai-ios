@@ -20,6 +20,7 @@ class OrderCustomizationListSectionController: ListSectionController {
     
     // MARK: Constraint Constants
     let baseCellHeightConstraint: CGFloat = 87
+    let sizeCellHeightConstraint: CGFloat = 87
     let toppingCellHeightConstraint: CGFloat = 55
     
     init(options: OrderCustomizationOptions) {
@@ -38,6 +39,8 @@ class OrderCustomizationListSectionController: ListSectionController {
         switch customizationOptions.options[index].type {
         case .base?:
             return CGSize(width: width, height: baseCellHeightConstraint)
+        case .size?:
+            return CGSize(width: width, height: sizeCellHeightConstraint)
         case .topping?:
             return CGSize(width: width, height: toppingCellHeightConstraint)
         case .none:
@@ -50,6 +53,11 @@ class OrderCustomizationListSectionController: ListSectionController {
         let option = customizationOptions.options[index]
         switch option.type {
         case .base?:
+            cellType = RadioSelectionCollectionViewCell.self
+            if option.isSelected {
+                selectedBaseIndex = index
+            }
+        case .size?:
             cellType = RadioSelectionCollectionViewCell.self
             if option.isSelected {
                 selectedBaseIndex = index
@@ -78,6 +86,8 @@ class OrderCustomizationListSectionController: ListSectionController {
         switch type {
         case .base:
             self.selectOptionDelegate?.deselectOption(at: index)
+        case .size:
+            self.selectOptionDelegate?.deselectOption(at: index)
         case .topping:
             return
         }
@@ -85,7 +95,7 @@ class OrderCustomizationListSectionController: ListSectionController {
     
     override func didSelectItem(at index: Int) {
         guard let type = customizationOptions.options[index].type else { return }
-        if type == .base {
+        if type == .base || type == .size {
             deselectItem(at: selectedBaseIndex)
         }
         self.selectOptionDelegate?.selectOption(at: index, type: type)

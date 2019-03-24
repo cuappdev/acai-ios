@@ -10,7 +10,7 @@ import Foundation
 import IGListKit
 
 enum OrderCustomizationOptionType {
-    case base, topping
+    case base, size, topping
 }
 
 class OrderCustomizationOption: ListDiffable, NSCopying {
@@ -53,10 +53,12 @@ class OrderCustomizationOption: ListDiffable, NSCopying {
 
 class OrderCustomizationOptions: ListDiffable {
     
-    let options: [OrderCustomizationOption]!
+    var options: [OrderCustomizationOption]!
+    let type: OrderCustomizationOptionType
     
-    init(options: [OrderCustomizationOption]) {
+    init(options: [OrderCustomizationOption], type: OrderCustomizationOptionType) {
         self.options = options
+        self.type = type
     }
     
     func diffIdentifier() -> NSObjectProtocol {
@@ -65,7 +67,7 @@ class OrderCustomizationOptions: ListDiffable {
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? OrderCustomizationOptions else { return false }
-        return self.options.elementsEqual(object.options, by: { (optionElem, elem) -> Bool in
+        return self.type == object.type && self.options.elementsEqual(object.options, by: { (optionElem, elem) -> Bool in
             return optionElem.isEqual(toDiffableObject: elem)
         })
     }

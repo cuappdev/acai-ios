@@ -13,12 +13,12 @@ class QuantitySectionController: ListSectionController {
     
     // MARK: Data
     var quantity: Int!
-    var object: Any!
+    var object: MenuItem!
     
     // MARK: Constraint Constants
     let quantityCellHeightConstraint: CGFloat = 103
     
-    init(quantity: Int, object: Any) {
+    init(quantity: Int, object: MenuItem) {
         self.quantity = quantity
         self.object = object
     }

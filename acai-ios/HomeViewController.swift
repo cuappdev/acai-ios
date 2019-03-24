@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         title = "Good Morning, Drew"
 
         DispatchQueue.main.async {
-            self.showBowlCustomizationViewController()
+            self.showSmoothieCustomizationViewController()
         }
     }
     
@@ -32,4 +32,9 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(orderDetailViewController, animated: true)
     }
 
+    func showSmoothieCustomizationViewController() {
+        let orderDetailViewController = SmoothieOrderViewController()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(orderDetailViewController, animated: true)
+    }
 }

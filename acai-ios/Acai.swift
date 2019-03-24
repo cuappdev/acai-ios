@@ -24,4 +24,16 @@ class Acai {
         OrderCustomizationOption(title: "Peanut Butter", isSelected: false, price: 1.00, type: .topping)
         ], image: UIImage(named: "acaiBowl")!, type: .bowl)
     
+    static let testSmoothie = MenuItem(title: "Test Smoothie", price: 7.99, options: [
+        OrderCustomizationOption(title: "Small", isSelected: false, price: 6.99, type: .size, image: UIImage(named: "acaiBowl")!),
+        OrderCustomizationOption(title: "Medium", isSelected: false, price: 7.99, type: .size, image: UIImage(named: "acaiBowl")!),
+        OrderCustomizationOption(title: "Large", isSelected: true, price: 8.99, type: .size, image: UIImage(named: "acaiBowl")!),
+        OrderCustomizationOption(title: "Strawberry", isSelected: true, price: 1.00, type: .topping),
+        OrderCustomizationOption(title: "Pineapple", isSelected: false, price: 1.00, type: .topping),
+        OrderCustomizationOption(title: "Granola", isSelected: false, price: 1.00, type: .topping),
+        OrderCustomizationOption(title: "Coconut", isSelected: true, price: 1.00, type: .topping),
+        OrderCustomizationOption(title: "Almonds", isSelected: false, price: 1.00, type: .topping),
+        OrderCustomizationOption(title: "Peanut Butter", isSelected: false, price: 1.00, type: .topping)
+        ], image: UIImage(named: "acaiBowl")!, type: .smoothie)
+    
 }
