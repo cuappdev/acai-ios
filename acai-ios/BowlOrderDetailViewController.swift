@@ -131,9 +131,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return [
             EmptyItem(height: emptyItemHeight),
-            HeaderItem(title: "Choose your base"),
             OrderCustomizationOptions(options: baseOptions, type: .base),
-            HeaderItem(title: "Choose your toppings"),
             OrderCustomizationOptions(options: toppingOptions, type: .base),
             QuantityItem(quantity: 1)
         ]
@@ -142,10 +140,6 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return BowlHeaderSectionController(height: object.height, bowlItem: bowlItem)
-        }
-        if let object = object as? HeaderItem {
-            let headerListSectionController = HeaderListSectionController(title: object.title)
-            return headerListSectionController
         }
         if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)

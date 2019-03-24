@@ -126,9 +126,7 @@ extension SmoothieOrderViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return [
             EmptyItem(height: emptyItemHeight),
-            HeaderItem(title: "Choose your size"),
             OrderCustomizationOptions(options: sizeOptions, type: .size),
-            HeaderItem(title: "Choose your ingredients"),
             OrderCustomizationOptions(options: ingredientOptions, type: .topping),
             QuantityItem(quantity: 1)
         ]
@@ -137,10 +135,6 @@ extension SmoothieOrderViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return BowlHeaderSectionController(height: object.height, bowlItem: smoothieItem)
-        }
-        if let object = object as? HeaderItem {
-            let headerListSectionController = HeaderListSectionController(title: object.title)
-            return headerListSectionController
         }
         if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)

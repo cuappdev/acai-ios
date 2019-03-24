@@ -37,8 +37,15 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(for title: String) {
-        titleLabel.text = title
+    func configure(for type: OrderCustomizationOptionType) {
+        switch type {
+        case .base:
+            titleLabel.text = "Choose your base"
+        case .size:
+            titleLabel.text = "Choose your size"
+        case .topping:
+            titleLabel.text = "Choose your toppings"
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

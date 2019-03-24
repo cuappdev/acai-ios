@@ -30,7 +30,6 @@ class HeaderListSectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: OptionHeaderCollectionViewCell.self, for: self, at: index) as! OptionHeaderCollectionViewCell
-        cell.configure(for: title)
         return cell
     }
     

@@ -16,10 +16,11 @@ class OrderCustomizationListSectionController: ListSectionController {
     
     // MARK: Data
     var customizationOptions: OrderCustomizationOptions!
-    var selectedBaseIndex: Int = 0
+    var selectedBaseIndex: Int = 1
     
     // MARK: Constraint Constants
     let baseCellHeightConstraint: CGFloat = 87
+    let headerHeightConstraint: CGFloat = 43
     let sizeCellHeightConstraint: CGFloat = 87
     let toppingCellHeightConstraint: CGFloat = 55
     
@@ -28,7 +29,7 @@ class OrderCustomizationListSectionController: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return customizationOptions.options.count
+        return customizationOptions.options.count + 1
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -36,7 +37,10 @@ class OrderCustomizationListSectionController: ListSectionController {
             return .zero
         }
         let width = context.containerSize.width
-        switch customizationOptions.options[index].type {
+        if index == 0 {
+            return CGSize(width: context.containerSize.width, height: headerHeightConstraint)
+        }
+        switch customizationOptions.options[index - 1].type {
         case .base?:
             return CGSize(width: width, height: baseCellHeightConstraint)
         case .size?:
@@ -50,17 +54,23 @@ class OrderCustomizationListSectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         var cellType: AnyClass = UICollectionViewCell.self
-        let option = customizationOptions.options[index]
+        if index == 0 {
+            let cell = collectionContext!.dequeueReusableCell(of: OptionHeaderCollectionViewCell.self, for: self, at: index) as! OptionHeaderCollectionViewCell
+            cell.configure(for: customizationOptions.type)
+            return cell
+        }
+        
+        let option = customizationOptions.options[index - 1]
         switch option.type {
         case .base?:
             cellType = RadioSelectionCollectionViewCell.self
             if option.isSelected {
-                selectedBaseIndex = index
+                selectedBaseIndex = index - 1
             }
         case .size?:
             cellType = RadioSelectionCollectionViewCell.self
             if option.isSelected {
-                selectedBaseIndex = index
+                selectedBaseIndex = index - 1
             }
         case .topping?:
             cellType = MultiSelectionCollectionViewCell.self
@@ -94,11 +104,11 @@ class OrderCustomizationListSectionController: ListSectionController {
     }
     
     override func didSelectItem(at index: Int) {
-        guard let type = customizationOptions.options[index].type else { return }
+        guard let type = customizationOptions.options[index - 1].type else { return }
         if type == .base || type == .size {
             deselectItem(at: selectedBaseIndex)
         }
-        self.selectOptionDelegate?.selectOption(at: index, type: type)
+        self.selectOptionDelegate?.selectOption(at: index - 1, type: type)
     }
     
 }
