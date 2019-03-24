@@ -102,7 +102,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     }
     
     func updateQuantityLabelText(object: Any) {
-        if object is BowlItem {
+        if object is MenuItem {
             quantityLabel.text = "\(quantity) Bowl"
         }
         if let text = quantityLabel.text, quantity != 1 {

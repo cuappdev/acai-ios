@@ -12,9 +12,9 @@ import IGListKit
 class BowlHeaderSectionController: ListSectionController {
     
     var height: CGFloat!
-    var bowlItem: BowlItem
+    var bowlItem: MenuItem
     
-    init(height: CGFloat, bowlItem: BowlItem) {
+    init(height: CGFloat, bowlItem: MenuItem) {
         self.height = height
         self.bowlItem = bowlItem
     }

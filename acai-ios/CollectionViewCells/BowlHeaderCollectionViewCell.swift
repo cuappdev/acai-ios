@@ -39,7 +39,7 @@ class BowlHeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(for bowlItem: BowlItem) {
+    func configure(for bowlItem: MenuItem) {
         bowlImageView.image = bowlItem.image
     }
     

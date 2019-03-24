@@ -10,7 +10,6 @@
 		031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F5222E15CE004FAF9F /* LoginViewController.swift */; };
 		031536F8222EB3BA004FAF9F /* Acai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F7222EB3BA004FAF9F /* Acai.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift */; };
-		03D2BB8D223C396000AC6F38 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8C223C396000AC6F38 /* MenuItem.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
 		03D2BB93223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB92223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift */; };
@@ -18,7 +17,7 @@
 		03D2BB98223FFB9800AC6F38 /* HeaderListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB97223FFB9800AC6F38 /* HeaderListSectionController.swift */; };
 		03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB992240B5EB00AC6F38 /* UIFont+Shared.swift */; };
 		03D2BB9C2242B1A000AC6F38 /* HeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB9B2242B1A000AC6F38 /* HeaderItem.swift */; };
-		03D2BB9E2242B1C300AC6F38 /* BowlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB9D2242B1C300AC6F38 /* BowlItem.swift */; };
+		03D2BB9E2242B1C300AC6F38 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB9D2242B1C300AC6F38 /* MenuItem.swift */; };
 		03D2BBA02242B1F000AC6F38 /* OrderCustomizationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB9F2242B1F000AC6F38 /* OrderCustomizationOption.swift */; };
 		03D2BBA4224305B200AC6F38 /* ActionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BBA3224305B200AC6F38 /* ActionTabView.swift */; };
 		03D2BBA6224318D500AC6F38 /* BowlHeaderSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BBA5224318D500AC6F38 /* BowlHeaderSectionController.swift */; };
@@ -42,7 +41,6 @@
 		031536F7222EB3BA004FAF9F /* Acai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acai.swift; sourceTree = "<group>"; };
 		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCustomizationListSectionController.swift; sourceTree = "<group>"; };
-		03D2BB8C223C396000AC6F38 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB92223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -50,7 +48,7 @@
 		03D2BB97223FFB9800AC6F38 /* HeaderListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB992240B5EB00AC6F38 /* UIFont+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Shared.swift"; sourceTree = "<group>"; };
 		03D2BB9B2242B1A000AC6F38 /* HeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItem.swift; sourceTree = "<group>"; };
-		03D2BB9D2242B1C300AC6F38 /* BowlItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlItem.swift; sourceTree = "<group>"; };
+		03D2BB9D2242B1C300AC6F38 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		03D2BB9F2242B1F000AC6F38 /* OrderCustomizationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCustomizationOption.swift; sourceTree = "<group>"; };
 		03D2BBA3224305B200AC6F38 /* ActionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTabView.swift; sourceTree = "<group>"; };
 		03D2BBA5224318D500AC6F38 /* BowlHeaderSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlHeaderSectionController.swift; sourceTree = "<group>"; };
@@ -122,8 +120,7 @@
 		03D2BBA22242B21900AC6F38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				03D2BB8C223C396000AC6F38 /* MenuItem.swift */,
-				03D2BB9D2242B1C300AC6F38 /* BowlItem.swift */,
+				03D2BB9D2242B1C300AC6F38 /* MenuItem.swift */,
 				03D2BB9F2242B1F000AC6F38 /* OrderCustomizationOption.swift */,
 				03D2BB9B2242B1A000AC6F38 /* HeaderItem.swift */,
 				03D2BBA722431A3300AC6F38 /* EmptyItem.swift */,
@@ -372,7 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D2BBAE2244A2BD00AC6F38 /* QuantitySelectionCollectionViewCell.swift in Sources */,
-				03D2BB9E2242B1C300AC6F38 /* BowlItem.swift in Sources */,
+				03D2BB9E2242B1C300AC6F38 /* MenuItem.swift in Sources */,
 				03D2BB98223FFB9800AC6F38 /* HeaderListSectionController.swift in Sources */,
 				031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */,
 				03D2BBA822431A3300AC6F38 /* EmptyItem.swift in Sources */,
@@ -384,7 +381,6 @@
 				031536F8222EB3BA004FAF9F /* Acai.swift in Sources */,
 				03D2BBB02244A83800AC6F38 /* QuantityItem.swift in Sources */,
 				03D2BBA02242B1F000AC6F38 /* OrderCustomizationOption.swift in Sources */,
-				03D2BB8D223C396000AC6F38 /* MenuItem.swift in Sources */,
 				03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */,
 				03D2BBAA22435D6600AC6F38 /* BowlHeaderCollectionViewCell.swift in Sources */,
 				03D2BB96223EB42C00AC6F38 /* BowlOrderDetailViewController.swift in Sources */,

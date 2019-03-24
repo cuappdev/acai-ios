@@ -29,7 +29,7 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: Data
     var baseOptions: [OrderCustomizationOption]!
-    var bowlItem: BowlItem!
+    var bowlItem: MenuItem!
     var toppingOptions: [OrderCustomizationOption]!
     
     // MARK: Constraint Constants
@@ -57,8 +57,8 @@ class BowlOrderDetailViewController: UIViewController {
         // TODO: change to endpoint request data
         bowlItem = Acai.testBowl
         title = bowlItem.title
-        toppingOptions = bowlItem.toppingOptions
-        baseOptions = bowlItem.baseOptions
+        toppingOptions = bowlItem.options.filter({$0.type == .topping})
+        baseOptions = bowlItem.options.filter({$0.type == .base})
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
