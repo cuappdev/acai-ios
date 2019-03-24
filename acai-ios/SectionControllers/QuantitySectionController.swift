@@ -12,15 +12,15 @@ import IGListKit
 class QuantitySectionController: ListSectionController {
     
     // MARK: Data
+    var menuItem: MenuItem!
     var quantity: Int!
-    var object: MenuItem!
     
     // MARK: Constraint Constants
     let quantityCellHeightConstraint: CGFloat = 103
     
-    init(quantity: Int, object: MenuItem) {
+    init(quantity: Int, menuItem: MenuItem) {
+        self.menuItem = menuItem
         self.quantity = quantity
-        self.object = object
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -32,7 +32,7 @@ class QuantitySectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: QuantitySelectionCollectionViewCell.self, for: self, at: index) as! QuantitySelectionCollectionViewCell
-        cell.configure(object: object)
+        cell.configure(menuItem: menuItem)
         return cell
     }
     

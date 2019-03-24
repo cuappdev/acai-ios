@@ -9,14 +9,14 @@
 import UIKit
 import IGListKit
 
-class BowlHeaderSectionController: ListSectionController {
+class HeaderImageSectionController: ListSectionController {
     
     var height: CGFloat!
-    var bowlItem: MenuItem
+    var menuItem: MenuItem
     
-    init(height: CGFloat, bowlItem: MenuItem) {
+    init(height: CGFloat, menuItem: MenuItem) {
         self.height = height
-        self.bowlItem = bowlItem
+        self.menuItem = menuItem
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -27,8 +27,8 @@ class BowlHeaderSectionController: ListSectionController {
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: BowlHeaderCollectionViewCell.self, for: self, at: index) as! BowlHeaderCollectionViewCell
-        cell.configure(for: bowlItem)
+        let cell = collectionContext!.dequeueReusableCell(of: HeaderImageCollectionViewCell.self, for: self, at: index) as! HeaderImageCollectionViewCell
+        cell.configure(for: menuItem)
         cell.clipsToBounds = true
         return cell
     }

@@ -18,7 +18,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     var subtractButton: UIButton!
     
     // MARK: Data
-    var object: MenuItem!
+    var menuItem: MenuItem!
     var quantity: Int = 1
     
     // MARK: Constraint constants
@@ -88,26 +88,24 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func incrementQuantity() {
-        if let object = object {
+        if let menuItem = menuItem {
             self.quantity = quantity + 1
-            updateQuantityLabelText(object: object)
+            updateQuantityLabelText(menuItem: menuItem)
         }
     }
     
     @objc func decrementQuantity() {
-        if let object = object, quantity > 1 {
+        if let menuItem = menuItem, quantity > 1 {
             self.quantity = quantity - 1
-            updateQuantityLabelText(object: object)
+            updateQuantityLabelText(menuItem: menuItem)
         }
     }
     
-    func updateQuantityLabelText(object: MenuItem) {
-        switch object.type {
+    func updateQuantityLabelText(menuItem: MenuItem) {
+        switch menuItem.type {
         case .bowl:
             quantityLabel.text = "\(quantity) Bowl"
-        case .smoothie:
-            quantityLabel.text = "\(quantity) Cup"
-        case .drink:
+        case .drink, .smoothie:
             quantityLabel.text = "\(quantity) Cup"
         }
         if let text = quantityLabel.text, quantity != 1 {
@@ -120,9 +118,9 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(object: MenuItem) {
-        self.object = object
-        updateQuantityLabelText(object: object)
+    func configure(menuItem: MenuItem) {
+        self.menuItem = menuItem
+        updateQuantityLabelText(menuItem: menuItem)
     }
     
     required init?(coder aDecoder: NSCoder) {

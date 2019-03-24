@@ -139,7 +139,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return BowlHeaderSectionController(height: object.height, bowlItem: bowlItem)
+            return HeaderImageSectionController(height: object.height, menuItem: bowlItem)
         }
         if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
@@ -147,7 +147,7 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
             return orderCustomizationListSectionController
         }
         if let object = object as? QuantityItem {
-            return QuantitySectionController(quantity: object.quantity, object: bowlItem)
+            return QuantitySectionController(quantity: object.quantity, menuItem: bowlItem)
         }
         return ListSectionController()
     }
