@@ -23,9 +23,9 @@ class SmoothieOrderViewController: UIViewController {
     var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
-    var smoothieItem: MenuItem!
     var ingredientOptions: [OrderCustomizationOption]!
     var sizeOptions: [OrderCustomizationOption]!
+    var smoothieItem: MenuItem!
     
     // MARK: Constraint Constants
     let addToCartActionTabViewHeight = 55
@@ -81,11 +81,14 @@ class SmoothieOrderViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
         
+        setupViews()
+        setupConstraints()
+    }
+    
+    private func setupViews() {
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
-        
-        setupConstraints()
     }
     
     private func setupConstraints() {
@@ -135,13 +138,11 @@ extension SmoothieOrderViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return HeaderImageSectionController(height: object.height, menuItem: smoothieItem)
-        }
-        if let object = object as? OrderCustomizationOptions {
+        } else if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
-        }
-        if let object = object as? QuantityItem {
+        } else if let object = object as? QuantityItem {
             return QuantitySectionController(quantity: object.quantity, menuItem: smoothieItem)
         }
         return ListSectionController()

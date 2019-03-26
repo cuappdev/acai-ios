@@ -57,8 +57,8 @@ class BowlOrderDetailViewController: UIViewController {
         // TODO: change to endpoint request data
         bowlItem = Acai.testBowl
         title = bowlItem.title
-        toppingOptions = bowlItem.options.filter({$0.type == .topping})
-        baseOptions = bowlItem.options.filter({$0.type == .base})
+        toppingOptions = bowlItem.options.filter({ $0.type == .topping })
+        baseOptions = bowlItem.options.filter({ $0.type == .base })
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -140,13 +140,11 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return HeaderImageSectionController(height: object.height, menuItem: bowlItem)
-        }
-        if let object = object as? OrderCustomizationOptions {
+        } else if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
-        }
-        if let object = object as? QuantityItem {
+        } else if let object = object as? QuantityItem {
             return QuantitySectionController(quantity: object.quantity, menuItem: bowlItem)
         }
         return ListSectionController()
