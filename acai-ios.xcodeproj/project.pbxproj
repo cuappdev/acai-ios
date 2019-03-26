@@ -27,7 +27,6 @@
 		03D2BBAC2244959700AC6F38 /* QuantitySectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BBAB2244959700AC6F38 /* QuantitySectionController.swift */; };
 		03D2BBAE2244A2BD00AC6F38 /* QuantitySelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BBAD2244A2BD00AC6F38 /* QuantitySelectionCollectionViewCell.swift */; };
 		03D2BBB02244A83800AC6F38 /* QuantityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BBAF2244A83800AC6F38 /* QuantityItem.swift */; };
-		6D03FA2D2246A60F00191558 /* QuantityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03FA2B2246A60E00191558 /* QuantityItem.swift */; };
 		6D03FA342246A62500191558 /* BowlHeaderSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D03FA322246A62500191558 /* BowlHeaderSectionController.swift */; };
 		20ACCC1D2244E9EF00AB782A /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACCC1C2244E9EF00AB782A /* MenuCollectionViewCell.swift */; };
 		20ACCC1F2244EA0700AB782A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACCC1E2244EA0700AB782A /* MenuViewController.swift */; };
@@ -68,13 +67,11 @@
 		20ACCC1C2244E9EF00AB782A /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		20ACCC1E2244EA0700AB782A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		20ACCC202244EA0C00AB782A /* MenuListSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuListSectionController.swift; sourceTree = "<group>"; };
-		6D03FA2B2246A60E00191558 /* QuantityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityItem.swift; sourceTree = "<group>"; };
 		6D03FA2C2246A60E00191558 /* EmptyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyItem.swift; sourceTree = "<group>"; };
 		6D03FA2F2246A61900191558 /* ActionTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTabView.swift; sourceTree = "<group>"; };
 		6D03FA312246A62400191558 /* QuantitySectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantitySectionController.swift; sourceTree = "<group>"; };
 		6D03FA322246A62500191558 /* BowlHeaderSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BowlHeaderSectionController.swift; sourceTree = "<group>"; };
 		6D03FA352246A65B00191558 /* BowlHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BowlHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
-		6D03FA362246A65B00191558 /* QuantitySelectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantitySelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		6D03FA392246D17500191558 /* UIColor+Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Shared.swift"; sourceTree = "<group>"; };
 		6D10DE9A221CAD6800C46F75 /* acai-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "acai-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 			children = (
 				20ACCC202244EA0C00AB782A /* MenuListSectionController.swift */,
 				6D03FA322246A62500191558 /* BowlHeaderSectionController.swift */,
-				6D03FA312246A62400191558 /* QuantitySectionController.swift */,
 				03D2BB97223FFB9800AC6F38 /* HeaderListSectionController.swift */,
 				03D2BB88223BDA2000AC6F38 /* OrderCustomizationListSectionController.swift */,
 				03D2BBA5224318D500AC6F38 /* BowlHeaderSectionController.swift */,
@@ -134,8 +130,6 @@
 				03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */,
 				03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */,
 				03D2BB92223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift */,
-				03D2BBA922435D6600AC6F38 /* BowlHeaderCollectionViewCell.swift */,
-				03D2BBAD2244A2BD00AC6F38 /* QuantitySelectionCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
