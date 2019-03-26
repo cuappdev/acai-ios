@@ -54,7 +54,7 @@ class OrderCustomizationOption: ListDiffable, NSCopying {
 class OrderCustomizationOptions: ListDiffable {
     
     var options: [OrderCustomizationOption]!
-    let type: OrderCustomizationOptionType
+    let type: OrderCustomizationOptionType!
     
     init(options: [OrderCustomizationOption], type: OrderCustomizationOptionType) {
         self.options = options

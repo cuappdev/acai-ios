@@ -29,7 +29,7 @@ class BowlOrderDetailViewController: UIViewController {
     
     // MARK: Data
     var baseOptions: [OrderCustomizationOption]!
-    var bowlItem: MenuItem!
+    var menuItem: MenuItem!
     var toppingOptions: [OrderCustomizationOption]!
     
     // MARK: Constraint Constants
@@ -55,10 +55,10 @@ class BowlOrderDetailViewController: UIViewController {
         ]
 
         // TODO: change to endpoint request data
-        bowlItem = Acai.testBowl
-        title = bowlItem.title
-        toppingOptions = bowlItem.options.filter({ $0.type == .topping })
-        baseOptions = bowlItem.options.filter({ $0.type == .base })
+        menuItem = Acai.testBowl
+        title = menuItem.title
+        toppingOptions = menuItem.options.filter({ $0.type == .topping })
+        baseOptions = menuItem.options.filter({ $0.type == .base })
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -68,7 +68,7 @@ class BowlOrderDetailViewController: UIViewController {
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
 
-        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: bowlItem.price)
+        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: menuItem.price)
         view.addSubview(addToCartActionTabView)
         
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
@@ -139,13 +139,13 @@ extension BowlOrderDetailViewController: ListAdapterDataSource {
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return HeaderImageSectionController(height: object.height, menuItem: bowlItem)
+            return HeaderImageSectionController(height: object.height, menuItem: menuItem)
         } else if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
         } else if let object = object as? QuantityItem {
-            return QuantitySectionController(quantity: object.quantity, menuItem: bowlItem)
+            return QuantitySectionController(quantity: object.quantity, menuItem: menuItem)
         }
         return ListSectionController()
     }

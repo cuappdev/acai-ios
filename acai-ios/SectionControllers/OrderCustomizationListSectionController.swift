@@ -61,21 +61,21 @@ class OrderCustomizationListSectionController: ListSectionController {
         }
         
         let option = customizationOptions.options[index - 1]
-        switch option.type {
-        case .base?:
-            cellType = RadioSelectionCollectionViewCell.self
-            if option.isSelected {
-                selectedBaseIndex = index - 1
+        if let type = option.type {
+            switch type {
+            case .base:
+                cellType = RadioSelectionCollectionViewCell.self
+                if option.isSelected {
+                    selectedBaseIndex = index - 1
+                }
+            case .size:
+                cellType = RadioSelectionCollectionViewCell.self
+                if option.isSelected {
+                    selectedBaseIndex = index - 1
+                }
+            case .topping:
+                cellType = MultiSelectionCollectionViewCell.self
             }
-        case .size?:
-            cellType = RadioSelectionCollectionViewCell.self
-            if option.isSelected {
-                selectedBaseIndex = index - 1
-            }
-        case .topping?:
-            cellType = MultiSelectionCollectionViewCell.self
-        case .none:
-            cellType = UICollectionViewCell.self
         }
         
         let cell = collectionContext!.dequeueReusableCell(of: cellType, for: self, at: index)

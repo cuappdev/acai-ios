@@ -88,20 +88,18 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func incrementQuantity() {
-        if let menuItem = menuItem {
-            self.quantity = quantity + 1
-            updateQuantityLabelText(menuItem: menuItem)
-        }
+        self.quantity = quantity + 1
+        updateQuantityLabelText()
     }
     
     @objc func decrementQuantity() {
-        if let menuItem = menuItem, quantity > 1 {
+        if quantity > 1 {
             self.quantity = quantity - 1
-            updateQuantityLabelText(menuItem: menuItem)
+            updateQuantityLabelText()
         }
     }
     
-    func updateQuantityLabelText(menuItem: MenuItem) {
+    func updateQuantityLabelText() {
         switch menuItem.type {
         case .bowl:
             quantityLabel.text = "\(quantity) Bowl"
@@ -120,7 +118,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     
     func configure(menuItem: MenuItem) {
         self.menuItem = menuItem
-        updateQuantityLabelText(menuItem: menuItem)
+        updateQuantityLabelText()
     }
     
     required init?(coder aDecoder: NSCoder) {
