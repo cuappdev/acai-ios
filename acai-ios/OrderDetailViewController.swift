@@ -32,6 +32,7 @@ class OrderDetailViewController: UIViewController {
     // MARK: Data
     var menuItem: MenuItem!
     private var optionSectionsMap: [OrderOption.OptionType: [OrderOption]] = [:]
+    var quantity: NSNumber = 1
     
     // MARK: Constraint Constants
     private enum FileConstants {
@@ -139,7 +140,7 @@ class OrderDetailViewController: UIViewController {
                 result + (option.isSelected ? option.price : 0.0)
             }
         }
-        addToCartActionTabView.priceLabel.text = totalPrice.asPriceString()
+        addToCartActionTabView.priceLabel.text = (totalPrice * quantity.doubleValue).asPriceString()
     }
 
 }
@@ -157,7 +158,7 @@ extension OrderDetailViewController: ListAdapterDataSource {
             sections.append(OrderOptions(DiffableArray(options), type: section))
         }
 
-        sections.append(QuantityItem(quantity: 1))
+        sections.append(quantity)
 
         return sections
     }
@@ -169,8 +170,10 @@ extension OrderDetailViewController: ListAdapterDataSource {
             let orderCustomizationListSectionController = OrderOptionListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
-        } else if let object = object as? QuantityItem {
-            return QuantitySectionController(quantity: object.quantity, menuItem: menuItem)
+        } else if let object = object as? NSNumber {
+            let quantitiyController = QuantitySectionController(quantity: object, itemType: menuItem.type)
+            quantitiyController.delegate = self
+            return quantitiyController
         }
         return ListSectionController()
     }
@@ -186,8 +189,7 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
     func deselectOption(at index: Int, for type: OrderOption.OptionType) {
 
         var options = optionSectionsMap[type]!
-        options[index] = options[index].copy() as! OrderOption
-        options[index].isSelected = false
+        options[index] = options[index].copy(isSelected: false)
         optionSectionsMap[type] = options
 
         updateAddToCartPrice()
@@ -197,13 +199,31 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
     func selectOption(at index: Int, for type: OrderOption.OptionType) {
 
         var options = optionSectionsMap[type]!
-        options[index] = options[index].copy() as! OrderOption
-        options[index].isSelected.toggle()
+        let option = options[index]
+        options[index] = option.copy(isSelected: !option.isSelected)
         optionSectionsMap[type] = options
 
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
 
+    }
+    
+}
+
+extension OrderDetailViewController: QuantitySelectionCollectionViewCellDelegate {
+
+    func valueIncremented() {
+        quantity = NSNumber(value: quantity.intValue + 1)
+        updateAddToCartPrice()
+        listAdapter.performUpdates(animated: false, completion: nil)
+    }
+
+    func valueDecremented() {
+        if quantity.intValue > 1 {
+            quantity = NSNumber(value: quantity.intValue - 1)
+            updateAddToCartPrice()
+            listAdapter.performUpdates(animated: false, completion: nil)
+        }
     }
     
 }

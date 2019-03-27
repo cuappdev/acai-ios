@@ -13,16 +13,27 @@ class MenuItem: ListDiffable {
 
     enum ItemType: String {
         case bowl = "Bowl"
-        case drink = "Drink"
+        case drink = "Cup"
         case smoothie = "Smoothie"
+
+        func plural() -> String {
+            switch self {
+            case .bowl:
+                return "Bowls"
+            case .drink:
+                return "Cups"
+            case .smoothie:
+                return "Smoothies"
+            }
+        }
     }
     
-    var image: UIImage
+    let image: UIImage
     // The default options should never change!
-    var defaulOptions: [OrderOption.OptionType: [OrderOption]]
-    var price: Double
-    var title: String
-    var type: ItemType
+    let defaulOptions: [OrderOption.OptionType: [OrderOption]]
+    let price: Double
+    let title: String
+    let type: ItemType
     
     init(title: String, price: Double, defaulOptions: [OrderOption.OptionType: [OrderOption]], image: UIImage, type: ItemType) {
         self.image = image

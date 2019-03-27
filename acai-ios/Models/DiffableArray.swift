@@ -10,7 +10,7 @@ import Foundation
 import IGListKit
 
 class DiffableArray: ListDiffable {
-    private var items: [ListDiffable]
+    private let items: [ListDiffable]
 
     var count: Int {
         return items.count
@@ -25,12 +25,7 @@ class DiffableArray: ListDiffable {
     }
 
     subscript(index: Int) -> ListDiffable {
-        get {
-            return items[index]
-        }
-        set(newElm) {
-            items.insert(newElm, at: index)
-        }
+        return items[index]
     }
 
     func diffIdentifier() -> NSObjectProtocol {

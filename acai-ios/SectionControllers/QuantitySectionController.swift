@@ -12,32 +12,41 @@ import IGListKit
 class QuantitySectionController: ListSectionController {
     
     // MARK: Data
-    var menuItem: MenuItem!
-    var quantity: Int!
+    var itemType: MenuItem.ItemType!
+    var quantity: NSNumber!
+
+    // MARK: Delegate
+    weak var delegate: QuantitySelectionCollectionViewCellDelegate?
     
-    // MARK: Constraint Constants
-    let quantityCellHeightConstraint: CGFloat = 103
-    
-    init(quantity: Int, menuItem: MenuItem) {
-        self.menuItem = menuItem
+    init(quantity: NSNumber, itemType: MenuItem.ItemType) {
+        self.itemType = itemType
         self.quantity = quantity
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        guard let context = collectionContext else {
-            return .zero
-        }
+
+        guard let context = collectionContext else { return .zero }
+
+        let quantityCellHeightConstraint: CGFloat = 103
+
         return CGSize(width: context.containerSize.width, height: quantityCellHeightConstraint)
+
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeueReusableCell(of: QuantitySelectionCollectionViewCell.self, for: self, at: index) as! QuantitySelectionCollectionViewCell
-        cell.configure(menuItem: menuItem)
+
+        let cell = collectionContext!
+            .dequeueReusableCell(of: QuantitySelectionCollectionViewCell.self, for: self, at: index)
+            as! QuantitySelectionCollectionViewCell
+
+        cell.configure(for: quantity, and: itemType)
+        cell.delegate = delegate
+
         return cell
     }
     
     override func didUpdate(to object: Any) {
-        if let object = object as? Int {
+        if let object = object as? NSNumber {
             quantity = object
         }
     }

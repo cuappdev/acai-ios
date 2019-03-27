@@ -11,7 +11,7 @@ import IGListKit
 
 class QuantityItem: ListDiffable {
     
-    var quantity: Int
+    let quantity: Int
     
     init(quantity: Int) {
         self.quantity = quantity

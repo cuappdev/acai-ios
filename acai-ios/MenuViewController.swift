@@ -75,7 +75,6 @@ class MenuViewController: UIViewController {
 
     private func loadMenu() {
         // TODO: get menu from endpoint
-
         menu = [
             .bowl: [
                 Acai.testBowl1,
