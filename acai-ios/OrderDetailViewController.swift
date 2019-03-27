@@ -11,8 +11,8 @@ import IGListKit
 import SnapKit
 
 protocol DidSelectOptionDelegate: class {
-    func deselectOption(at index: Int)
-    func selectOption(at index: Int, type: OrderCustomizationOptionType)
+    func deselectOption(at index: Int, for type: OrderOption.OptionType)
+    func selectOption(at index: Int, for type: OrderOption.OptionType)
 }
 
 /// Presents detail and customization options for a menu item.
@@ -31,7 +31,7 @@ class OrderDetailViewController: UIViewController {
     
     // MARK: Data
     var menuItem: MenuItem!
-    private var optionsArrayObject: OrderCustomizationOptionsArray!
+    private var optionSectionsMap: [OrderOption.OptionType: [OrderOption]] = [:]
     
     // MARK: Constraint Constants
     private enum FileConstants {
@@ -46,13 +46,13 @@ class OrderDetailViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        // Perform once here, usually done in viewDidAppear
+        // Perform once here, then done in viewDidAppear (for popping back to the view)
         formatNavigationBar()
 
-        // TODO: remove later
-        menuItem = Acai.testBowl
         title = menuItem.title
-        optionsArrayObject = menuItem.optionsArrayObject
+
+        // Use the defaults to set the initial selections
+        optionSectionsMap = menuItem.defaulOptions
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -126,16 +126,20 @@ class OrderDetailViewController: UIViewController {
     }
     
     @objc func addToCart() {
+        #if DEBUG
         print("addToCart pushed")
+        #endif
+
+        navigationController?.popViewController(animated: true)
     }
 
-    func updateAddToCartPrice() {
-        let totalPrice = optionsArrayObject.optionsArray.reduce(0) { (result, optionsObject) -> Double in
-            return result + optionsObject.options.reduce(0, { (result, option) -> Double in
-                return result + (option.isSelected ? option.price : 0)
-            })
+    private func updateAddToCartPrice() {
+        let totalPrice = optionSectionsMap.keys.reduce(0) { (result, optionType) -> Double in
+            return optionSectionsMap[optionType]!.reduce(result) { (result, option) -> Double in
+                result + (option.isSelected ? option.price : 0.0)
+            }
         }
-        addToCartActionTabView.priceLabel.text = "$\(totalPrice)"
+        addToCartActionTabView.priceLabel.text = totalPrice.asPriceString()
     }
 
 }
@@ -147,9 +151,10 @@ extension OrderDetailViewController: ListAdapterDataSource {
         var sections: [ListDiffable] = []
 
         sections.append(EmptyItem(height: FileConstants.emptyItemHeight))
-
-        for optionsObject in optionsArrayObject.optionsArray {
-            sections.append(optionsObject)
+        
+        for section in menuItem.defaulOptions.keys.sorted(by: { $0 < $1 }) {
+            let options = optionSectionsMap[section] ?? []
+            sections.append(OrderOptions(DiffableArray(options), type: section))
         }
 
         sections.append(QuantityItem(quantity: 1))
@@ -160,8 +165,8 @@ extension OrderDetailViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return HeaderImageSectionController(height: object.height, menuItem: menuItem)
-        } else if let object = object as? OrderCustomizationOptions {
-            let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
+        } else if let object = object as? OrderOptions {
+            let orderCustomizationListSectionController = OrderOptionListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
         } else if let object = object as? QuantityItem {
@@ -178,26 +183,27 @@ extension OrderDetailViewController: ListAdapterDataSource {
 
 extension OrderDetailViewController: DidSelectOptionDelegate {
     
-    func deselectOption(at index: Int) {
-        optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].isSelected = false
-//        baseOptions[index].isSelected = false
-    }
-    
-    func selectOption(at index: Int, type: OrderCustomizationOptionType) {
-        switch type {
-        case .base, .size:
-            optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index] = optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].copy() as! OrderCustomizationOption
-             optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].isSelected.toggle()
-//            baseOptions[index] = baseOptions[index].copy() as! OrderCustomizationOption
-//            baseOptions[index].isSelected.toggle()
-        case .topping:
-            optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index] = optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index].copy() as! OrderCustomizationOption
-            optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index].isSelected.toggle()
-//            toppingOptions[index] = toppingOptions[index].copy() as! OrderCustomizationOption
-//            toppingOptions[index].isSelected.toggle()
-        }
+    func deselectOption(at index: Int, for type: OrderOption.OptionType) {
+
+        var options = optionSectionsMap[type]!
+        options[index] = options[index].copy() as! OrderOption
+        options[index].isSelected = false
+        optionSectionsMap[type] = options
+
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
+    }
+    
+    func selectOption(at index: Int, for type: OrderOption.OptionType) {
+
+        var options = optionSectionsMap[type]!
+        options[index] = options[index].copy() as! OrderOption
+        options[index].isSelected.toggle()
+        optionSectionsMap[type] = options
+
+        updateAddToCartPrice()
+        listAdapter.performUpdates(animated: false, completion: nil)
+
     }
     
 }

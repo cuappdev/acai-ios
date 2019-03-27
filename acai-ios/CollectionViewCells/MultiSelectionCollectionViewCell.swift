@@ -13,7 +13,6 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
     var checkMarkImageView: UIImageView!
-    var customizationOption: OrderCustomizationOption!
     var line: UIView!
     var selectionRect: UIView!
     var titleLabel: UILabel!
@@ -79,12 +78,9 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setOrderCustomizationOptionTitleLabelText() {
-        titleLabel.text = customizationOption.title
-    }
-    
-    func updateSelectionRect() {
-        if customizationOption.isSelected {
+    func configure(for option: OrderOption) {
+        titleLabel.text = option.title
+        if option.isSelected {
             selectionRect.backgroundColor = .mango
             selectionRect.layer.borderColor = UIColor.mango.cgColor
             titleLabel.textColor = .mango
@@ -93,12 +89,6 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
             selectionRect.backgroundColor = .white
             titleLabel.textColor = .acaiBlack
         }
-    }
-    
-    func configure(for option: OrderCustomizationOption) {
-        customizationOption = option
-        updateSelectionRect()
-        setOrderCustomizationOptionTitleLabelText()
     }
     
     required init?(coder aDecoder: NSCoder) {

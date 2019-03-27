@@ -17,7 +17,7 @@ protocol MenuSelectionDelegate: class {
 class MenuViewController: UIViewController {
 
     // MARK: Models
-    var menu: [String: [MenuItem]] = [:]
+    var menu: [MenuItem.ItemType: [MenuItem]] = [:]
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -48,8 +48,8 @@ class MenuViewController: UIViewController {
         setUpConstraints()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         formatNavigationBar()
         loadMenu()
@@ -62,6 +62,7 @@ class MenuViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
             .foregroundColor: UIColor.black
@@ -76,27 +77,15 @@ class MenuViewController: UIViewController {
         // TODO: get menu from endpoint
 
         menu = [
-            "Bowls": [
-                MenuItem(
-                    title: "Crunchy",
-                    price: 10.00,
-                    optionsArrayObject: OrderCustomizationOptionsArray(optionsArray: []),
-                    image: UIImage(named: "acaiBowl")!,
-                    type: .bowl
-                ),
-                MenuItem(
-                    title: "Miami",
-                    price: 10.00,
-                    optionsArrayObject: OrderCustomizationOptionsArray(optionsArray: []),
-                    image: UIImage(named: "acaiBowl")!,
-                    type: .bowl
-                ),
+            .bowl: [
+                Acai.testBowl1,
+                Acai.testBowl2
             ],
 
-            "Smoothies": [
+            .smoothie: [
             ],
 
-            "Coffee": [
+            .drink: [
             ]
         ]
 
@@ -115,9 +104,10 @@ class MenuViewController: UIViewController {
 
 // MARK: List adapter data source
 extension MenuViewController: ListAdapterDataSource {
+
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
 
-        let currentList = menu["Bowls"] ?? []
+        let currentList = menu[.bowl] ?? []
 
         return currentList
     }
@@ -131,6 +121,7 @@ extension MenuViewController: ListAdapterDataSource {
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
+
 }
 
 extension MenuViewController: MenuSelectionDelegate {

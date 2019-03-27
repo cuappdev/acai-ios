@@ -37,7 +37,7 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(for type: OrderCustomizationOptionType) {
+    func configure(for type: OrderOption.OptionType) {
         switch type {
         case .base:
             titleLabel.text = "Choose your base"
