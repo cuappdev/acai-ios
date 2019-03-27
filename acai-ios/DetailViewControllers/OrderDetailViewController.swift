@@ -15,26 +15,30 @@ protocol DidSelectOptionDelegate: class {
     func selectOption(at index: Int, type: OrderCustomizationOptionType)
 }
 
+/// Presents detail and customization options for a menu item.
+/// Requires menuItem variable to be set
 class OrderDetailViewController: UIViewController {
     
     // MARK: View vars
-    var addToCartActionTabView: ActionTabView!
-    var backgroundGradient: CAGradientLayer!
-    var bottomFillerRect: UIView!
-    var collectionView: UICollectionView!
-    var listAdapter: ListAdapter!
+    private var addToCartActionTabView: ActionTabView!
+    private var backgroundGradient: CAGradientLayer!
+    private var bottomFillerRect: UIView!
+    private var collectionView: UICollectionView!
+    private var listAdapter: ListAdapter!
 
     // MARK: Gesture recognizers
-    var addToCartTapGestureRecognizer: UITapGestureRecognizer!
+    private var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
     var menuItem: MenuItem!
-    var optionsArrayObject: OrderCustomizationOptionsArray!
+    private var optionsArrayObject: OrderCustomizationOptionsArray!
     
     // MARK: Constraint Constants
-    let addToCartActionTabViewHeight = 55
-    let backgroundGradientScaleHeight: CGFloat = 0.6
-    let emptyItemHeight: CGFloat = 156
+    private enum FileConstants {
+        static let addToCartActionTabViewHeight = 55
+        static let backgroundGradientScaleHeight: CGFloat = 0.6
+        static let emptyItemHeight: CGFloat = 156
+    }
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
@@ -42,18 +46,10 @@ class OrderDetailViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .compact)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
+        // Perform once here, usually done in viewDidAppear
+        formatNavigationBar()
 
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextBold.withSize(24),
-            .foregroundColor: UIColor.white
-        ]
-
-        // TODO: change to endpoint request data
+        // TODO: remove later
         menuItem = Acai.testBowl
         title = menuItem.title
         optionsArrayObject = menuItem.optionsArrayObject
@@ -63,7 +59,7 @@ class OrderDetailViewController: UIViewController {
         backgroundGradient.locations = [0, 1]
         backgroundGradient.startPoint = CGPoint(x: 0, y: 0)
         backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
+        backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: FileConstants.backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
 
         addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: menuItem.price)
@@ -90,12 +86,31 @@ class OrderDetailViewController: UIViewController {
 
         setupConstraints()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        formatNavigationBar()
+    }
+
+    private func formatNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .compact)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.avenirNextBold.withSize(24),
+            .foregroundColor: UIColor.white
+        ]
+    }
     
     private func setupConstraints() {
         addToCartActionTabView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-addToCartActionTabViewHeight)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-FileConstants.addToCartActionTabViewHeight)
         }
         
         bottomFillerRect.snp.makeConstraints { make in
@@ -126,13 +141,19 @@ class OrderDetailViewController: UIViewController {
 }
 
 extension OrderDetailViewController: ListAdapterDataSource {
+
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+
         var sections: [ListDiffable] = []
-        sections.append(EmptyItem(height: emptyItemHeight))
+
+        sections.append(EmptyItem(height: FileConstants.emptyItemHeight))
+
         for optionsObject in optionsArrayObject.optionsArray {
             sections.append(optionsObject)
         }
+
         sections.append(QuantityItem(quantity: 1))
+
         return sections
     }
     

@@ -30,13 +30,8 @@ class MenuViewController: UIViewController {
         view.backgroundColor = .white
 
         title = "Good Morning, Jamie ☀️"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(24)
-        ]
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(16)
-        ]
+
+        formatNavigationBar()
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -56,7 +51,25 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        formatNavigationBar()
         loadMenu()
+    }
+
+    private func formatNavigationBar() {
+        // TODO: coming back from detail view is still weird
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+            .font: UIFont.avenirNextMedium.withSize(24),
+            .foregroundColor: UIColor.black
+        ]
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.avenirNextMedium.withSize(16),
+            .foregroundColor: UIColor.black
+        ]
     }
 
     private func loadMenu() {
@@ -64,8 +77,20 @@ class MenuViewController: UIViewController {
 
         menu = [
             "Bowls": [
-                MenuItem(title: "Crunchy", price: 10.00, orderCustomizationOptions: [], image: UIImage(named: "acaiBowl")!),
-                MenuItem(title: "Miami", price: 10.00, orderCustomizationOptions: [], image: UIImage(named: "acaiBowl")!)
+                MenuItem(
+                    title: "Crunchy",
+                    price: 10.00,
+                    optionsArrayObject: OrderCustomizationOptionsArray(optionsArray: []),
+                    image: UIImage(named: "acaiBowl")!,
+                    type: .bowl
+                ),
+                MenuItem(
+                    title: "Miami",
+                    price: 10.00,
+                    optionsArrayObject: OrderCustomizationOptionsArray(optionsArray: []),
+                    image: UIImage(named: "acaiBowl")!,
+                    type: .bowl
+                ),
             ],
 
             "Smoothies": [
@@ -111,7 +136,13 @@ extension MenuViewController: ListAdapterDataSource {
 extension MenuViewController: MenuSelectionDelegate {
 
     func didSelect(_ item: MenuItem) {
+        #if DEBUG
         print("Selected \(item.title)")
+        #endif
+        let order = OrderDetailViewController()
+        order.menuItem = item
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(order, animated: true)
     }
     
 }

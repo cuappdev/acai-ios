@@ -67,7 +67,7 @@ class OrderCustomizationOptions: ListDiffable {
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? OrderCustomizationOptions else { return false }
-        return self.type == object.type && self.options.elementsEqual(object.options, by: { (optionElem, elem) -> Bool in
+        return type == object.type && options.elementsEqual(object.options, by: { (optionElem, elem) -> Bool in
             return optionElem.isEqual(toDiffableObject: elem)
         })
     }
