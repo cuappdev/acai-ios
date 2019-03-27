@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  OrderCustomizationOption.swift
 //  acai-ios
 //
 //  Created by Artesia Ko on 3/20/19.
@@ -71,4 +71,25 @@ class OrderCustomizationOptions: ListDiffable {
             return optionElem.isEqual(toDiffableObject: elem)
         })
     }
+}
+
+class OrderCustomizationOptionsArray: ListDiffable {
+    
+    var optionsArray: [OrderCustomizationOptions]!
+    
+    init(optionsArray: [OrderCustomizationOptions]) {
+        self.optionsArray = optionsArray
+    }
+    
+    func diffIdentifier() -> NSObjectProtocol {
+        return optionsArray as NSObjectProtocol
+    }
+    
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard let object = object as? OrderCustomizationOptionsArray else { return false }
+        return self.optionsArray.elementsEqual(object.optionsArray, by: { (optionElem, elem) -> Bool in
+            return optionElem.isEqual(toDiffableObject: elem)
+        })
+    }
+    
 }

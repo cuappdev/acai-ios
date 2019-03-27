@@ -16,27 +16,41 @@ enum MenuItemType {
 class MenuItem: ListDiffable {
     
     var image: UIImage
-    var options: [OrderCustomizationOption]
+    var optionsArrayObject: OrderCustomizationOptionsArray
     var price: Double
     var title: String
     var type: MenuItemType
     
-    init(title: String, price: Double, options: [OrderCustomizationOption], image: UIImage, type: MenuItemType) {
+    init(title: String, price: Double, optionsArrayObject: OrderCustomizationOptionsArray, image: UIImage, type: MenuItemType) {
         self.image = image
-        self.options = options
+        self.optionsArrayObject = optionsArrayObject
         self.price = price
         self.title = title
         self.type = type
     }
     
     func getSelectedToppingsPrice() -> Double {
-        return options.filter({ $0.type == .topping }).reduce(0) { (result, option) -> Double in
-            return result + (option.isSelected && option.type == .topping ? option.price : 0)
-        }
+        return optionsArrayObject.optionsArray.filter({ $0.type == .topping }).reduce(0, { (result, optionsObject) -> Double in
+            return result + optionsObject.options.reduce(0, { (result, option) -> Double in
+                return result + (option.isSelected && option.type == .topping ? option.price : 0)
+            })
+        })
     }
     
-    func getSelectedToppings() -> [OrderCustomizationOption] {
-        return options.filter({ $0.type == .topping }).filter({ $0.isSelected })
+    func getSelectedOptions() -> [OrderCustomizationOption] {
+        var selectedOptions: [OrderCustomizationOption] = []
+        if let optionsArray = optionsArrayObject.optionsArray {
+            optionsArray.reduce(nil, { (result, optionsObject) -> Void in
+                if let options = optionsObject.options {
+                    options.reduce(nil, { (result, option) -> Void in
+                        if option.isSelected {
+                            selectedOptions.append(option)
+                        }
+                    })
+                }
+            })
+        }
+        return selectedOptions
     }
     
     func diffIdentifier() -> NSObjectProtocol {
@@ -47,8 +61,6 @@ class MenuItem: ListDiffable {
         guard let object = object as? MenuItem else {
             return false
         }
-        return self.title == object.title && self.price == object.price && self.image == object.image && self.type == object.type && self.options.elementsEqual(object.options, by: { (optionElem, elem) -> Bool in
-            return optionElem.isEqual(toDiffableObject: elem)
-        })
+        return self.title == object.title && self.price == object.price && self.image == object.image && self.type == object.type && self.optionsArrayObject.isEqual(toDiffableObject: object.optionsArrayObject)
     }
 }

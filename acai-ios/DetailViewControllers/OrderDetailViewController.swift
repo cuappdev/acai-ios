@@ -1,31 +1,35 @@
 //
-//  SmoothieOrderViewController.swift
+//  OrderDetailViewController.swift
 //  acai-ios
 //
-//  Created by Artesia Ko on 3/24/19.
+//  Created by Artesia Ko on 3/17/19.
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
+import UIKit
 import IGListKit
 import SnapKit
-import UIKit
 
-class SmoothieOrderViewController: UIViewController {
+protocol DidSelectOptionDelegate: class {
+    func deselectOption(at index: Int)
+    func selectOption(at index: Int, type: OrderCustomizationOptionType)
+}
 
+class OrderDetailViewController: UIViewController {
+    
     // MARK: View vars
     var addToCartActionTabView: ActionTabView!
     var backgroundGradient: CAGradientLayer!
     var bottomFillerRect: UIView!
     var collectionView: UICollectionView!
     var listAdapter: ListAdapter!
-    
+
     // MARK: Gesture recognizers
     var addToCartTapGestureRecognizer: UITapGestureRecognizer!
     
     // MARK: Data
-    var ingredientOptions: [OrderCustomizationOption]!
-    var sizeOptions: [OrderCustomizationOption]!
-    var smoothieItem: MenuItem!
+    var menuItem: MenuItem!
+    var optionsArrayObject: OrderCustomizationOptionsArray!
     
     // MARK: Constraint Constants
     let addToCartActionTabViewHeight = 55
@@ -35,25 +39,24 @@ class SmoothieOrderViewController: UIViewController {
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .white
-        
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .compact)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        
+
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont.avenirNextBold.withSize(24),
             .foregroundColor: UIColor.white
         ]
-        
+
         // TODO: change to endpoint request data
-        smoothieItem = Acai.testSmoothie
-        title = smoothieItem.title
-        sizeOptions = smoothieItem.options.filter({$0.type == .size})
-        ingredientOptions = smoothieItem.options.filter({$0.type == .topping})
+        menuItem = Acai.testBowl
+        title = menuItem.title
+        optionsArrayObject = menuItem.optionsArrayObject
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -62,8 +65,8 @@ class SmoothieOrderViewController: UIViewController {
         backgroundGradient.endPoint = CGPoint(x: 1, y: 0.5)
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
-        
-        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: smoothieItem.price)
+
+        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: menuItem.price)
         view.addSubview(addToCartActionTabView)
         
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
@@ -81,14 +84,11 @@ class SmoothieOrderViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
         
-        setupViews()
-        setupConstraints()
-    }
-    
-    private func setupViews() {
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
+
+        setupConstraints()
     }
     
     private func setupConstraints() {
@@ -113,37 +113,38 @@ class SmoothieOrderViewController: UIViewController {
     @objc func addToCart() {
         print("addToCart pushed")
     }
-    
+
     func updateAddToCartPrice() {
-        let totalPrice = ingredientOptions.reduce(0) { (result, option) -> Double in
-            return result + (option.isSelected ? option.price : 0)
-            } + sizeOptions.reduce(0) { (result, option) -> Double in
+        let totalPrice = optionsArrayObject.optionsArray.reduce(0) { (result, optionsObject) -> Double in
+            return result + optionsObject.options.reduce(0, { (result, option) -> Double in
                 return result + (option.isSelected ? option.price : 0)
+            })
         }
         addToCartActionTabView.priceLabel.text = "$\(totalPrice)"
     }
-    
+
 }
 
-extension SmoothieOrderViewController: ListAdapterDataSource {
+extension OrderDetailViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [
-            EmptyItem(height: emptyItemHeight),
-            OrderCustomizationOptions(options: sizeOptions, type: .size),
-            OrderCustomizationOptions(options: ingredientOptions, type: .topping),
-            QuantityItem(quantity: 1)
-        ]
+        var sections: [ListDiffable] = []
+        sections.append(EmptyItem(height: emptyItemHeight))
+        for optionsObject in optionsArrayObject.optionsArray {
+            sections.append(optionsObject)
+        }
+        sections.append(QuantityItem(quantity: 1))
+        return sections
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
-            return HeaderImageSectionController(height: object.height, menuItem: smoothieItem)
+            return HeaderImageSectionController(height: object.height, menuItem: menuItem)
         } else if let object = object as? OrderCustomizationOptions {
             let orderCustomizationListSectionController = OrderCustomizationListSectionController(options: object)
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
         } else if let object = object as? QuantityItem {
-            return QuantitySectionController(quantity: object.quantity, menuItem: smoothieItem)
+            return QuantitySectionController(quantity: object.quantity, menuItem: menuItem)
         }
         return ListSectionController()
     }
@@ -154,25 +155,28 @@ extension SmoothieOrderViewController: ListAdapterDataSource {
     
 }
 
-extension SmoothieOrderViewController: DidSelectOptionDelegate {
+extension OrderDetailViewController: DidSelectOptionDelegate {
     
     func deselectOption(at index: Int) {
-        sizeOptions[index].isSelected = false
+        optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].isSelected = false
+//        baseOptions[index].isSelected = false
     }
     
     func selectOption(at index: Int, type: OrderCustomizationOptionType) {
         switch type {
-        case .size:
-            sizeOptions[index] = sizeOptions[index].copy() as! OrderCustomizationOption
-            sizeOptions[index].isSelected.toggle()
+        case .base, .size:
+            optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index] = optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].copy() as! OrderCustomizationOption
+             optionsArrayObject.optionsArray.filter({ $0.type == .base || $0.type == .size })[0].options[index].isSelected.toggle()
+//            baseOptions[index] = baseOptions[index].copy() as! OrderCustomizationOption
+//            baseOptions[index].isSelected.toggle()
         case .topping:
-            ingredientOptions[index] = ingredientOptions[index].copy() as! OrderCustomizationOption
-            ingredientOptions[index].isSelected.toggle()
-        case .base:
-            return
+            optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index] = optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index].copy() as! OrderCustomizationOption
+            optionsArrayObject.optionsArray.filter({ $0.type == .topping })[0].options[index].isSelected.toggle()
+//            toppingOptions[index] = toppingOptions[index].copy() as! OrderCustomizationOption
+//            toppingOptions[index].isSelected.toggle()
         }
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
     }
-
+    
 }
