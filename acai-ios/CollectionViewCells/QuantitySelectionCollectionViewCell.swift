@@ -9,6 +9,11 @@
 import UIKit
 import SnapKit
 
+protocol QuantitySelectionCollectionViewCellDelegate: class {
+    func valueIncremented()
+    func valueDecremented()
+}
+
 class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
@@ -16,17 +21,14 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     var border: UIView!
     var quantityLabel: UILabel!
     var subtractButton: UIButton!
-    
-    // MARK: Data
-    var object: Any!
-    var quantity: Int = 1
-    
+
+    // MARK: Delegate
+    weak var delegate: QuantitySelectionCollectionViewCellDelegate?
+
     // MARK: Constraint constants
-    let borderHeight = 50
-    let borderWidth = 217
-    let buttonHeightWidth = 14
-    let buttonOffsetFromLabel = 17
-    let quantityLabelWidth = 121
+    private enum FileConstants {
+        static let borderHeight = 50
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +38,7 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
         border.backgroundColor = .clear
         border.layer.borderColor = UIColor.lineGray.cgColor
         border.layer.borderWidth = 1
-        border.layer.cornerRadius = CGFloat(borderHeight/2)
+        border.layer.cornerRadius = CGFloat(FileConstants.borderHeight / 2)
         contentView.addSubview(border)
         
         quantityLabel = UILabel()
@@ -63,9 +65,14 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
+        let borderWidth = 217
+        let buttonHeightWidth = 14
+        let buttonOffsetFromLabel = 17
+        let quantityLabelWidth = 121
+
         border.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalTo(borderHeight)
+            make.height.equalTo(FileConstants.borderHeight)
             make.width.equalTo(borderWidth)
         }
         
@@ -88,36 +95,25 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func incrementQuantity() {
-        if let object = object {
-            self.quantity = quantity + 1
-            updateQuantityLabelText(object: object)
-        }
+        delegate?.valueIncremented()
     }
     
     @objc func decrementQuantity() {
-        if let object = object, quantity > 1 {
-            self.quantity = quantity - 1
-            updateQuantityLabelText(object: object)
-        }
+        delegate?.valueDecremented()
     }
-    
-    func updateQuantityLabelText(object: Any) {
-        if object is BowlItem {
-            quantityLabel.text = "\(quantity) Bowl"
+
+    func configure(for quantity: NSNumber, and itemType: MenuItem.ItemType) {
+        if quantity.intValue > 1 {
+            // Plural
+            quantityLabel.text = "\(quantity) \(itemType.plural())"
+        } else {
+            quantityLabel.text = "\(quantity) \(itemType.rawValue)"
         }
-        if let text = quantityLabel.text, quantity != 1 {
-            quantityLabel.text = "\(text)s"
-        }
-        if quantity == 1 {
+        if quantity.intValue == 1 {
             subtractButton.tintColor = .lineGray
         } else {
             subtractButton.tintColor = .acaiBlack
         }
-    }
-    
-    func configure(object: Any) {
-        self.object = object
-        updateQuantityLabelText(object: object)
     }
     
     required init?(coder aDecoder: NSCoder) {

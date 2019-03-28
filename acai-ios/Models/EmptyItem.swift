@@ -11,7 +11,7 @@ import IGListKit
 
 class EmptyItem: ListDiffable {
     
-    var height: CGFloat
+    let height: CGFloat
     
     init(height: CGFloat) {
         self.height = height

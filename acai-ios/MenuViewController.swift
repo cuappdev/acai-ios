@@ -17,7 +17,7 @@ protocol MenuSelectionDelegate: class {
 class MenuViewController: UIViewController {
 
     // MARK: Models
-    var menu: [String: [MenuItem]] = [:]
+    var menu: [MenuItem.ItemType: [MenuItem]] = [:]
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -30,13 +30,8 @@ class MenuViewController: UIViewController {
         view.backgroundColor = .white
 
         title = "Good Morning, Jamie ☀️"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(24)
-        ]
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(16)
-        ]
+
+        formatNavigationBar()
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -53,25 +48,43 @@ class MenuViewController: UIViewController {
         setUpConstraints()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
+        formatNavigationBar()
         loadMenu()
+    }
+
+    private func formatNavigationBar() {
+        // TODO: coming back from detail view is still weird
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.largeTitleTextAttributes = [
+            .font: UIFont.avenirNextMedium.withSize(24),
+            .foregroundColor: UIColor.black
+        ]
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.avenirNextMedium.withSize(16),
+            .foregroundColor: UIColor.black
+        ]
     }
 
     private func loadMenu() {
         // TODO: get menu from endpoint
-
         menu = [
-            "Bowls": [
-                MenuItem(title: "Crunchy", price: 10.00, orderCustomizationOptions: [], image: UIImage(named: "acaiBowl")!),
-                MenuItem(title: "Miami", price: 10.00, orderCustomizationOptions: [], image: UIImage(named: "acaiBowl")!)
+            .bowl: [
+                Acai.testBowl1,
+                Acai.testBowl2
             ],
 
-            "Smoothies": [
+            .smoothie: [
             ],
 
-            "Coffee": [
+            .drink: [
             ]
         ]
 
@@ -90,9 +103,10 @@ class MenuViewController: UIViewController {
 
 // MARK: List adapter data source
 extension MenuViewController: ListAdapterDataSource {
+
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
 
-        let currentList = menu["Bowls"] ?? []
+        let currentList = menu[.bowl] ?? []
 
         return currentList
     }
@@ -106,12 +120,19 @@ extension MenuViewController: ListAdapterDataSource {
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
+
 }
 
 extension MenuViewController: MenuSelectionDelegate {
 
     func didSelect(_ item: MenuItem) {
+        #if DEBUG
         print("Selected \(item.title)")
+        #endif
+        let order = OrderDetailViewController()
+        order.menuItem = item
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(order, animated: true)
     }
     
 }

@@ -12,17 +12,52 @@ import UIKit
 class Acai {
     
     // hard code for testing
-    static let testBowl = BowlItem(title: "Test Bowljy", price: 8.99, baseOptions: [
-        OrderCustomizationOption(title: "Acai", isSelected: false, price: 9.99, type: .base, image: UIImage(named: "acaiBowl")!),
-        OrderCustomizationOption(title: "Oatmeal", isSelected: false, price: 6.99, type: .base, image: UIImage(named: "acaiBowl")!),
-        OrderCustomizationOption(title: "Yogurt", isSelected: true, price: 6.99, type: .base, image: UIImage(named: "acaiBowl")!)
-        ], toppingOptions: [
-        OrderCustomizationOption(title: "Strawberry", isSelected: true, price: 1.00, type: .topping),
-        OrderCustomizationOption(title: "Pineapple", isSelected: false, price: 1.00, type: .topping),
-        OrderCustomizationOption(title: "Granola", isSelected: false, price: 1.00, type: .topping),
-        OrderCustomizationOption(title: "Coconut", isSelected: true, price: 1.00, type: .topping),
-        OrderCustomizationOption(title: "Almonds", isSelected: false, price: 1.00, type: .topping),
-        OrderCustomizationOption(title: "Peanut Butter", isSelected: false, price: 1.00, type: .topping)
-        ], image: UIImage(named: "acaiBowl")!)
+    static let testBowl1 = MenuItem(
+        title: "Miami",
+        price: 8.99,
+        defaultOptions: [
+            .base: [
+                OrderOption(title: "Acai", isSelected: false, price: 9.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Yogurt", isSelected: true, price: 6.99, image: UIImage(named: "acaiBowl")!)
+            ],
+            .topping: [
+                OrderOption(title: "Strawberry", isSelected: true, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
+                OrderOption(title: "Granola", isSelected: false, price: 1.00),
+                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
+                OrderOption(title: "Almonds", isSelected: false, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+            ]
+        ],
+        image: UIImage(named: "acaiBowl")!,
+        type: .bowl
+    )
+
+    static let testBowl2 = MenuItem(
+        title: "Crunchy",
+        price: 7.99,
+        defaultOptions: [
+            .base: [
+                OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
+            ],
+            .size: [
+                OrderOption(title: "Small", isSelected: true, price: 0, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Large", isSelected: false, price: 2.00, image: UIImage(named: "acaiBowl")!)
+            ],
+            .topping: [
+                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
+                OrderOption(title: "Granola", isSelected: true, price: 1.00),
+                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
+                OrderOption(title: "Almonds", isSelected: true, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+            ]
+        ],
+        image: UIImage(named: "acaiBowl")!,
+        type: .bowl
+    )
     
 }

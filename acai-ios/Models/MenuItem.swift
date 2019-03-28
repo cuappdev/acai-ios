@@ -2,7 +2,7 @@
 //  BowlItem.swift
 //  acai-ios
 //
-//  Created by Artesia Ko on 3/15/19.
+//  Created by Artesia Ko on 3/20/19.
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
@@ -10,29 +10,39 @@ import Foundation
 import IGListKit
 
 class MenuItem: ListDiffable {
+
+    enum ItemType: String {
+        case bowl = "Bowl"
+        case drink = "Cup"
+        case smoothie = "Smoothie"
+
+        func plural() -> String {
+            switch self {
+            case .bowl:
+                return "Bowls"
+            case .drink:
+                return "Cups"
+            case .smoothie:
+                return "Smoothies"
+            }
+        }
+    }
     
-    var title: String
-    var price: Double
-    var image: UIImage
-    var orderCustomizationOptions: [OrderCustomizationOption]
+    let image: UIImage
+    // The default options should never change!
+    let defaultOptions: [OrderOption.OptionType: [OrderOption]]
+    let price: Double
+    let title: String
+    let type: ItemType
     
-    init(title: String, price: Double, orderCustomizationOptions: [OrderCustomizationOption], image: UIImage) {
-        self.title = title
-        self.price = price
-        self.orderCustomizationOptions = orderCustomizationOptions
+    init(title: String, price: Double, defaultOptions: [OrderOption.OptionType: [OrderOption]], image: UIImage, type: ItemType) {
         self.image = image
+        self.defaultOptions = defaultOptions
+        self.price = price
+        self.title = title
+        self.type = type
     }
-    
-    func getSelectedOptionsPrice() -> Double {
-        return orderCustomizationOptions.reduce(0, { (result, option) -> Double in
-            return result + (option.isSelected ? option.price : 0)
-        })
-    }
-    
-    func getSelectedOptions() -> [OrderCustomizationOption] {
-        return orderCustomizationOptions.filter({$0.isSelected})
-    }
-    
+
     func diffIdentifier() -> NSObjectProtocol {
         return title as NSObjectProtocol
     }
@@ -41,6 +51,6 @@ class MenuItem: ListDiffable {
         guard let object = object as? MenuItem else {
             return false
         }
-        return self.title == object.title
+        return self.title == object.title && self.price == object.price && self.image == object.image && self.type == object.type
     }
 }

@@ -13,7 +13,6 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     
     // MARK: View vars
     var checkMarkImageView: UIImageView!
-    var customizationOption: OrderCustomizationOption!
     var line: UIView!
     var selectionRect: UIView!
     var titleLabel: UILabel!
@@ -22,10 +21,10 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
     let checkMarkImageViewHeight = 12
     let checkMarkImageViewWidth = 16
     let lineHeight = 0.7
-    let titleLabelLeadingOffset = 24
     let selectionRectHeightWidth = 25
     let selectionRectTrailingOffset = 30
-    
+    let titleLabelLeadingOffset = 24
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -79,12 +78,9 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setOrderCustomizationOptionTitleLabelText() {
-        titleLabel.text = customizationOption.title
-    }
-    
-    func updateSelectionRect() {
-        if customizationOption.isSelected {
+    func configure(for option: OrderOption) {
+        titleLabel.text = option.title
+        if option.isSelected {
             selectionRect.backgroundColor = .mango
             selectionRect.layer.borderColor = UIColor.mango.cgColor
             titleLabel.textColor = .mango
@@ -93,12 +89,6 @@ class MultiSelectionCollectionViewCell: UICollectionViewCell {
             selectionRect.backgroundColor = .white
             titleLabel.textColor = .acaiBlack
         }
-    }
-    
-    func configure(for option: OrderCustomizationOption) {
-        customizationOption = option
-        updateSelectionRect()
-        setOrderCustomizationOptionTitleLabelText()
     }
     
     required init?(coder aDecoder: NSCoder) {
