@@ -30,14 +30,14 @@ class MenuItem: ListDiffable {
     
     let image: UIImage
     // The default options should never change!
-    let defaulOptions: [OrderOption.OptionType: [OrderOption]]
+    let defaultOptions: [OrderOption.OptionType: [OrderOption]]
     let price: Double
     let title: String
     let type: ItemType
     
-    init(title: String, price: Double, defaulOptions: [OrderOption.OptionType: [OrderOption]], image: UIImage, type: ItemType) {
+    init(title: String, price: Double, defaultOptions: [OrderOption.OptionType: [OrderOption]], image: UIImage, type: ItemType) {
         self.image = image
-        self.defaulOptions = defaulOptions
+        self.defaultOptions = defaultOptions
         self.price = price
         self.title = title
         self.type = type

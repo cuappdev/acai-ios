@@ -18,9 +18,6 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
     var radioCircle: UIView!
     var radioFill: UIView!
     var titleLabel: UILabel!
-    
-    // MARK: Data
-//    var customizationOption: OrderOption!
 
     // MARK: Constraint Constants
     let leadingOffset = 24
@@ -104,26 +101,13 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(lineHeight)
         }
     }
-    
-//    func setCustomizationOptionLabelText() {
-//        titleLabel.text = customizationOption.title
-//        priceLabel.text = "$\(customizationOption.price)"
-//    }
-//
-//    func updateRadioSelection() {
-//        radioFill.isHidden = !customizationOption.isSelected
-//        radioCircle.layer.borderColor = customizationOption.isSelected ? UIColor.mango.cgColor : UIColor.coldGray.cgColor
-//    }
 
     func configure(for option: OrderOption) {
-//        customizationOption = option
         imageView.image = option.image
         titleLabel.text = option.title
         priceLabel.text = option.price.asPriceString()
         radioFill.isHidden = !option.isSelected
         radioCircle.layer.borderColor = option.isSelected ? UIColor.mango.cgColor : UIColor.coldGray.cgColor
-//        updateRadioSelection()
-//        setCustomizationOptionLabelText()
     }
     
     required init?(coder aDecoder: NSCoder) {

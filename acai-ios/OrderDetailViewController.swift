@@ -53,7 +53,7 @@ class OrderDetailViewController: UIViewController {
         title = menuItem.title
 
         // Use the defaults to set the initial selections
-        optionSectionsMap = menuItem.defaulOptions
+        optionSectionsMap = menuItem.defaultOptions
         
         backgroundGradient = CAGradientLayer()
         backgroundGradient.colors = [UIColor.sunshine.cgColor, UIColor.butterscotch.cgColor]
@@ -89,9 +89,11 @@ class OrderDetailViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+
         super.viewDidAppear(animated)
         
         formatNavigationBar()
+        
     }
 
     private func formatNavigationBar() {
@@ -135,11 +137,13 @@ class OrderDetailViewController: UIViewController {
     }
 
     private func updateAddToCartPrice() {
+
         let totalPrice = optionSectionsMap.keys.reduce(0) { (result, optionType) -> Double in
             return optionSectionsMap[optionType]!.reduce(result) { (result, option) -> Double in
                 result + (option.isSelected ? option.price : 0.0)
             }
         }
+        
         addToCartActionTabView.priceLabel.text = (totalPrice * quantity.doubleValue).asPriceString()
     }
 
@@ -152,8 +156,10 @@ extension OrderDetailViewController: ListAdapterDataSource {
         var sections: [ListDiffable] = []
 
         sections.append(EmptyItem(height: FileConstants.emptyItemHeight))
+
+        let sortedSections = menuItem.defaultOptions.keys.sorted(by: { $0 < $1 })
         
-        for section in menuItem.defaulOptions.keys.sorted(by: { $0 < $1 }) {
+        for section in sortedSections {
             let options = optionSectionsMap[section] ?? []
             sections.append(OrderOptions(DiffableArray(options), type: section))
         }
@@ -161,6 +167,7 @@ extension OrderDetailViewController: ListAdapterDataSource {
         sections.append(quantity)
 
         return sections
+
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -193,7 +200,9 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
         optionSectionsMap[type] = options
 
         updateAddToCartPrice()
+
         listAdapter.performUpdates(animated: false, completion: nil)
+
     }
     
     func selectOption(at index: Int, for type: OrderOption.OptionType) {
@@ -204,6 +213,7 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
         optionSectionsMap[type] = options
 
         updateAddToCartPrice()
+
         listAdapter.performUpdates(animated: false, completion: nil)
 
     }
@@ -213,17 +223,21 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
 extension OrderDetailViewController: QuantitySelectionCollectionViewCellDelegate {
 
     func valueIncremented() {
+
         quantity = NSNumber(value: quantity.intValue + 1)
         updateAddToCartPrice()
         listAdapter.performUpdates(animated: false, completion: nil)
+
     }
 
     func valueDecremented() {
+
         if quantity.intValue > 1 {
             quantity = NSNumber(value: quantity.intValue - 1)
             updateAddToCartPrice()
             listAdapter.performUpdates(animated: false, completion: nil)
         }
+
     }
     
 }

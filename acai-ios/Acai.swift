@@ -15,7 +15,7 @@ class Acai {
     static let testBowl1 = MenuItem(
         title: "Miami",
         price: 8.99,
-        defaulOptions: [
+        defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: false, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
@@ -37,7 +37,7 @@ class Acai {
     static let testBowl2 = MenuItem(
         title: "Crunchy",
         price: 7.99,
-        defaulOptions: [
+        defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
