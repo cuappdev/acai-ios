@@ -51,6 +51,7 @@ class OrderDetailViewController: UIViewController {
         formatNavigationBar()
 
         title = menuItem.title
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(cancelled))
 
         // Use the defaults to set the initial selections
         optionSectionsMap = menuItem.defaultOptions
@@ -133,7 +134,12 @@ class OrderDetailViewController: UIViewController {
         print("addToCart pushed")
         #endif
 
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+
+    @objc func cancelled() {
+        dismiss(animated: true, completion: nil)
     }
 
     private func updateAddToCartPrice() {

@@ -13,7 +13,7 @@ class MenuItem: ListDiffable {
 
     enum ItemType: String {
         case bowl = "Bowl"
-        case drink = "Cup"
+        case drink = "Coffee"
         case smoothie = "Smoothie"
 
         func plural() -> String {
@@ -21,7 +21,7 @@ class MenuItem: ListDiffable {
             case .bowl:
                 return "Bowls"
             case .drink:
-                return "Cups"
+                return "Coffees"
             case .smoothie:
                 return "Smoothies"
             }
@@ -41,6 +41,13 @@ class MenuItem: ListDiffable {
         self.price = price
         self.title = title
         self.type = type
+    }
+
+    func ingredientsString() -> String {
+        return defaultOptions.flatMap { $0.1 }.filter { $0.isSelected }.map { $0.title }.joined(separator: ", ")
+//        let values: [OrderOption] = defaultOptions.flatMap { $0.1 }
+//        let filteredTitles = values.filter { $0.isSelected }.map { $0.title }
+//        return filteredTitles.joined(separator: ", ")
     }
 
     func diffIdentifier() -> NSObjectProtocol {
