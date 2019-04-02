@@ -66,8 +66,8 @@ class QuantitySelectionCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraints() {
         let borderWidth = 217
-        let buttonHeightWidth = 14
-        let buttonOffsetFromLabel = 17
+        let buttonHeightWidth = 40
+        let buttonOffsetFromLabel = 8
         let quantityLabelWidth = 121
 
         border.snp.makeConstraints { make in

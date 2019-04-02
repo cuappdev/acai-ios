@@ -78,7 +78,10 @@ class MenuViewController: UIViewController {
         menu = [
             .bowl: [
                 Acai.testBowl1,
-                Acai.testBowl2
+                Acai.testBowl2,
+                Acai.testBowl3,
+                Acai.testBowl4,
+                Acai.testBowl5
             ],
 
             .smoothie: [
