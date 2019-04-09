@@ -50,12 +50,12 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         radioCircle.backgroundColor = .white
         radioCircle.layer.borderColor = UIColor.coldGray.cgColor
         radioCircle.layer.borderWidth = 2
-        radioCircle.layer.cornerRadius = 12
+        radioCircle.layer.cornerRadius = CGFloat(radioHeightWidth/2)
         contentView.addSubview(radioCircle)
         
         radioFill = UIView()
         radioFill.backgroundColor = .mango
-        radioFill.layer.cornerRadius = 5
+        radioFill.layer.cornerRadius = CGFloat(radioFillHeightWidth/2)
         contentView.addSubview(radioFill)
         
         line = UIView()
@@ -106,8 +106,8 @@ class RadioSelectionCollectionViewCell: UICollectionViewCell {
         imageView.image = option.image
         titleLabel.text = option.title
         priceLabel.text = option.price.asPriceString()
-        radioFill.isHidden = !option.isSelected
         radioCircle.layer.borderColor = option.isSelected ? UIColor.mango.cgColor : UIColor.coldGray.cgColor
+        radioFill.isHidden = !option.isSelected
     }
     
     required init?(coder aDecoder: NSCoder) {
