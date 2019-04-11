@@ -18,7 +18,7 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
     private enum FileConstants {
         static let imageViewHeightWidth: CGFloat = 206
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -28,20 +28,20 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = FileConstants.imageViewHeightWidth / 2.0
         imageView.layer.masksToBounds = true
         contentView.addSubview(imageView)
-
+        
         setupConstraints()
     }
     
     private func setupConstraints() {
-
+        
         let imageViewTopOffset: CGFloat = 15
-
+        
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(imageViewTopOffset)
             make.height.width.equalTo(FileConstants.imageViewHeightWidth)
         }
-
+        
     }
     
     func configure(for menuItem: MenuItem) {

@@ -15,6 +15,8 @@ extension UIColor {
     static var butterscotch: UIColor = UIColor(red: 255/255, green: 175/255, blue: 72/255, alpha: 1.0)
     static var coldGray: UIColor = UIColor(red: 180/255, green: 191/255, blue: 201/255, alpha: 1.0)
     static var lineGray: UIColor = UIColor(red: 213/255, green: 213/255, blue: 213/255, alpha: 1.0)
+    static var paleOrange: UIColor = UIColor(red: 255/255, green: 179/255, blue: 80/255, alpha: 1.0)
+    static var placeholderGray: UIColor = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1.0)
     static var mango: UIColor = UIColor(red: 255/255, green: 156/255, blue: 29/255, alpha: 1.0)
     static var sleetGray: UIColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
     static var sunshine: UIColor = UIColor(red: 255/255, green: 216/255, blue: 126/255, alpha: 1.0)
