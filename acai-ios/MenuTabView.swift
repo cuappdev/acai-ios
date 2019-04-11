@@ -143,7 +143,6 @@ class MenuTabView: UIControl {
         sendActions(for: .valueChanged)
         UIView.animate(withDuration: 0.25) {
             self.remakeUnderlineConstraints()
-            self.layoutSubviews()
         }
     }
 

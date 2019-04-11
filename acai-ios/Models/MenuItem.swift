@@ -45,9 +45,6 @@ class MenuItem: ListDiffable {
 
     func ingredientsString() -> String {
         return defaultOptions.flatMap { $0.1 }.filter { $0.isSelected }.map { $0.title }.joined(separator: ", ")
-//        let values: [OrderOption] = defaultOptions.flatMap { $0.1 }
-//        let filteredTitles = values.filter { $0.isSelected }.map { $0.title }
-//        return filteredTitles.joined(separator: ", ")
     }
 
     func diffIdentifier() -> NSObjectProtocol {
