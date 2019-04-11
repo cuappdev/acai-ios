@@ -59,13 +59,13 @@ class LoginViewController: UIViewController {
         //title = "Account"
         formatNavigationBar()
 
-        nameInputView = InputView(frame: .zero, title: "Name", placeholder: "John Doe", inputType: .name, padding: 4)
+        nameInputView = InputView(frame: .zero, type: .name, placeholder: "John Doe", padding: 4)
         view.addSubview(nameInputView)
         
-        emailInputView = InputView(frame: .zero, title: "Email", placeholder: "johndoe@gmail.com", inputType: .email, padding: 4)
+        emailInputView = InputView(frame: .zero, type: .email, placeholder: "johndoe@gmail.com", padding: 4)
         view.addSubview(emailInputView)
         
-        passwordInputView = InputView(frame: .zero, title: "Password", placeholder: "••••••••••••••", inputType: .password, padding: 4)
+        passwordInputView = InputView(frame: .zero, type: .password, placeholder: "••••••••••••••", padding: 4)
         view.addSubview(passwordInputView)
         
         signUpButton = RoundedButton(frame: .zero, title: "Sign up", type: .action)

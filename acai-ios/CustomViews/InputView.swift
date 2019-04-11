@@ -21,20 +21,20 @@ class InputView: UIView {
         static let lineHeight = 1
     }
     
-    enum InputType {
-        case email
-        case name
-        case password
+    enum InputType: String {
+        case email = "Email"
+        case name = "Name"
+        case password = "Password"
     }
     
-    init(frame: CGRect, title: String, placeholder: String, inputType: InputType, padding: CGFloat) {
+    init(frame: CGRect, type: InputType, placeholder: String, padding: CGFloat) {
         super.init(frame: frame)
         backgroundColor = .clear
         
         label = UILabel()
         label.textColor = .acaiBlack
         label.font = UIFont.avenirNextDemi.withSize(17)
-        label.text = title
+        label.text = type.rawValue
         self.addSubview(label)
        
         textField = UITextField()
@@ -45,9 +45,10 @@ class InputView: UIView {
             .foregroundColor: UIColor.placeholderGray
         ]
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attr)
-        switch inputType {
+        switch type {
         case .email:
             textField.autocapitalizationType = .none
+            textField.keyboardType = .emailAddress
         case .name:
             textField.autocapitalizationType = .words
         case .password:
