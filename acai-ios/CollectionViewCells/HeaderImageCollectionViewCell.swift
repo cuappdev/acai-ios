@@ -17,7 +17,6 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
     // MARK: Constraint Constants
     private enum FileConstants {
         static let imageViewHeightWidth: CGFloat = 206
-        static let imageViewTopOffset: CGFloat = 15
     }
 
     override init(frame: CGRect) {
@@ -34,9 +33,10 @@ class HeaderImageCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupConstraints() {
+        let imageViewTopOffset: CGFloat = 15
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(FileConstants.imageViewTopOffset)
+            make.top.equalToSuperview().offset(imageViewTopOffset)
             make.height.width.equalTo(FileConstants.imageViewHeightWidth)
         }
     }

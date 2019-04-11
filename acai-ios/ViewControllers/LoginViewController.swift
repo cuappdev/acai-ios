@@ -51,23 +51,22 @@ class LoginViewController: UIViewController {
         navigationTitleLabel.sizeToFit()
         let navigationBarLeftItem = UIBarButtonItem(customView: navigationTitleLabel)
         self.navigationItem.leftBarButtonItem = navigationBarLeftItem
-        //title = "Account"
         formatNavigationBar()
 
-        nameInputView = InputView(frame: .zero, type: .name, placeholder: "John Doe", padding: 4)
+        nameInputView = InputView(type: .name, placeholder: "John Doe", padding: 4)
         view.addSubview(nameInputView)
 
-        emailInputView = InputView(frame: .zero, type: .email, placeholder: "johndoe@gmail.com", padding: 4)
+        emailInputView = InputView(type: .email, placeholder: "johndoe@gmail.com", padding: 4)
         view.addSubview(emailInputView)
 
-        passwordInputView = InputView(frame: .zero, type: .password, placeholder: "••••••••••••••", padding: 4)
+        passwordInputView = InputView(type: .password, placeholder: "••••••••••••••", padding: 4)
         view.addSubview(passwordInputView)
 
-        signUpButton = RoundedButton(frame: .zero, title: "Sign up", type: .action)
+        signUpButton = RoundedButton(title: "Sign up", type: .action)
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         view.addSubview(signUpButton)
 
-        loginButton = RoundedButton(frame: .zero, title: "Log in", type: .switchDataEntry)
+        loginButton = RoundedButton(title: "Log in", type: .switchDataEntry)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         view.addSubview(loginButton)
 
@@ -150,7 +149,12 @@ class LoginViewController: UIViewController {
             signUpButton.toggleColor()
             switchDataEntry(to: .signUp)
         } else {
-            print("pressed sign up button")
+            if let email = emailInputView.textField.text, let name = nameInputView.textField.text, let password = passwordInputView.textField.text,
+                email.isValidEmail(), name.isValidName(), password.isValidPassword() {
+                createUser(name: name, email: email, password: password)
+            } else {
+                print("Did not create user")
+            }
         }
     }
 
@@ -160,8 +164,7 @@ class LoginViewController: UIViewController {
             signUpButton.toggleColor()
             switchDataEntry(to: .login)
         } else {
-            print("pressed log in button")
-            if let email = emailInputView.textField.text, let password = passwordInputView.textField.text, email != "", password != "" {
+            if let email = emailInputView.textField.text, let password = passwordInputView.textField.text, email.isValidEmail(), password.isValidPassword() {
                 getUser(email: email, password: password).observe { (result) in
                     switch result {
                     case .value(let response):
@@ -170,12 +173,20 @@ class LoginViewController: UIViewController {
                         print(error)
                     }
                 }
+            } else {
+                // Indicate that user has entered blank email/password
+                print("Did not login")
             }
         }
     }
 
     private func getUser(email: String, password: String) -> Future<User> {
         return networking(Endpoint.login(email: email, password: password)).decode()
+    }
+
+    private func createUser(name: String, email: String, password: String) -> Endpoint {
+        let user = User(email: email, name: name, password: password)
+        return Endpoint(path: "/api/v1/users", body: user)
     }
 
 }

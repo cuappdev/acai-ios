@@ -27,8 +27,8 @@ class InputView: UIView {
         case password = "Password"
     }
 
-    init(frame: CGRect, type: InputType, placeholder: String, padding: CGFloat) {
-        super.init(frame: frame)
+    init(type: InputType, placeholder: String, padding: CGFloat) {
+        super.init(frame: .zero)
         backgroundColor = .clear
 
         label = UILabel()

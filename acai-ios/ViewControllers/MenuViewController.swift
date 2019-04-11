@@ -29,7 +29,7 @@ class MenuViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        title = "Good Morning, Cathy ☀️"
+        title = "Good Morning, Jamie ☀️"
 
         formatNavigationBar()
 

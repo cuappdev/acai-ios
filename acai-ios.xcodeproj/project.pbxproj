@@ -12,6 +12,7 @@
 		0316A5DA225E9C0400C8286F /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5D9225E9C0400C8286F /* InputView.swift */; };
 		0316A5DC225EADEE00C8286F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5DB225EADEE00C8286F /* RoundedButton.swift */; };
 		0316A5E0225F8A5D00C8286F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5DF225F8A5D00C8286F /* User.swift */; };
+		0316A5E2225F9D0800C8286F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5E1225F9D0800C8286F /* String+Extension.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -47,6 +48,7 @@
 		0316A5D9225E9C0400C8286F /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		0316A5DB225EADEE00C8286F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		0316A5DF225F8A5D00C8286F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0316A5E1225F9D0800C8286F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		034133D870465DDD250F2062 /* Pods-acai-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.debug.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,14 +108,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0316A5DD225EC8E900C8286F /* CustomViews */ = {
+		0316A5DD225EC8E900C8286F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0316A5DB225EADEE00C8286F /* RoundedButton.swift */,
 				0316A5D9225E9C0400C8286F /* InputView.swift */,
 				03D2BBA3224305B200AC6F38 /* ActionTabView.swift */,
 			);
-			path = CustomViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0316A5DE225EC90E00C8286F /* ViewControllers */ = {
@@ -199,10 +201,11 @@
 				6D03FA392246D17500191558 /* UIColor+Shared.swift */,
 				03D2BB992240B5EB00AC6F38 /* UIFont+Shared.swift */,
 				6D8C3E7A224BEC8C0089AE08 /* Double+Extension.swift */,
+				0316A5E1225F9D0800C8286F /* String+Extension.swift */,
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
 				0316A5DE225EC90E00C8286F /* ViewControllers */,
-				0316A5DD225EC8E900C8286F /* CustomViews */,
+				0316A5DD225EC8E900C8286F /* Views */,
 				03D2BBA22242B21900AC6F38 /* Models */,
 				03D2BB8722383F3200AC6F38 /* CollectionViewCells */,
 				03D2BB5222317A4700AC6F38 /* SectionControllers */,
@@ -412,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D2BB9E2242B1C300AC6F38 /* MenuItem.swift in Sources */,
+				0316A5E2225F9D0800C8286F /* String+Extension.swift in Sources */,
 				6D03FA4B224AC87800191558 /* QuantitySelectionCollectionViewCell.swift in Sources */,
 				03D2BB9E2242B1C300AC6F38 /* MenuItem.swift in Sources */,
 				0316A5DC225EADEE00C8286F /* RoundedButton.swift in Sources */,

@@ -21,8 +21,8 @@ class RoundedButton: UIButton {
         static let cornerRadius: CGFloat = 4
     }
 
-    init(frame: CGRect, title: String, type: ActionType) {
-        super.init(frame: frame)
+    init(title: String, type: ActionType) {
+        super.init(frame: .zero)
         self.type = type
 
         setTitle(title, for: .normal)

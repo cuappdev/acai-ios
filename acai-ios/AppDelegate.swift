@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupWindow() {
         window = UIWindow()
-        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+        window?.rootViewController = UINavigationController(rootViewController: MenuViewController())
         window?.makeKeyAndVisible()
     }
 

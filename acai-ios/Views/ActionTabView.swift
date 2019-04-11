@@ -19,8 +19,8 @@ class ActionTabView: UIView {
     let titleLabelLeadingOffset = 16
     let priceLabelTrailingOffset = 14
 
-    init(frame: CGRect, title: String, price: Double) {
-        super.init(frame: frame)
+    init(title: String, price: Double) {
+        super.init(frame: .zero)
         backgroundColor = .acaiBlack
 
         titleLabel = UILabel()

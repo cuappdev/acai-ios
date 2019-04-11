@@ -63,7 +63,7 @@ class OrderDetailViewController: UIViewController {
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: FileConstants.backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
 
-        addToCartActionTabView = ActionTabView(frame: .zero, title: "Add to Cart", price: menuItem.price)
+        addToCartActionTabView = ActionTabView(title: "Add to Cart", price: menuItem.price)
         view.addSubview(addToCartActionTabView)
 
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
