@@ -36,7 +36,7 @@ class RoundedButton: UIButton {
         updateColor()
     }
     
-    func updateColor() {
+    private func updateColor() {
         backgroundColor = type == .action ? .acaiBlack : .sleetGray
         setTitleColor(type == .action ? .white : .placeholderGray, for: .normal)
     }

@@ -104,7 +104,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func signUp() {
-        if signUpButton.backgroundColor == .sleetGray {
+        if signUpButton.type == .switchDataEntry {
             loginButton.toggleColor()
             signUpButton.toggleColor()
         } else {
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        if loginButton.backgroundColor == .sleetGray {
+        if loginButton.type == .switchDataEntry {
             loginButton.toggleColor()
             signUpButton.toggleColor()
         } else {
