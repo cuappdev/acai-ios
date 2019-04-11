@@ -16,8 +16,7 @@ extension String {
 
     func isValidEmail() -> Bool {
         let emailRE = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let testEmail = NSPredicate(format:"SELF MATCHES %@", emailRE)
-        return testEmail.evaluate(with: self)
+        return NSPredicate(format: "SELF MATCHES %@", emailRE).evaluate(with: self)
     }
 
     // TODO: update name requirements

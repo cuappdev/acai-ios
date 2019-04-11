@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     private enum FileConstants {
         static let buttonHeightConstraint: CGFloat = 33
         static let buttonHorizontalSpacing = 24
-        static let buttonTopOffset = 16
+        static let buttonTopOffset = 25
         static let buttonWidthConstraint: CGFloat = 97
         static let inputViewHeight = 53
         static let inputViewTopOffset = 49
@@ -108,7 +108,6 @@ class LoginViewController: UIViewController {
             make.height.equalTo(FileConstants.buttonHeightConstraint)
             make.width.equalTo(FileConstants.buttonWidthConstraint)
         }
-
     }
 
     private func formatNavigationBar() {
@@ -149,11 +148,12 @@ class LoginViewController: UIViewController {
             signUpButton.toggleColor()
             switchDataEntry(to: .signUp)
         } else {
-            if let email = emailInputView.textField.text, let name = nameInputView.textField.text, let password = passwordInputView.textField.text,
-                email.isValidEmail(), name.isValidName(), password.isValidPassword() {
+            guard let email = emailInputView.textField.text, let name = nameInputView.textField.text, let password = passwordInputView.textField.text else { return }
+            emailInputView.invalidEntryLabel.isHidden = email.isValidEmail()
+            nameInputView.invalidEntryLabel.isHidden = name.isValidName()
+            passwordInputView.invalidEntryLabel.isHidden = password.isValidPassword()
+            if email.isValidEmail() && name.isValidName() && password.isValidPassword() {
                 createUser(name: name, email: email, password: password)
-            } else {
-                print("Did not create user")
             }
         }
     }
@@ -164,7 +164,10 @@ class LoginViewController: UIViewController {
             signUpButton.toggleColor()
             switchDataEntry(to: .login)
         } else {
-            if let email = emailInputView.textField.text, let password = passwordInputView.textField.text, email.isValidEmail(), password.isValidPassword() {
+            guard let email = emailInputView.textField.text, let password = passwordInputView.textField.text else { return }
+            emailInputView.invalidEntryLabel.isHidden = email.isValidEmail()
+            passwordInputView.invalidEntryLabel.isHidden = password != ""
+            if email.isValidEmail() && password.isValidPassword() {
                 getUser(email: email, password: password).observe { (result) in
                     switch result {
                     case .value(let response):
@@ -173,9 +176,6 @@ class LoginViewController: UIViewController {
                         print(error)
                     }
                 }
-            } else {
-                // Indicate that user has entered blank email/password
-                print("Did not login")
             }
         }
     }

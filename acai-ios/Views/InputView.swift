@@ -14,6 +14,7 @@ class InputView: UIView {
     // MARK: View vars
     var label: UILabel!
     var line: UIView!
+    var invalidEntryLabel: UILabel!
     var textField: UITextField!
 
     // MARK: Constraint Constants
@@ -45,6 +46,8 @@ class InputView: UIView {
             .foregroundColor: UIColor.placeholderGray
         ]
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attr)
+        self.addSubview(textField)
+
         switch type {
         case .email:
             textField.autocapitalizationType = .none
@@ -55,11 +58,17 @@ class InputView: UIView {
             textField.autocapitalizationType = .none
             textField.isSecureTextEntry = true
         }
-        self.addSubview(textField)
 
         line = UIView()
         line.backgroundColor = .lineGray
         self.addSubview(line)
+
+        invalidEntryLabel = UILabel()
+        invalidEntryLabel.textColor = .scarlet
+        invalidEntryLabel.font = UIFont.avenirNextRegular.withSize(11)
+        invalidEntryLabel.text = "Invalid \(type.rawValue.lowercased()) entered"
+        invalidEntryLabel.isHidden = true
+        self.addSubview(invalidEntryLabel)
 
         setupConstraints(padding: padding)
     }
@@ -79,6 +88,11 @@ class InputView: UIView {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(FileConstants.lineHeight)
             make.top.equalTo(textField.snp.bottom).offset(padding)
+        }
+
+        invalidEntryLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(line.snp.bottom)
         }
     }
 
