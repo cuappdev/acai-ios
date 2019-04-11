@@ -6,9 +6,9 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
-import SnapKit
 import FutureNova
+import SnapKit
+import UIKit
 
 class LoginViewController: UIViewController {
     
@@ -37,11 +37,6 @@ class LoginViewController: UIViewController {
     enum EntryType {
         case login
         case signUp
-    }
-    
-    private struct User: Codable {
-        let email: String
-        let password: String
     }
     
     private let networking: Networking = URLSession.shared.request
