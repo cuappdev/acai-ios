@@ -11,16 +11,16 @@ import SnapKit
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+
     // MARK: Input Views
     var emailInputView: InputView!
     var nameInputView: InputView!
     var passwordInputView: InputView!
-    
+
     // MARK: Buttons
     var loginButton: RoundedButton!
     var signUpButton: RoundedButton!
-    
+
     // MARK: Constraint Constants
     private enum FileConstants {
         static let buttonHeightConstraint: CGFloat = 33
@@ -33,18 +33,18 @@ class LoginViewController: UIViewController {
         static let leadingOffset = 35
         static let trailingOffset = 22
     }
-    
+
     enum EntryType {
         case login
         case signUp
     }
-    
+
     private let networking: Networking = URLSession.shared.request
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         let navigationTitleLabel = UILabel()
         navigationTitleLabel.text = "Account"
         navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
@@ -56,24 +56,24 @@ class LoginViewController: UIViewController {
 
         nameInputView = InputView(frame: .zero, type: .name, placeholder: "John Doe", padding: 4)
         view.addSubview(nameInputView)
-        
+
         emailInputView = InputView(frame: .zero, type: .email, placeholder: "johndoe@gmail.com", padding: 4)
         view.addSubview(emailInputView)
-        
+
         passwordInputView = InputView(frame: .zero, type: .password, placeholder: "••••••••••••••", padding: 4)
         view.addSubview(passwordInputView)
-        
+
         signUpButton = RoundedButton(frame: .zero, title: "Sign up", type: .action)
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         view.addSubview(signUpButton)
-        
+
         loginButton = RoundedButton(frame: .zero, title: "Log in", type: .switchDataEntry)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         view.addSubview(loginButton)
-        
+
         setupConstraints()
     }
-    
+
     private func setupConstraints() {
         nameInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
@@ -81,14 +81,14 @@ class LoginViewController: UIViewController {
             make.height.equalTo(FileConstants.inputViewHeight)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.inputViewTopOffset)
         }
-        
+
         emailInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
             make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
         }
-        
+
         passwordInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
@@ -102,16 +102,16 @@ class LoginViewController: UIViewController {
             make.height.equalTo(FileConstants.buttonHeightConstraint)
             make.width.equalTo(FileConstants.buttonWidthConstraint)
         }
-        
+
         loginButton.snp.makeConstraints { make in
             make.leading.equalTo(signUpButton.snp.trailing).offset(FileConstants.buttonHorizontalSpacing)
             make.top.equalTo(passwordInputView.snp.bottom).offset(FileConstants.buttonTopOffset)
             make.height.equalTo(FileConstants.buttonHeightConstraint)
             make.width.equalTo(FileConstants.buttonWidthConstraint)
         }
-        
+
     }
-    
+
     private func formatNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
             .foregroundColor: UIColor.black
         ]
     }
-    
+
     func switchDataEntry(to type: EntryType) {
         if type == .login {
             emailInputView.snp.remakeConstraints { make in
@@ -143,7 +143,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func signUp() {
         if signUpButton.type == .switchDataEntry {
             loginButton.toggleColor()
@@ -153,7 +153,7 @@ class LoginViewController: UIViewController {
             print("pressed sign up button")
         }
     }
-    
+
     @objc func login() {
         if loginButton.type == .switchDataEntry {
             loginButton.toggleColor()
@@ -173,9 +173,9 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     private func getUser(email: String, password: String) -> Future<User> {
         return networking(Endpoint.login(email: email, password: password)).decode()
     }
-    
+
 }

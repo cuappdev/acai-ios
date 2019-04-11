@@ -6,9 +6,9 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
 import SnapKit
+import UIKit
 
 protocol DidSelectOptionDelegate: class {
     func deselectOption(at index: Int, for type: OrderOption.OptionType)
@@ -18,7 +18,7 @@ protocol DidSelectOptionDelegate: class {
 /// Presents detail and customization options for a menu item.
 /// Requires menuItem variable to be set
 class OrderDetailViewController: UIViewController {
-    
+
     // MARK: View vars
     private var addToCartActionTabView: ActionTabView!
     private var backgroundGradient: CAGradientLayer!
@@ -128,7 +128,7 @@ class OrderDetailViewController: UIViewController {
         #if DEBUG
         print("addToCart pushed")
         #endif
-        
+
         navigationController?.popViewController(animated: true)
     }
 
@@ -162,7 +162,7 @@ extension OrderDetailViewController: ListAdapterDataSource {
 
         return sections
     }
-    
+
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             return HeaderImageSectionController(height: object.height, menuItem: menuItem)
@@ -190,9 +190,9 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
         var options = optionSectionsMap[type]!
         options[index] = options[index].copy(isSelected: false)
         optionSectionsMap[type] = options
-        
+
         updateAddToCartPrice()
-        
+
         listAdapter.performUpdates(animated: false, completion: nil)
     }
 
@@ -201,16 +201,16 @@ extension OrderDetailViewController: DidSelectOptionDelegate {
         let option = options[index]
         options[index] = option.copy(isSelected: !option.isSelected)
         optionSectionsMap[type] = options
-        
+
         updateAddToCartPrice()
-        
+
         listAdapter.performUpdates(animated: false, completion: nil)
     }
 
 }
 
 extension OrderDetailViewController: QuantitySelectionCollectionViewCellDelegate {
-    
+
     func valueIncremented() {
         quantity = NSNumber(value: quantity.intValue + 1)
         updateAddToCartPrice()

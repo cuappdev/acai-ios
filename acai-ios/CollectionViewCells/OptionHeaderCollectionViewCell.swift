@@ -6,29 +6,29 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class OptionHeaderCollectionViewCell: UICollectionViewCell {
-    
+
     // MARK: View vars
     var titleLabel: UILabel!
-    
+
     // MARK: Constraint Constants
     let titleLabelOffset = 16
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .sleetGray
-        
+
         titleLabel = UILabel()
         titleLabel.textColor = .black
         titleLabel.font = UIFont.avenirNextMedium.withSize(14)
         contentView.addSubview(titleLabel)
-        
+
         setupConstraints()
     }
-    
+
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -36,7 +36,7 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(-titleLabelOffset)
         }
     }
-    
+
     func configure(for type: OrderOption.OptionType) {
         switch type {
         case .base:
@@ -47,9 +47,9 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
             titleLabel.text = "Choose your toppings"
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }

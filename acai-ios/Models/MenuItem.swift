@@ -27,14 +27,14 @@ class MenuItem: ListDiffable {
             }
         }
     }
-    
+
     let image: UIImage
     // The default options should never change!
     let defaultOptions: [OrderOption.OptionType: [OrderOption]]
     let price: Double
     let title: String
     let type: ItemType
-    
+
     init(title: String, price: Double, defaultOptions: [OrderOption.OptionType: [OrderOption]], image: UIImage, type: ItemType) {
         self.image = image
         self.defaultOptions = defaultOptions
@@ -46,7 +46,7 @@ class MenuItem: ListDiffable {
     func diffIdentifier() -> NSObjectProtocol {
         return title as NSObjectProtocol
     }
-    
+
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? MenuItem else {
             return false

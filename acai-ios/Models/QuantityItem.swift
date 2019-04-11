@@ -10,17 +10,17 @@ import Foundation
 import IGListKit
 
 class QuantityItem: ListDiffable {
-    
+
     let quantity: Int
-    
+
     init(quantity: Int) {
         self.quantity = quantity
     }
-    
+
     func diffIdentifier() -> NSObjectProtocol {
         return quantity as NSObjectProtocol
     }
-    
+
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? QuantityItem else {
             return false

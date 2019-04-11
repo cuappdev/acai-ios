@@ -6,23 +6,23 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
+import UIKit
 
 class QuantitySectionController: ListSectionController {
-    
+
     // MARK: Data
     var itemType: MenuItem.ItemType!
     var quantity: NSNumber!
 
     // MARK: Delegate
     weak var delegate: QuantitySelectionCollectionViewCellDelegate?
-    
+
     init(quantity: NSNumber, itemType: MenuItem.ItemType) {
         self.itemType = itemType
         self.quantity = quantity
     }
-    
+
     override func sizeForItem(at index: Int) -> CGSize {
 
         guard let context = collectionContext else { return .zero }
@@ -32,7 +32,7 @@ class QuantitySectionController: ListSectionController {
         return CGSize(width: context.containerSize.width, height: quantityCellHeightConstraint)
 
     }
-    
+
     override func cellForItem(at index: Int) -> UICollectionViewCell {
 
         let cell = collectionContext!
@@ -44,11 +44,11 @@ class QuantitySectionController: ListSectionController {
 
         return cell
     }
-    
+
     override func didUpdate(to object: Any) {
         if let object = object as? NSNumber {
             quantity = object
         }
     }
-    
+
 }

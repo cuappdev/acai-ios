@@ -36,12 +36,12 @@ class OrderOption: ListDiffable, NSCopying {
         }
 
     }
-    
+
     let title: String
     let isSelected: Bool
     let price: Double
     let image: UIImage
-    
+
     init(title: String, isSelected: Bool, price: Double) {
         self.title = title
         self.isSelected = isSelected
@@ -59,12 +59,12 @@ class OrderOption: ListDiffable, NSCopying {
     func diffIdentifier() -> NSObjectProtocol {
         return title as NSObjectProtocol
     }
-    
+
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? OrderOption else { return false }
         return title == object.title && price == object.price && isSelected == object.isSelected
     }
-    
+
     func copy(with zone: NSZone? = nil) -> Any {
         return OrderOption(title: title, isSelected: isSelected, price: price, image: image)
     }

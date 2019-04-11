@@ -6,9 +6,9 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
 import SnapKit
+import UIKit
 
 protocol MenuSelectionDelegate: class {
     func didSelect(_ item: MenuItem)
@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .white
 
         title = "Good Morning, Cathy ☀️"
@@ -40,11 +40,11 @@ class MenuViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
-        
+
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
-        
+
         setUpConstraints()
     }
 
@@ -52,7 +52,7 @@ class MenuViewController: UIViewController {
         super.viewWillAppear(animated)
         loadMenu()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         formatNavigationBar()
@@ -96,7 +96,7 @@ class MenuViewController: UIViewController {
 
         listAdapter.performUpdates(animated: false, completion: nil)
     }
-    
+
     // MARK: Constraint setup
     private func setUpConstraints() {
         collectionView.snp.makeConstraints { make in
@@ -116,13 +116,13 @@ extension MenuViewController: ListAdapterDataSource {
 
         return currentList
     }
-    
+
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         let menuController = MenuListSectionController()
         menuController.delegate = self
         return menuController
     }
-    
+
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
@@ -140,5 +140,5 @@ extension MenuViewController: MenuSelectionDelegate {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(order, animated: true)
     }
-    
+
 }

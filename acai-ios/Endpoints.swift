@@ -10,7 +10,7 @@ import Foundation
 import FutureNova
 
 extension Endpoint {
-    
+
     /// The login endpoint to get a User
     static func login(email: String, password: String) -> Endpoint {
 
@@ -18,7 +18,7 @@ extension Endpoint {
             URLQueryItem(name: "email", value: email),
             URLQueryItem(name: "password", value: password)
         ]
-        
+
         return Endpoint(path: "/login", queryItems: query)
     }
 

@@ -6,10 +6,10 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
-import Fabric
 import Crashlytics
+import Fabric
 import FutureNova
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

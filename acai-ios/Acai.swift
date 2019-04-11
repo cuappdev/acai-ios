@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Acai {
-    
+
     // hard code for testing
     static let testBowl1 = MenuItem(
         title: "Miami",
@@ -59,7 +59,7 @@ class Acai {
         image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
-    
+
     static let testBowl3 = MenuItem(
         title: "Surprise",
         price: 7.99,
@@ -85,7 +85,7 @@ class Acai {
         image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
-    
+
     static let testBowl4 = MenuItem(
         title: "Berry Loco",
         price: 7.99,
@@ -111,7 +111,7 @@ class Acai {
         image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
-    
+
     static let testBowl5 = MenuItem(
         title: "Party",
         price: 7.99,
@@ -137,5 +137,5 @@ class Acai {
         image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
-    
+
 }

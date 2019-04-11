@@ -10,17 +10,17 @@ import Foundation
 import IGListKit
 
 class EmptyItem: ListDiffable {
-    
+
     let height: CGFloat
-    
+
     init(height: CGFloat) {
         self.height = height
     }
-    
+
     func diffIdentifier() -> NSObjectProtocol {
         return height as NSObjectProtocol
     }
-    
+
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? EmptyItem else {
             return false
