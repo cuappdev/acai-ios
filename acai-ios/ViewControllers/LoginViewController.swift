@@ -28,10 +28,15 @@ class LoginViewController: UIViewController {
         static let buttonTopOffset = 16
         static let buttonWidthConstraint: CGFloat = 97
         static let inputViewHeight = 53
-        static let inputViewSpacing = 25
+        static let inputViewTopOffset = 49
+        static let inputViewVerticalSpacing = 25
         static let leadingOffset = 35
-        static let nameInputViewTopOffset = 49
         static let trailingOffset = 22
+    }
+    
+    enum EntryType {
+        case login
+        case signUp
     }
     
     private struct User: Codable {
@@ -44,14 +49,23 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        let navigationTitleLabel = UILabel()
+        navigationTitleLabel.text = "Account"
+        navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
+        navigationTitleLabel.sizeToFit()
+        let navigationBarLeftItem = UIBarButtonItem(customView: navigationTitleLabel)
+        self.navigationItem.leftBarButtonItem = navigationBarLeftItem
+        //title = "Account"
+        formatNavigationBar()
 
-        nameInputView = InputView(frame: .zero, title: "Name", placeholder: "John Doe", inputType: .show, padding: 4)
+        nameInputView = InputView(frame: .zero, title: "Name", placeholder: "John Doe", inputType: .name, padding: 4)
         view.addSubview(nameInputView)
         
-        emailInputView = InputView(frame: .zero, title: "Email", placeholder: "johndoe@gmail.com", inputType: .show, padding: 4)
+        emailInputView = InputView(frame: .zero, title: "Email", placeholder: "johndoe@gmail.com", inputType: .email, padding: 4)
         view.addSubview(emailInputView)
         
-        passwordInputView = InputView(frame: .zero, title: "Password", placeholder: "••••••••••••••", inputType: .hide, padding: 4)
+        passwordInputView = InputView(frame: .zero, title: "Password", placeholder: "••••••••••••••", inputType: .password, padding: 4)
         view.addSubview(passwordInputView)
         
         signUpButton = RoundedButton(frame: .zero, title: "Sign up", type: .action)
@@ -65,26 +79,26 @@ class LoginViewController: UIViewController {
         setupConstraints()
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         nameInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.nameInputViewTopOffset)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.inputViewTopOffset)
         }
         
         emailInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
-            make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewSpacing)
+            make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
         }
         
         passwordInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
-            make.top.equalTo(emailInputView.snp.bottom).offset(FileConstants.inputViewSpacing)
+            make.top.equalTo(emailInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
         }
 
         signUpButton.snp.makeConstraints { make in
@@ -103,10 +117,43 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func formatNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .navigationWhite
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.avenirNextMedium.withSize(24),
+            .foregroundColor: UIColor.black
+        ]
+    }
+    
+    func switchDataEntry(to type: EntryType) {
+        if type == .login {
+            emailInputView.snp.remakeConstraints { make in
+                make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
+                make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
+                make.height.equalTo(FileConstants.inputViewHeight)
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.inputViewTopOffset)
+            }
+            nameInputView.isHidden = true
+        } else {
+            nameInputView.isHidden = false
+            emailInputView.snp.remakeConstraints { make in
+                make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
+                make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
+                make.height.equalTo(FileConstants.inputViewHeight)
+                make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
+            }
+        }
+    }
+    
     @objc func signUp() {
         if signUpButton.type == .switchDataEntry {
             loginButton.toggleColor()
             signUpButton.toggleColor()
+            switchDataEntry(to: .signUp)
         } else {
             print("pressed sign up button")
         }
@@ -116,6 +163,7 @@ class LoginViewController: UIViewController {
         if loginButton.type == .switchDataEntry {
             loginButton.toggleColor()
             signUpButton.toggleColor()
+            switchDataEntry(to: .login)
         } else {
             print("pressed log in button")
             if let email = emailInputView.textField.text, let password = passwordInputView.textField.text, email != "", password != "" {

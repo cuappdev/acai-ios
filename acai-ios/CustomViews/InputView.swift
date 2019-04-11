@@ -22,8 +22,9 @@ class InputView: UIView {
     }
     
     enum InputType {
-        case hide
-        case show
+        case email
+        case name
+        case password
     }
     
     init(frame: CGRect, title: String, placeholder: String, inputType: InputType, padding: CGFloat) {
@@ -44,7 +45,13 @@ class InputView: UIView {
             .foregroundColor: UIColor.placeholderGray
         ]
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attr)
-        if inputType == .hide {
+        switch inputType {
+        case .email:
+            textField.autocapitalizationType = .none
+        case .name:
+            textField.autocapitalizationType = .words
+        case .password:
+            textField.autocapitalizationType = .none
             textField.isSecureTextEntry = true
         }
         self.addSubview(textField)

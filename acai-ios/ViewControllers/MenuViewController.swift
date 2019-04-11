@@ -29,7 +29,7 @@ class MenuViewController: UIViewController {
         
         view.backgroundColor = .white
 
-        title = "Good Morning, Jamie ☀️"
+        title = "Good Morning, Cathy ☀️"
 
         formatNavigationBar()
 
@@ -50,9 +50,12 @@ class MenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        formatNavigationBar()
         loadMenu()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        formatNavigationBar()
     }
 
     private func formatNavigationBar() {
