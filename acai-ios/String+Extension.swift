@@ -28,4 +28,9 @@ extension String {
     func isValidPassword() -> Bool {
         return self.count > 0
     }
+
+    func isValidPhoneNumber() -> Bool {
+        let phoneNumberRE = "^\\d{3}\\d{3}\\d{4}$"
+        return NSPredicate(format: "SELF MATCHES %@", phoneNumberRE).evaluate(with: self)
+    }
 }

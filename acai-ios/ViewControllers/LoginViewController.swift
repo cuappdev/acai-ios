@@ -14,8 +14,10 @@ class LoginViewController: UIViewController {
 
     // MARK: Input Views
     var emailInputView: InputView!
-    var nameInputView: InputView!
+    var firstNameInputView: InputView!
+    var lastNameInputView: InputView!
     var passwordInputView: InputView!
+    var phoneNumberInputView: InputView!
 
     // MARK: Buttons
     var loginButton: RoundedButton!
@@ -53,8 +55,14 @@ class LoginViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = navigationBarLeftItem
         formatNavigationBar()
 
-        nameInputView = InputView(type: .name, placeholder: "John Doe", padding: 4)
-        view.addSubview(nameInputView)
+        firstNameInputView = InputView(type: .firstName, placeholder: "John", padding: 4)
+        view.addSubview(firstNameInputView)
+
+        lastNameInputView = InputView(type: .lastName, placeholder: "Doe", padding: 4)
+        view.addSubview(lastNameInputView)
+
+        phoneNumberInputView = InputView(type: .phoneNumber, placeholder: "8005551000", padding: 4)
+        view.addSubview(phoneNumberInputView)
 
         emailInputView = InputView(type: .email, placeholder: "johndoe@gmail.com", padding: 4)
         view.addSubview(emailInputView)
@@ -74,18 +82,32 @@ class LoginViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        nameInputView.snp.makeConstraints { make in
+        firstNameInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.inputViewTopOffset)
         }
 
+        lastNameInputView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
+            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
+            make.height.equalTo(FileConstants.inputViewHeight)
+            make.top.equalTo(firstNameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
+        }
+
+        phoneNumberInputView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
+            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
+            make.height.equalTo(FileConstants.inputViewHeight)
+            make.top.equalTo(lastNameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
+        }
+
         emailInputView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.height.equalTo(FileConstants.inputViewHeight)
-            make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
+            make.top.equalTo(phoneNumberInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
         }
 
         passwordInputView.snp.makeConstraints { make in
@@ -130,14 +152,18 @@ class LoginViewController: UIViewController {
                 make.height.equalTo(FileConstants.inputViewHeight)
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(FileConstants.inputViewTopOffset)
             }
-            nameInputView.isHidden = true
+            firstNameInputView.isHidden = true
+            lastNameInputView.isHidden = true
+            phoneNumberInputView.isHidden = true
         } else {
-            nameInputView.isHidden = false
+            firstNameInputView.isHidden = false
+            lastNameInputView.isHidden = false
+            phoneNumberInputView.isHidden = false
             emailInputView.snp.remakeConstraints { make in
                 make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
                 make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
                 make.height.equalTo(FileConstants.inputViewHeight)
-                make.top.equalTo(nameInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
+                make.top.equalTo(phoneNumberInputView.snp.bottom).offset(FileConstants.inputViewVerticalSpacing)
             }
         }
     }
@@ -148,12 +174,18 @@ class LoginViewController: UIViewController {
             signUpButton.toggleColor()
             switchDataEntry(to: .signUp)
         } else {
-            guard let email = emailInputView.textField.text, let name = nameInputView.textField.text, let password = passwordInputView.textField.text else { return }
+            guard let email = emailInputView.textField.text,
+                let firstName = firstNameInputView.textField.text,
+                let lastName = lastNameInputView.textField.text,
+                let password = passwordInputView.textField.text,
+                let phoneNumber = phoneNumberInputView.textField.text else { return }
             emailInputView.invalidEntryLabel.isHidden = email.isValidEmail()
-            nameInputView.invalidEntryLabel.isHidden = name.isValidName()
+            firstNameInputView.invalidEntryLabel.isHidden = firstName.isValidName()
+            lastNameInputView.invalidEntryLabel.isHidden = lastName.isValidName()
             passwordInputView.invalidEntryLabel.isHidden = password.isValidPassword()
-            if email.isValidEmail() && name.isValidName() && password.isValidPassword() {
-                createUser(name: name, email: email, password: password)
+            phoneNumberInputView.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
+            if email.isValidEmail() && firstName.isValidName() && lastName.isValidName() && password.isValidPassword() && phoneNumber.isValidPhoneNumber() {
+                createUser(email: email, firstName: firstName, lastName: lastName, password: password, phoneNumber: phoneNumber)
             }
         }
     }
@@ -184,9 +216,8 @@ class LoginViewController: UIViewController {
         return networking(Endpoint.login(email: email, password: password)).decode()
     }
 
-    private func createUser(name: String, email: String, password: String) -> Endpoint {
-        let user = User(email: email, name: name, password: password)
-        return Endpoint(path: "/api/v1/users", body: user)
+    private func createUser(email: String, firstName: String, lastName: String, password: String, phoneNumber: String) {
+        networking(Endpoint.register(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber))
     }
 
 }

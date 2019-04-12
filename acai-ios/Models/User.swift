@@ -10,6 +10,8 @@ import Foundation
 
 struct User: Codable {
     let email: String
-    let name: String
+    let firstName: String
+    let lastName: String
     let password: String
+    let phoneNumber: String
 }

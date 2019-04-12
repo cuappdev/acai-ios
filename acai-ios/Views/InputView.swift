@@ -24,8 +24,10 @@ class InputView: UIView {
 
     enum InputType: String {
         case email = "Email"
-        case name = "Name"
+        case firstName = "First Name"
+        case lastName = "Last Name"
         case password = "Password"
+        case phoneNumber = "Phone Number"
     }
 
     init(type: InputType, placeholder: String, padding: CGFloat) {
@@ -52,11 +54,16 @@ class InputView: UIView {
         case .email:
             textField.autocapitalizationType = .none
             textField.keyboardType = .emailAddress
-        case .name:
+        case .firstName:
+            textField.autocapitalizationType = .words
+        case .lastName:
             textField.autocapitalizationType = .words
         case .password:
             textField.autocapitalizationType = .none
             textField.isSecureTextEntry = true
+        case .phoneNumber:
+            textField.autocapitalizationType = .none
+            textField.keyboardType = .phonePad
         }
 
         line = UIView()
