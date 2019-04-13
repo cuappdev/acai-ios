@@ -18,6 +18,7 @@ class MenuViewController: UIViewController {
 
     // MARK: Models
     var menu: [MenuItem.ItemType: [MenuItem]] = [:]
+    var selectedTab: MenuItem.ItemType!
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -29,7 +30,10 @@ class MenuViewController: UIViewController {
 
         view.backgroundColor = .white
 
+        // TODO: change based on time of day
         title = "Good Morning, Jamie ☀️"
+
+        selectedTab = .bowl
 
         formatNavigationBar()
 
@@ -65,13 +69,13 @@ class MenuViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = UINavigationBar().barTintColor
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
             .foregroundColor: UIColor.black
         ]
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(16),
+            .font: UIFont.avenirNextMedium.withSize(24),
             .foregroundColor: UIColor.black
         ]
     }
@@ -112,15 +116,27 @@ extension MenuViewController: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
 
-        let currentList = menu[.bowl] ?? []
+        var currentList: [ListDiffable] = menu[selectedTab] ?? []
+
+        let selected = Constants.menuTabs.firstIndex(of: selectedTab)!
+
+        currentList.insert(NSNumber(value: selected), at: 0)
 
         return currentList
+
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let menuController = MenuListSectionController()
-        menuController.delegate = self
-        return menuController
+        if object is NSNumber {
+            let menuTabController = MenuTabListSectionController()
+            menuTabController.delegate = self
+            return menuTabController
+        } else if object is MenuItem {
+            let menuController = MenuListSectionController()
+            menuController.delegate = self
+            return menuController
+        }
+        return ListSectionController()
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
@@ -137,8 +153,21 @@ extension MenuViewController: MenuSelectionDelegate {
         #endif
         let order = OrderDetailViewController()
         order.menuItem = item
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.pushViewController(order, animated: true)
+        // Leave commented until decide with design what flow to use
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let nc = UINavigationController(rootViewController: order)
+        nc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.present(nc, animated: true, completion: nil)
+//        navigationController?.pushViewController(order, animated: true)
+    }
+
+}
+
+extension MenuViewController: MenuTabDelegate {
+
+    func selectedTabDidChange(to tab: NSNumber) {
+        selectedTab = Constants.menuTabs[tab.intValue]
+        listAdapter.performUpdates(animated: false, completion: nil)
     }
 
 }

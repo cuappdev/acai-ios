@@ -153,7 +153,7 @@ class LoginViewController: UIViewController {
             nameInputView.invalidEntryLabel.isHidden = name.isValidName()
             passwordInputView.invalidEntryLabel.isHidden = password.isValidPassword()
             if email.isValidEmail() && name.isValidName() && password.isValidPassword() {
-                createUser(name: name, email: email, password: password)
+                _ = createUser(name: name, email: email, password: password)
             }
         }
     }
