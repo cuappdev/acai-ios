@@ -6,22 +6,22 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
+import UIKit
 
 class OrderOptionListSectionController: ListSectionController {
 
     enum SelectionStyle {
         case radio, multi
     }
-    
+
     // MARK: Delegates
     weak var selectOptionDelegate: DidSelectOptionDelegate?
-    
+
     // MARK: Data
     var orderOptions: OrderOptions!
     var selectedBaseIndex: Int = 1
-    
+
     // MARK: Constraint Constants
     private enum FileConstants {
         static let headerHeightConstraint: CGFloat = 43
@@ -29,20 +29,20 @@ class OrderOptionListSectionController: ListSectionController {
         static let multiCellHeightConstraint: CGFloat = 55
 
         // Possibly need these later?
-//        static let baseCellHeightConstraint: CGFloat = 87
-//        static let headerHeightConstraint: CGFloat = 43
-//        static let sizeCellHeightConstraint: CGFloat = 87
-//        static let toppingCellHeightConstraint: CGFloat = 55
+        //        static let baseCellHeightConstraint: CGFloat = 87
+        //        static let headerHeightConstraint: CGFloat = 43
+        //        static let sizeCellHeightConstraint: CGFloat = 87
+        //        static let toppingCellHeightConstraint: CGFloat = 55
     }
-    
+
     init(options: OrderOptions) {
         orderOptions = options
     }
-    
+
     override func numberOfItems() -> Int {
         return orderOptions.options.count + 1
     }
-    
+
     override func sizeForItem(at index: Int) -> CGSize {
         guard let context = collectionContext else {
             return .zero
@@ -59,7 +59,7 @@ class OrderOptionListSectionController: ListSectionController {
             return CGSize(width: width, height: FileConstants.multiCellHeightConstraint)
         }
     }
-    
+
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         var cellType: AnyClass = UICollectionViewCell.self
         if index == 0 {
@@ -67,7 +67,7 @@ class OrderOptionListSectionController: ListSectionController {
             cell.configure(for: orderOptions.optionType)
             return cell
         }
-        
+
         let option = orderOptions.options[index - 1] as! OrderOption
         switch orderOptions.optionType.selectionStyle() {
         case .radio:
@@ -78,7 +78,7 @@ class OrderOptionListSectionController: ListSectionController {
         case .multi:
             cellType = MultiSelectionCollectionViewCell.self
         }
-        
+
         let cell = collectionContext!.dequeueReusableCell(of: cellType, for: self, at: index)
 
         // I feel like we could set up a protocal so we don't have to handle it this way
@@ -89,11 +89,11 @@ class OrderOptionListSectionController: ListSectionController {
         }
         return cell
     }
-    
+
     override func didUpdate(to object: Any) {
         orderOptions = object as? OrderOptions
     }
-    
+
     func deselectItem(at index: Int) {
         switch orderOptions.optionType.selectionStyle() {
         case .radio:
@@ -102,12 +102,12 @@ class OrderOptionListSectionController: ListSectionController {
             return
         }
     }
-    
+
     override func didSelectItem(at index: Int) {
         if orderOptions.optionType.selectionStyle() == .radio {
             deselectItem(at: selectedBaseIndex)
         }
         self.selectOptionDelegate?.selectOption(at: index - 1, for: orderOptions.optionType)
     }
-    
+
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import UIKit
 import IGListKit
 import SnapKit
+import UIKit
 
 protocol MenuSelectionDelegate: class {
     func didSelect(_ item: MenuItem)
@@ -27,7 +27,7 @@ class MenuViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .white
 
         // TODO: change based on time of day
@@ -44,19 +44,22 @@ class MenuViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
-        
+
         listAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self)
         listAdapter.collectionView = collectionView
         listAdapter.dataSource = self
-        
+
         setUpConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        formatNavigationBar()
         loadMenu()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        formatNavigationBar()
     }
 
     private func formatNavigationBar() {
@@ -97,7 +100,7 @@ class MenuViewController: UIViewController {
 
         listAdapter.performUpdates(animated: false, completion: nil)
     }
-    
+
     // MARK: Constraint setup
     private func setUpConstraints() {
         collectionView.snp.makeConstraints { make in
@@ -122,7 +125,7 @@ extension MenuViewController: ListAdapterDataSource {
         return currentList
 
     }
-    
+
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if object is NSNumber {
             let menuTabController = MenuTabListSectionController()
@@ -135,7 +138,7 @@ extension MenuViewController: ListAdapterDataSource {
         }
         return ListSectionController()
     }
-    
+
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
@@ -157,7 +160,7 @@ extension MenuViewController: MenuSelectionDelegate {
         self.present(nc, animated: true, completion: nil)
 //        navigationController?.pushViewController(order, animated: true)
     }
-    
+
 }
 
 extension MenuViewController: MenuTabDelegate {
