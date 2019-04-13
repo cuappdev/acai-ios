@@ -39,7 +39,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FutureNova:
-    :commit: dfe734ef6923646632df793bf2c58b10ff5970df
+    :commit: 989af19c252321e1f5c2159ce096f2e2981dcf65
     :git: https://github.com/cuappdev/ios-networking.git
 
 SPEC CHECKSUMS:
