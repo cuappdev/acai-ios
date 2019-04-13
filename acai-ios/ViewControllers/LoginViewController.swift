@@ -209,11 +209,6 @@ extension LoginViewController: SelectRoundedButtonDelegate {
         (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = email.isValidEmail()
         (tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = password.isValidPassword()
         if email.isValidEmail() && firstName.isValidName() && lastName.isValidName() && password.isValidPassword() && phoneNumber.isValidPhoneNumber() {
-            print(email)
-            print(firstName)
-            print(lastName)
-            print(password)
-            print(phoneNumber)
             createUser(email: email, firstName: firstName, lastName: lastName, password: password, phoneNumber: phoneNumber).observe { [weak self] result in
                 switch result {
                 case .value(let value):
