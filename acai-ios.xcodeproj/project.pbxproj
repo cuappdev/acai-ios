@@ -11,13 +11,11 @@
 		030F18FE22612F550062D1E5 /* InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F18FD22612F550062D1E5 /* InputItem.swift */; };
 		030F1900226132CA0062D1E5 /* RoundedButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F18FF226132CA0062D1E5 /* RoundedButtonTableViewCell.swift */; };
 		030F190422625C1C0062D1E5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F190322625C1C0062D1E5 /* Response.swift */; };
-		030F190722626D160062D1E5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F190622626D160062D1E5 /* Endpoint.swift */; };
 		031536F6222E15CE004FAF9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F5222E15CE004FAF9F /* LoginViewController.swift */; };
 		031536F8222EB3BA004FAF9F /* Acai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031536F7222EB3BA004FAF9F /* Acai.swift */; };
 		0316A5DC225EADEE00C8286F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5DB225EADEE00C8286F /* RoundedButton.swift */; };
 		0316A5E0225F8A5D00C8286F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5DF225F8A5D00C8286F /* User.swift */; };
 		0316A5E2225F9D0800C8286F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316A5E1225F9D0800C8286F /* String+Extension.swift */; };
-		0383114C22626D3700C0DD4E /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0383114B22626D3700C0DD4E /* Future.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -52,13 +50,11 @@
 		030F18FD22612F550062D1E5 /* InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItem.swift; sourceTree = "<group>"; };
 		030F18FF226132CA0062D1E5 /* RoundedButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonTableViewCell.swift; sourceTree = "<group>"; };
 		030F190322625C1C0062D1E5 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		030F190622626D160062D1E5 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		031536F5222E15CE004FAF9F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		031536F7222EB3BA004FAF9F /* Acai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acai.swift; sourceTree = "<group>"; };
 		0316A5DB225EADEE00C8286F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		0316A5DF225F8A5D00C8286F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0316A5E1225F9D0800C8286F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		0383114B22626D3700C0DD4E /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -113,15 +109,6 @@
 				030F18FF226132CA0062D1E5 /* RoundedButtonTableViewCell.swift */,
 			);
 			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		030F190522626D040062D1E5 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				030F190622626D160062D1E5 /* Endpoint.swift */,
-				0383114B22626D3700C0DD4E /* Future.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		0316A5DD225EC8E900C8286F /* Views */ = {
@@ -221,7 +208,6 @@
 				0316A5E1225F9D0800C8286F /* String+Extension.swift */,
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
-				030F190522626D040062D1E5 /* Networking */,
 				030F1902226238FF0062D1E5 /* TableViewCells */,
 				0316A5DE225EC90E00C8286F /* ViewControllers */,
 				0316A5DD225EC8E900C8286F /* Views */,
@@ -332,17 +318,21 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-acai-ios/Pods-acai-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FutureNova/FutureNova.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_ROOT}/SquareInAppPaymentsSDK/SquareInAppPaymentsSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FutureNova.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SquareInAppPaymentsSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -454,10 +444,8 @@
 				030F1900226132CA0062D1E5 /* RoundedButtonTableViewCell.swift in Sources */,
 				030F18FC22612E4C0062D1E5 /* InputTableViewCell.swift in Sources */,
 				03D2BBB02244A83800AC6F38 /* QuantityItem.swift in Sources */,
-				030F190722626D160062D1E5 /* Endpoint.swift in Sources */,
 				03D2BBA02242B1F000AC6F38 /* OrderOption.swift in Sources */,
 				6D8C3E77224BACA10089AE08 /* HeaderImageCollectionViewCell.swift in Sources */,
-				0383114C22626D3700C0DD4E /* Future.swift in Sources */,
 				03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */,
 				03D2BB96223EB42C00AC6F38 /* OrderDetailViewController.swift in Sources */,
 				20ACCC1D2244E9EF00AB782A /* MenuCollectionViewCell.swift in Sources */,
