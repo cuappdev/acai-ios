@@ -6,7 +6,6 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import FutureNova
 import SnapKit
 import UIKit
 

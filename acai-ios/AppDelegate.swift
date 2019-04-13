@@ -8,7 +8,6 @@
 
 import Crashlytics
 import Fabric
-import FutureNova
 import UIKit
 
 @UIApplicationMain
