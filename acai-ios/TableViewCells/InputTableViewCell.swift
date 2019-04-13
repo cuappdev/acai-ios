@@ -9,7 +9,10 @@
 import SnapKit
 import UIKit
 
-class InputTableViewCell: UITableViewCell {
+class InputTableViewCell: UITableViewCell, UITextFieldDelegate {
+
+    // MARK: Delegates
+    weak var changeInputTextFieldDelegate: ChangeInputTextFieldDelegate?
 
     // MARK: View vars
     var label: UILabel!
@@ -26,6 +29,9 @@ class InputTableViewCell: UITableViewCell {
 
     }
 
+    // MARK: Data
+    var type: InputType!
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -39,6 +45,7 @@ class InputTableViewCell: UITableViewCell {
         textField = UITextField()
         textField.font = UIFont.avenirNextRegular.withSize(14)
         textField.textColor = .paleOrange
+        textField.addTarget(self, action: #selector(changedText), for: .editingChanged)
         contentView.addSubview(textField)
 
         line = UIView()
@@ -61,8 +68,7 @@ class InputTableViewCell: UITableViewCell {
             .font: UIFont.avenirNextRegular.withSize(14),
             .foregroundColor: UIColor.placeholderGray
         ]
-        textField.text = ""
-        invalidEntryLabel.isHidden = true
+        self.type = type
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attr)
         label.text = type.rawValue
         invalidEntryLabel.text = "Invalid \(type.rawValue.lowercased()) entered"
@@ -115,6 +121,10 @@ class InputTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
             make.bottom.equalTo(textField.snp.top).offset(-FileConstants.verticalOffset)
         }
+    }
+
+    @objc func changedText() {
+        changeInputTextFieldDelegate?.changeText(text: textField.text ?? "", type: type)
     }
 
     required init?(coder aDecoder: NSCoder) {

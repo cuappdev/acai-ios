@@ -11,6 +11,14 @@ import FutureNova
 
 extension Endpoint {
 
+    private struct RegisterBody: Codable {
+        let email: String
+        let firstName: String
+        let lastName: String
+        let password: String
+        let phoneNumber: String
+    }
+
     /// The login endpoint to get a User
     static func login(email: String, password: String) -> Endpoint {
         let query = [
@@ -23,14 +31,8 @@ extension Endpoint {
 
     /// The registration endpoint to create a User
     static func register(firstName: String, lastName: String, email: String, password: String, phoneNumber: String) -> Endpoint {
-        let body: [String: String] = [
-            "email": email,
-            "firstName": firstName,
-            "lastName": lastName,
-            "password": password,
-            "phoneNumber": phoneNumber
-        ]
-        return Endpoint(path: "/api/v1/register/", body: body)
+        let body = RegisterBody(email: email, firstName: firstName, lastName: lastName, password: password, phoneNumber: phoneNumber)
+        return Endpoint(path: "/register", body: body)
     }
 
 }

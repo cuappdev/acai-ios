@@ -21,7 +21,6 @@ class RoundedButtonTableViewCell: UITableViewCell {
     private enum FileConstants {
         static let buttonHeightConstraint: CGFloat = 33
         static let buttonHorizontalSpacing = 24
-        static let buttonTopOffset = 25
         static let buttonWidthConstraint: CGFloat = 97
         static let buttonLeadingOffset = 35
     }
@@ -45,7 +44,7 @@ class RoundedButtonTableViewCell: UITableViewCell {
     private func setupConstraints() {
         signUpButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(FileConstants.buttonLeadingOffset)
-            make.top.equalToSuperview().offset(FileConstants.buttonTopOffset)
+            make.bottom.equalToSuperview()
             make.height.equalTo(FileConstants.buttonHeightConstraint)
             make.width.equalTo(FileConstants.buttonWidthConstraint)
         }

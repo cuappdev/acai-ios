@@ -16,6 +16,10 @@ protocol SelectRoundedButtonDelegate: class {
     func switchDataEntry(to type: EntryType)
 }
 
+protocol ChangeInputTextFieldDelegate: class {
+    func changeText(text: String, type: InputType)
+}
+
 enum EntryType {
     case login
     case signUp
@@ -34,8 +38,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         // MARK: Constraint constants
         static let buttonCellHeight: CGFloat = 50
-        static let inputViewBottomOffset: CGFloat = 100
-        static let inputViewHeight: CGFloat = 78
+        static let inputViewBottomOffset: CGFloat = 10
+        static let inputViewHeight: CGFloat = 75
         static let inputViewTopOffset: CGFloat = 49
     }
 
@@ -47,6 +51,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         InputItem(type: .email),
         InputItem(type: .password)
     ]
+    var email: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var password: String = ""
+    var phoneNumber: String = ""
+
+    var attemptedNetworking = false
 
     private let networking: Networking = URLSession.shared.request
 
@@ -104,12 +115,41 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = indexPath.row == inputItems.count ? tableView.dequeueReusableCell(withIdentifier: FileConstants.roundedButtonCellReuseIdentifier, for: indexPath) as! RoundedButtonTableViewCell : tableView.dequeueReusableCell(withIdentifier: FileConstants.inputCellReuseIdentifier, for: indexPath) as! InputTableViewCell
         if let cell = cell as? InputTableViewCell {
             let inputItem = inputItems[indexPath.row]
+            cell.changeInputTextFieldDelegate = self
+            cell.invalidEntryLabel.isHidden = true
+            if let type = inputItem.type {
+                switch type {
+                case .email:
+                    cell.textField.text = email
+                    if attemptedNetworking {
+                        cell.invalidEntryLabel.isHidden = email.isValidEmail()
+                    }
+                case .firstName:
+                    cell.textField.text = firstName
+                    if attemptedNetworking {
+                        cell.invalidEntryLabel.isHidden = firstName.isValidName()
+                    }
+                case .lastName:
+                    cell.textField.text = lastName
+                    if attemptedNetworking {
+                        cell.invalidEntryLabel.isHidden = lastName.isValidName()
+                    }
+                case .password:
+                    cell.textField.text = password
+                    if attemptedNetworking {
+                        cell.invalidEntryLabel.isHidden = password.isValidPassword()
+                    }
+                case .phoneNumber:
+                    cell.textField.text = phoneNumber
+                    if attemptedNetworking {
+                        cell.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
+                    }
+                }
+            }
             cell.configure(for: inputItem)
             return cell
         } else if let cell = cell as? RoundedButtonTableViewCell {
             cell.selectRoundedButtonDelegate = self
-            cell.bringSubviewToFront(cell.loginButton)
-            cell.bringSubviewToFront(cell.signUpButton)
             return cell
         }
         return UITableViewCell()
@@ -126,6 +166,14 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func setupKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    func resetTextFields() {
+        email = ""
+        firstName = ""
+        lastName = ""
+        password = ""
+        phoneNumber = ""
     }
 
     @objc func showKeyboard(notification: NSNotification) {
@@ -155,27 +203,31 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 extension LoginViewController: SelectRoundedButtonDelegate {
     func register() {
-        guard let emailCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell,
-            let firstNameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell,
-            let lastNameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
-            let passwordCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell,
-            let phoneNumberCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell,
-            let email = emailCell.textField.text,
-            let firstName = firstNameCell.textField.text,
-            let lastName = lastNameCell.textField.text,
-            let password = passwordCell.textField.text,
-            let phoneNumber = phoneNumberCell.textField.text else { return }
+        attemptedNetworking = true
         (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = firstName.isValidName()
         (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = lastName.isValidName()
         (tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
         (tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = email.isValidEmail()
         (tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = password.isValidPassword()
         if email.isValidEmail() && firstName.isValidName() && lastName.isValidName() && password.isValidPassword() && phoneNumber.isValidPhoneNumber() {
-            createUser(email: email, firstName: firstName, lastName: lastName, password: password, phoneNumber: phoneNumber)
+            print(email)
+            print(firstName)
+            print(lastName)
+            print(password)
+            print(phoneNumber)
+            createUser(email: email, firstName: firstName, lastName: lastName, password: password, phoneNumber: phoneNumber).observe { [weak self] result in
+                switch result {
+                case .value(let value):
+                    print(value)
+                case .error(let error):
+                    print(error)
+                }
+            }
         }
     }
 
     func login() {
+        attemptedNetworking = true
         guard let email = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell)?.textField.text, let password = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell)?.textField.text else { return }
         (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = email.isValidEmail()
         (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = password != ""
@@ -195,11 +247,12 @@ extension LoginViewController: SelectRoundedButtonDelegate {
         return networking(Endpoint.login(email: email, password: password)).decode()
     }
 
-    private func createUser(email: String, firstName: String, lastName: String, password: String, phoneNumber: String) {
-        networking(Endpoint.register(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber))
+    private func createUser(email: String, firstName: String, lastName: String, password: String, phoneNumber: String) -> Future<Response<User>> {
+        return networking(Endpoint.register(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber)).decode()
     }
 
     func switchDataEntry(to type: EntryType) {
+        attemptedNetworking = false
         switch type {
         case .login:
             inputItems = [
@@ -215,7 +268,25 @@ extension LoginViewController: SelectRoundedButtonDelegate {
                 InputItem(type: .password)
             ]
         }
+        resetTextFields()
         tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: false)
     }
+}
 
+extension LoginViewController: ChangeInputTextFieldDelegate {
+    func changeText(text: String, type: InputType) {
+        switch type {
+        case .email:
+            email = text
+        case .firstName:
+            firstName = text
+        case .lastName:
+            lastName = text
+        case .password:
+            password = text
+        case .phoneNumber:
+            phoneNumber = text
+        }
+    }
 }

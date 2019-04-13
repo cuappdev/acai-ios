@@ -78,6 +78,8 @@ extension Endpoint {
                             customPort: Int? = nil) {
         self.path = path
         self.queryItems = []
+        var modifiedHeaders = headers
+        modifiedHeaders["Content-Type"] = "application/json"
         self.headers = headers
         self.method = .post
 
