@@ -91,7 +91,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
 
@@ -186,7 +187,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @objc func hideKeyboard(notification: NSNotification) {
         tableView.snp.remakeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
 
