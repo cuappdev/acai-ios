@@ -69,6 +69,7 @@ class InputTableViewCell: UITableViewCell, UITextFieldDelegate {
             .foregroundColor: UIColor.placeholderGray
         ]
         self.type = type
+        textField.autocorrectionType = .no
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attr)
         label.text = type.rawValue
         invalidEntryLabel.text = "Invalid \(type.rawValue.lowercased()) entered"
@@ -92,7 +93,7 @@ class InputTableViewCell: UITableViewCell, UITextFieldDelegate {
         case .phoneNumber:
             textField.autocapitalizationType = .none
             textField.isSecureTextEntry = false
-            textField.keyboardType = .phonePad
+            textField.keyboardType = .default
         }
     }
 
