@@ -6,6 +6,8 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
+import Foundation
+
 struct User: Codable {
     let createdAt: String
     let customerId: String
@@ -14,12 +16,12 @@ struct User: Codable {
     let id: String
     let lastName: String
     let phoneNumber: String
-    let session: UserSession
+    let session: Session
     let updatedAt: String
 }
 
-struct UserSession: Codable {
+struct Session: Codable {
     let refreshToken: String
-    let sessionExpiration: String
+    let sessionExpiration: Date
     let sessionToken: String
 }
