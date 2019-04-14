@@ -9,7 +9,7 @@
 import SnapKit
 import UIKit
 
-class InputTableViewCell: UITableViewCell, UITextFieldDelegate {
+class InputTableViewCell: UITableViewCell {
 
     // MARK: Delegates
     weak var changeInputTextFieldDelegate: ChangeInputTextFieldDelegate?
@@ -131,10 +131,5 @@ class InputTableViewCell: UITableViewCell, UITextFieldDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    
 }

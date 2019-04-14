@@ -179,9 +179,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @objc func showKeyboard(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        tableView.snp.remakeConstraints { make in
-            make.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview().offset(-keyboardFrame.height)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.tableView.snp.remakeConstraints { make in
+                make.leading.top.trailing.equalTo(self.view.safeAreaLayoutGuide)
+                make.bottom.equalToSuperview().offset(-keyboardFrame.height)
+            }
         }
     }
 
@@ -229,7 +231,7 @@ extension LoginViewController: SelectRoundedButtonDelegate {
         (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = email.isValidEmail()
         (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell)?.invalidEntryLabel.isHidden = password != ""
         if email.isValidEmail() && password.isValidPassword() {
-            getUser(email: email, password: password).observe { (result) in
+            getUser(email: email, password: password).observe { [weak self] result in
                 switch result {
                 case .value(let response):
                     print(response)
@@ -240,7 +242,7 @@ extension LoginViewController: SelectRoundedButtonDelegate {
         }
     }
 
-    private func getUser(email: String, password: String) -> Future<User> {
+    private func getUser(email: String, password: String) -> Future<Response<User>> {
         return networking(Endpoint.login(email: email, password: password)).decode()
     }
 

@@ -19,14 +19,15 @@ extension Endpoint {
         let phoneNumber: String
     }
 
+    private struct LoginBody: Codable {
+        let email: String
+        let password: String
+    }
+
     /// The login endpoint to get a User
     static func login(email: String, password: String) -> Endpoint {
-        let query = [
-            URLQueryItem(name: "email", value: email),
-            URLQueryItem(name: "password", value: password)
-        ]
-
-        return Endpoint(path: "/login", queryItems: query)
+        let body = LoginBody(email: email, password: password)
+        return Endpoint(path: "/login", body: body)
     }
 
     /// The registration endpoint to create a User
