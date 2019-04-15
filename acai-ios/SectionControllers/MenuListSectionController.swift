@@ -16,14 +16,15 @@ class MenuListSectionController: ListSectionController {
     weak var delegate: MenuSelectionDelegate?
 
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: collectionContext!.containerSize.width, height: 107)
+        let menuListSectionHeight: CGFloat = 107
+        return CGSize(width: collectionContext!.containerSize.width, height: menuListSectionHeight)
     }
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: MenuCollectionViewCell.self, for: self, at: index) as! MenuCollectionViewCell
         cell.imageView.image = currentMenuItem.image
         cell.titleLabel.text = currentMenuItem.title
-        cell.ingredientsLabel.text = ["Granola", "Banana", "Kiwi", "Coconut Flaxseed"].joined(separator: ", ")
+        cell.ingredientsLabel.text = currentMenuItem.ingredientsString()
         return cell
     }
 
