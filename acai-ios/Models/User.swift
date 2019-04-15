@@ -9,7 +9,19 @@
 import Foundation
 
 struct User: Codable {
+    let createdAt: String
+    let customerId: String
     let email: String
-    let name: String
-    let password: String
+    let firstName: String
+    let id: String
+    let lastName: String
+    let phoneNumber: String
+    let session: Session
+    let updatedAt: String
+}
+
+struct Session: Codable {
+    let refreshToken: String
+    let sessionExpiration: Date
+    let sessionToken: String
 }
