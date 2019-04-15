@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Don't choke if projects or targets have spaces in the name
 OLDIFS=$IFS
 IFS=$(echo "")
@@ -37,6 +39,11 @@ fi
 
 # Don't choke if projects or targets have spaces in the name
 IFS=$(echo "")
+
+# Delete this script if archiving
+if [ "$ACTION" = "install" ]; then
+	rm -- $0
+fi
 
 # Codesign
 for filename in "${CODESIGNING_FOLDER_PATH}/Frameworks/$MOBILE_COMMERCE_SDK_FRAMEWORK"; do

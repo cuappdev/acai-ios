@@ -97,7 +97,17 @@ public struct DefaultCacheSerializer: CacheSerializer {
     ///
     /// If `original` is `nil`, the input `image` will be encoded as PNG data.
     public func data(with image: Image, original: Data?) -> Data? {
-        return image.kf.data(format: original?.kf.imageFormat ?? .unknown)
+        let imageFormat = original?.kf.imageFormat ?? .unknown
+
+        let data: Data?
+        switch imageFormat {
+        case .PNG: data = image.kf.pngRepresentation()
+        case .JPEG: data = image.kf.jpegRepresentation(compressionQuality: 1.0)
+        case .GIF: data = image.kf.gifRepresentation()
+        case .unknown: data = original ?? image.kf.normalized.kf.pngRepresentation()
+        }
+
+        return data
     }
     
     /// Gets an image deserialized from provided data.

@@ -26,7 +26,7 @@
 
 import Foundation
 
-extension Never {}
+extension Never: Error {}
 
 /// Represents all the errors which can happen in Kingfisher framework.
 /// Kingfisher related methods always throw a `KingfisherError` or invoke the callback with `KingfisherError`

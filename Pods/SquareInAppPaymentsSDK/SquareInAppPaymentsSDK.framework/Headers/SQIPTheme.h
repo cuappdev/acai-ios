@@ -19,7 +19,7 @@
 /**
  Encapsulates options used to style SQIPCardEntryViewController.
  */
-@interface SQIPTheme : NSObject <NSCopying>
+@interface SQIPTheme : NSObject
 
 /**
  The font used for text fields and informational messages.

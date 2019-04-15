@@ -74,27 +74,6 @@ public struct DownloadTask {
     }
 }
 
-extension DownloadTask {
-    enum WrappedTask {
-        case download(DownloadTask)
-        case dataProviding
-
-        func cancel() {
-            switch self {
-            case .download(let task): task.cancel()
-            case .dataProviding: break
-            }
-        }
-
-        var value: DownloadTask? {
-            switch self {
-            case .download(let task): return task
-            case .dataProviding: return nil
-            }
-        }
-    }
-}
-
 /// Represents a downloading manager for requesting the image with a URL from server.
 open class ImageDownloader {
 
@@ -178,12 +157,8 @@ open class ImageDownloader {
         }
         sessionDelegate.onDownloadingFinished.delegate(on: self) { (self, value) in
             let (url, result) = value
-            do {
-                let value = try result.get()
-                self.delegate?.imageDownloader(self, didFinishDownloadingImageForURL: url, with: value, error: nil)
-            } catch {
-                self.delegate?.imageDownloader(self, didFinishDownloadingImageForURL: url, with: nil, error: error)
-            }
+            self.delegate?.imageDownloader(
+                self, didFinishDownloadingImageForURL: url, with: result.value, error: result.error)
         }
         sessionDelegate.onDidDownloadData.delegate(on: self) { (self, task) in
             guard let url = task.task.originalRequest?.url else {
@@ -269,20 +244,11 @@ open class ImageDownloader {
                 let (result, callbacks) = done
 
                 // Before processing the downloaded data.
-                do {
-                    let value = try result.get()
-                    self.delegate?.imageDownloader(
-                        self,
-                        didFinishDownloadingImageForURL: url,
-                        with: value.1,
-                        error: nil)
-                } catch {
-                    self.delegate?.imageDownloader(
-                        self,
-                        didFinishDownloadingImageForURL: url,
-                        with: nil,
-                        error: error)
-                }
+                self.delegate?.imageDownloader(
+                    self,
+                    didFinishDownloadingImageForURL: url,
+                    with: result.value?.1,
+                    error: result.error)
 
                 switch result {
                 // Download finished. Now process the data to an image.
@@ -295,7 +261,7 @@ open class ImageDownloader {
                         // result: Result<Image>, callback: SessionDataTask.TaskCallback
                         let (result, callback) = result
 
-                        if let image = try? result.get() {
+                        if let image = result.value {
                             self.delegate?.imageDownloader(self, didDownload: image, for: url, with: response)
                         }
 

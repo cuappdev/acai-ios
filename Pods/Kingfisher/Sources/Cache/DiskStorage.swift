@@ -196,18 +196,11 @@ public enum DiskStorage {
         }
 
         func cacheFileName(forKey key: String) -> String {
-            if config.usesHashedFileName {
-                let hashedKey = key.kf.md5
-                if let ext = config.pathExtension {
-                    return "\(hashedKey).\(ext)"
-                }
-                return hashedKey
-            } else {
-                if let ext = config.pathExtension {
-                    return "\(key).\(ext)"
-                }
-                return key
+            let hashedKey = key.kf.md5
+            if let ext = config.pathExtension {
+                return "\(hashedKey).\(ext)"
             }
+            return hashedKey
         }
 
         func allFileURLs(for propertyKeys: [URLResourceKey]) throws -> [URL] {
@@ -316,9 +309,6 @@ extension DiskStorage {
         /// The preferred extension of cache item. It will be appended to the file name as its extension.
         /// Default is `nil`, means that the cache file does not contain a file extension.
         public var pathExtension: String? = nil
-
-        /// Default is `true`, means that the cache file name will be hashed before storing.
-        public var usesHashedFileName = true
 
         let name: String
         let fileManager: FileManager

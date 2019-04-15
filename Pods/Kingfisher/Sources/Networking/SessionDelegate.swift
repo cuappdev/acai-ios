@@ -70,7 +70,7 @@ class SessionDelegate: NSObject {
             // No other callbacks waiting, we can clear the task now.
             if !task.containsCallbacks {
                 let dataTask = task.task
-                self.remove(dataTask)
+                self.remove(dataTask, acquireLock: true)
             }
         }
         let token = task.addCallback(callback)
@@ -83,27 +83,25 @@ class SessionDelegate: NSObject {
         url: URL,
         callback: SessionDataTask.TaskCallback) -> DownloadTask
     {
+        lock.lock()
+        defer { lock.unlock() }
         let token = task.addCallback(callback)
         return DownloadTask(sessionTask: task, cancelToken: token)
     }
 
-    private func remove(_ task: URLSessionTask) {
+    private func remove(_ task: URLSessionTask, acquireLock: Bool) {
         guard let url = task.originalRequest?.url else {
             return
         }
-        lock.lock()
-        defer {lock.unlock()}
+        if acquireLock { lock.lock() }
         tasks[url] = nil
+        if acquireLock { lock.unlock() }
     }
 
     private func task(for task: URLSessionTask) -> SessionDataTask? {
-
         guard let url = task.originalRequest?.url else {
             return nil
         }
-
-        lock.lock()
-        defer { lock.unlock() }
         guard let sessionTask = tasks[url] else {
             return nil
         }
@@ -120,18 +118,13 @@ class SessionDelegate: NSObject {
     }
 
     func cancelAll() {
-        lock.lock()
-        let taskValues = tasks.values
-        lock.unlock()
-        for task in taskValues {
+        for task in tasks.values {
             task.forceCancel()
         }
     }
 
     func cancel(url: URL) {
-        lock.lock()
         let task = tasks[url]
-        lock.unlock()
         task?.forceCancel()
     }
 }
@@ -144,6 +137,9 @@ extension SessionDelegate: URLSessionDataDelegate {
         didReceive response: URLResponse,
         completionHandler: @escaping (URLSession.ResponseDisposition) -> Void)
     {
+        lock.lock()
+        defer { lock.unlock() }
+
         guard let httpResponse = response as? HTTPURLResponse else {
             let error = KingfisherError.responseError(reason: .invalidURLResponse(response: response))
             onCompleted(task: dataTask, result: .failure(error))
@@ -162,6 +158,9 @@ extension SessionDelegate: URLSessionDataDelegate {
     }
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        lock.lock()
+        defer { lock.unlock() }
+
         guard let task = self.task(for: dataTask) else {
             return
         }
@@ -178,6 +177,9 @@ extension SessionDelegate: URLSessionDataDelegate {
     }
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        lock.lock()
+        defer { lock.unlock() }
+
         guard let sessionTask = self.task(for: task) else { return }
 
         if let url = task.originalRequest?.url {
@@ -229,6 +231,8 @@ extension SessionDelegate: URLSessionDataDelegate {
         newRequest request: URLRequest,
         completionHandler: @escaping (URLRequest?) -> Void)
     {
+        lock.lock()
+        defer { lock.unlock() }
         guard let sessionDataTask = self.task(for: task),
               let redirectHandler = Array(sessionDataTask.callbacks).last?.options.redirectHandler else
         {
@@ -247,7 +251,9 @@ extension SessionDelegate: URLSessionDataDelegate {
         guard let sessionTask = self.task(for: task) else {
             return
         }
-        remove(task)
-        sessionTask.onTaskDone.call((result, sessionTask.callbacks))
+        // The lock should be already acquired in the session delegate queue
+        // by the caller `urlSession(_:task:didCompleteWithError:)`.
+        remove(task, acquireLock: false)
+        sessionTask.onTaskDone.call((result, Array(sessionTask.callbacks)))
     }
 }

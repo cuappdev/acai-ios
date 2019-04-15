@@ -80,14 +80,8 @@ extension KingfisherWrapper where Base: UIButton {
             completionHandler: { result in
                 CallbackQueue.mainCurrentOrAsync.execute {
                     guard issuedTaskIdentifier == self.taskIdentifier(for: state) else {
-                        let reason: KingfisherError.ImageSettingErrorReason
-                        do {
-                            let value = try result.get()
-                            reason = .notCurrentSourceTask(result: value, error: nil, source: source)
-                        } catch {
-                            reason = .notCurrentSourceTask(result: nil, error: error, source: source)
-                        }
-                        let error = KingfisherError.imageSettingError(reason: reason)
+                        let error = KingfisherError.imageSettingError(
+                            reason: .notCurrentSourceTask(result: result.value, error: result.error, source: source))
                         completionHandler?(.failure(error))
                         return
                     }
@@ -211,14 +205,8 @@ extension KingfisherWrapper where Base: UIButton {
             completionHandler: { result in
                 CallbackQueue.mainCurrentOrAsync.execute {
                     guard issuedTaskIdentifier == self.backgroundTaskIdentifier(for: state) else {
-                        let reason: KingfisherError.ImageSettingErrorReason
-                        do {
-                            let value = try result.get()
-                            reason = .notCurrentSourceTask(result: value, error: nil, source: source)
-                        } catch {
-                            reason = .notCurrentSourceTask(result: nil, error: error, source: source)
-                        }
-                        let error = KingfisherError.imageSettingError(reason: reason)
+                        let error = KingfisherError.imageSettingError(
+                            reason: .notCurrentSourceTask(result: result.value, error: result.error, source: source))
                         completionHandler?(.failure(error))
                         return
                     }
@@ -363,7 +351,7 @@ extension KingfisherWrapper where Base: UIButton {
     ///
     /// - Parameter state: The state that uses the specified image.
     /// - Returns: Current URL for image.
-    @available(*, deprecated, message: "Use `taskIdentifier` instead to identify a setting task.")
+    @available(*, obsoleted: 5.0, message: "Use `taskIdentifier` instead to identify a setting task.")
     public func webURL(for state: UIControl.State) -> URL? {
         return nil
     }
@@ -372,7 +360,7 @@ extension KingfisherWrapper where Base: UIButton {
     ///
     /// - Parameter state: The state that uses the specified background image.
     /// - Returns: Current URL for image.
-    @available(*, deprecated, message: "Use `backgroundTaskIdentifier` instead to identify a setting task.")
+    @available(*, obsoleted: 5.0, message: "Use `backgroundTaskIdentifier` instead to identify a setting task.")
     public func backgroundWebURL(for state: UIControl.State) -> URL? {
         return nil
     }

@@ -17,8 +17,6 @@
 #import <Foundation/Foundation.h>
 
 #import <SquareInAppPaymentsSDK/SQIPCardBrand.h>
-#import <SquareInAppPaymentsSDK/SQIPCardPrepaidType.h>
-#import <SquareInAppPaymentsSDK/SQIPCardType.h>
 
 /**
  Represents a payment card.
@@ -49,18 +47,6 @@
  The billing postal code associated with the card, if available.
  */
 @property (nonatomic, strong, readonly, nullable) NSString *postalCode;
-
-/**
- The type of card (for example, Credit or Debit)
- Note: This property is experimental and will always return `unknown`
- */
-@property (nonatomic, assign, readonly) SQIPCardType type;
-
-/**
- The prepaid type of the credit card (for example, a Prepaid Gift Card)
- Note: This property is experimental and will always return `unknown`
- */
-@property (nonatomic, assign, readonly) SQIPCardPrepaidType prepaidType;
 
 /**
  :nodoc:
