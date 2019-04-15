@@ -44,12 +44,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     // MARK: Data
-    var inputItems: [InputItem] = [
-        InputItem(type: .firstName),
-        InputItem(type: .lastName),
-        InputItem(type: .phoneNumber),
-        InputItem(type: .email),
-        InputItem(type: .password)
+    var inputItems: [UserInputItem] = [
+        UserInputItem(type: .firstName),
+        UserInputItem(type: .lastName),
+        UserInputItem(type: .phoneNumber),
+        UserInputItem(type: .email),
+        UserInputItem(type: .password)
     ]
     var email: String = ""
     var firstName: String = ""
@@ -58,6 +58,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var phoneNumber: String = ""
 
     var attemptedNetworking = false
+
+    let defaults = UserDefaults.standard
 
     private let networking: Networking = URLSession.shared.request
 
@@ -178,6 +180,20 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         phoneNumber = ""
     }
 
+    func loginWithUserDefaults() {
+        if let sessionToken = defaults.string(forKey: "sessionToken") {
+            getUser(email: email, password: password).observe { [weak self] result in
+                switch result {
+                case .value(let response):
+                    print(response)
+                    self?.defaults.set(response.data.session.sessionToken, forKey: "sessionToken")
+                case .error(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+
     @objc func showKeyboard(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -242,6 +258,7 @@ extension LoginViewController: SelectRoundedButtonDelegate {
                 switch result {
                 case .value(let response):
                     print(response)
+                    self?.defaults.set(response.data.session.sessionToken, forKey: "sessionToken")
                 case .error(let error):
                     print(error)
                 }
@@ -262,16 +279,16 @@ extension LoginViewController: SelectRoundedButtonDelegate {
         switch type {
         case .login:
             inputItems = [
-                InputItem(type: .email),
-                InputItem(type: .password)
+                UserInputItem(type: .email),
+                UserInputItem(type: .password)
             ]
         case .signUp:
             inputItems = [
-                InputItem(type: .firstName),
-                InputItem(type: .lastName),
-                InputItem(type: .phoneNumber),
-                InputItem(type: .email),
-                InputItem(type: .password)
+                UserInputItem(type: .firstName),
+                UserInputItem(type: .lastName),
+                UserInputItem(type: .phoneNumber),
+                UserInputItem(type: .email),
+                UserInputItem(type: .password)
             ]
         }
         resetTextFields()

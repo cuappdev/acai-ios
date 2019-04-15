@@ -32,12 +32,6 @@ enum InputType: String {
     }
 }
 
-class InputItem {
-
+struct UserInputItem {
     var type: InputType!
-
-    init(type: InputType) {
-        self.type = type
-    }
-
 }

@@ -22,10 +22,7 @@ class InputTableViewCell: UITableViewCell {
 
     // MARK: Constraint Constants
     private enum FileConstants {
-        static let lineHeight = 1
-        static let leadingOffset = 35
-        static let trailingOffset = 22
-        static let verticalOffset = 4
+
     }
 
     // MARK: Data
@@ -61,7 +58,7 @@ class InputTableViewCell: UITableViewCell {
         setupConstraints()
     }
 
-    func configure(for inputItem: InputItem) {
+    func configure(for inputItem: UserInputItem) {
         guard let type = inputItem.type else { return }
         let placeholder = inputItem.type.placeholder()
         let attr: [NSAttributedString.Key: Any] = [
@@ -97,29 +94,33 @@ class InputTableViewCell: UITableViewCell {
     }
 
     private func setupConstraints() {
+        let lineHeight = 1
+        let leadingOffset = 35
+        let trailingOffset = 22
+        let verticalOffset = 4
         invalidEntryLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
-            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
+            make.leading.equalToSuperview().offset(leadingOffset)
+            make.trailing.equalToSuperview().offset(-trailingOffset)
             make.bottom.equalToSuperview()
         }
 
         line.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
-            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
-            make.height.equalTo(FileConstants.lineHeight)
-            make.bottom.equalTo(invalidEntryLabel.snp.top).offset(-FileConstants.verticalOffset)
+            make.leading.equalToSuperview().offset(leadingOffset)
+            make.trailing.equalToSuperview().offset(-trailingOffset)
+            make.height.equalTo(lineHeight)
+            make.bottom.equalTo(invalidEntryLabel.snp.top).offset(-verticalOffset)
         }
 
         textField.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
-            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
-            make.bottom.equalTo(line.snp.top).offset(-FileConstants.verticalOffset)
+            make.leading.equalToSuperview().offset(leadingOffset)
+            make.trailing.equalToSuperview().offset(-trailingOffset)
+            make.bottom.equalTo(line.snp.top).offset(-verticalOffset)
         }
 
         label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(FileConstants.leadingOffset)
-            make.trailing.equalToSuperview().offset(-FileConstants.trailingOffset)
-            make.bottom.equalTo(textField.snp.top).offset(-FileConstants.verticalOffset)
+            make.leading.equalToSuperview().offset(leadingOffset)
+            make.trailing.equalToSuperview().offset(-trailingOffset)
+            make.bottom.equalTo(textField.snp.top).offset(-verticalOffset)
         }
     }
 
