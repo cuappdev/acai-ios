@@ -2,7 +2,7 @@ PODS:
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
-  - FutureNova (0.1.1)
+  - FutureNova (0.1.2)
   - IGListKit (3.4.0):
     - IGListKit/Default (= 3.4.0)
   - IGListKit/Default (3.4.0):
@@ -18,10 +18,10 @@ DEPENDENCIES:
   - Fabric
   - FutureNova (from `https://github.com/cuappdev/ios-networking.git`)
   - IGListKit
-  - Kingfisher
+  - Kingfisher (~> 5.1.1)
   - SnapKit
-  - Sourcery
-  - SquareInAppPaymentsSDK
+  - Sourcery (~> 0.15.0)
+  - SquareInAppPaymentsSDK (~> 1.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -39,19 +39,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FutureNova:
-    :commit: 398c979f814c6a1651b3a2796641502ff10e624b
+    :commit: 760a733fcb0ac82654796cbf70a77a41c2477150
     :git: https://github.com/cuappdev/ios-networking.git
 
 SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FutureNova: 745f45d31124a8f39127fb8f3846a6ee9375f06b
+  FutureNova: ac182c4b251f385e7b8f9cead95a7b2779805676
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   SquareInAppPaymentsSDK: bb29701fe05e3119bf3ea003d266e9a233d7c7a6
 
-PODFILE CHECKSUM: 902918e1b29f15f27fcdf0334b5e2a046e840d0c
+PODFILE CHECKSUM: 3a61b93446d388559b2af1ce04092ec85c719c39
 
 COCOAPODS: 1.6.0

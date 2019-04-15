@@ -22,6 +22,6 @@ struct User: Codable {
 
 struct Session: Codable {
     let refreshToken: String
-    let sessionExpiration: Date
+    let sessionExpiration: String
     let sessionToken: String
 }

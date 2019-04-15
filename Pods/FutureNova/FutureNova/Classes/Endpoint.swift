@@ -78,10 +78,16 @@ extension Endpoint {
                             customPort: Int? = nil) {
         self.path = path
         self.queryItems = []
-        self.headers = headers
         self.method = .post
 
-        //Encode body
+        var modifiedHeaders = headers
+        if modifiedHeaders["Content-Type"] == nil {
+            // Set Content-Type to application/json so backend can identify json body
+            modifiedHeaders["Content-Type"] = "application/json"
+        }
+        self.headers = modifiedHeaders
+
+        // Encode body
         self.body = try? JSONEncoder().encode(body)
 
         self.host = customHost
