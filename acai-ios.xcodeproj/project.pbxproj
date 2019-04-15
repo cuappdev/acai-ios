@@ -200,12 +200,9 @@
 		6D10DE9C221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C24256E9226522900052460E /* Extensions */,
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
 				031536F7222EB3BA004FAF9F /* Acai.swift */,
-				6D03FA392246D17500191558 /* UIColor+Shared.swift */,
-				03D2BB992240B5EB00AC6F38 /* UIFont+Shared.swift */,
-				6D8C3E7A224BEC8C0089AE08 /* Double+Extension.swift */,
-				0316A5E1225F9D0800C8286F /* String+Extension.swift */,
 				6D10DEC0221EE81700C46F75 /* Endpoints.swift */,
 				6D10DEBE221EDF0F00C46F75 /* keys.generated.swift */,
 				030F1902226238FF0062D1E5 /* TableViewCells */,
@@ -227,6 +224,17 @@
 				CD1B4129B3DFDE2BE167831D /* Pods_acai_ios.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C24256E9226522900052460E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6D03FA392246D17500191558 /* UIColor+Shared.swift */,
+				03D2BB992240B5EB00AC6F38 /* UIFont+Shared.swift */,
+				6D8C3E7A224BEC8C0089AE08 /* Double+Extension.swift */,
+				0316A5E1225F9D0800C8286F /* String+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D373E9E75C1FEDD56C03ABA5 /* Pods */ = {
