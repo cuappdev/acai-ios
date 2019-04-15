@@ -26,7 +26,6 @@ class InputTableViewCell: UITableViewCell {
         static let leadingOffset = 35
         static let trailingOffset = 22
         static let verticalOffset = 4
-
     }
 
     // MARK: Data
