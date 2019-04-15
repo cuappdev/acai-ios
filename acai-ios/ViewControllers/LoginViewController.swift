@@ -25,10 +25,7 @@ enum EntryType {
     case signUp
 }
 
-class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    // MARK: View vars
-    var tableView: UITableView!
+class LoginViewController: UITableViewController {
 
     // MARK: Constants
     private enum FileConstants {
@@ -59,8 +56,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var attemptedNetworking = false
 
-    let defaults = UserDefaults.standard
-
     private let networking: Networking = URLSession.shared.request
 
     override func viewDidLoad() {
@@ -75,7 +70,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.leftBarButtonItem = navigationBarLeftItem
         formatNavigationBar()
 
-        tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
@@ -85,17 +79,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.contentInset.bottom = FileConstants.inputViewBottomOffset
         tableView.register(InputTableViewCell.self, forCellReuseIdentifier: FileConstants.inputCellReuseIdentifier)
         tableView.register(RoundedButtonTableViewCell.self, forCellReuseIdentifier: FileConstants.roundedButtonCellReuseIdentifier)
-        view.addSubview(tableView)
-
-        setupConstraints()
-        setupKeyboard()
-    }
-
-    private func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview()
-        }
     }
 
     private func formatNavigationBar() {
@@ -110,12 +93,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         ]
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // +1 for cell with sign up and login buttons
         return inputItems.count + 1
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == inputItems.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.roundedButtonCellReuseIdentifier, for: indexPath) as! RoundedButtonTableViewCell
             cell.selectRoundedButtonDelegate = self
@@ -159,17 +142,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == inputItems.count {
             return FileConstants.buttonCellHeight
         } else {
             return FileConstants.inputViewHeight
         }
-    }
-
-    func setupKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     func resetTextFields() {
@@ -178,42 +156,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         lastName = ""
         password = ""
         phoneNumber = ""
-    }
-
-    func loginWithUserDefaults() {
-        if let sessionToken = defaults.string(forKey: "sessionToken") {
-            getUser(email: email, password: password).observe { [weak self] result in
-                switch result {
-                case .value(let response):
-                    print(response)
-                    self?.defaults.set(response.data.session.sessionToken, forKey: "sessionToken")
-                case .error(let error):
-                    print(error)
-                }
-            }
-        }
-    }
-
-    @objc func showKeyboard(notification: NSNotification) {
-        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.tableView.snp.remakeConstraints { make in
-                make.leading.top.trailing.equalTo(self.view.safeAreaLayoutGuide)
-                make.bottom.equalToSuperview().offset(-keyboardFrame.height)
-            }
-        }
-    }
-
-    @objc func hideKeyboard(notification: NSNotification) {
-        tableView.snp.remakeConstraints { make in
-            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview()
-        }
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -258,7 +200,6 @@ extension LoginViewController: SelectRoundedButtonDelegate {
                 switch result {
                 case .value(let response):
                     print(response)
-                    self?.defaults.set(response.data.session.sessionToken, forKey: "sessionToken")
                 case .error(let error):
                     print(error)
                 }
