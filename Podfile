@@ -7,13 +7,13 @@ target 'acai-ios' do
 
   # Pods for appdev-demo
   pod 'SnapKit'
-  pod 'Sourcery'
+  pod 'Sourcery', '~>0.15.0'
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git'
 
-  pod 'SquareInAppPaymentsSDK'
-  pod 'Kingfisher'
+  pod 'SquareInAppPaymentsSDK', '~>1.0.1'
+  pod 'Kingfisher', '~>5.1.1'
   pod 'IGListKit'
 
 end
