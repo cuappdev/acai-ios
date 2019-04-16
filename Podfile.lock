@@ -1,4 +1,6 @@
 PODS:
+  - AppDevSettings (0.1.1):
+    - SnapKit (~> 4.2.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
@@ -14,6 +16,7 @@ PODS:
   - SquareInAppPaymentsSDK (1.0.1)
 
 DEPENDENCIES:
+  - AppDevSettings (from `http://github.com/cuappdev/appdevsettings.git`)
   - Crashlytics
   - Fabric
   - FutureNova (from `https://github.com/cuappdev/ios-networking.git`)
@@ -34,15 +37,21 @@ SPEC REPOS:
     - SquareInAppPaymentsSDK
 
 EXTERNAL SOURCES:
+  AppDevSettings:
+    :git: http://github.com/cuappdev/appdevsettings.git
   FutureNova:
     :git: https://github.com/cuappdev/ios-networking.git
 
 CHECKOUT OPTIONS:
+  AppDevSettings:
+    :commit: b487ca124c5cac9f4f345881c0691e3000c69c2d
+    :git: http://github.com/cuappdev/appdevsettings.git
   FutureNova:
     :commit: 398c979f814c6a1651b3a2796641502ff10e624b
     :git: https://github.com/cuappdev/ios-networking.git
 
 SPEC CHECKSUMS:
+  AppDevSettings: ac9f78743879986b39679f9fc8b9e98ff1899658
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FutureNova: 745f45d31124a8f39127fb8f3846a6ee9375f06b
@@ -52,6 +61,6 @@ SPEC CHECKSUMS:
   Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   SquareInAppPaymentsSDK: bb29701fe05e3119bf3ea003d266e9a233d7c7a6
 
-PODFILE CHECKSUM: 902918e1b29f15f27fcdf0334b5e2a046e840d0c
+PODFILE CHECKSUM: 5b14489ad821d8c743e19d1d5fd3f71a95b2360d
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

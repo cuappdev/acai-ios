@@ -11,6 +11,7 @@ target 'acai-ios' do
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git'
+  pod 'AppDevSettings', :git => 'http://github.com/cuappdev/appdevsettings.git'
 
   pod 'SquareInAppPaymentsSDK'
   pod 'Kingfisher'
