@@ -18,5 +18,6 @@ extension UIColor {
     static var mango: UIColor = UIColor(red: 255/255, green: 156/255, blue: 29/255, alpha: 1.0)
     static var sleetGray: UIColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
     static var sunshine: UIColor = UIColor(red: 255/255, green: 216/255, blue: 126/255, alpha: 1.0)
+    static var acaiBlackTwo: UIColor = UIColor(white: 39.0 / 255.0, alpha: 1.0)
 
 }
