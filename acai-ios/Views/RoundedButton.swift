@@ -29,6 +29,7 @@ class RoundedButton: UIButton {
         titleLabel?.font = UIFont.avenirNextRegular.withSize(14)
         layer.cornerRadius = FileConstants.cornerRadius
         updateColor()
+
     }
 
     func toggleColor() {

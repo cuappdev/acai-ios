@@ -62,12 +62,6 @@ class LoginViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        let navigationTitleLabel = UILabel()
-        navigationTitleLabel.text = "Account"
-        navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
-        navigationTitleLabel.sizeToFit()
-        let navigationBarLeftItem = UIBarButtonItem(customView: navigationTitleLabel)
-        self.navigationItem.leftBarButtonItem = navigationBarLeftItem
         formatNavigationBar()
 
         tableView.delegate = self
@@ -82,15 +76,30 @@ class LoginViewController: UITableViewController {
     }
 
     private func formatNavigationBar() {
+        let navigationTitleLabel = UILabel()
+        navigationTitleLabel.text = "Account"
+        navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
+        navigationTitleLabel.sizeToFit()
+        let navigationBarTitleItem = UIBarButtonItem(customView: navigationTitleLabel)
+        let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(cancelled))
+        self.navigationItem.leftBarButtonItems = [
+            navigationBarBackButton,
+            navigationBarTitleItem
+        ]
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .navigationWhite
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
             .foregroundColor: UIColor.black
         ]
+    }
+
+    @objc func cancelled() {
+        navigationController?.popViewController(animated: true)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

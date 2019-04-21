@@ -54,6 +54,7 @@ class MenuViewController: UIViewController {
         listAdapter.dataSource = self
 
         setUpConstraints()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +83,15 @@ class MenuViewController: UIViewController {
             .font: UIFont.avenirNextMedium.withSize(20),
             .foregroundColor: UIColor.black
         ]
+
+        let accountButton = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(pushLoginViewController))
+        accountButton.tintColor = .black
+        navigationItem.rightBarButtonItem = accountButton
+    }
+
+    @objc func pushLoginViewController() {
+        let loginViewController = LoginViewController()
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 
     private func loadMenu() {
