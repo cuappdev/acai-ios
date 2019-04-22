@@ -138,4 +138,8 @@ class Acai {
         type: .bowl
     )
 
+    static let testCart1 = CartItem(menuItem: Acai.testBowl1, quantity: 1, tag: 1)
+    static let testCart2 = CartItem(menuItem: Acai.testBowl2, quantity: 2, tag: 2)
+    static let testCart3 = CartItem(menuItem: Acai.testBowl4, quantity: 3, tag: 3)
+
 }
