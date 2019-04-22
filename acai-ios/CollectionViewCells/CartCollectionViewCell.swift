@@ -23,6 +23,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     private var decrementButton: UIButton!
     private var currentCountLabel: UILabel!
     private var incrementButton: UIButton!
+    private var totalPriceLabel: UILabel!
     
     // MARK: Delegate
     weak var delegate: CartCollectionViewCellDelegate?
@@ -43,7 +44,11 @@ class CartCollectionViewCell: UICollectionViewCell {
         
         decrementButton = UIButton(type: .contactAdd)
         decrementButton.tintColor = .acaiBlackTwo
+        // TODO: change to image
+        decrementButton.setTitle("-", for: .normal)
+        decrementButton.setTitleColor(.black, for: .normal)
         // TODO: Add button action
+        contentView.addSubview(decrementButton)
         
         currentCountLabel = UILabel()
         currentCountLabel.textColor = .acaiBlack
@@ -53,7 +58,17 @@ class CartCollectionViewCell: UICollectionViewCell {
         
         incrementButton = UIButton(type: .contactAdd)
         incrementButton.tintColor = .acaiBlackTwo
+        // TODO: change to image
+        incrementButton.setTitle("+", for: .normal)
+        incrementButton.setTitleColor(.black, for: .normal)
         // TODO: Add button action
+        contentView.addSubview(incrementButton)
+
+        totalPriceLabel = UILabel()
+        totalPriceLabel.textColor = .acaiBlack
+        totalPriceLabel.font = UIFont.avenirNextBold.withSize(14)
+        totalPriceLabel.textAlignment = .right
+        contentView.addSubview(totalPriceLabel)
 
         setUpConstraints()
     }
@@ -64,8 +79,43 @@ class CartCollectionViewCell: UICollectionViewCell {
     
     // MARK: Constraint setup
     private func setUpConstraints() {
-        ingredientsCollectionView.snp.makeConstraints { _ in
-            
+        let buttonHeightWidth = 24
+        let buttonLabelHorizontalOffset = 10
+        let imageViewHeightWidth = 55
+        let leadingTrailingOffset = 24
+        let verticalOffset = 8
+        imageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(leadingTrailingOffset)
+            make.height.width.equalTo(imageViewHeightWidth)
         }
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
+            make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
+            make.top.equalTo(imageView.snp.top)
+        }
+        ingredientsCollectionView.snp.makeConstraints { make in
+            make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
+            make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
+            make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
+        }
+        decrementButton.snp.makeConstraints { make in
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.height.width.equalTo(buttonHeightWidth)
+            make.top.equalTo(ingredientsCollectionView.snp.bottom).offset(verticalOffset)
+        }
+        currentCountLabel.snp.makeConstraints { make in
+            make.leading.equalTo(decrementButton.snp.trailing).offset(buttonLabelHorizontalOffset)
+            make.centerY.equalTo(decrementButton.snp.centerY)
+        }
+        incrementButton.snp.makeConstraints { make in
+            make.leading.equalTo(currentCountLabel.snp.trailing).offset(buttonLabelHorizontalOffset)
+            make.centerY.equalTo(decrementButton.snp.centerY)
+            make.height.width.equalTo(buttonHeightWidth)
+        }
+        
+    }
+
+    func configure(for cartItem: CartItem) {
+
     }
 }

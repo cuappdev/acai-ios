@@ -8,10 +8,10 @@ PODS:
   - IGListKit/Default (3.4.0):
     - IGListKit/Diffing
   - IGListKit/Diffing (3.4.0)
-  - Kingfisher (5.1.1)
+  - Kingfisher (5.3.1)
   - SnapKit (4.2.0)
-  - Sourcery (0.15.0)
-  - SquareInAppPaymentsSDK (1.0.1)
+  - Sourcery (0.16.0)
+  - SquareInAppPaymentsSDK (1.1.1)
 
 DEPENDENCIES:
   - Crashlytics
@@ -39,7 +39,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FutureNova:
-    :commit: 398c979f814c6a1651b3a2796641502ff10e624b
+    :commit: 477e36243f748f82fdf56687d737916c65e6d9dc
     :git: https://github.com/cuappdev/ios-networking.git
 
 SPEC CHECKSUMS:
@@ -47,10 +47,10 @@ SPEC CHECKSUMS:
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FutureNova: 745f45d31124a8f39127fb8f3846a6ee9375f06b
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
-  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
-  SquareInAppPaymentsSDK: bb29701fe05e3119bf3ea003d266e9a233d7c7a6
+  Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
+  SquareInAppPaymentsSDK: 38ab02659ee1fe8445fef0e4e15026fc31a106f4
 
 PODFILE CHECKSUM: 902918e1b29f15f27fcdf0334b5e2a046e840d0c
 
