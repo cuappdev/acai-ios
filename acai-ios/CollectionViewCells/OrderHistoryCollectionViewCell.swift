@@ -20,6 +20,7 @@ class OrderHistoryCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
 
+    // TODO: setup cell constraints
     private func setupConstraints() {
 
     }

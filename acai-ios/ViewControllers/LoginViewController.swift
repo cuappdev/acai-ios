@@ -81,7 +81,7 @@ class LoginViewController: UITableViewController {
         navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
         navigationTitleLabel.sizeToFit()
         let navigationBarTitleItem = UIBarButtonItem(customView: navigationTitleLabel)
-        let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(cancelled))
+        let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(backButtonPressed))
         self.navigationItem.leftBarButtonItems = [
             navigationBarBackButton,
             navigationBarTitleItem
@@ -98,7 +98,7 @@ class LoginViewController: UITableViewController {
         ]
     }
 
-    @objc func cancelled() {
+    @objc func backButtonPressed() {
         navigationController?.popViewController(animated: true)
     }
 
