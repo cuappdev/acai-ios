@@ -85,7 +85,13 @@ class MenuViewController: UIViewController {
 
         let accountButton = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(accountButtonTapped))
         accountButton.tintColor = .black
-        navigationItem.rightBarButtonItem = accountButton
+        let cartButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(cartButtonTapped))
+        navigationItem.rightBarButtonItems = [accountButton, cartButton]
+    }
+
+    @objc func cartButtonTapped() {
+        let cartViewController = CartViewController()
+        navigationController?.pushViewController(cartViewController, animated: true)
     }
 
     @objc func accountButtonTapped() {

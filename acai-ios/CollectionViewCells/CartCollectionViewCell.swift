@@ -48,7 +48,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         ingredientsCollectionView.isScrollEnabled = false
         contentView.addSubview(ingredientsCollectionView)
 
-        decrementButton = UIButton(type: .contactAdd)
+        decrementButton = UIButton()
         decrementButton.tintColor = .acaiBlackTwo
         // TODO: change to image
         decrementButton.setTitle("-", for: .normal)
@@ -61,7 +61,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         currentCountLabel.font = UIFont.avenirNextBold.withSize(14)
         contentView.addSubview(currentCountLabel)
 
-        incrementButton = UIButton(type: .contactAdd)
+        incrementButton = UIButton()
         incrementButton.tintColor = .acaiBlack
         // TODO: change to image
         incrementButton.setTitle("+", for: .normal)
@@ -84,11 +84,13 @@ class CartCollectionViewCell: UICollectionViewCell {
 
     @objc func decrement() {
         // TODO: put delegate in superview
+        print("decrement pressed")
         self.delegate?.valueDecremented()
     }
 
     @objc func increment() {
         // TODO: put delegate in superview
+        print("increment pressed")
         self.delegate?.valueIncremented()
     }
 
@@ -149,12 +151,13 @@ class CartCollectionViewCell: UICollectionViewCell {
         titleLabel.text = menuItem.title
         ingredientsCollectionView.tag = cartItem.tag
 
-        let quantity = cartItem.quantity
-        currentCountLabel.text = "\(quantity)"
-        if quantity == 1 {
-            decrementButton.tintColor = .lineGray
-        } else {
-            decrementButton.tintColor = .acaiBlack
+        if let quantity = cartItem.quantity {
+            currentCountLabel.text = String(quantity)
+            if quantity == 1 {
+                decrementButton.tintColor = .lineGray
+            } else {
+                decrementButton.tintColor = .acaiBlack
+            }
         }
 
         totalPriceLabel.text = cartItem.getPrice().asPriceString()
