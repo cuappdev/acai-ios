@@ -6,6 +6,7 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
+import AppDevSettings
 import IGListKit
 import SnapKit
 import UIKit
@@ -32,6 +33,9 @@ class MenuViewController: UIViewController {
 
         // TODO: change based on time of day
         title = "Good Morning, Jamie ☀️"
+
+        // TODO: change settings icon
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(didPressSettings))
 
         selectedTab = .bowl
 
@@ -75,7 +79,7 @@ class MenuViewController: UIViewController {
             .foregroundColor: UIColor.black
         ]
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(24),
+            .font: UIFont.avenirNextMedium.withSize(20),
             .foregroundColor: UIColor.black
         ]
     }
@@ -108,6 +112,11 @@ class MenuViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+
+    @objc func didPressSettings() {
+        let vc = UINavigationController(rootViewController: SettingsViewController(config: Constants.settings))
+        present(vc, animated: true, completion: nil)
     }
 }
 

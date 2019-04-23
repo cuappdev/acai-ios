@@ -1,0 +1,27 @@
+{
+  "name": "AppDevSettings",
+  "version": "0.1.1",
+  "summary": "A short description of AppDevSettings.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/cuappdev/AppDevSettings",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Drew Dunne": "drewsdunne1@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/cuappdev/AppDevSettings.git",
+    "tag": "0.1.1"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "AppDevSettings/Classes/**/*",
+  "dependencies": {
+    "SnapKit": [
+      "~> 4.2.0"
+    ]
+  }
+}
