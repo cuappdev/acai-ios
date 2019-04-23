@@ -111,9 +111,31 @@ class MenuViewController: UIViewController {
             ],
 
             .smoothie: [
+                Acai.testSmoothie1,
+                Acai.testSmoothie2,
+                Acai.testSmoothie3,
+                Acai.testSmoothie4,
+                Acai.testSmoothie5,
+                Acai.testSmoothie6
             ],
 
             .drink: [
+                Acai.coffee1,
+                Acai.coffee2,
+                Acai.coffee3,
+                Acai.coffee4,
+                Acai.coffee5,
+                Acai.coffee6,
+                Acai.coffee7,
+                Acai.coffee8,
+                Acai.coffee9,
+                Acai.coffee10,
+                Acai.coffee11,
+                Acai.coffee12,
+                Acai.coffee13,
+                Acai.coffee14,
+                Acai.coffee15,
+                Acai.coffee16
             ]
         ]
 

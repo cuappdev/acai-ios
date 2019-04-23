@@ -20,6 +20,7 @@ class OptionHeaderCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .sleetGray
+        self.isUserInteractionEnabled = false
 
         titleLabel = UILabel()
         titleLabel.textColor = .black
