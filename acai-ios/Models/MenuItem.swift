@@ -50,7 +50,7 @@ class MenuItem: ListDiffable {
         self.type = type
         switch type {
         case .bowl:
-            self.image = UIImage(named: "acaiBowl")!
+            self.image = UIImage(named: "bowl-icon")!
         case .smoothie:
             self.image = UIImage(named: "smoothie-icon")!
         case .drink:
