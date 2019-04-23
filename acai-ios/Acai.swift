@@ -13,21 +13,32 @@ class Acai {
 
     // hard code for testing
     static let testBowl1 = MenuItem(
-        title: "Miami",
+        title: "Berry Loco",
         price: 0.00,
         defaultOptions: [
             .base: [
-                OrderOption(title: "Acai", isSelected: false, price: 9.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
-                OrderOption(title: "Yogurt", isSelected: true, price: 6.99, image: UIImage(named: "acaiBowl")!)
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
             ],
             .topping: [
-                OrderOption(title: "Strawberry", isSelected: true, price: 1.00),
-                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
-                OrderOption(title: "Granola", isSelected: false, price: 1.00),
-                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
+                OrderOption(title: "Mixed Berries", isSelected: true, price: 0.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: false, price: 1.00),
                 OrderOption(title: "Almonds", isSelected: false, price: 1.00),
-                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
+                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Kiwi", isSelected: false, price: 1.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
         image: UIImage(named: "acaiBowl")!,
@@ -35,25 +46,32 @@ class Acai {
     )
 
     static let testBowl2 = MenuItem(
-        title: "Crunchy",
+        title: "Bad and Boujee",
         price: 0.00,
         defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
-                OrderOption(title: "Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
-            ],
-            .size: [
-                OrderOption(title: "Small", isSelected: true, price: 0, image: UIImage(named: "size: small")!),
-                OrderOption(title: "Large", isSelected: false, price: 2.00, image: UIImage(named: "size: large")!)
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
             ],
             .topping: [
-                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Peanut Butter", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Chocolate Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Almonds", isSelected: true, price: 0.00),
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
                 OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
-                OrderOption(title: "Granola", isSelected: true, price: 1.00),
-                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
-                OrderOption(title: "Almonds", isSelected: true, price: 1.00),
-                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Kiwi", isSelected: false, price: 1.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
         image: UIImage(named: "acaiBowl")!,
@@ -61,25 +79,32 @@ class Acai {
     )
 
     static let testBowl3 = MenuItem(
-        title: "Surprise",
+        title: "Miami",
         price: 0.00,
         defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
-                OrderOption(title: "Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
-            ],
-            .size: [
-                OrderOption(title: "Small", isSelected: true, price: 0, image: UIImage(named: "size: small")!),
-                OrderOption(title: "Large", isSelected: false, price: 2.00, image: UIImage(named: "size: large")!)
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
             ],
             .topping: [
-                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
-                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
-                OrderOption(title: "Granola", isSelected: true, price: 1.00),
-                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
-                OrderOption(title: "Almonds", isSelected: true, price: 1.00),
-                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Almonds", isSelected: false, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: true, price: 0.00),
+                OrderOption(title: "Strawberry", isSelected: true, price: 0.00),
+                OrderOption(title: "Kiwi", isSelected: false, price: 1.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
         image: UIImage(named: "acaiBowl")!,
@@ -87,25 +112,32 @@ class Acai {
     )
 
     static let testBowl4 = MenuItem(
-        title: "Berry Loco",
+        title: "Crunchy",
         price: 0.00,
         defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
-                OrderOption(title: "Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
-            ],
-            .size: [
-                OrderOption(title: "Small", isSelected: true, price: 0, image: UIImage(named: "size: small")!),
-                OrderOption(title: "Medium", isSelected: false, price: 2.00, image: UIImage(named: "size: medium")!)
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
             ],
             .topping: [
-                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Almonds", isSelected: true, price: 0.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
                 OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
-                OrderOption(title: "Granola", isSelected: true, price: 1.00),
-                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
-                OrderOption(title: "Almonds", isSelected: true, price: 1.00),
-                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Kiwi", isSelected: true, price: 0.00),
+                OrderOption(title: "Flax Seed", isSelected: true, price: 0.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
         image: UIImage(named: "acaiBowl")!,
@@ -113,31 +145,102 @@ class Acai {
     )
 
     static let testBowl5 = MenuItem(
-        title: "Party",
+        title: "Candy Apple",
         price: 0.00,
         defaultOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
                 OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
-                OrderOption(title: "Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
-            ],
-            .size: [
-                OrderOption(title: "Small", isSelected: true, price: 0, image: UIImage(named: "size: small")!),
-                OrderOption(title: "Large", isSelected: false, price: 2.00, image: UIImage(named: "size: large")!)
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
             ],
             .topping: [
-                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
+                OrderOption(title: "Banana", isSelected: false, price: 1.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: false, price: 1.00),
+                OrderOption(title: "Almonds", isSelected: false, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
                 OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
-                OrderOption(title: "Granola", isSelected: true, price: 1.00),
-                OrderOption(title: "Coconut", isSelected: true, price: 1.00),
-                OrderOption(title: "Almonds", isSelected: true, price: 1.00),
-                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00)
+                OrderOption(title: "Strawberry", isSelected: false, price: 1.00),
+                OrderOption(title: "Kiwi", isSelected: false, price: 1.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: true, price: 0.00),
+                OrderOption(title: "Caramel", isSelected: true, price: 0.00),
+                OrderOption(title: "Raisin", isSelected: true, price: 0.00),
+                OrderOption(title: "Cinnamon", isSelected: true, price: 0.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
         image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
-
+    static let testBowl6 = MenuItem(
+        title: "Par-Yay",
+        price: 0.00,
+        defaultOptions: [
+            .base: [
+                OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Oatmeal", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 6.99, image: UIImage(named: "acaiBowl")!)
+            ],
+            .topping: [
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Almonds", isSelected: false, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: true, price: 0.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
+                OrderOption(title: "Strawberry", isSelected: true, price: 0.00),
+                OrderOption(title: "Kiwi", isSelected: false, price: 1.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: true, price: 0.00),
+                OrderOption(title: "Nutella", isSelected: false, price: 1.00)
+            ]
+        ],
+        image: UIImage(named: "acaiBowl")!,
+        type: .bowl
+    )
+    static let testBowl7 = MenuItem(
+        title: "Money Moves",
+        price: 0.00,
+        defaultOptions: [
+            .base: [
+                OrderOption(title: "Acai", isSelected: true, price: 10.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Oatmeal", isSelected: false, price: 7.99, image: UIImage(named: "acaiBowl")!),
+                OrderOption(title: "Greek Yogurt", isSelected: false, price: 7.99, image: UIImage(named: "acaiBowl")!)
+            ],
+            .topping: [
+                OrderOption(title: "Mixed Berries", isSelected: false, price: 1.00),
+                OrderOption(title: "Banana", isSelected: true, price: 0.00),
+                OrderOption(title: "Granola", isSelected: true, price: 0.00),
+                OrderOption(title: "Coconut Chips", isSelected: true, price: 0.00),
+                OrderOption(title: "Almonds", isSelected: false, price: 1.00),
+                OrderOption(title: "Peanut Butter", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Chips", isSelected: false, price: 1.00),
+                OrderOption(title: "Pineapple", isSelected: false, price: 1.00),
+                OrderOption(title: "Strawberry", isSelected: true, price: 0.00),
+                OrderOption(title: "Kiwi", isSelected: true, price: 0.00),
+                OrderOption(title: "Flax Seed", isSelected: false, price: 1.00),
+                OrderOption(title: "Apple", isSelected: false, price: 1.00),
+                OrderOption(title: "Caramel", isSelected: false, price: 1.00),
+                OrderOption(title: "Raisin", isSelected: false, price: 1.00),
+                OrderOption(title: "Cinnamon", isSelected: false, price: 1.00),
+                OrderOption(title: "Chocolate Sauce", isSelected: false, price: 1.00),
+                OrderOption(title: "Nutella", isSelected: true, price: 0.00)
+            ]
+        ],
+        image: UIImage(named: "acaiBowl")!,
+        type: .bowl
+    )
+    
     static let testSmoothie1 = MenuItem(
         title: "Sun's Out Guns Out",
         price: 0.00,
@@ -150,10 +253,7 @@ class Acai {
                 OrderOption(title: "Peanut Butter", isSelected: true, price: 0.00),
                 OrderOption(title: "Banana", isSelected: true, price: 0.00)
             ]
-        ],
-        image: UIImage(named: "acaiBowl")!,
-        type: .smoothie
-    )
+        ], type: .smoothie)
     static let testSmoothie2 = MenuItem(
         title: "Pina Colada",
         price: 0.00,
@@ -166,10 +266,7 @@ class Acai {
                 OrderOption(title: "Coconut Syrup", isSelected: true, price: 0.00),
                 OrderOption(title: "Banana", isSelected: true, price: 0.00)
             ]
-        ],
-        image: UIImage(named: "acaiBowl")!,
-        type: .smoothie
-    )
+        ],type: .smoothie)
     static let testSmoothie3 = MenuItem(
         title: "Berry Good",
         price: 0.00,
@@ -183,7 +280,6 @@ class Acai {
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .smoothie
     )
     static let testSmoothie4 = MenuItem(
@@ -201,7 +297,6 @@ class Acai {
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .smoothie
     )
     static let testSmoothie5 = MenuItem(
@@ -220,7 +315,6 @@ class Acai {
                 OrderOption(title: "Coconut Syrup", isSelected: true, price: 0.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .smoothie
     )
     static let testSmoothie6 = MenuItem(
@@ -237,7 +331,6 @@ class Acai {
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .smoothie
     )
 
@@ -246,25 +339,25 @@ class Acai {
             OrderOption(title: "Small", isSelected: true, price: 2.00, image: UIImage(named: "size: small")!),
             OrderOption(title: "Large", isSelected: false, price: 3.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "espresso")!, type: .drink)
     static let coffee2 = MenuItem(title: "Macchiato", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 2.50, image: UIImage(named: "size: small")!),
             OrderOption(title: "Large", isSelected: false, price: 3.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "macchiato")!, type: .drink)
     static let coffee3 = MenuItem(title: "Flat White", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 3.00, image: UIImage(named: "size: small")!),
             OrderOption(title: "Large", isSelected: false, price: 4.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "flat-white")!, type: .drink)
     static let coffee4 = MenuItem(title: "Con Panna", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 2.50, image: UIImage(named: "size: small")!),
             OrderOption(title: "Large", isSelected: false, price: 3.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "con-panna")!, type: .drink)
     static let coffee5 = MenuItem(title: "Americano", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -275,7 +368,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 3.75, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.25, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee6 = MenuItem(title: "Latte", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -286,7 +379,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.00, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "latte")!, type: .drink)
     static let coffee7 = MenuItem(title: "Cappuccino", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -297,7 +390,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.00, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "cappucino")!, type: .drink)
     static let coffee8 = MenuItem(title: "Mocha Latte", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -308,27 +401,27 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.50, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 5.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "mocha-latte")!, type: .drink)
     static let coffee9 = MenuItem(title: "Caramel Mochaccino", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 4.00, image: UIImage(named: "size: small")!),
             OrderOption(title: "Medium", isSelected: false, price: 4.50, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 5.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee10 = MenuItem(title: "Hot Chocolate", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 3.50, image: UIImage(named: "size: small")!),
             OrderOption(title: "Medium", isSelected: false, price: 4.00, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "hot-chocolate")!, type: .drink)
     static let coffee11 = MenuItem(title: "Cold Brew", price: 0, defaultOptions: [
         .size: [
             OrderOption(title: "Small", isSelected: true, price: 3.00, image: UIImage(named: "size: small")!),
             OrderOption(title: "Large", isSelected: false, price: 3.75, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee12 = MenuItem(title: "Chai Tea Latte", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -339,7 +432,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.50, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 5.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee13 = MenuItem(title: "Matcha Tea", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -350,7 +443,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 3.50, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "matcha")!, type: .drink)
     static let coffee14 = MenuItem(title: "Chai Matcha Tea Latte", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -361,7 +454,7 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.50, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 5.00, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee15 = MenuItem(title: "Matcha Tea Latte", price: 0, defaultOptions: [
         .base: [
             OrderOption(title: "Regular", isSelected: true, price: 0.00, image: UIImage()),
@@ -372,19 +465,16 @@ class Acai {
             OrderOption(title: "Medium", isSelected: false, price: 4.00, image: UIImage(named: "size: medium")!),
             OrderOption(title: "Large", isSelected: false, price: 4.50, image: UIImage(named: "size: large")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], type: .drink)
     static let coffee16 = MenuItem(title: "Harney & Sons Tea", price: 0, defaultOptions: [
         .base: [
-            OrderOption(title: "Tea", isSelected: true, price: 3.00, image: UIImage())
-        ],
-        .topping: [
-            OrderOption(title: "Green", isSelected: true, price: 3.00),
-            OrderOption(title: "English Breakfast", isSelected: true, price: 3.00),
-            OrderOption(title: "Decaf EarlGrey", isSelected: true, price: 3.00),
-            OrderOption(title: "Peppermint", isSelected: true, price: 3.00),
-            OrderOption(title: "Chamomile", isSelected: true, price: 3.00)
+            OrderOption(title: "Green", isSelected: true, price: 3.00, image: UIImage(named: "tea")!),
+            OrderOption(title: "English Breakfast", isSelected: false, price: 3.00, image: UIImage(named: "tea")!),
+            OrderOption(title: "Decaf Earl Grey", isSelected: false, price: 3.00, image: UIImage(named: "tea")!),
+            OrderOption(title: "Peppermint", isSelected: false, price: 3.00, image: UIImage(named: "tea")!),
+            OrderOption(title: "Chamomile", isSelected: false, price: 3.00, image: UIImage(named: "tea")!)
         ]
-        ], image: UIImage(named: "acaiBowl")!, type: .drink)
+        ], image: UIImage(named: "tea")!, type: .drink)
     
 
     static let testCart1 = CartItem(menuItem: Acai.testBowl1, quantity: 1, selectedOptions: [

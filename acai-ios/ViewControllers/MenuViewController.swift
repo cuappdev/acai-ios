@@ -107,7 +107,9 @@ class MenuViewController: UIViewController {
                 Acai.testBowl2,
                 Acai.testBowl3,
                 Acai.testBowl4,
-                Acai.testBowl5
+                Acai.testBowl5,
+                Acai.testBowl6,
+                Acai.testBowl7
             ],
 
             .smoothie: [

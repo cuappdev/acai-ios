@@ -13,6 +13,7 @@ class ArrowLabelActionTabView: UIView {
 
     // MARK: View vars
     var label: UILabel!
+    var subLabel: UILabel!
     var arrow: UIImageView!
 
     init(text: String) {
@@ -24,6 +25,12 @@ class ArrowLabelActionTabView: UIView {
         label.font = UIFont.avenirNextDemi.withSize(17)
         label.text = text
         self.addSubview(label)
+
+        subLabel = UILabel()
+        subLabel.textColor = .white
+        subLabel.font = UIFont.avenirNextDemi.withSize(17)
+        subLabel.textAlignment = .right
+        self.addSubview(subLabel)
 
         arrow = UIImageView()
         arrow.image = UIImage(named: "forwardArrow")
@@ -37,6 +44,7 @@ class ArrowLabelActionTabView: UIView {
         let arrowHeight = 15
         let arrowWidth = 8.7
         let leadingTrailingOffset = 24
+        let subLabelHorizontalOffset = 12
 
         arrow.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -48,7 +56,12 @@ class ArrowLabelActionTabView: UIView {
         label.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(arrow.snp.leading).offset(leadingTrailingOffset)
+        }
+
+        subLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(arrow.snp.leading).offset(-subLabelHorizontalOffset)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(label.snp.trailing).offset(subLabelHorizontalOffset)
         }
     }
 

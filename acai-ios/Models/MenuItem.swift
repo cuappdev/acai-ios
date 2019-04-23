@@ -43,6 +43,21 @@ class MenuItem: ListDiffable {
         self.type = type
     }
 
+    init(title: String, price: Double, defaultOptions: [OrderOption.OptionType: [OrderOption]], type: ItemType) {
+        self.defaultOptions = defaultOptions
+        self.price = price
+        self.title = title
+        self.type = type
+        switch type {
+        case .bowl:
+            self.image = UIImage(named: "acaiBowl")!
+        case .smoothie:
+            self.image = UIImage(named: "smoothie-icon")!
+        case .drink:
+            self.image = UIImage(named: "drink-icon")!
+        }
+    }
+
     func ingredientsString() -> String {
         return defaultOptions.flatMap { $0.1 }.filter { $0.isSelected }.map { $0.title }.joined(separator: ", ")
     }

@@ -102,11 +102,10 @@ class PriceCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func configure(for subtotal: Double) {
-        subtotalAmountLabel.text = subtotal.asPriceString()
-        // TODO: update labels for tax and total
-        taxAmountLabel.text = subtotal.asPriceString()
-        totalAmountLabel.text = subtotal.asPriceString()
+    func configure(for cartItems: CartItems) {
+        subtotalAmountLabel.text = cartItems.getSubtotalPrice().asPriceString()
+        taxAmountLabel.text = cartItems.getTaxPrice().asPriceString()
+        totalAmountLabel.text = cartItems.getTotalPrice().asPriceString()
     }
 
     required init?(coder aDecoder: NSCoder) {

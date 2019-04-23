@@ -27,7 +27,7 @@ class PriceListSectionController: ListSectionController {
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: PriceCollectionViewCell.self, for: self, at: index) as! PriceCollectionViewCell
-        cell.configure(for: cartItems.getSubtotalPrice())
+        cell.configure(for: cartItems)
         return cell
     }
 

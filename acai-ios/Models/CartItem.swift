@@ -77,6 +77,16 @@ class CartItems: ListDiffable {
         })
     }
 
+    func getTaxPrice() -> Double {
+        // TODO: check tax amount
+        let taxPercent = 0.08
+        return taxPercent * getSubtotalPrice()
+    }
+
+    func getTotalPrice() -> Double {
+        return getSubtotalPrice() + getTaxPrice()
+    }
+
     func diffIdentifier() -> NSObjectProtocol {
         return "\(items.allItems())" as NSObjectProtocol
     }

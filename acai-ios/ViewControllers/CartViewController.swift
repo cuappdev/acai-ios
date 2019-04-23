@@ -54,6 +54,7 @@ class CartViewController: UIViewController {
         menuListAdapter.dataSource = self
 
         checkoutActionTabView = ArrowLabelActionTabView(text: "Checkout")
+        checkoutActionTabView.subLabel.text = cartItems.getTotalPrice().asPriceString()
         view.addSubview(checkoutActionTabView)
 
         checkoutGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(checkout))
