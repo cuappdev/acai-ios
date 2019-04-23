@@ -54,6 +54,11 @@ class CartItems: ListDiffable {
         self.items = cartItems
     }
 
+    func getSubtotalPrice() -> Double {
+        // TODO: update price
+        return 9.99
+    }
+
     func diffIdentifier() -> NSObjectProtocol {
         return "\(items.allItems())" as NSObjectProtocol
     }

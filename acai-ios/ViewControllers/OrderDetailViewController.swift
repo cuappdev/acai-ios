@@ -177,9 +177,9 @@ extension OrderDetailViewController: ListAdapterDataSource {
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
         } else if let object = object as? NSNumber {
-            let quantitiyController = QuantitySectionController(quantity: object, itemType: menuItem.type)
-            quantitiyController.delegate = self
-            return quantitiyController
+            let quantityController = QuantitySectionController(quantity: object, itemType: menuItem.type)
+            quantityController.delegate = self
+            return quantityController
         }
         return ListSectionController()
     }

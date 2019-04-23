@@ -134,11 +134,21 @@ extension CartViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         var sections: [ListDiffable] = []
         sections.append(cartItems)
+        sections.append(EmptyItem(height: 91))
+        sections.append(EmptyItem(height: 140))
         return sections
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return CartListSectionController(cartItems: cartItems)
+        if let object = object as? EmptyItem {
+            if object.height == 91 {
+                return CenteredButtonListSectionController(title: "Add another item")
+            } else {
+                return PriceListSectionController(cartItems: cartItems)
+            }
+        } else {
+            return CartListSectionController(cartItems: cartItems)
+        }
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {

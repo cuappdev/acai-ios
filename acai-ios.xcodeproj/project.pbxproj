@@ -21,6 +21,10 @@
 		03995AAB226E45080062C69A /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AAA226E45080062C69A /* CartCollectionViewCell.swift */; };
 		03995AAD226E45190062C69A /* CartOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AAC226E45190062C69A /* CartOptionCollectionViewCell.swift */; };
 		03995AAF226E45370062C69A /* CartListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AAE226E45370062C69A /* CartListSectionController.swift */; };
+		03995AB1226E7A2C0062C69A /* PriceListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB0226E7A2C0062C69A /* PriceListSectionController.swift */; };
+		03995AB3226E7ACD0062C69A /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB2226E7ACD0062C69A /* PriceCollectionViewCell.swift */; };
+		03995AB5226E897D0062C69A /* CenteredButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB4226E897D0062C69A /* CenteredButtonCollectionViewCell.swift */; };
+		03995AB7226E899F0062C69A /* CenteredButtonListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -73,6 +77,10 @@
 		03995AAA226E45080062C69A /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
 		03995AAC226E45190062C69A /* CartOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartOptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03995AAE226E45370062C69A /* CartListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListSectionController.swift; sourceTree = "<group>"; };
+		03995AB0226E7A2C0062C69A /* PriceListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListSectionController.swift; sourceTree = "<group>"; };
+		03995AB2226E7ACD0062C69A /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		03995AB4226E897D0062C69A /* CenteredButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredButtonListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				03995AAE226E45370062C69A /* CartListSectionController.swift */,
+				03995AB0226E7A2C0062C69A /* PriceListSectionController.swift */,
+				03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */,
 				03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */,
 				20ACCC202244EA0C00AB782A /* MenuListSectionController.swift */,
 				6D8C3E7E224D25480089AE08 /* MenuTabListSectionController.swift */,
@@ -189,6 +199,8 @@
 			children = (
 				03995AAA226E45080062C69A /* CartCollectionViewCell.swift */,
 				03995AAC226E45190062C69A /* CartOptionCollectionViewCell.swift */,
+				03995AB2226E7ACD0062C69A /* PriceCollectionViewCell.swift */,
+				03995AB4226E897D0062C69A /* CenteredButtonCollectionViewCell.swift */,
 				20ACCC1C2244E9EF00AB782A /* MenuCollectionViewCell.swift */,
 				6D8C3E80224D269E0089AE08 /* MenuTabCollectionViewCell.swift */,
 				6D8C3E76224BACA10089AE08 /* HeaderImageCollectionViewCell.swift */,
@@ -491,6 +503,8 @@
 				0316A5E0225F8A5D00C8286F /* User.swift in Sources */,
 				6D3A16A0226237C200B9C7C0 /* MenuViewController.swift in Sources */,
 				03D2BBA822431A3300AC6F38 /* EmptyItem.swift in Sources */,
+				03995AB5226E897D0062C69A /* CenteredButtonCollectionViewCell.swift in Sources */,
+				03995AB3226E7ACD0062C69A /* PriceCollectionViewCell.swift in Sources */,
 				03D2BBAC2244959700AC6F38 /* QuantitySectionController.swift in Sources */,
 				6D3A169A226237B800B9C7C0 /* ActionTabView.swift in Sources */,
 				03F8F7B22267F14900E01844 /* OrderHistoryViewController.swift in Sources */,
@@ -515,6 +529,7 @@
 				6D03FA3A2246D17500191558 /* UIColor+Shared.swift in Sources */,
 				031A749122652DB900773CE1 /* InputItem.swift in Sources */,
 				03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */,
+				03995AB1226E7A2C0062C69A /* PriceListSectionController.swift in Sources */,
 				6D10DEBF221EDF0F00C46F75 /* keys.generated.swift in Sources */,
 				6D10DEC1221EE81700C46F75 /* Endpoints.swift in Sources */,
 				6D3A169E226237C200B9C7C0 /* OrderDetailViewController.swift in Sources */,
@@ -523,6 +538,7 @@
 				20ACCC212244EA0D00AB782A /* MenuListSectionController.swift in Sources */,
 				03995AAB226E45080062C69A /* CartCollectionViewCell.swift in Sources */,
 				03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */,
+				03995AB7226E899F0062C69A /* CenteredButtonListSectionController.swift in Sources */,
 				03995AAF226E45370062C69A /* CartListSectionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
