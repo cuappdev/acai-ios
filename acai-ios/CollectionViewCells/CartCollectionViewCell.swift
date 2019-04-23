@@ -49,6 +49,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
 
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 4
         ingredientsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         ingredientsCollectionView.backgroundColor = .white
         ingredientsCollectionView.isScrollEnabled = false
@@ -195,7 +196,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension CartCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CartCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ingredients.count
     }
@@ -205,5 +206,8 @@ extension CartCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         let ingredient = ingredients[indexPath.row]
         cell.configure(for: ingredient)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width, height: CGFloat(collectionCellHeight))
     }
 }
