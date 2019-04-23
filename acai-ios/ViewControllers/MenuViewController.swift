@@ -35,7 +35,7 @@ class MenuViewController: UIViewController {
         title = "Good Morning, Jamie ☀️"
 
         // TODO: change settings icon
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(didPressSettings))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
 
         selectedTab = .bowl
 
@@ -72,7 +72,7 @@ class MenuViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .coldGray//UIColor(red: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1.0)
         navigationController?.navigationBar.barTintColor = UINavigationBar().barTintColor
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
