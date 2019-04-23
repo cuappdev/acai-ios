@@ -94,7 +94,6 @@ class CartCollectionViewCell: UICollectionViewCell {
         self.delegate?.valueIncremented()
     }
 
-
     // MARK: Constraint setup
     private func setUpConstraints() {
         let buttonHeightWidth = 24
@@ -155,8 +154,10 @@ class CartCollectionViewCell: UICollectionViewCell {
             currentCountLabel.text = String(quantity)
             if quantity == 1 {
                 decrementButton.tintColor = .lineGray
+                decrementButton.setTitleColor(.lineGray, for: .normal)
             } else {
                 decrementButton.tintColor = .acaiBlack
+                decrementButton.setTitleColor(.acaiBlack, for: .normal)
             }
         }
 

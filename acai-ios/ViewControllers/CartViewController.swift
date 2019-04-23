@@ -68,6 +68,9 @@ class CartViewController: UIViewController {
 
     @objc func checkout() {
         // TODO: perform checkout
+        let loginViewController = LoginViewController()
+        loginViewController.labelText = "To complete your order, you need to create an account or sign in."
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 
     private func loadCartItems() {

@@ -100,7 +100,6 @@ class PriceCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(totalLabel)
         }
 
-
     }
 
     func configure(for subtotal: Double) {
