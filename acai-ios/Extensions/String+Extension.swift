@@ -40,14 +40,19 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", emailRE).evaluate(with: self)
     }
 
-    // TODO: update name requirements
     func isValidName() -> Bool {
-        return self.count > 0
+        let nameRE = "[a-zA-Z]+"
+        return NSPredicate(format: "SELF MATCHES %@", nameRE).evaluate(with: self)
     }
 
     // TODO: update password requirements
     func isValidPassword() -> Bool {
         return self.count > 0
     }
-    
+
+    func isValidPhoneNumber() -> Bool {
+        let phoneNumberRE = "^\\d{10,11}$|^\\d{0,1}\\(\\d{3}\\)\\d{3}-\\d{4}$|^\\d{1}-\\d{3}-\\d{3}-\\d{4}$|^\\d{3}-\\d{3}-\\d{4}$"
+        return NSPredicate(format: "SELF MATCHES %@", phoneNumberRE).evaluate(with: self)
+    }
+
 }
