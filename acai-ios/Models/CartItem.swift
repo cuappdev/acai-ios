@@ -44,6 +44,16 @@ class CartItem: ListDiffable, NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
         return CartItem(menuItem: menuItem, quantity: quantity, tag: tag)
     }
+
+    func getPrice() -> Double {
+        // TODO: create array for selected options
+        let pricePerItem = menuItem.defaultOptions.reduce(0, { (result, options) -> Double in
+            result + options.value.reduce(0, { (result, option) -> Double in
+                result + (option.isSelected ? option.price : 0)
+            })
+        })
+        return pricePerItem * Double(quantity)
+    }
 }
 
 class CartItems: ListDiffable {
@@ -55,8 +65,9 @@ class CartItems: ListDiffable {
     }
 
     func getSubtotalPrice() -> Double {
-        // TODO: update price
-        return 9.99
+        return items.allItems().reduce(0, { (result, item) -> Double in
+            result + (item as! CartItem).getPrice()
+        })
     }
 
     func diffIdentifier() -> NSObjectProtocol {

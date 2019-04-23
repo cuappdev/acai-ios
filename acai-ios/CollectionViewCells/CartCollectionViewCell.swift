@@ -11,8 +11,8 @@ import SnapKit
 import UIKit
 
 protocol CartCollectionViewCellDelegate: class {
-    func didPressIncrement()
-    func didPressDecrement()
+    func valueIncremented()
+    func valueDecremented()
 }
 
 class CartCollectionViewCell: UICollectionViewCell {
@@ -53,13 +53,12 @@ class CartCollectionViewCell: UICollectionViewCell {
         // TODO: change to image
         decrementButton.setTitle("-", for: .normal)
         decrementButton.setTitleColor(.black, for: .normal)
-        // TODO: Add button action
+        decrementButton.addTarget(self, action: #selector(decrement), for: .touchUpInside)
         contentView.addSubview(decrementButton)
 
         currentCountLabel = UILabel()
         currentCountLabel.textColor = .acaiBlack
         currentCountLabel.font = UIFont.avenirNextBold.withSize(14)
-        currentCountLabel.text = "1"
         contentView.addSubview(currentCountLabel)
 
         incrementButton = UIButton(type: .contactAdd)
@@ -67,7 +66,7 @@ class CartCollectionViewCell: UICollectionViewCell {
         // TODO: change to image
         incrementButton.setTitle("+", for: .normal)
         incrementButton.setTitleColor(.black, for: .normal)
-        // TODO: Add button action
+        incrementButton.addTarget(self, action: #selector(increment), for: .touchUpInside)
         contentView.addSubview(incrementButton)
 
         totalPriceLabel = UILabel()
@@ -83,9 +82,16 @@ class CartCollectionViewCell: UICollectionViewCell {
         setUpConstraints()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func decrement() {
+        // TODO: put delegate in superview
+        self.delegate?.valueDecremented()
     }
+
+    @objc func increment() {
+        // TODO: put delegate in superview
+        self.delegate?.valueIncremented()
+    }
+
 
     // MARK: Constraint setup
     private func setUpConstraints() {
@@ -125,6 +131,10 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(decrementButton.snp.centerY)
             make.height.width.equalTo(buttonHeightWidth)
         }
+        totalPriceLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
+            make.centerY.equalTo(currentCountLabel)
+        }
         line.snp.makeConstraints { make in
             make.height.equalTo(lineHeight)
             make.bottom.leading.trailing.equalToSuperview()
@@ -139,6 +149,18 @@ class CartCollectionViewCell: UICollectionViewCell {
         titleLabel.text = menuItem.title
         ingredientsCollectionView.tag = cartItem.tag
 
-        // TODO: set total price label text
+        let quantity = cartItem.quantity
+        currentCountLabel.text = "\(quantity)"
+        if quantity == 1 {
+            decrementButton.tintColor = .lineGray
+        } else {
+            decrementButton.tintColor = .acaiBlack
+        }
+
+        totalPriceLabel.text = cartItem.getPrice().asPriceString()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
