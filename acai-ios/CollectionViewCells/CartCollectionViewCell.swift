@@ -26,7 +26,6 @@ class CartCollectionViewCell: UICollectionViewCell {
     private var totalPriceLabel: UILabel!
     private var line: UIView!
 
-    var collectionViewHeight = 0
     let collectionCellHeight = 22
 
     // MARK: Data
@@ -127,7 +126,6 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
-            make.height.equalTo(collectionViewHeight)
         }
         decrementButton.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
@@ -172,23 +170,11 @@ class CartCollectionViewCell: UICollectionViewCell {
         }
 
         totalPriceLabel.text = cartItem.getPrice().asPriceString()
-        ingredients = getIngredients(cartItem: cartItem)
-        collectionViewHeight = ingredients.count * collectionCellHeight
-        print(collectionViewHeight)
-    }
-
-    func getIngredients(cartItem: CartItem) -> [OrderOption] {
-        guard let ingredients = cartItem.selectedOptions else { return [] }
-        var options: [OrderOption] = []
-        for key in ingredients.keys {
-            guard let ingredients = ingredients[key] else { return [] }
-            for ingredient in ingredients {
-                if let ingredient = ingredient as? OrderOption {
-                    options.append(ingredient)
-                }
-            }
+        ingredients = cartItem.getIngredients()
+        let collectionViewHeight = ingredients.count * collectionCellHeight
+        ingredientsCollectionView.snp.makeConstraints { make in
+            make.height.equalTo(collectionViewHeight)
         }
-        return options
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -208,6 +194,6 @@ extension CartCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width, height: CGFloat(collectionCellHeight))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(collectionCellHeight))
     }
 }

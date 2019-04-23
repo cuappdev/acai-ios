@@ -57,6 +57,13 @@ class CartItem: ListDiffable, NSCopying {
         })
         return pricePerItem * Double(quantity)
     }
+
+    func getIngredients() -> [OrderOption] {
+        let ingredients: [OrderOption] = selectedOptions.flatMap { (_, orderOptions) -> [OrderOption] in
+            return orderOptions
+        }
+        return ingredients
+    }
 }
 
 class CartItems: ListDiffable {

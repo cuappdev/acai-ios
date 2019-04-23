@@ -26,12 +26,12 @@ class CartListSectionController: ListSectionController {
     }
 
     override func sizeForItem(at index: Int) -> CGSize {
-        let cartItemCellHeight: CGFloat = 184
         guard let context = collectionContext else {
             return .zero
         }
         let width = context.containerSize.width
-        return CGSize(width: width, height: cartItemCellHeight)
+        let cartItem = cartItems.items[index] as! CartItem
+        return CGSize(width: width, height: calculateCellHeight(for: cartItem))
 
     }
 
@@ -45,5 +45,17 @@ class CartListSectionController: ListSectionController {
 
     override func didSelectItem(at index: Int) {
         
+    }
+
+    // MARK: - Private helpers
+    private func calculateCellHeight(for cartItem: CartItem) -> CGFloat {
+        let topPadding: CGFloat = 55
+        let bottomPadding: CGFloat = 64
+        let cartOptionCellHeight: CGFloat = 22
+        let ingredients = cartItem.getIngredients()
+        let ingredientsHeight = CGFloat(ingredients.count) * cartOptionCellHeight
+        let cellHeight = topPadding + bottomPadding + ingredientsHeight
+        let minCellHeight: CGFloat = 126
+        return max(cellHeight, minCellHeight)
     }
 }
