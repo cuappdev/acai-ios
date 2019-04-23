@@ -49,12 +49,9 @@ class CartItem: ListDiffable, NSCopying {
     }
 
     func getPrice() -> Double {
-        // TODO: create array for selected options
-        let pricePerItem = selectedOptions.reduce(0, { (result, options) -> Double in
-            result + options.value.reduce(0, { (result, option) -> Double in
-                result + (option.isSelected ? option.price : 0)
-            })
-        })
+        let pricePerItem = getIngredients().reduce(0) { (result, option) -> Double in
+            return result + option.price
+        }
         return pricePerItem * Double(quantity)
     }
 

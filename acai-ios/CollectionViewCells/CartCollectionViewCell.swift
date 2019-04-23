@@ -26,7 +26,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     private var totalPriceLabel: UILabel!
     private var line: UIView!
 
-    let collectionCellHeight = 22
+    let collectionCellHeight = 24
 
     // MARK: Data
     private var ingredients: [OrderOption] = []
@@ -48,7 +48,8 @@ class CartCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
 
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 4
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         ingredientsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         ingredientsCollectionView.backgroundColor = .white
         ingredientsCollectionView.isScrollEnabled = false
@@ -122,15 +123,16 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(imageView.snp.top)
         }
+        decrementButton.snp.makeConstraints { make in
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.height.width.equalTo(buttonHeightWidth)
+            make.bottom.equalToSuperview().offset(-2*verticalOffset)
+        }
         ingredientsCollectionView.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
-        }
-        decrementButton.snp.makeConstraints { make in
-            make.leading.equalTo(titleLabel.snp.leading)
-            make.height.width.equalTo(buttonHeightWidth)
-            make.top.equalTo(ingredientsCollectionView.snp.bottom).offset(verticalOffset)
+            make.bottom.equalTo(decrementButton.snp.top).offset(-2*verticalOffset)
         }
         currentCountLabel.snp.makeConstraints { make in
             make.leading.equalTo(decrementButton.snp.trailing).offset(buttonLabelHorizontalOffset)

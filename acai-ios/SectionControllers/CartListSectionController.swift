@@ -51,7 +51,7 @@ class CartListSectionController: ListSectionController {
     private func calculateCellHeight(for cartItem: CartItem) -> CGFloat {
         let topPadding: CGFloat = 55
         let bottomPadding: CGFloat = 64
-        let cartOptionCellHeight: CGFloat = 22
+        let cartOptionCellHeight: CGFloat = 24
         let ingredients = cartItem.getIngredients()
         let ingredientsHeight = CGFloat(ingredients.count) * cartOptionCellHeight
         let cellHeight = topPadding + bottomPadding + ingredientsHeight
