@@ -90,6 +90,22 @@ class InputTableViewCell: UITableViewCell {
             textField.autocapitalizationType = .none
             textField.isSecureTextEntry = false
             textField.keyboardType = .phonePad
+        case .cardHolder:
+            textField.autocapitalizationType = .words
+            textField.isSecureTextEntry = false
+            textField.keyboardType = .alphabet
+        case .cardNumber:
+            textField.autocapitalizationType = .none
+            textField.isSecureTextEntry = false
+            textField.keyboardType = .numberPad
+        case .cvc:
+            textField.autocapitalizationType = .none
+            textField.isSecureTextEntry = false
+            textField.keyboardType = .numberPad
+        case .expirationDate:
+            textField.autocapitalizationType = .none
+            textField.isSecureTextEntry = false
+            textField.keyboardType = .numberPad
         }
     }
 

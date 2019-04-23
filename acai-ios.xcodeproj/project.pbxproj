@@ -26,6 +26,7 @@
 		03995AB5226E897D0062C69A /* CenteredButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB4226E897D0062C69A /* CenteredButtonCollectionViewCell.swift */; };
 		03995AB7226E899F0062C69A /* CenteredButtonListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */; };
 		03995AB9226E9E940062C69A /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB8226E9E940062C69A /* TextTableViewCell.swift */; };
+		03995ABB226EA4590062C69A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABA226EA4590062C69A /* PaymentViewController.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -83,6 +84,7 @@
 		03995AB4226E897D0062C69A /* CenteredButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredButtonListSectionController.swift; sourceTree = "<group>"; };
 		03995AB8226E9E940062C69A /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		03995ABA226EA4590062C69A /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				6D3A169D226237C200B9C7C0 /* MenuViewController.swift */,
 				6D3A169B226237C100B9C7C0 /* OrderDetailViewController.swift */,
 				03F8F7B12267F14900E01844 /* OrderHistoryViewController.swift */,
+				03995ABA226EA4590062C69A /* PaymentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				031A748A22652D2A00773CE1 /* Response.swift in Sources */,
 				6D3A169F226237C200B9C7C0 /* LoginViewController.swift in Sources */,
 				03995AB9226E9E940062C69A /* TextTableViewCell.swift in Sources */,
+				03995ABB226EA4590062C69A /* PaymentViewController.swift in Sources */,
 				0316A5DC225EADEE00C8286F /* RoundedButton.swift in Sources */,
 				0316A5E0225F8A5D00C8286F /* User.swift in Sources */,
 				6D3A16A0226237C200B9C7C0 /* MenuViewController.swift in Sources */,

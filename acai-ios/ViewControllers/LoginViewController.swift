@@ -125,28 +125,27 @@ class LoginViewController: UITableViewController {
             cell.changeInputTextFieldDelegate = self
             cell.invalidEntryLabel.isHidden = true
             if let type = inputItem.type {
-                switch type {
-                case .email:
+                if type == .email {
                     cell.textField.text = email
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = email.isValidEmail()
                     }
-                case .firstName:
+                } else if type == .firstName {
                     cell.textField.text = firstName
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = firstName.isValidName()
                     }
-                case .lastName:
+                } else if type == .lastName {
                     cell.textField.text = lastName
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = lastName.isValidName()
                     }
-                case .password:
+                } else if type == .password {
                     cell.textField.text = password
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = password.isValidPassword()
                     }
-                case .phoneNumber:
+                } else if type == .phoneNumber {
                     cell.textField.text = phoneNumber
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
@@ -189,11 +188,11 @@ class LoginViewController: UITableViewController {
 extension LoginViewController: SelectRoundedButtonDelegate {
     func register() {
         attemptedNetworking = true
-        guard let firstNameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell,
-            let lastNameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
-            let phoneNumberCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell,
-            let emailCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell,
-            let passwordCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell else { return }
+        guard let firstNameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
+            let lastNameCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell,
+            let phoneNumberCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell,
+            let emailCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell,
+            let passwordCell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? InputTableViewCell else { return }
         firstNameCell.invalidEntryLabel.isHidden = firstName.isValidName()
         lastNameCell.invalidEntryLabel.isHidden = lastName.isValidName()
         phoneNumberCell.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
@@ -213,8 +212,8 @@ extension LoginViewController: SelectRoundedButtonDelegate {
 
     func login() {
         attemptedNetworking = true
-        guard let emailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell,
-            let passwordCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell else { return }
+        guard let emailCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
+            let passwordCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell else { return }
         emailCell.invalidEntryLabel.isHidden = email.isValidEmail()
         passwordCell.invalidEntryLabel.isHidden = password != ""
         if email.isValidEmail() && password.isValidPassword() {
@@ -262,16 +261,15 @@ extension LoginViewController: SelectRoundedButtonDelegate {
 
 extension LoginViewController: ChangeInputTextFieldDelegate {
     func changeText(text: String, type: InputType) {
-        switch type {
-        case .email:
+        if type == .email {
             email = text
-        case .firstName:
+        } else if type == .firstName {
             firstName = text
-        case .lastName:
+        } else if type == .lastName {
             lastName = text
-        case .password:
+        } else if type == .password {
             password = text
-        case .phoneNumber:
+        } else if type == .phoneNumber {
             phoneNumber = text
         }
     }
