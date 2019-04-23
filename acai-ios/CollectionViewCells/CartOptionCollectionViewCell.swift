@@ -13,7 +13,7 @@ class CartOptionCollectionViewCell: UICollectionViewCell {
 
     // MARK: View vars
     var optionTitleLabel: UILabel!
-    var additionalPriceLabel: UILabel!
+    var priceLabel: UILabel!
 
     // MARK: Lifecycle
     override init(frame: CGRect) {
@@ -24,10 +24,10 @@ class CartOptionCollectionViewCell: UICollectionViewCell {
         optionTitleLabel.font = UIFont.avenirNextMedium.withSize(14)
         contentView.addSubview(optionTitleLabel)
 
-        additionalPriceLabel = UILabel()
-        additionalPriceLabel.textColor = .acaiBlack
-        additionalPriceLabel.font = UIFont.avenirNextMedium.withSize(14)
-        contentView.addSubview(additionalPriceLabel)
+        priceLabel = UILabel()
+        priceLabel.textColor = .acaiBlack
+        priceLabel.font = UIFont.avenirNextMedium.withSize(14)
+        contentView.addSubview(priceLabel)
 
         setUpConstraints()
     }
@@ -41,9 +41,13 @@ class CartOptionCollectionViewCell: UICollectionViewCell {
         optionTitleLabel.snp.makeConstraints { make in
             make.centerY.leading.equalToSuperview()
         }
-
-        additionalPriceLabel.snp.makeConstraints { make in
+        priceLabel.snp.makeConstraints { make in
             make.centerY.trailing.equalToSuperview()
         }
+    }
+
+    func configure(for option: OrderOption) {
+        optionTitleLabel.text = option.title
+        priceLabel.text = option.price > 0 ? option.price.asPriceString() : ""
     }
 }

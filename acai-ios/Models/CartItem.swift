@@ -18,17 +18,20 @@ class CartItem: ListDiffable, NSCopying {
     var menuItem: MenuItem!
     var quantity: Int!
     var tag: Int
+    var selectedOptions: [OrderOption.OptionType: [OrderOption]]!
 
-    init(menuItem: MenuItem, quantity: Int) {
+    init(menuItem: MenuItem, quantity: Int, selectedOptions: [OrderOption.OptionType: [OrderOption]]) {
         tag = CartItem.currentCartItemTag
         CartItem.currentCartItemTag += 1
         self.quantity = quantity
         self.menuItem = menuItem
+        self.selectedOptions = selectedOptions
     }
 
-    init(menuItem: MenuItem, quantity: Int, tag: Int) {
+    init(menuItem: MenuItem, quantity: Int, selectedOptions: [OrderOption.OptionType: [OrderOption]], tag: Int) {
         self.menuItem = menuItem
         self.quantity = quantity
+        self.selectedOptions = selectedOptions
         self.tag = tag
     }
 
@@ -42,12 +45,12 @@ class CartItem: ListDiffable, NSCopying {
     }
 
     func copy(with zone: NSZone? = nil) -> Any {
-        return CartItem(menuItem: menuItem, quantity: quantity, tag: tag)
+        return CartItem(menuItem: menuItem, quantity: quantity, selectedOptions: selectedOptions, tag: tag)
     }
 
     func getPrice() -> Double {
         // TODO: create array for selected options
-        let pricePerItem = menuItem.defaultOptions.reduce(0, { (result, options) -> Double in
+        let pricePerItem = selectedOptions.reduce(0, { (result, options) -> Double in
             result + options.value.reduce(0, { (result, option) -> Double in
                 result + (option.isSelected ? option.price : 0)
             })

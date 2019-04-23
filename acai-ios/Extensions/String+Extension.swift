@@ -55,4 +55,24 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", phoneNumberRE).evaluate(with: self)
     }
 
+    // TODO: update requirements
+    func isValidCardNumber() -> Bool {
+        return true
+    }
+
+    // TODO: update requirements
+    func isValidCardHolder() -> Bool {
+        return true
+    }
+
+    // TODO: update requirements
+    func isValidExpirationDate() -> Bool {
+        return true
+    }
+
+    // TODO: update requirements
+    func isValidCVC() -> Bool {
+        return true
+    }
+
 }

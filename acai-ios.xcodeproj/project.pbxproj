@@ -27,6 +27,7 @@
 		03995AB7226E899F0062C69A /* CenteredButtonListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */; };
 		03995AB9226E9E940062C69A /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB8226E9E940062C69A /* TextTableViewCell.swift */; };
 		03995ABB226EA4590062C69A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABA226EA4590062C69A /* PaymentViewController.swift */; };
+		03995ABD226EAD3F0062C69A /* CenteredLabelActionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -85,6 +86,7 @@
 		03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredButtonListSectionController.swift; sourceTree = "<group>"; };
 		03995AB8226E9E940062C69A /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		03995ABA226EA4590062C69A /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredLabelActionTabView.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				0316A5DB225EADEE00C8286F /* RoundedButton.swift */,
 				031A749022652DB900773CE1 /* InputItem.swift */,
 				03995AA6226E44DC0062C69A /* ArrowLabelActionTabView.swift */,
+				03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,10 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				03995AA4226E44B30062C69A /* CartViewController.swift */,
-				6D3A169C226237C100B9C7C0 /* LoginViewController.swift */,
 				6D3A169D226237C200B9C7C0 /* MenuViewController.swift */,
 				6D3A169B226237C100B9C7C0 /* OrderDetailViewController.swift */,
 				03F8F7B12267F14900E01844 /* OrderHistoryViewController.swift */,
+				6D3A169C226237C100B9C7C0 /* LoginViewController.swift */,
 				03995ABA226EA4590062C69A /* PaymentViewController.swift */,
 			);
 			path = ViewControllers;
@@ -543,6 +546,7 @@
 				6D3A169E226237C200B9C7C0 /* OrderDetailViewController.swift in Sources */,
 				03D2BB93223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift in Sources */,
 				6D10DE9E221CAD6800C46F75 /* AppDelegate.swift in Sources */,
+				03995ABD226EAD3F0062C69A /* CenteredLabelActionTabView.swift in Sources */,
 				20ACCC212244EA0D00AB782A /* MenuListSectionController.swift in Sources */,
 				03995AAB226E45080062C69A /* CartCollectionViewCell.swift in Sources */,
 				03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */,

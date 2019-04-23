@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol CenteredButtonCollectionViewCellDelegate: class {
+    func popCenteredButtonSuperviewController()
+}
+
 class CenteredButtonCollectionViewCell: UICollectionViewCell {
+
+    weak var delegate: CenteredButtonCollectionViewCellDelegate?
+
     // MARK: View vars
     private var button: UIButton!
 
@@ -45,7 +52,7 @@ class CenteredButtonCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func addAnotherItem() {
-        print("add another item pressed")
+        self.delegate?.popCenteredButtonSuperviewController()
     }
 
     required init?(coder aDecoder: NSCoder) {

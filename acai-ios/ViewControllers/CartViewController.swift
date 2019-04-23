@@ -67,10 +67,12 @@ class CartViewController: UIViewController {
     }
 
     @objc func checkout() {
-        // TODO: perform checkout
-        let loginViewController = LoginViewController()
-        loginViewController.labelText = "To complete your order, you need to create an account or sign in."
-        navigationController?.pushViewController(loginViewController, animated: true)
+        // TODO: perform checkout, use UserDefaults to choose between login and payment views
+//        let loginViewController = LoginViewController()
+//        loginViewController.labelText = "To complete your order, you need to create an account or sign in."
+//        navigationController?.pushViewController(loginViewController, animated: true)
+        let paymentViewController = PaymentViewController()
+        navigationController?.pushViewController(paymentViewController, animated: true)
     }
 
     private func loadCartItems() {
@@ -145,7 +147,9 @@ extension CartViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             if object.height == 91 {
-                return CenteredButtonListSectionController(title: "Add another item")
+                var centeredButtonListSectionController = CenteredButtonListSectionController(title: "Add another item")
+                centeredButtonListSectionController.delegate = self
+                return centeredButtonListSectionController
             } else {
                 return PriceListSectionController(cartItems: cartItems)
             }
@@ -156,5 +160,11 @@ extension CartViewController: ListAdapterDataSource {
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
+    }
+}
+
+extension CartViewController: CenteredButtonCollectionViewCellDelegate {
+    func popCenteredButtonSuperviewController() {
+        navigationController?.popViewController(animated: true)
     }
 }

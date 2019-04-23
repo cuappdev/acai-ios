@@ -11,6 +11,8 @@ import UIKit
 
 class CenteredButtonListSectionController: ListSectionController {
 
+    weak var delegate: CenteredButtonCollectionViewCellDelegate?
+
     var title: String
 
     init(title: String) {
@@ -28,6 +30,7 @@ class CenteredButtonListSectionController: ListSectionController {
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: CenteredButtonCollectionViewCell.self, for: self, at: index) as! CenteredButtonCollectionViewCell
         cell.configure(for: title)
+        cell.delegate = delegate
         return cell
     }
 

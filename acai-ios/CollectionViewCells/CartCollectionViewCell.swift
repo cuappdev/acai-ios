@@ -6,7 +6,6 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
-import IGListKit
 import SnapKit
 import UIKit
 
@@ -20,12 +19,19 @@ class CartCollectionViewCell: UICollectionViewCell {
     // MARK: View vars
     var imageView: UIImageView!
     var titleLabel: UILabel!
-    var ingredientsCollectionView: UICollectionView!
+    private var ingredientsCollectionView: UICollectionView!
     private var decrementButton: UIButton!
     private var currentCountLabel: UILabel!
     private var incrementButton: UIButton!
     private var totalPriceLabel: UILabel!
     private var line: UIView!
+
+    var collectionViewHeight = 0
+    let collectionCellHeight = 22
+
+    // MARK: Data
+    private var ingredients: [OrderOption] = []
+    let ingredientsCellReuseIdentifier = "ingredientsCellReuseIdentifier"
 
     // MARK: Delegate
     weak var delegate: CartCollectionViewCellDelegate?
@@ -44,8 +50,11 @@ class CartCollectionViewCell: UICollectionViewCell {
 
         let layout = UICollectionViewFlowLayout()
         ingredientsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        ingredientsCollectionView.backgroundColor = .clear
+        ingredientsCollectionView.backgroundColor = .white
         ingredientsCollectionView.isScrollEnabled = false
+        ingredientsCollectionView.dataSource = self
+        ingredientsCollectionView.delegate = self
+        ingredientsCollectionView.register(CartOptionCollectionViewCell.self, forCellWithReuseIdentifier: ingredientsCellReuseIdentifier)
         contentView.addSubview(ingredientsCollectionView)
 
         decrementButton = UIButton()
@@ -117,6 +126,7 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
+            make.height.equalTo(collectionViewHeight)
         }
         decrementButton.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
@@ -144,7 +154,6 @@ class CartCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(for cartItem: CartItem) {
-        print(cartItem)
         guard let menuItem = cartItem.menuItem else { return }
         imageView.image = menuItem.image
         titleLabel.text = menuItem.title
@@ -162,9 +171,39 @@ class CartCollectionViewCell: UICollectionViewCell {
         }
 
         totalPriceLabel.text = cartItem.getPrice().asPriceString()
+        ingredients = getIngredients(cartItem: cartItem)
+        collectionViewHeight = ingredients.count * collectionCellHeight
+        print(collectionViewHeight)
+    }
+
+    func getIngredients(cartItem: CartItem) -> [OrderOption] {
+        guard let ingredients = cartItem.selectedOptions else { return [] }
+        var options: [OrderOption] = []
+        for key in ingredients.keys {
+            guard let ingredients = ingredients[key] else { return [] }
+            for ingredient in ingredients {
+                if let ingredient = ingredient as? OrderOption {
+                    options.append(ingredient)
+                }
+            }
+        }
+        return options
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CartCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ingredients.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ingredientsCellReuseIdentifier, for: indexPath) as! CartOptionCollectionViewCell
+        let ingredient = ingredients[indexPath.row]
+        cell.configure(for: ingredient)
+        return cell
     }
 }
