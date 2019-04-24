@@ -10,6 +10,10 @@ import IGListKit
 import SnapKit
 import UIKit
 
+protocol CartSelectionDelegate: class {
+    func didSelect(_ item: MenuItem)
+}
+
 class CartViewController: UIViewController {
 
     // MARK: View vars
