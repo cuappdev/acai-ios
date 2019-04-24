@@ -213,7 +213,8 @@ extension PaymentViewController: ChangeInputTextFieldDelegate {
 
 extension PaymentViewController: OrderConfirmationViewControllerDelegate {
     func popSuperviewController() {
+        print("popping payment")
+        navigationController?.popViewController(animated: false)
         self.delegate?.popSuperviewController()
-        navigationController?.popViewController(animated: true)
     }
 }

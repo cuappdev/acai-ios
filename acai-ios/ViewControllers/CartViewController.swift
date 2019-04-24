@@ -173,6 +173,7 @@ extension CartViewController: CenteredButtonCollectionViewCellDelegate {
 
 extension CartViewController: PaymentViewControllerDelegate {
     func popSuperviewController() {
-        navigationController?.popViewController(animated: true)
+        print("popping cart view")
+        navigationController?.popViewController(animated: false)
     }
 }

@@ -87,6 +87,8 @@ class OrderConfirmationViewController: UIViewController {
     @objc func returnToMenu() {
         // TODO: return to menu, use delegates to pop previous views
         //navigationController?.popViewController(animated: true)
+        print("popping order confirmation")
+        navigationController?.popViewController(animated: false)
         self.delegate?.popSuperviewController()
     }
 
