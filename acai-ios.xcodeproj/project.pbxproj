@@ -28,6 +28,10 @@
 		03995AB9226E9E940062C69A /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AB8226E9E940062C69A /* TextTableViewCell.swift */; };
 		03995ABB226EA4590062C69A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABA226EA4590062C69A /* PaymentViewController.swift */; };
 		03995ABD226EAD3F0062C69A /* CenteredLabelActionTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */; };
+		03995ABF226FED280062C69A /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995ABE226FED280062C69A /* OrderConfirmationViewController.swift */; };
+		03995AC3226FF3530062C69A /* TitleDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AC2226FF3530062C69A /* TitleDetailCollectionViewCell.swift */; };
+		03995AC5226FF6130062C69A /* TitleDetailListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AC4226FF6130062C69A /* TitleDetailListSectionController.swift */; };
+		03995AC7226FF6410062C69A /* TitleDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03995AC6226FF6410062C69A /* TitleDetailItem.swift */; };
 		03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */; };
 		03D2BB8F223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */; };
 		03D2BB91223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */; };
@@ -87,6 +91,10 @@
 		03995AB8226E9E940062C69A /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		03995ABA226EA4590062C69A /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredLabelActionTabView.swift; sourceTree = "<group>"; };
+		03995ABE226FED280062C69A /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
+		03995AC2226FF3530062C69A /* TitleDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		03995AC4226FF6130062C69A /* TitleDetailListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailListSectionController.swift; sourceTree = "<group>"; };
+		03995AC6226FF6410062C69A /* TitleDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailItem.swift; sourceTree = "<group>"; };
 		03D2BB88223BDA2000AC6F38 /* OrderOptionListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptionListSectionController.swift; sourceTree = "<group>"; };
 		03D2BB8E223EA4E100AC6F38 /* RadioSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D2BB90223EA4EF00AC6F38 /* OptionHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -157,7 +165,6 @@
 			children = (
 				6D3A1699226237B800B9C7C0 /* ActionTabView.swift */,
 				0316A5DB225EADEE00C8286F /* RoundedButton.swift */,
-				031A749022652DB900773CE1 /* InputItem.swift */,
 				03995AA6226E44DC0062C69A /* ArrowLabelActionTabView.swift */,
 				03995ABC226EAD3F0062C69A /* CenteredLabelActionTabView.swift */,
 			);
@@ -173,6 +180,7 @@
 				03F8F7B12267F14900E01844 /* OrderHistoryViewController.swift */,
 				6D3A169C226237C100B9C7C0 /* LoginViewController.swift */,
 				03995ABA226EA4590062C69A /* PaymentViewController.swift */,
+				03995ABE226FED280062C69A /* OrderConfirmationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 		03D2BB5222317A4700AC6F38 /* SectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				03995AC4226FF6130062C69A /* TitleDetailListSectionController.swift */,
 				03995AAE226E45370062C69A /* CartListSectionController.swift */,
 				03995AB0226E7A2C0062C69A /* PriceListSectionController.swift */,
 				03995AB6226E899F0062C69A /* CenteredButtonListSectionController.swift */,
@@ -206,6 +215,7 @@
 		03D2BB8722383F3200AC6F38 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				03995AC2226FF3530062C69A /* TitleDetailCollectionViewCell.swift */,
 				03995AAA226E45080062C69A /* CartCollectionViewCell.swift */,
 				03995AAC226E45190062C69A /* CartOptionCollectionViewCell.swift */,
 				03995AB2226E7ACD0062C69A /* PriceCollectionViewCell.swift */,
@@ -225,8 +235,10 @@
 		03D2BBA22242B21900AC6F38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				03995AC6226FF6410062C69A /* TitleDetailItem.swift */,
 				03995AA8226E44F50062C69A /* CartItem.swift */,
 				0316A5DF225F8A5D00C8286F /* User.swift */,
+				031A749022652DB900773CE1 /* InputItem.swift */,
 				03D2BB9D2242B1C300AC6F38 /* MenuItem.swift */,
 				03D2BB9F2242B1F000AC6F38 /* OrderOption.swift */,
 				03D2BBA722431A3300AC6F38 /* EmptyItem.swift */,
@@ -518,6 +530,7 @@
 				03995AB3226E7ACD0062C69A /* PriceCollectionViewCell.swift in Sources */,
 				03D2BBAC2244959700AC6F38 /* QuantitySectionController.swift in Sources */,
 				6D3A169A226237B800B9C7C0 /* ActionTabView.swift in Sources */,
+				03995ABF226FED280062C69A /* OrderConfirmationViewController.swift in Sources */,
 				03F8F7B22267F14900E01844 /* OrderHistoryViewController.swift in Sources */,
 				6D8C3E86224D514B0089AE08 /* Constants.swift in Sources */,
 				03995AA5226E44B30062C69A /* CartViewController.swift in Sources */,
@@ -534,18 +547,21 @@
 				03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */,
 				20ACCC1D2244E9EF00AB782A /* MenuCollectionViewCell.swift in Sources */,
 				03D2BB9A2240B5EB00AC6F38 /* UIFont+Shared.swift in Sources */,
+				03995AC7226FF6410062C69A /* TitleDetailItem.swift in Sources */,
 				6D8C3E7F224D25480089AE08 /* MenuTabListSectionController.swift in Sources */,
 				6D8C3E88224D5EF50089AE08 /* MenuTabView.swift in Sources */,
 				6D8C3E81224D269E0089AE08 /* MenuTabCollectionViewCell.swift in Sources */,
 				6D03FA3A2246D17500191558 /* UIColor+Shared.swift in Sources */,
 				031A749122652DB900773CE1 /* InputItem.swift in Sources */,
 				03D2BB89223BDA2000AC6F38 /* OrderOptionListSectionController.swift in Sources */,
+				03995AC5226FF6130062C69A /* TitleDetailListSectionController.swift in Sources */,
 				03995AB1226E7A2C0062C69A /* PriceListSectionController.swift in Sources */,
 				6D10DEBF221EDF0F00C46F75 /* keys.generated.swift in Sources */,
 				6D10DEC1221EE81700C46F75 /* Endpoints.swift in Sources */,
 				6D3A169E226237C200B9C7C0 /* OrderDetailViewController.swift in Sources */,
 				03D2BB93223EA50500AC6F38 /* MultiSelectionCollectionViewCell.swift in Sources */,
 				6D10DE9E221CAD6800C46F75 /* AppDelegate.swift in Sources */,
+				03995AC3226FF3530062C69A /* TitleDetailCollectionViewCell.swift in Sources */,
 				03995ABD226EAD3F0062C69A /* CenteredLabelActionTabView.swift in Sources */,
 				20ACCC212244EA0D00AB782A /* MenuListSectionController.swift in Sources */,
 				03995AAB226E45080062C69A /* CartCollectionViewCell.swift in Sources */,

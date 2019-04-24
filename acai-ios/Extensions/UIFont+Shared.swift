@@ -11,6 +11,13 @@ import UIKit
 
 extension UIFont {
 
+    enum FontWeight {
+        case bold
+        case demiBold
+        case medium
+        case regular
+    }
+
     static let avenirNextBold: UIFont = UIFont(name: "AvenirNext-Bold", size: 12)!
     static let avenirNextDemi: UIFont = UIFont(name: "AvenirNext-DemiBold", size: 12)!
     static let avenirNextMedium: UIFont = UIFont(name: "AvenirNext-Medium", size: 12)!

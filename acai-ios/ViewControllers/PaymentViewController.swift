@@ -21,6 +21,7 @@ class PaymentViewController: UIViewController {
 
         // MARK: Reuse identifiers
         static let inputCellReuseIdentifier = "inputCellReuseIdentifier"
+        static let labelCellReuseIdentifier = "labelCellReuseIdentifier"
 
         // MARK: Constraint constants
         static let inputViewBottomOffset: CGFloat = 10
@@ -43,6 +44,9 @@ class PaymentViewController: UIViewController {
 
     var attemptedTransaction: Bool = false
 
+    // MARK: Gesture recognizers
+    private var completeTransactionGestureRecognizer: UIGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -58,16 +62,25 @@ class PaymentViewController: UIViewController {
         tableView.contentInset.top = FileConstants.inputViewTopOffset
         tableView.contentInset.bottom = FileConstants.inputViewBottomOffset
         tableView.register(InputTableViewCell.self, forCellReuseIdentifier: FileConstants.inputCellReuseIdentifier)
+        tableView.register(TextTableViewCell.self, forCellReuseIdentifier: FileConstants.labelCellReuseIdentifier)
         view.addSubview(tableView)
 
         completeTransactionActionTabView = CenteredLabelActionTabView(text: "Complete Transaction")
         view.addSubview(completeTransactionActionTabView)
+
+        completeTransactionGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(completeTransaction))
+        completeTransactionActionTabView.addGestureRecognizer(completeTransactionGestureRecognizer)
 
         bottomFillerRect = UIView()
         bottomFillerRect.backgroundColor = .acaiBlack
         view.addSubview(bottomFillerRect)
 
         setupConstraints()
+    }
+
+    @objc private func completeTransaction() {
+        let orderConfirmationViewController = OrderConfirmationViewController()
+        navigationController?.pushViewController(orderConfirmationViewController, animated: true)
     }
 
     private func setupConstraints() {
@@ -130,41 +143,46 @@ class PaymentViewController: UIViewController {
 
 extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // +1 for cell with sign up and login buttons
         // +1 for label text
-        return inputItems.count
+        return inputItems.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.inputCellReuseIdentifier, for: indexPath) as! InputTableViewCell
-        let inputItem = inputItems[indexPath.row]
-        cell.changeInputTextFieldDelegate = self
-        cell.invalidEntryLabel.isHidden = true
-        if let type = inputItem.type {
-            if type == .cardNumber {
-                cell.textField.text = cardNumber
-                if attemptedTransaction {
-                    cell.invalidEntryLabel.isHidden = cardNumber.isValidCardNumber()
-                }
-            } else if type == .cardHolder {
-                cell.textField.text = cardHolder
-                if attemptedTransaction {
-                    cell.invalidEntryLabel.isHidden = cardHolder.isValidCardHolder()
-                }
-            } else if type == .expirationDate {
-                cell.textField.text = expirationDate
-                if attemptedTransaction {
-                    cell.invalidEntryLabel.isHidden = expirationDate.isValidExpirationDate()
-                }
-            } else if type == .cvc {
-                cell.textField.text = cvc
-                if attemptedTransaction {
-                    cell.invalidEntryLabel.isHidden = cvc.isValidCVC()
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.labelCellReuseIdentifier, for: indexPath) as! TextTableViewCell
+            cell.configure(for: "Your information will always remain private and never shared.")
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.inputCellReuseIdentifier, for: indexPath) as! InputTableViewCell
+            let inputItem = inputItems[indexPath.row - 1]
+            cell.changeInputTextFieldDelegate = self
+            cell.invalidEntryLabel.isHidden = true
+            if let type = inputItem.type {
+                if type == .cardNumber {
+                    cell.textField.text = cardNumber
+                    if attemptedTransaction {
+                        cell.invalidEntryLabel.isHidden = cardNumber.isValidCardNumber()
+                    }
+                } else if type == .cardHolder {
+                    cell.textField.text = cardHolder
+                    if attemptedTransaction {
+                        cell.invalidEntryLabel.isHidden = cardHolder.isValidCardHolder()
+                    }
+                } else if type == .expirationDate {
+                    cell.textField.text = expirationDate
+                    if attemptedTransaction {
+                        cell.invalidEntryLabel.isHidden = expirationDate.isValidExpirationDate()
+                    }
+                } else if type == .cvc {
+                    cell.textField.text = cvc
+                    if attemptedTransaction {
+                        cell.invalidEntryLabel.isHidden = cvc.isValidCVC()
+                    }
                 }
             }
+            cell.configure(for: inputItem)
+            return cell
         }
-        cell.configure(for: inputItem)
-        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
