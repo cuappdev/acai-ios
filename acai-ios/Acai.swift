@@ -107,7 +107,6 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
 
@@ -173,7 +172,6 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
     static let testBowl6 = MenuItem(
@@ -205,7 +203,6 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
         type: .bowl
     )
     static let testBowl7 = MenuItem(
@@ -253,7 +250,7 @@ class Acai {
                 OrderOption(title: "Peanut Butter", isSelected: true, price: 0.00),
                 OrderOption(title: "Banana", isSelected: true, price: 0.00)
             ]
-        ], type: .smoothie)
+        ], image: UIImage(named: "suns-out-guns-out")!, type: .smoothie)
     static let testSmoothie2 = MenuItem(
         title: "Pina Colada",
         price: 0.00,
@@ -266,7 +263,7 @@ class Acai {
                 OrderOption(title: "Coconut Syrup", isSelected: true, price: 0.00),
                 OrderOption(title: "Banana", isSelected: true, price: 0.00)
             ]
-        ],type: .smoothie)
+        ], type: .smoothie)
     static let testSmoothie3 = MenuItem(
         title: "Berry Good",
         price: 0.00,
@@ -279,9 +276,7 @@ class Acai {
                 OrderOption(title: "Banana", isSelected: true, price: 0.00),
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
-        ],
-        type: .smoothie
-    )
+        ], type: .smoothie)
     static let testSmoothie4 = MenuItem(
         title: "Chatty Cathy",
         price: 0.00,
@@ -296,9 +291,7 @@ class Acai {
                 OrderOption(title: "Spinach", isSelected: true, price: 0.00),
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
-        ],
-        type: .smoothie
-    )
+        ], image: UIImage(named: "chatty-cathy")!, type: .smoothie)
     static let testSmoothie5 = MenuItem(
         title: "Matcha Detox",
         price: 0.00,
@@ -314,9 +307,7 @@ class Acai {
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00),
                 OrderOption(title: "Coconut Syrup", isSelected: true, price: 0.00)
             ]
-        ],
-        type: .smoothie
-    )
+        ], image: UIImage(named: "matcha-detox")!, type: .smoothie)
     static let testSmoothie6 = MenuItem(
         title: "Acai Berry",
         price: 0.00,
@@ -330,9 +321,7 @@ class Acai {
                 OrderOption(title: "Banana", isSelected: true, price: 0.00),
                 OrderOption(title: "Greek Yogurt", isSelected: true, price: 0.00)
             ]
-        ],
-        type: .smoothie
-    )
+        ], image: UIImage(named: "acai-berry")!, type: .smoothie)
 
     static let coffee1 = MenuItem(title: "Espresso", price: 0, defaultOptions: [
         .size: [

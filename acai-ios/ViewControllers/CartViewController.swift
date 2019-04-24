@@ -73,6 +73,7 @@ class CartViewController: UIViewController {
 //        loginViewController.labelText = "To complete your order, you need to create an account or sign in."
 //        navigationController?.pushViewController(loginViewController, animated: true)
         let paymentViewController = PaymentViewController()
+        paymentViewController.delegate = self
         navigationController?.pushViewController(paymentViewController, animated: true)
     }
 
@@ -166,6 +167,12 @@ extension CartViewController: ListAdapterDataSource {
 
 extension CartViewController: CenteredButtonCollectionViewCellDelegate {
     func popCenteredButtonSuperviewController() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CartViewController: PaymentViewControllerDelegate {
+    func popSuperviewController() {
         navigationController?.popViewController(animated: true)
     }
 }

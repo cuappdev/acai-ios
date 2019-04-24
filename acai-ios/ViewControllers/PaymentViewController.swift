@@ -9,7 +9,13 @@
 import SnapKit
 import UIKit
 
+protocol PaymentViewControllerDelegate: class {
+    func popSuperviewController()
+}
+
 class PaymentViewController: UIViewController {
+
+    weak var delegate: PaymentViewControllerDelegate?
 
     // MARK: View vars
     private var completeTransactionActionTabView: CenteredLabelActionTabView!
@@ -80,6 +86,7 @@ class PaymentViewController: UIViewController {
 
     @objc private func completeTransaction() {
         let orderConfirmationViewController = OrderConfirmationViewController()
+        orderConfirmationViewController.delegate = self
         navigationController?.pushViewController(orderConfirmationViewController, animated: true)
     }
 
@@ -201,5 +208,12 @@ extension PaymentViewController: ChangeInputTextFieldDelegate {
         } else if type == .cvc {
             cvc = text
         }
+    }
+}
+
+extension PaymentViewController: OrderConfirmationViewControllerDelegate {
+    func popSuperviewController() {
+        self.delegate?.popSuperviewController()
+        navigationController?.popViewController(animated: true)
     }
 }
