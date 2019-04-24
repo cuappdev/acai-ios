@@ -69,9 +69,10 @@ class OrderConfirmationViewController: UIViewController {
         textCollectionView.dataSource = self
         textCollectionView.contentInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
         textCollectionView.layer.shadowColor = UIColor.black.cgColor
-        textCollectionView.layer.shadowRadius = 24
-        textCollectionView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        textCollectionView.layer.shadowRadius = 16
+        textCollectionView.layer.shadowOffset = CGSize(width: 0, height: 0)
         textCollectionView.layer.shadowOpacity = 0.2
+        textCollectionView.clipsToBounds = false
         view.addSubview(textCollectionView)
 
         setUpConstraints()
