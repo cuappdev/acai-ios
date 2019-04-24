@@ -67,6 +67,11 @@ class OrderConfirmationViewController: UIViewController {
         textCollectionView.register(TitleDetailCollectionViewCell.self, forCellWithReuseIdentifier: textReuseIdentifier)
         textCollectionView.delegate = self
         textCollectionView.dataSource = self
+        textCollectionView.contentInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
+        textCollectionView.layer.shadowColor = UIColor.black.cgColor
+        textCollectionView.layer.shadowRadius = 24
+        textCollectionView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        textCollectionView.layer.shadowOpacity = 0.2
         view.addSubview(textCollectionView)
 
         setUpConstraints()
@@ -93,7 +98,7 @@ class OrderConfirmationViewController: UIViewController {
     // MARK: Constraint setup
     private func setUpConstraints() {
         let checkoutActionTabViewHeight = 75
-        let textCollectionViewHeight = 106
+        let textCollectionViewHeight = 110
 
         returnToMenuActionTabView.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -159,7 +164,7 @@ extension OrderConfirmationViewController: ListAdapterDataSource {
 
 }
 
-extension OrderConfirmationViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension OrderConfirmationViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return textItems.count
     }
@@ -167,9 +172,12 @@ extension OrderConfirmationViewController: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = textCollectionView.dequeueReusableCell(withReuseIdentifier: textReuseIdentifier, for: indexPath) as! TitleDetailCollectionViewCell
         let textItem = textItems[indexPath.row]
-        cell.configure(for: textItem.title, detailText: <#T##String#>, type: <#T##UIFont.FontWeight#>)
-
+        cell.configure(for: textItem)
+        return cell
     }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellHeight: CGFloat = 35
+        return CGSize(width: collectionView.frame.width, height: cellHeight)
+    }
 
 }

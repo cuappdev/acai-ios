@@ -122,6 +122,7 @@ class MenuViewController: UIViewController {
             ],
 
             .drink: [
+                Acai.drink1,
                 Acai.coffee1,
                 Acai.coffee2,
                 Acai.coffee3,
@@ -137,7 +138,8 @@ class MenuViewController: UIViewController {
                 Acai.coffee13,
                 Acai.coffee14,
                 Acai.coffee15,
-                Acai.coffee16
+                Acai.coffee16,
+                Acai.coffee17
             ]
         ]
 

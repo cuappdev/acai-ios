@@ -20,7 +20,7 @@ class TitleDetailListSectionController: ListSectionController {
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: TitleDetailCollectionViewCell.self, for: self, at: index) as! TitleDetailCollectionViewCell
         let titleDetailItem = titleDetailItems.items[index] as! TitleDetailItem
-        cell.configure(for: titleDetailItem.title, detailText: titleDetailItem.detail, type: titleDetailItem.type)
+        cell.configure(for: titleDetailItem)
         return cell
     }
 

@@ -74,7 +74,7 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
+        image: UIImage(named: "bad-and-boujee")!,
         type: .bowl
     )
 
@@ -140,7 +140,7 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: false, price: 1.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
+        image: UIImage(named: "crunchy")!,
         type: .bowl
     )
 
@@ -237,7 +237,7 @@ class Acai {
                 OrderOption(title: "Nutella", isSelected: true, price: 0.00)
             ]
         ],
-        image: UIImage(named: "acaiBowl")!,
+        image: UIImage(named: "money-moves")!,
         type: .bowl
     )
     
@@ -475,6 +475,21 @@ class Acai {
             OrderOption(title: "Chamomile", isSelected: false, price: 3.00, image: UIImage(named: "tea")!)
         ]
         ], image: UIImage(named: "tea")!, type: .drink)
+    static let coffee17 = MenuItem(title: "Iced Coffee", price: 0, defaultOptions: [
+        .size: [
+            OrderOption(title: "Small", isSelected: true, price: 3.50, image: UIImage(named: "size: small")!),
+            OrderOption(title: "Medium", isSelected: false, price: 4.00, image: UIImage(named: "size: medium")!),
+            OrderOption(title: "Large", isSelected: false, price: 4.50, image: UIImage(named: "size: large")!)
+        ]
+        ], image: UIImage(named: "iced-coffee")!, type: .drink)
+    
+    static let drink1 = MenuItem(title: "Black Tea", price: 0, defaultOptions: [
+        .size: [
+            OrderOption(title: "Small", isSelected: true, price: 3.00, image: UIImage(named: "size: small")!),
+            OrderOption(title: "Medium", isSelected: false, price: 3.25, image: UIImage(named: "size: medium")!),
+            OrderOption(title: "Large", isSelected: false, price: 3.50, image: UIImage(named: "size: large")!)
+        ]
+        ], image: UIImage(named: "black-tea")!, type: .drink)
     
 
     static let testCart1 = CartItem(menuItem: Acai.testBowl1, quantity: 1, selectedOptions: [

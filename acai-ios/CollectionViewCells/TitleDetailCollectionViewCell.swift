@@ -39,13 +39,12 @@ class TitleDetailCollectionViewCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalTo(titleLabel.snp.trailing).offset(leadingTrailingOffset)
         }
-
     }
 
-    func configure(for titleText: String, detailText: String, type: UIFont.FontWeight) {
-        titleLabel.text = titleText
-        detailLabel.text = detailText
-        switch type {
+    func configure(for textItem: TitleDetailItem) {
+        titleLabel.text = textItem.title
+        detailLabel.text = textItem.detail
+        switch textItem.type {
         case .bold:
             titleLabel.font = UIFont.avenirNextBold.withSize(17)
             detailLabel.font = UIFont.avenirNextBold.withSize(17)
