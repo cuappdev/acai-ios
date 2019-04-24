@@ -15,9 +15,15 @@ protocol DidSelectOptionDelegate: class {
     func selectOption(at index: Int, for type: OrderOption.OptionType)
 }
 
+protocol OrderDetailViewControllerDelegate: class {
+    func addToCart(cartItem: CartItem)
+}
+
 /// Presents detail and customization options for a menu item.
 /// Requires menuItem variable to be set
 class OrderDetailViewController: UIViewController {
+
+    weak var delegate: OrderDetailViewControllerDelegate?
 
     // MARK: View vars
     private var addToCartActionTabView: ActionTabView!
@@ -131,7 +137,13 @@ class OrderDetailViewController: UIViewController {
         print("addToCart pushed")
         #endif
 
-//        navigationController?.popViewController(animated: true)
+        let cartItem = CartItem(menuItem: menuItem, quantity: Int(quantity), selectedOptions: [:])
+        for key in optionSectionsMap.keys {
+            cartItem.selectedOptions[key] = optionSectionsMap[key]?.filter({ (option) -> Bool in
+                option.isSelected
+            })
+        }
+        delegate?.addToCart(cartItem: cartItem)
         dismiss(animated: true, completion: nil)
     }
 

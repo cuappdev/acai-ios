@@ -77,12 +77,12 @@ class CartViewController: UIViewController {
     }
 
     private func loadCartItems() {
-        // TODO: network and delete hard code
-        cartItems = CartItems(DiffableArray([
-            Acai.testCart1,
-            Acai.testCart2,
-            Acai.testCart3
-            ]))
+        // TODO: possibly network and delete hard code? This is currently done through delegates
+//        cartItems = CartItems(DiffableArray([
+//            Acai.testCart1,
+//            Acai.testCart2,
+//            Acai.testCart3
+//            ]))
     }
 
     // MARK: Constraint setup

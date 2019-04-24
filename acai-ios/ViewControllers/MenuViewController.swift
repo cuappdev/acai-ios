@@ -20,6 +20,7 @@ class MenuViewController: UIViewController {
     // MARK: Models
     var menu: [MenuItem.ItemType: [MenuItem]] = [:]
     var selectedTab: MenuItem.ItemType!
+    var cartItems: [CartItem]!
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -34,12 +35,10 @@ class MenuViewController: UIViewController {
         // TODO: change based on time of day
         title = "Good Morning, Jamie ☀️"
 
-        // TODO: change settings icon
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
-
         selectedTab = .bowl
-
         formatNavigationBar()
+
+        cartItems = []
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -72,7 +71,7 @@ class MenuViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.tintColor = .coldGray//UIColor(red: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = .coldGray
         navigationController?.navigationBar.barTintColor = UINavigationBar().barTintColor
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
@@ -86,11 +85,14 @@ class MenuViewController: UIViewController {
         let accountButton = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(accountButtonTapped))
         accountButton.tintColor = .black
         let cartButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(cartButtonTapped))
-        navigationItem.rightBarButtonItems = [accountButton, cartButton]
+        // TODO: change settings icon
+        let settingsButton = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
+        navigationItem.rightBarButtonItems = [accountButton, cartButton, settingsButton]
     }
 
     @objc func cartButtonTapped() {
         let cartViewController = CartViewController()
+        cartViewController.cartItems = CartItems(DiffableArray(cartItems))
         navigationController?.pushViewController(cartViewController, animated: true)
     }
 
@@ -202,6 +204,7 @@ extension MenuViewController: MenuSelectionDelegate {
         print("Selected \(item.title)")
         #endif
         let order = OrderDetailViewController()
+        order.delegate = self
         order.menuItem = item
         // Leave commented until decide with design what flow to use
 //        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -214,10 +217,14 @@ extension MenuViewController: MenuSelectionDelegate {
 }
 
 extension MenuViewController: MenuTabDelegate {
-
     func selectedTabDidChange(to tab: NSNumber) {
         selectedTab = Constants.menuTabs[tab.intValue]
         listAdapter.performUpdates(animated: false, completion: nil)
     }
+}
 
+extension MenuViewController: OrderDetailViewControllerDelegate {
+    func addToCart(cartItem: CartItem) {
+        cartItems.append(cartItem)
+    }
 }
