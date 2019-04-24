@@ -83,12 +83,7 @@ class OrderConfirmationViewController: UIViewController {
     }
 
     private func loadCartItems() {
-        // TODO: network and delete hard code
-        cartItems = CartItems(DiffableArray([
-            Acai.testCart1,
-            Acai.testCart2,
-            Acai.testCart3
-            ]))
+        // TODO: Possibly network and delete hard code? Currently using delegation to pass through cartItems
         textItems = [
                 TitleDetailItem(title: "Estimated wait time", detail: "15 min", type: .bold),
                 TitleDetailItem(title: "Total", detail: cartItems.getTotalPrice().asPriceString(), type: .bold)
