@@ -173,10 +173,6 @@ class CartCollectionViewCell: UICollectionViewCell {
 
         totalPriceLabel.text = cartItem.getPrice().asPriceString()
         ingredients = cartItem.getIngredients()
-        let collectionViewHeight = ingredients.count * collectionCellHeight
-        ingredientsCollectionView.snp.makeConstraints { make in
-            make.height.equalTo(collectionViewHeight)
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {
