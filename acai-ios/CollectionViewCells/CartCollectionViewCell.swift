@@ -132,7 +132,7 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
-//            make.bottom.equalTo(decrementButton.snp.top).offset(-2*verticalOffset)
+            make.bottom.equalTo(decrementButton.snp.top).offset(-2*verticalOffset)
         }
         currentCountLabel.snp.makeConstraints { make in
             make.leading.equalTo(decrementButton.snp.trailing).offset(buttonLabelHorizontalOffset)
