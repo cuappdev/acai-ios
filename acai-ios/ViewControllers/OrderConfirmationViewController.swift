@@ -9,13 +9,7 @@
 import IGListKit
 import UIKit
 
-protocol OrderConfirmationViewControllerDelegate: class {
-    func popSuperviewController()
-}
-
 class OrderConfirmationViewController: UIViewController {
-
-    weak var delegate: OrderConfirmationViewControllerDelegate?
 
     // MARK: View vars
     private var returnToMenuActionTabView: ArrowLabelActionTabView!
@@ -85,11 +79,7 @@ class OrderConfirmationViewController: UIViewController {
     }
 
     @objc func returnToMenu() {
-        // TODO: return to menu, use delegates to pop previous views
-        //navigationController?.popViewController(animated: true)
-        print("popping order confirmation")
-        navigationController?.popViewController(animated: false)
-        self.delegate?.popSuperviewController()
+        navigationController?.popToRootViewController(animated: true)
     }
 
     private func loadCartItems() {

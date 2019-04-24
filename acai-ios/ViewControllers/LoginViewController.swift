@@ -27,8 +27,6 @@ enum EntryType {
 
 class LoginViewController: UITableViewController {
 
-    weak var delegate: OrderConfirmationViewControllerDelegate?
-
     // MARK: Constants
     private enum FileConstants {
         // MARK: Reuse identifiers
