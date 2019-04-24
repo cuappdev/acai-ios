@@ -73,6 +73,7 @@ class CartViewController: UIViewController {
 //        loginViewController.labelText = "To complete your order, you need to create an account or sign in."
 //        navigationController?.pushViewController(loginViewController, animated: true)
         let paymentViewController = PaymentViewController()
+        paymentViewController.cartItems = cartItems
         navigationController?.pushViewController(paymentViewController, animated: true)
     }
 

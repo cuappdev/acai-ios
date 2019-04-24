@@ -31,6 +31,7 @@ class PaymentViewController: UIViewController {
 
     // MARK: Data
     // TODO: update last two items to conform to design
+    var cartItems: CartItems!
     var inputItems: [UserInputItem] = [
         UserInputItem(type: .cardNumber),
         UserInputItem(type: .cardHolder),
@@ -80,6 +81,7 @@ class PaymentViewController: UIViewController {
 
     @objc private func completeTransaction() {
         let orderConfirmationViewController = OrderConfirmationViewController()
+        orderConfirmationViewController.cartItems = cartItems
         navigationController?.pushViewController(orderConfirmationViewController, animated: true)
     }
 

@@ -21,7 +21,7 @@ class OrderConfirmationViewController: UIViewController {
     private var listAdapter: ListAdapter!
 
     // MARK: Data
-    private var cartItems: CartItems!
+    var cartItems: CartItems!
     private let textReuseIdentifier = "textReuseIdentifier"
     private var textItems: [TitleDetailItem]!
 
