@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
     // MARK: Models
     var menu: [MenuItem.ItemType: [MenuItem]] = [:]
     var selectedTab: MenuItem.ItemType!
-    var cartItems: [CartItem]!
+    var cartItems: [CartItem] = []
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -37,8 +37,6 @@ class MenuViewController: UIViewController {
 
         selectedTab = .bowl
         formatNavigationBar()
-
-        cartItems = []
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -93,11 +91,14 @@ class MenuViewController: UIViewController {
     @objc func cartButtonTapped() {
         let cartViewController = CartViewController()
         cartViewController.cartItems = CartItems(DiffableArray(cartItems))
+        // Removes the "Good Morning, Name" from the back button
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(cartViewController, animated: true)
     }
 
     @objc func accountButtonTapped() {
         let loginViewController = LoginViewController()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(loginViewController, animated: true)
     }
 

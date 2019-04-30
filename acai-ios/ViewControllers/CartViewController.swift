@@ -114,20 +114,22 @@ class CartViewController: UIViewController {
         navigationTitleLabel.sizeToFit()
         let navigationBarTitleItem = UIBarButtonItem(customView: navigationTitleLabel)
         let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(backButtonPressed))
-        self.navigationItem.leftBarButtonItems = [
-            navigationBarBackButton,
-            navigationBarTitleItem
-        ]
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.barTintColor = .navigationWhite
+        navigationItem.leftBarButtonItems?.append(navigationBarTitleItem)
+//        self.navigationItem.leftBarButtonItems = [
+//            navigationBarBackButton,
+//            navigationBarTitleItem
+//        ]
+//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.tintColor = .black
+//        navigationController?.navigationBar.barTintColor = .navigationWhite
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.avenirNextMedium.withSize(24),
-            .foregroundColor: UIColor.black
-        ]
+        title = "My Cart"
+//        navigationController?.navigationBar.titleTextAttributes = [
+//            .font: UIFont.avenirNextMedium.withSize(24),
+//            .foregroundColor: UIColor.black
+//        ]
     }
 
     @objc func backButtonPressed() {
@@ -149,7 +151,7 @@ extension CartViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         if let object = object as? EmptyItem {
             if object.height == 91 {
-                var centeredButtonListSectionController = CenteredButtonListSectionController(title: "Add another item")
+                let centeredButtonListSectionController = CenteredButtonListSectionController(title: "Add another item")
                 centeredButtonListSectionController.delegate = self
                 return centeredButtonListSectionController
             } else {

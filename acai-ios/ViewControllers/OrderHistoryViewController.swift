@@ -18,7 +18,7 @@ class OrderHistoryViewController: UIViewController {
 
     // MARK: Data
     // TODO: update to [CartItem]
-    var orders: [String]!
+    var orders: [String] = []
 
     // MARK: Constraint Constants
     private enum FileConstants {
@@ -85,6 +85,7 @@ extension OrderHistoryViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        // TODO: make an "Oh you haven't ordered anything view!"
         return nil
     }
 }
