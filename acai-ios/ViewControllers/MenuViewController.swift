@@ -80,7 +80,8 @@ class MenuViewController: UIViewController {
             .foregroundColor: UIColor.black
         ]
 
-        let accountButton = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(accountButtonTapped))
+        // TODO: change settings icon
+        let accountButton = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
         accountButton.tintColor = .black
         let cartButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(cartButtonTapped))
         // TODO: change settings icon
