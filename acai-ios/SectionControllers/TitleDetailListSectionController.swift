@@ -44,4 +44,3 @@ class TitleDetailListSectionController: ListSectionController {
     }
     
 }
-

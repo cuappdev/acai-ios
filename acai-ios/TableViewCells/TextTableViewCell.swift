@@ -50,8 +50,5 @@ class TextTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-
+    
 }
-
-

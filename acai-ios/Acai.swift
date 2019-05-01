@@ -480,7 +480,6 @@ class Acai {
         ]
         ], image: UIImage(named: "black-tea")!, type: .drink)
     
-
     static let testCart1 = CartItem(menuItem: Acai.testBowl1, quantity: 1, selectedOptions: [
             .base: [
                 OrderOption(title: "Acai", isSelected: true, price: 9.99, image: UIImage(named: "acaiBowl")!)            ],
