@@ -7,6 +7,7 @@
 //
 
 import AppDevSettings
+import FutureNova
 import IGListKit
 import SnapKit
 import UIKit
@@ -16,6 +17,8 @@ protocol MenuSelectionDelegate: class {
 }
 
 class MenuViewController: UIViewController {
+
+    let networking: Networking = URLSession.shared.request
 
     // MARK: Models
     var menu: [MenuItem.ItemType: [MenuItem]] = [:]
@@ -55,12 +58,13 @@ class MenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadMenu()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         formatNavigationBar()
+
+        loadMenu()
     }
 
     private func formatNavigationBar() {
@@ -148,6 +152,31 @@ class MenuViewController: UIViewController {
         ]
 
         listAdapter.performUpdates(animated: false, completion: nil)
+
+        getMenu().observe { [weak self] result in
+            switch result {
+            case .value(let val):
+                if val.success, let data = val.data {
+                    self?.updateCatalog(data)
+                } else if let err = val.error {
+                    print(err)
+                } else {
+                    print("Whoa whoa hold up. No. ")
+                }
+            case .error(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+
+    private func updateCatalog(_ catalog: Catalog) {
+        // TODO: convert catalog to MenuItem
+
+        
+    }
+
+    private func getMenu() -> Future<Response<Catalog>> {
+        return networking(Endpoint.getCatalog()).decode()
     }
 
     // MARK: Constraint setup

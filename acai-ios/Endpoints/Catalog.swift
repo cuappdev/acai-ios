@@ -12,56 +12,58 @@ import FutureNova
 struct Catalog: Codable {
 
     /// Map from item ID to item struct
-    let items: [String: CatalogItem]
+    let items: [String: Item]
 
     /// Map from modifier list ID to the list
     let modifierLists: [String: ModifierList]
 
     /// Map from tax ID to the tax struct
-    let taxes: [String: OrderTax]
+    let taxes: [String: Tax]
 
     enum CodingKeys: String, CodingKey {
         case items, taxes
         case modifierLists = "modifier_lists"
     }
-}
 
-struct CatalogItem: Codable {
-    let name: String
-    let taxIds: [String]
-    let variations: [String: ItemVariation]
-    let modifierListIds: [String]
+    // MARK: classes
 
-    enum CodingKeys: String, CodingKey {
-        case name
-        case taxIds = "tax_ids"
-        case variations
-        case modifierListIds = "modifier_list_ids"
+    struct Item: Codable {
+        let name: String
+        let taxIds: [String]
+        let variations: [String: Variation]
+        let modifierListIds: [String]
+
+        enum CodingKeys: String, CodingKey {
+            case name
+            case taxIds = "tax_ids"
+            case variations
+            case modifierListIds = "modifier_list_ids"
+        }
     }
-}
 
-struct ItemVariation: Codable {
-    let name: String
+    struct Variation: Codable {
+        let name: String
 
-    /// The base price of the item
-    let price: Int
-}
+        /// The base price of the item
+        let price: Double
+    }
 
-struct ModifierList: Codable {
-    let name: String
-    let modifiers: [String: ItemModifier]
-}
+    struct ModifierList: Codable {
+        let name: String
+        let modifiers: [String: ItemModifier]
+    }
 
-struct ItemModifier: Codable {
-    let name: String
+    struct ItemModifier: Codable {
+        let name: String
 
-    /// The price delta to apply
-    let price: Int
-}
+        /// The price delta to apply
+        let price: Double
+    }
 
-struct OrderTax: Codable {
-    let name: String
-    let percentage: String
+    struct Tax: Codable {
+        let name: String
+        let percentage: String
+    }
 }
 
 extension Endpoint {

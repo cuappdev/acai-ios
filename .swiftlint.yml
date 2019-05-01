@@ -3,6 +3,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Secrets
 
 disabled_rules:
+  - nesting
   - block_based_kvo
   - identifier_name
   - cyclomatic_complexity

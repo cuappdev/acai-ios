@@ -30,6 +30,10 @@ class MenuItem: ListDiffable {
 
     let image: UIImage
     // The default options should never change!
+    // variations are radio selection
+//    let defaultVariations: [OrderOption]
+    // modifiers are select many (although it's possible they're also select one)
+//    let defaultModifiers: [String: [OrderOption]]
     let defaultOptions: [OrderOption.OptionType: [OrderOption]]
     let price: Double
     let title: String
