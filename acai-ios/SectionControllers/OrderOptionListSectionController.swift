@@ -95,6 +95,7 @@ class OrderOptionListSectionController: ListSectionController {
     }
 
     func deselectItem(at index: Int) {
+        if index == 0 { return } // Prevent selection from applying to headers.
         switch orderOptions.optionType.selectionStyle() {
         case .radio:
             self.selectOptionDelegate?.deselectOption(at: index, for: orderOptions.optionType)
@@ -104,6 +105,7 @@ class OrderOptionListSectionController: ListSectionController {
     }
 
     override func didSelectItem(at index: Int) {
+        if index == 0 { return } // Prevent selection from applying to headers.
         if orderOptions.optionType.selectionStyle() == .radio {
             deselectItem(at: selectedBaseIndex)
         }
