@@ -157,7 +157,6 @@ class CartCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(lineHeight)
             make.bottom.leading.trailing.equalToSuperview()
         }
-
     }
 
     func configure(for cartItem: CartItem) {
