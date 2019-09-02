@@ -76,6 +76,7 @@ class OrderHistoryViewController: UIViewController {
 }
 
 extension OrderHistoryViewController: ListAdapterDataSource {
+    // TODO: refactor and use CartItem
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return orders as [ListDiffable]
     }
