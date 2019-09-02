@@ -90,7 +90,7 @@ class MenuViewController: UIViewController {
         let cartButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(cartButtonTapped))
         // TODO: change settings icon
         let settingsButton = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
-        navigationItem.rightBarButtonItems = [accountButton, cartButton, settingsButton]
+        navigationItem.rightBarButtonItems = [settingsButton, cartButton, accountButton]
     }
 
     @objc func cartButtonTapped() {
