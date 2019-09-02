@@ -94,13 +94,11 @@ class CartCollectionViewCell: UICollectionViewCell {
 
     @objc func decrement() {
         // TODO: put delegate in superview
-        print("decrement pressed")
         self.delegate?.valueDecremented()
     }
 
     @objc func increment() {
         // TODO: put delegate in superview
-        print("increment pressed")
         self.delegate?.valueIncremented()
     }
 
