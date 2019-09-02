@@ -30,10 +30,12 @@ class TitleDetailCollectionViewCell: UICollectionViewCell {
     // MARK: Constraint setup
     private func setUpConstraints() {
         let leadingTrailingOffset = 24
+
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.centerY.equalToSuperview()
         }
+
         detailLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.centerY.equalToSuperview()
@@ -42,31 +44,33 @@ class TitleDetailCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(for textItem: TitleDetailItem) {
-        titleLabel.text = textItem.title
+        let fontSize: CGFloat = 17
+
         detailLabel.text = textItem.detail
+        titleLabel.text = textItem.title
+
         switch textItem.type {
         case .bold:
-            titleLabel.font = UIFont.avenirNextBold.withSize(17)
-            detailLabel.font = UIFont.avenirNextBold.withSize(17)
+            titleLabel.font = UIFont.avenirNextBold.withSize(fontSize)
+            detailLabel.font = UIFont.avenirNextBold.withSize(fontSize)
             titleLabel.textColor = .black
             detailLabel.textColor = .mango
         case .demiBold:
-            titleLabel.font = UIFont.avenirNextDemi.withSize(17)
-            detailLabel.font = UIFont.avenirNextDemi.withSize(17)
+            titleLabel.font = UIFont.avenirNextDemi.withSize(fontSize)
+            detailLabel.font = UIFont.avenirNextDemi.withSize(fontSize)
             titleLabel.textColor = .black
             detailLabel.textColor = .black
         case .medium:
-            titleLabel.font = UIFont.avenirNextMedium.withSize(17)
-            detailLabel.font = UIFont.avenirNextMedium.withSize(17)
+            titleLabel.font = UIFont.avenirNextMedium.withSize(fontSize)
+            detailLabel.font = UIFont.avenirNextMedium.withSize(fontSize)
             titleLabel.textColor = .black
             detailLabel.textColor = .black
         case .regular:
-            titleLabel.font = UIFont.avenirNextRegular.withSize(17)
-            detailLabel.font = UIFont.avenirNextRegular.withSize(17)
+            titleLabel.font = UIFont.avenirNextRegular.withSize(fontSize)
+            detailLabel.font = UIFont.avenirNextRegular.withSize(fontSize)
             titleLabel.textColor = .black
             detailLabel.textColor = .black
         }
-
     }
 
     required init?(coder aDecoder: NSCoder) {

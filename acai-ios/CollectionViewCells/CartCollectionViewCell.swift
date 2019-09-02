@@ -26,7 +26,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     private var totalPriceLabel: UILabel!
     private var line: UIView!
 
-    let collectionCellHeight = 24
+    private let collectionCellHeight = 24
 
     // MARK: Data
     private var ingredients: [OrderOption] = []
@@ -111,40 +111,48 @@ class CartCollectionViewCell: UICollectionViewCell {
         let lineHeight = 1
         let topOffset = 24
         let verticalOffset = 8
+
         imageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.height.width.equalTo(imageViewHeightWidth)
             make.top.equalToSuperview().offset(topOffset)
         }
+
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(imageView.snp.top)
         }
+
         decrementButton.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
             make.height.width.equalTo(buttonHeightWidth)
             make.bottom.equalToSuperview().offset(-2*verticalOffset)
         }
+
         ingredientsCollectionView.snp.makeConstraints { make in
             make.leading.equalTo(imageView.snp.trailing).offset(leadingTrailingOffset)
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.top.equalTo(titleLabel.snp.bottom).offset(verticalOffset)
             make.bottom.equalTo(decrementButton.snp.top).offset(-2*verticalOffset)
         }
+
         currentCountLabel.snp.makeConstraints { make in
             make.leading.equalTo(decrementButton.snp.trailing).offset(buttonLabelHorizontalOffset)
             make.centerY.equalTo(decrementButton.snp.centerY)
         }
+
         incrementButton.snp.makeConstraints { make in
             make.leading.equalTo(currentCountLabel.snp.trailing).offset(buttonLabelHorizontalOffset)
             make.centerY.equalTo(decrementButton.snp.centerY)
             make.height.width.equalTo(buttonHeightWidth)
         }
+
         totalPriceLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.centerY.equalTo(currentCountLabel)
         }
+        
         line.snp.makeConstraints { make in
             make.height.equalTo(lineHeight)
             make.bottom.leading.trailing.equalToSuperview()

@@ -32,7 +32,6 @@ class TitleDetailListSectionController: ListSectionController {
         let cellHeight = 35
         let height = cellHeight*titleDetailItems.items.count
         return CGSize(width: width, height: CGFloat(cellHeight * height))
-
     }
 
     override func numberOfItems() -> Int {

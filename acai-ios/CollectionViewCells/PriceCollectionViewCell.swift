@@ -76,30 +76,34 @@ class PriceCollectionViewCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.top.equalToSuperview().offset(bottomTopOffset)
         }
+
         subtotalAmountLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.leading.equalTo(subtotalLabel.snp.trailing).offset(leadingTrailingOffset)
             make.centerY.equalTo(subtotalLabel)
         }
+
         taxLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.top.equalTo(subtotalLabel.snp.bottom).offset(smallVerticalOffset)
         }
+
         taxAmountLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.leading.equalTo(taxLabel.snp.trailing).offset(leadingTrailingOffset)
             make.centerY.equalTo(taxLabel)
         }
+
         totalLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(leadingTrailingOffset)
             make.top.equalTo(taxLabel.snp.bottom).offset(largeVerticalOffset)
         }
+
         totalAmountLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-leadingTrailingOffset)
             make.leading.equalTo(totalLabel.snp.trailing).offset(leadingTrailingOffset)
             make.centerY.equalTo(totalLabel)
         }
-
     }
 
     func configure(for cartItems: CartItems) {

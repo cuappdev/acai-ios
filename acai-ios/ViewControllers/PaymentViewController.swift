@@ -18,7 +18,6 @@ class PaymentViewController: UIViewController {
 
     // MARK: Constants
     private enum FileConstants {
-
         // MARK: Reuse identifiers
         static let inputCellReuseIdentifier = "inputCellReuseIdentifier"
         static let labelCellReuseIdentifier = "labelCellReuseIdentifier"
@@ -87,15 +86,18 @@ class PaymentViewController: UIViewController {
 
     private func setupConstraints() {
         let completeTransactionActionTabViewHeight = 58
+
         bottomFillerRect.snp.makeConstraints { make in
             make.bottom.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+
         completeTransactionActionTabView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(completeTransactionActionTabViewHeight)
         }
+        
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide)

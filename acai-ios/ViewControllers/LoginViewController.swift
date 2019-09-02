@@ -112,13 +112,13 @@ class LoginViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == inputItems.count + 1 {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.textCellReuseIdentifier, for: indexPath) as! TextTableViewCell
+            cell.configure(for: labelText)
+        } else if indexPath.row == inputItems.count + 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.roundedButtonCellReuseIdentifier, for: indexPath) as! RoundedButtonTableViewCell
             cell.selectRoundedButtonDelegate = self
             return cell
-        } else if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.textCellReuseIdentifier, for: indexPath) as! TextTableViewCell
-            cell.configure(for: labelText)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.inputCellReuseIdentifier, for: indexPath) as! InputTableViewCell
             let inputItem = inputItems[indexPath.row - 1]

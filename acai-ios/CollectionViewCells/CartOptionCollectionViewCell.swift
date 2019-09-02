@@ -41,6 +41,7 @@ class CartOptionCollectionViewCell: UICollectionViewCell {
         optionTitleLabel.snp.makeConstraints { make in
             make.centerY.leading.equalToSuperview()
         }
+
         priceLabel.snp.makeConstraints { make in
             make.centerY.trailing.equalToSuperview()
         }

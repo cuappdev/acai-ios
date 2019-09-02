@@ -38,15 +38,12 @@ class CartViewController: UIViewController {
         view.backgroundColor = .white
         formatNavigationBar()
 
-        loadCartItems()
-
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
-        //collectionView.register(CartCollectionViewCell.self, forCellWithReuseIdentifier: cartOptionCvReuse)
         view.addSubview(collectionView)
 
         menuListAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self)
@@ -75,15 +72,6 @@ class CartViewController: UIViewController {
         let paymentViewController = PaymentViewController()
         paymentViewController.cartItems = cartItems
         navigationController?.pushViewController(paymentViewController, animated: true)
-    }
-
-    private func loadCartItems() {
-        // TODO: possibly network and delete hard code? This is currently done through delegates
-//        cartItems = CartItems(DiffableArray([
-//            Acai.testCart1,
-//            Acai.testCart2,
-//            Acai.testCart3
-//            ]))
     }
 
     // MARK: Constraint setup
@@ -115,21 +103,8 @@ class CartViewController: UIViewController {
         let navigationBarTitleItem = UIBarButtonItem(customView: navigationTitleLabel)
         let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(backButtonPressed))
         navigationItem.leftBarButtonItems?.append(navigationBarTitleItem)
-//        self.navigationItem.leftBarButtonItems = [
-//            navigationBarBackButton,
-//            navigationBarTitleItem
-//        ]
-//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-//        navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.tintColor = .black
-//        navigationController?.navigationBar.barTintColor = .navigationWhite
         navigationController?.navigationBar.prefersLargeTitles = false
         title = "My Cart"
-//        navigationController?.navigationBar.titleTextAttributes = [
-//            .font: UIFont.avenirNextMedium.withSize(24),
-//            .foregroundColor: UIColor.black
-//        ]
     }
 
     @objc func backButtonPressed() {

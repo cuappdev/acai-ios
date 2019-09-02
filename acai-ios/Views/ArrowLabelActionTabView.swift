@@ -20,15 +20,17 @@ class ArrowLabelActionTabView: UIView {
         super.init(frame: .zero)
         backgroundColor = .acaiBlack
 
+        let fontSize: CGFloat = 17
+
         label = UILabel()
         label.textColor = .white
-        label.font = UIFont.avenirNextDemi.withSize(17)
+        label.font = UIFont.avenirNextDemi.withSize(fontSize)
         label.text = text
         self.addSubview(label)
 
         subLabel = UILabel()
         subLabel.textColor = .white
-        subLabel.font = UIFont.avenirNextDemi.withSize(17)
+        subLabel.font = UIFont.avenirNextDemi.withSize(fontSize)
         subLabel.textAlignment = .right
         self.addSubview(subLabel)
 
