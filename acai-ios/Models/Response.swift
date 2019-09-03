@@ -8,7 +8,8 @@
 
 struct Response<T: Codable>: Codable {
 
-    var success: Bool
-    var data: T
+    let success: Bool
+    let data: T?
+    let error: String?
 
 }

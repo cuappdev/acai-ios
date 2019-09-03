@@ -24,6 +24,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         backgroundColor = .white
 
         imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         contentView.addSubview(imageView)
 
         titleLabel = UILabel()

@@ -30,6 +30,10 @@ class MenuItem: ListDiffable {
 
     let image: UIImage
     // The default options should never change!
+    // variations are radio selection
+//    let defaultVariations: [OrderOption]
+    // modifiers are select many (although it's possible they're also select one)
+//    let defaultModifiers: [String: [OrderOption]]
     let defaultOptions: [OrderOption.OptionType: [OrderOption]]
     let price: Double
     let title: String
@@ -41,6 +45,21 @@ class MenuItem: ListDiffable {
         self.price = price
         self.title = title
         self.type = type
+    }
+
+    init(title: String, price: Double, defaultOptions: [OrderOption.OptionType: [OrderOption]], type: ItemType) {
+        self.defaultOptions = defaultOptions
+        self.price = price
+        self.title = title
+        self.type = type
+        switch type {
+        case .bowl:
+            self.image = UIImage(named: "bowl-icon")!
+        case .smoothie:
+            self.image = UIImage(named: "smoothie-icon")!
+        case .drink:
+            self.image = UIImage(named: "drink-icon")!
+        }
     }
 
     func ingredientsString() -> String {

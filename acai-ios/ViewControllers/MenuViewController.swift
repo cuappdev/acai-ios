@@ -7,6 +7,7 @@
 //
 
 import AppDevSettings
+import FutureNova
 import IGListKit
 import SnapKit
 import UIKit
@@ -17,9 +18,12 @@ protocol MenuSelectionDelegate: class {
 
 class MenuViewController: UIViewController {
 
+    let networking: Networking = URLSession.shared.request
+
     // MARK: Models
     var menu: [MenuItem.ItemType: [MenuItem]] = [:]
     var selectedTab: MenuItem.ItemType!
+    var cartItems: [CartItem] = []
 
     // MARK: IGListKit Vars
     var collectionView: UICollectionView!
@@ -34,11 +38,7 @@ class MenuViewController: UIViewController {
         // TODO: change based on time of day
         title = "Good Morning, Jamie ☀️"
 
-        // TODO: change settings icon
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
-
         selectedTab = .bowl
-
         formatNavigationBar()
 
         let layout = UICollectionViewFlowLayout()
@@ -58,12 +58,13 @@ class MenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadMenu()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         formatNavigationBar()
+
+        loadMenu()
     }
 
     private func formatNavigationBar() {
@@ -72,7 +73,7 @@ class MenuViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.tintColor = .coldGray//UIColor(red: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = .coldGray
         navigationController?.navigationBar.barTintColor = UINavigationBar().barTintColor
         navigationController?.navigationBar.largeTitleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
@@ -82,6 +83,28 @@ class MenuViewController: UIViewController {
             .font: UIFont.avenirNextMedium.withSize(20),
             .foregroundColor: UIColor.black
         ]
+
+        // TODO: change settings icon
+        let accountButton = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(accountButtonTapped))
+        accountButton.tintColor = .black
+        let cartButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(cartButtonTapped))
+        // TODO: change settings icon
+        let settingsButton = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(didPressSettings))
+        navigationItem.rightBarButtonItems = [settingsButton, cartButton, accountButton]
+    }
+
+    @objc func cartButtonTapped() {
+        let cartViewController = CartViewController()
+        cartViewController.cartItems = CartItems(DiffableArray(cartItems))
+        // Removes the "Good Morning, Name" from the back button
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(cartViewController, animated: true)
+    }
+
+    @objc func accountButtonTapped() {
+        let loginViewController = LoginViewController()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 
     private func loadMenu() {
@@ -92,17 +115,68 @@ class MenuViewController: UIViewController {
                 Acai.testBowl2,
                 Acai.testBowl3,
                 Acai.testBowl4,
-                Acai.testBowl5
+                Acai.testBowl5,
+                Acai.testBowl6,
+                Acai.testBowl7
             ],
 
             .smoothie: [
+                Acai.testSmoothie1,
+                Acai.testSmoothie2,
+                Acai.testSmoothie3,
+                Acai.testSmoothie4,
+                Acai.testSmoothie5,
+                Acai.testSmoothie6
             ],
 
             .drink: [
+                Acai.drink1,
+                Acai.coffee1,
+                Acai.coffee2,
+                Acai.coffee3,
+                Acai.coffee4,
+                Acai.coffee5,
+                Acai.coffee6,
+                Acai.coffee7,
+                Acai.coffee8,
+                Acai.coffee9,
+                Acai.coffee10,
+                Acai.coffee11,
+                Acai.coffee12,
+                Acai.coffee13,
+                Acai.coffee14,
+                Acai.coffee15,
+                Acai.coffee16,
+                Acai.coffee17
             ]
         ]
 
         listAdapter.performUpdates(animated: false, completion: nil)
+
+        getMenu().observe { [weak self] result in
+            switch result {
+            case .value(let val):
+                if val.success, let data = val.data {
+                    self?.updateCatalog(data)
+                } else if let err = val.error {
+                    print(err)
+                } else {
+                    print("Whoa whoa hold up. No. ")
+                }
+            case .error(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+
+    private func updateCatalog(_ catalog: Catalog) {
+        // TODO: convert catalog to MenuItem
+
+        
+    }
+
+    private func getMenu() -> Future<Response<Catalog>> {
+        return networking(Endpoint.getCatalog()).decode()
     }
 
     // MARK: Constraint setup
@@ -161,6 +235,7 @@ extension MenuViewController: MenuSelectionDelegate {
         print("Selected \(item.title)")
         #endif
         let order = OrderDetailViewController()
+        order.delegate = self
         order.menuItem = item
         // Leave commented until decide with design what flow to use
 //        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -173,10 +248,14 @@ extension MenuViewController: MenuSelectionDelegate {
 }
 
 extension MenuViewController: MenuTabDelegate {
-
     func selectedTabDidChange(to tab: NSNumber) {
         selectedTab = Constants.menuTabs[tab.intValue]
         listAdapter.performUpdates(animated: false, completion: nil)
     }
+}
 
+extension MenuViewController: OrderDetailViewControllerDelegate {
+    func addToCart(cartItem: CartItem) {
+        cartItems.append(cartItem)
+    }
 }

@@ -32,6 +32,7 @@ class LoginViewController: UITableViewController {
         // MARK: Reuse identifiers
         static let roundedButtonCellReuseIdentifier = "roundedButtonCellReuseIdentifier"
         static let inputCellReuseIdentifier = "inputCellReuseIdentifier"
+        static let textCellReuseIdentifier = "textCellReuseIdentifier"
 
         // MARK: Constraint constants
         static let buttonCellHeight: CGFloat = 50
@@ -53,6 +54,7 @@ class LoginViewController: UITableViewController {
     var lastName: String = ""
     var password: String = ""
     var phoneNumber: String = ""
+    var labelText: String = ""
 
     var attemptedNetworking = false
 
@@ -62,12 +64,6 @@ class LoginViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        let navigationTitleLabel = UILabel()
-        navigationTitleLabel.text = "Account"
-        navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
-        navigationTitleLabel.sizeToFit()
-        let navigationBarLeftItem = UIBarButtonItem(customView: navigationTitleLabel)
-        self.navigationItem.leftBarButtonItem = navigationBarLeftItem
         formatNavigationBar()
 
         tableView.delegate = self
@@ -79,58 +75,77 @@ class LoginViewController: UITableViewController {
         tableView.contentInset.bottom = FileConstants.inputViewBottomOffset
         tableView.register(InputTableViewCell.self, forCellReuseIdentifier: FileConstants.inputCellReuseIdentifier)
         tableView.register(RoundedButtonTableViewCell.self, forCellReuseIdentifier: FileConstants.roundedButtonCellReuseIdentifier)
+        tableView.register(TextTableViewCell.self, forCellReuseIdentifier: FileConstants.textCellReuseIdentifier)
     }
 
     private func formatNavigationBar() {
+        let navigationTitleLabel = UILabel()
+        navigationTitleLabel.text = "Account"
+        navigationTitleLabel.font = UIFont.avenirNextMedium.withSize(24)
+        navigationTitleLabel.sizeToFit()
+        let navigationBarTitleItem = UIBarButtonItem(customView: navigationTitleLabel)
+        let navigationBarBackButton = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .done, target: self, action: #selector(backButtonPressed))
+        self.navigationItem.leftBarButtonItems = [
+            navigationBarBackButton,
+            navigationBarTitleItem
+        ]
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .compact)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .navigationWhite
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont.avenirNextMedium.withSize(24),
             .foregroundColor: UIColor.black
         ]
     }
 
+    @objc func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // +1 for cell with sign up and login buttons
-        return inputItems.count + 1
+        // +1 for label text
+        return inputItems.count + 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == inputItems.count {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.textCellReuseIdentifier, for: indexPath) as! TextTableViewCell
+            cell.configure(for: labelText)
+        } else if indexPath.row == inputItems.count + 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.roundedButtonCellReuseIdentifier, for: indexPath) as! RoundedButtonTableViewCell
             cell.selectRoundedButtonDelegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: FileConstants.inputCellReuseIdentifier, for: indexPath) as! InputTableViewCell
-            let inputItem = inputItems[indexPath.row]
+            let inputItem = inputItems[indexPath.row - 1]
             cell.changeInputTextFieldDelegate = self
             cell.invalidEntryLabel.isHidden = true
             if let type = inputItem.type {
-                switch type {
-                case .email:
+                if type == .email {
                     cell.textField.text = email
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = email.isValidEmail()
                     }
-                case .firstName:
+                } else if type == .firstName {
                     cell.textField.text = firstName
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = firstName.isValidName()
                     }
-                case .lastName:
+                } else if type == .lastName {
                     cell.textField.text = lastName
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = lastName.isValidName()
                     }
-                case .password:
+                } else if type == .password {
                     cell.textField.text = password
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = password.isValidPassword()
                     }
-                case .phoneNumber:
+                } else if type == .phoneNumber {
                     cell.textField.text = phoneNumber
                     if attemptedNetworking {
                         cell.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
@@ -140,11 +155,17 @@ class LoginViewController: UITableViewController {
             cell.configure(for: inputItem)
             return cell
         }
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == inputItems.count {
+        let labelBottomPadding: CGFloat = 36
+        if indexPath.row == inputItems.count + 1 {
             return FileConstants.buttonCellHeight
+        } else if indexPath.row == 0 {
+            // subtract 35*2 for leading and trailing padding of label in TextTableViewCell
+            return labelText == "" ? 0 : labelText.height(withConstrainedWidth: tableView.frame.width - 35*2, font: UIFont.avenirNextMedium.withSize(17)) + labelBottomPadding
+
         } else {
             return FileConstants.inputViewHeight
         }
@@ -167,11 +188,11 @@ class LoginViewController: UITableViewController {
 extension LoginViewController: SelectRoundedButtonDelegate {
     func register() {
         attemptedNetworking = true
-        guard let firstNameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell,
-            let lastNameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
-            let phoneNumberCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell,
-            let emailCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell,
-            let passwordCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell else { return }
+        guard let firstNameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
+            let lastNameCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell,
+            let phoneNumberCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? InputTableViewCell,
+            let emailCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? InputTableViewCell,
+            let passwordCell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? InputTableViewCell else { return }
         firstNameCell.invalidEntryLabel.isHidden = firstName.isValidName()
         lastNameCell.invalidEntryLabel.isHidden = lastName.isValidName()
         phoneNumberCell.invalidEntryLabel.isHidden = phoneNumber.isValidPhoneNumber()
@@ -191,8 +212,8 @@ extension LoginViewController: SelectRoundedButtonDelegate {
 
     func login() {
         attemptedNetworking = true
-        guard let emailCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? InputTableViewCell,
-            let passwordCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell else { return }
+        guard let emailCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? InputTableViewCell,
+            let passwordCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? InputTableViewCell else { return }
         emailCell.invalidEntryLabel.isHidden = email.isValidEmail()
         passwordCell.invalidEntryLabel.isHidden = password != ""
         if email.isValidEmail() && password.isValidPassword() {
@@ -240,16 +261,15 @@ extension LoginViewController: SelectRoundedButtonDelegate {
 
 extension LoginViewController: ChangeInputTextFieldDelegate {
     func changeText(text: String, type: InputType) {
-        switch type {
-        case .email:
+        if type == .email {
             email = text
-        case .firstName:
+        } else if type == .firstName {
             firstName = text
-        case .lastName:
+        } else if type == .lastName {
             lastName = text
-        case .password:
+        } else if type == .password {
             password = text
-        case .phoneNumber:
+        } else if type == .phoneNumber {
             phoneNumber = text
         }
     }

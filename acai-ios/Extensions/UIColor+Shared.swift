@@ -12,6 +12,7 @@ import UIKit
 extension UIColor {
 
     static let acaiBlack = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
+    static var acaiBlackTwo = UIColor(white: 39.0/255.0, alpha: 1.0)
     static let butterscotch = UIColor(red: 255/255, green: 175/255, blue: 72/255, alpha: 1.0)
     static let coldGray = UIColor(red: 180/255, green: 191/255, blue: 201/255, alpha: 1.0)
     static let lineGray = UIColor(red: 213/255, green: 213/255, blue: 213/255, alpha: 1.0)

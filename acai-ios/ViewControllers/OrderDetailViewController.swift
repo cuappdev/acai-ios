@@ -15,9 +15,15 @@ protocol DidSelectOptionDelegate: class {
     func selectOption(at index: Int, for type: OrderOption.OptionType)
 }
 
+protocol OrderDetailViewControllerDelegate: class {
+    func addToCart(cartItem: CartItem)
+}
+
 /// Presents detail and customization options for a menu item.
 /// Requires menuItem variable to be set
 class OrderDetailViewController: UIViewController {
+
+    weak var delegate: OrderDetailViewControllerDelegate?
 
     // MARK: View vars
     private var addToCartActionTabView: ActionTabView!
@@ -64,7 +70,8 @@ class OrderDetailViewController: UIViewController {
         backgroundGradient.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: FileConstants.backgroundGradientScaleHeight * view.frame.height)
         view.layer.addSublayer(backgroundGradient)
 
-        addToCartActionTabView = ActionTabView(title: "Add to Cart", price: menuItem.price)
+        addToCartActionTabView = ActionTabView(title: "Add to Cart", price: 0)
+        updateAddToCartPrice()
         view.addSubview(addToCartActionTabView)
 
         addToCartTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToCart))
@@ -130,7 +137,13 @@ class OrderDetailViewController: UIViewController {
         print("addToCart pushed")
         #endif
 
-//        navigationController?.popViewController(animated: true)
+        let cartItem = CartItem(menuItem: menuItem, quantity: Int(quantity), selectedOptions: [:])
+        for key in optionSectionsMap.keys {
+            cartItem.selectedOptions[key] = optionSectionsMap[key]?.filter({ (option) -> Bool in
+                option.isSelected
+            })
+        }
+        delegate?.addToCart(cartItem: cartItem)
         dismiss(animated: true, completion: nil)
     }
 
@@ -177,9 +190,9 @@ extension OrderDetailViewController: ListAdapterDataSource {
             orderCustomizationListSectionController.selectOptionDelegate = self
             return orderCustomizationListSectionController
         } else if let object = object as? NSNumber {
-            let quantitiyController = QuantitySectionController(quantity: object, itemType: menuItem.type)
-            quantitiyController.delegate = self
-            return quantitiyController
+            let quantityController = QuantitySectionController(quantity: object, itemType: menuItem.type)
+            quantityController.delegate = self
+            return quantityController
         }
         return ListSectionController()
     }
