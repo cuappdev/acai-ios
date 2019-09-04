@@ -67,6 +67,7 @@
 		6D8C3E86224D514B0089AE08 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C3E85224D514B0089AE08 /* Constants.swift */; };
 		6D8C3E88224D5EF50089AE08 /* MenuTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C3E87224D5EF50089AE08 /* MenuTabView.swift */; };
 		AC3A67A3A648463645C09DE7 /* Pods_acai_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */; };
+		C2D75B24232015430082A2BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2D75B23232015430082A2BB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		6D8C3E87224D5EF50089AE08 /* MenuTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabView.swift; sourceTree = "<group>"; };
 		7CA835A32A5DB848A995DEF3 /* Pods_acai_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_acai_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5807866447CB021EE04850 /* Pods_appdev_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appdev_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D75B23232015430082A2BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0446A59003ECDFC3C229A6F /* Pods-acai-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acai-ios.release.xcconfig"; path = "Target Support Files/Pods-acai-ios/Pods-acai-ios.release.xcconfig"; sourceTree = "<group>"; };
 		E07E5BB5721B342C1A75715B /* Pods-appdev-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appdev-demo.debug.xcconfig"; path = "Target Support Files/Pods-appdev-demo/Pods-appdev-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +283,7 @@
 		6D10DE9C221CAD6800C46F75 /* acai-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C2D75B23232015430082A2BB /* GoogleService-Info.plist */,
 				031A748B22652D5E00773CE1 /* TableViewCells */,
 				6D10DE9D221CAD6800C46F75 /* AppDelegate.swift */,
 				031536F7222EB3BA004FAF9F /* Acai.swift */,
@@ -397,6 +400,7 @@
 			files = (
 				6D10DEA8221CAD6C00C46F75 /* LaunchScreen.storyboard in Resources */,
 				6D10DEA5221CAD6C00C46F75 /* Assets.xcassets in Resources */,
+				C2D75B24232015430082A2BB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,10 +418,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-acai-ios/Pods-acai-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppDevSettings/AppDevSettings.framework",
 				"${BUILT_PRODUCTS_DIR}/FutureNova/FutureNova.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${PODS_ROOT}/SquareInAppPaymentsSDK/SquareInAppPaymentsSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -425,10 +432,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppDevSettings.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FutureNova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SquareInAppPaymentsSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
