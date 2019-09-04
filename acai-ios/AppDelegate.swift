@@ -8,6 +8,7 @@
 
 import Crashlytics
 import Fabric
+import Firebase
 import FutureNova
 import UIKit
 
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         setupEndpointConfig()
         setupWindow()
         setupFabric()

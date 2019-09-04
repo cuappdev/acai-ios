@@ -68,6 +68,7 @@ Carthage/Build
 #fastlane/test_output
 
 Secrets/
+acai-ios/GoogleService-Info.plist
 
 # Swiftlint
 #.swiftlint.yml

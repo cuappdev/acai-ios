@@ -105,27 +105,42 @@ extension KingfisherWrapper where Base: ImageView {
             options.preloadAllAnimationData = true
         }
 
+        if let block = progressBlock {
+            options.onDataReceived = (options.onDataReceived ?? []) + [ImageLoadingProgressSideEffect(block)]
+        }
+
+        if let provider = ImageProgressiveProvider(options, refresh: { image in
+            self.base.image = image
+        }) {
+            options.onDataReceived = (options.onDataReceived ?? []) + [provider]
+        }
+        
+        options.onDataReceived?.forEach {
+            $0.onShouldApply = { issuedIdentifier == self.taskIdentifier }
+        }
+
         let task = KingfisherManager.shared.retrieveImage(
             with: source,
             options: options,
-            progressBlock: { receivedSize, totalSize in
-                guard issuedIdentifier == self.taskIdentifier else { return }
-                if let progressBlock = progressBlock {
-                    progressBlock(receivedSize, totalSize)
-                }
-            },
             completionHandler: { result in
                 CallbackQueue.mainCurrentOrAsync.execute {
                     maybeIndicator?.stopAnimatingView()
                     guard issuedIdentifier == self.taskIdentifier else {
-                        let error = KingfisherError.imageSettingError(
-                            reason: .notCurrentSourceTask(result: result.value, error: result.error, source: source))
+                        let reason: KingfisherError.ImageSettingErrorReason
+                        do {
+                            let value = try result.get()
+                            reason = .notCurrentSourceTask(result: value, error: nil, source: source)
+                        } catch {
+                            reason = .notCurrentSourceTask(result: nil, error: error, source: source)
+                        }
+                        let error = KingfisherError.imageSettingError(reason: reason)
                         completionHandler?(.failure(error))
                         return
                     }
-
+                    
                     mutatingSelf.imageTask = nil
-
+                    mutatingSelf.taskIdentifier = nil
+                    
                     switch result {
                     case .success(let value):
                         guard self.needsTransition(options: options, cacheType: value.cacheType) else {
@@ -134,10 +149,11 @@ extension KingfisherWrapper where Base: ImageView {
                             completionHandler?(result)
                             return
                         }
-
+                        
                         self.makeTransition(image: value.image, transition: options.transition) {
                             completionHandler?(result)
                         }
+                        
                     case .failure:
                         if let image = options.onFailureImage {
                             self.base.image = image
@@ -145,8 +161,8 @@ extension KingfisherWrapper where Base: ImageView {
                         completionHandler?(result)
                     }
                 }
-        })
-
+            }
+        )
         mutatingSelf.imageTask = task
         return task
     }
@@ -380,7 +396,7 @@ extension KingfisherWrapper where Base: ImageView {
 
 extension KingfisherWrapper where Base: ImageView {
     /// Gets the image URL bound to this image view.
-    @available(*, obsoleted: 5.0, message: "Use `taskIdentifier` instead to identify a setting task.")
+    @available(*, deprecated, message: "Use `taskIdentifier` instead to identify a setting task.")
     public private(set) var webURL: URL? {
         get { return nil }
         set { }
