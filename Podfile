@@ -12,7 +12,7 @@ target 'acai-ios' do
   pod 'Firebase/Analytics'
   pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git'
   pod 'IGListKit'
-  pod 'Kingfisher'
+  pod 'Kingfisher', '~>5.2.0'
   pod 'SnapKit'
   pod 'Sourcery', '~>0.15.0'
   pod 'SquareInAppPaymentsSDK', '~>1.0.1'

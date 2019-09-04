@@ -72,7 +72,7 @@ PODS:
   - IGListKit/Default (3.4.0):
     - IGListKit/Diffing
   - IGListKit/Diffing (3.4.0)
-  - Kingfisher (5.7.1)
+  - Kingfisher (5.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -91,7 +91,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - FutureNova (from `https://github.com/cuappdev/ios-networking.git`)
   - IGListKit
-  - Kingfisher
+  - Kingfisher (~> 5.2.0)
   - SnapKit
   - Sourcery (~> 0.15.0)
   - SquareInAppPaymentsSDK (~> 1.0.1)
@@ -154,13 +154,13 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
-  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   SquareInAppPaymentsSDK: bb29701fe05e3119bf3ea003d266e9a233d7c7a6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 0732ec6fee9df66adc8e117fe18dc2f9c9c5490c
+PODFILE CHECKSUM: b9dbf4dd68ccc0377b008893adb07635501949fe
 
 COCOAPODS: 1.6.1
