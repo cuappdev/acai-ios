@@ -14,7 +14,7 @@ target 'acai-ios' do
   pod 'AppDevSettings', :git => 'http://github.com/cuappdev/appdevsettings.git'
 
   pod 'SquareInAppPaymentsSDK', '~>1.0.1'
-  pod 'Kingfisher', '~>5.1.1'
+  pod 'Kingfisher', '~>5.2.0'
   pod 'IGListKit'
 
 end
